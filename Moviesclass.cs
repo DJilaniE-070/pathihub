@@ -17,9 +17,6 @@ public class Movie
     [JsonProperty("writers")]
     public List<string> Writers { get; set; }
 
-    [JsonProperty("cast")]
-    public List<CastMember> Cast { get; set; }
-
     [JsonProperty("plot")]
     public string Plot { get; set; }
 
