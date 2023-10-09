@@ -2,7 +2,7 @@ namespace PathiHub.Presentation;
 
 public class UserMenu
 {
-    static void Main()
+    static void Start()
     {
         int choice;
         bool exit = false;
@@ -35,12 +35,15 @@ public class UserMenu
             {
                 case 1:
                     ReserveSeat();
+                    Console.WriteLine("needs to be implemented");
                     break;
                 case 2:
                     CheckReservation();
+                    Console.WriteLine("needs to be implemented");
                     break;
                 case 3:
                     CancelReservation();
+                    Console.WriteLine("needs to be implemented");
                     break;
                 case 4:
                     exit = true;
@@ -59,6 +62,7 @@ public class UserMenu
         static void ReserveSeat()
         {
             Console.WriteLine("Reserve a seat");
+            Console.WriteLine("Here comes the implementations in a later sprint");
         }
 
        
@@ -66,6 +70,7 @@ public class UserMenu
         {
             
             Console.WriteLine("Check reservation");
+            Console.WriteLine("Here comes the implementations in a later sprint");
         }
 
         
@@ -73,6 +78,7 @@ public class UserMenu
         {
             
             Console.WriteLine("Cancel reservation");
+            Console.WriteLine("Here comes the implementations in a later sprint");
         }
     }
 }
