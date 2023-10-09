@@ -1,6 +1,6 @@
-class Program
+public class CoWorker
 {
-    static void Main()
+    static void CoWorkerStart()
     {
         int choice;
         bool exit = false;

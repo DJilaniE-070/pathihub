@@ -43,13 +43,13 @@ public class PromotionsMenu
             switch (input)
             {
                 case "1":
-                    GuestMenu();
+                    //GuestMenu();
                     break;
                 case "2":
-                    CreateAccount();
+                    //CreateAccount();
                     break;
                 case "3":
-                    Login();
+                    //Login();
                     break;
                 case "4":
                     exit = true;
