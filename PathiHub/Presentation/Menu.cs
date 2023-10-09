@@ -26,6 +26,7 @@ static class Menu
         Console.WriteLine("Five Guys 3");
         
         Thread.Sleep(5000);
+        Console.Clear();
         UserLogin.Start();
         
         }
