@@ -15,12 +15,6 @@ class Program
                 Genre = new List<string> { "Action", "Adventure", "Sci-Fi" },
                 Director = "John Directorson",
                 Writers = new List<string> { "Jane Writerly", "Michael Scriptson" },
-                Cast = new List<CastMember>
-                {
-                    new CastMember { Name = "Alice Protagonist", Role = "The Hero" },
-                    new CastMember { Name = "Bob Sidekick", Role = "The Sidekick" },
-                    new CastMember { Name = "Eve Antagonist", Role = "The Villain" }
-                },
                 Plot = "In a futuristic world, Alice, a skilled adventurer, and her loyal sidekick Bob, embark on a thrilling journey to save their city from the evil plans of Eve, a cunning antagonist. With high-tech gadgets and unyielding determination, they must overcome various challenges and foes to restore peace to their homeland.",
                 Rating = 8.5,
                 RuntimeMinutes = 120,
@@ -30,6 +24,5 @@ class Program
         };
 
         string json = JsonConvert.SerializeObject(movies, Formatting.Indented);
-        Console.WriteLine(json);
     }
 }
