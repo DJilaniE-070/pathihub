@@ -5,7 +5,7 @@ class Program
     static void Main()
     {
         int choice;
-            
+        bool exit = false;    
         
         do
         {
