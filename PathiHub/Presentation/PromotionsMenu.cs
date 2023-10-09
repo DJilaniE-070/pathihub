@@ -1,14 +1,10 @@
 public class PromotionsMenu
 {
     public bool exit = false;
-    public List<string> PromotedMovies = new();
 
-    public PromotionsMenu(string Movie1, string Movie2, string Movie3)
+    public PromotionsMenu()
     {
-        //voeg promotie films aan lijst PromotedMovies
-        PromotedMovies.Add(Movie1);
-        PromotedMovies.Add(Movie2);
-        PromotedMovies.Add(Movie3);
+        //voeg promotie films aan lijst PromotedMovie
         //print de beginscherm
         WriteMenu();
     }
@@ -27,10 +23,9 @@ public class PromotionsMenu
         Console.WriteLine("Uitgelichte films:");
         Console.WriteLine();
         //print elke promoted movie van list
-        for (int i = 0; i < PromotedMovies.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}. {PromotedMovies[i]}");
-        }
+        Console.WriteLine("The Avengers");
+        Console.WriteLine("Movie test 2");
+        Console.WriteLine("Five Guys 3");
         //input loop
         while (exit == false)
         {
