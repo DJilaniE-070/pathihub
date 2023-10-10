@@ -1,11 +1,12 @@
-﻿
+
 using System;
+
 public class Manager_menu
 {
-    static void ManagerStart()
+    public static void Managerstart()
     {
         int choice;
-        bool exit = false;    
+        bool exit = false;
         
         do
         {
@@ -22,14 +23,14 @@ ___  ___                                   ___  ___
 "); 
             
             
-            Console.WriteLine("1. Film opties");
-            Console.WriteLine("2. Film reserveren");
-            Console.WriteLine("3. Reservering opties");
-            Console.WriteLine("4. Financiele opties");
-            Console.WriteLine("5. Snacks opties");
+            Console.WriteLine("1. Film options");
+            Console.WriteLine("2. Reserve movie");
+            Console.WriteLine("3. reservation options");
+            Console.WriteLine("4. Financial options");
+            Console.WriteLine("5. Snacks options");
             Console.WriteLine("6. Exit");
             Console.WriteLine("Please enter your choice (1-6):");
-            
+
             choice = Convert.ToInt32(Console.ReadLine());
             
             switch (choice)
@@ -59,14 +60,38 @@ ___  ___                                   ___  ___
             
             Console.WriteLine();
         } while (!exit);
-        
+   
         Console.WriteLine("Thank you for using the Cinema Reservation System. Goodbye!");
 
         
         static void Film_options()
-        {
-            Console.WriteLine("Film options");
+        {   
+            while (true)
+            {
+            Console.WriteLine("\n\n");
+            Console.WriteLine("1. Add a movie");
+            Console.WriteLine("2. Remove a movie");
+            Console.WriteLine("3. Return to Manger menu");
+            int option = Convert.ToInt32(Console.ReadLine());
+            if (option == 1)
+            {
+                Movie_option_presentation.Add_movie_presentation();
+            }
+            else if (option == 2)
+            {
+                Movie_option_presentation.Remove_movie();
+            }
+            else if (option == 3)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid option");
+            }
+            }
         }
+        
 
        
         static void Order_film()
@@ -75,17 +100,18 @@ ___  ___                                   ___  ___
             Console.WriteLine("Order a movie");
         }
 
-        
         static void Reservations_options()
         {
             
-            Console.WriteLine("Reservation options");
+            Console.WriteLine("Reservations options: ");
         }
+        
         static void Financial_options()
         {
             
             Console.WriteLine("Financial options");
         }
+        
         static void Snacks()
         {
             
