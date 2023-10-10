@@ -1,29 +1,60 @@
 static class Menu
 {
-
-    //This shows the menu. You can call back to this method to show the menu again
-    //after another presentation method is completed.
-    //You could edit this to show different menus depending on the user's role
+    // dit is het scherm is word puur gebruikt als eerste scherm
     static public void Start()
     {
-        
-        Console.WriteLine("Enter 1 to login");
-        Console.WriteLine("Enter 2 to do something else in the future");
 
-        string input = Console.ReadLine();
-        if (input == "1")
+
+        Console.WriteLine(@"
+ ____          __    __              __  __           __        
+/\  _`\       /\ \__/\ \      __    /\ \/\ \         /\ \       
+\ \ \L\ \ __  \ \ ,_\ \ \___ /\_\   \ \ \_\ \  __  __\ \ \____  
+ \ \ ,__/'__`\ \ \ \/\ \  _ `\/\ \   \ \  _  \/\ \/\ \\ \ '__`\ 
+  \ \ \/\ \L\.\_\ \ \_\ \ \ \ \ \ \   \ \ \ \ \ \ \_\ \\ \ \L\ \
+   \ \_\ \__/.\_\\ \__\\ \_\ \_\ \_\   \ \_\ \_\ \____/ \ \_,__/
+    \/_/\/__/\/_/ \/__/ \/_/\/_/\/_/    \/_/\/_/\/___/   \/___/ ");
+
+        Console.WriteLine("--------------------------------------------------------------------------------");
+        Console.WriteLine();
+        Console.WriteLine("featured films:");
+        Console.WriteLine();
+
+        //print elke promoted movie van list
+        Console.WriteLine("The Avengers");
+        Console.WriteLine("Movie test 2");
+        Console.WriteLine("Five Guys 3");
+
+        Console.WriteLine("--------------------------------------------------------------------------------");
+        Console.WriteLine("Press enter to continue");
+        
+        
+        
+
+        ConsoleKeyInfo keyPressed = Console.ReadKey();
+        if (keyPressed.Key == ConsoleKey.Enter)
         {
+            
+            Console.Write("Loading");
+            for (int i = 0; i < 5; i++)
+            {
+                Thread.Sleep(500); // Wacht 500 milliseconden (0,5 seconden)
+                Console.Write(".");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Loading Completed.");
+            Thread.Sleep(1000);
+            
+            Console.Clear();
             UserLogin.Start();
         }
-        else if (input == "2")
-        {
-            Console.WriteLine("This feature is not yet implemented");
-        }
+        
         else
         {
-            Console.WriteLine("Invalid input");
-            Start();
-        }
+            Console.WriteLine("Invalid key. Please try again.");
 
+
+        }
     }
 }
+
+    
