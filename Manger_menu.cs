@@ -97,25 +97,25 @@ ___  ___                                   ___  ___
         static void Order_film()
         {
             
-            Console.WriteLine("Check reservation");
+            Console.WriteLine("Order a movie");
         }
 
         static void Reservations_options()
         {
             
-            Console.WriteLine("Cancel reservation");
+            Console.WriteLine("Reservations options: ");
         }
         
         static void Financial_options()
         {
             
-            Console.WriteLine("Cancel reservation");
+            Console.WriteLine("Financial options");
         }
         
         static void Snacks()
         {
             
-            Console.WriteLine("Cancel reservation");
+            Console.WriteLine("Snacks options");
         }                
     }
 }
