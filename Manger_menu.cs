@@ -1,11 +1,11 @@
 ﻿
 using System;
-class Program
+public class Manager_menu
 {
-    static void Main()
+    static void ManagerStart()
     {
         int choice;
-            
+        bool exit = false;    
         
         do
         {
