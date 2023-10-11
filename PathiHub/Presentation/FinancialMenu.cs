@@ -15,8 +15,8 @@ ______ _                        _           _  ___  ___
         bool exit = false;
         while (exit == false)
         {
-            Console.WriteLine("[1] Bekijk aantal reserveringen");
-            Console.WriteLine("[2] Bekijk opbrengsten reserveringen");
+            Console.WriteLine("[1] Check total reservations ");
+            Console.WriteLine("[2] Check total revenue");
             Console.WriteLine("[3] Exit");
             Console.WriteLine("--------------------------------------------------------------------------------");
             string input = Console.ReadLine();
