@@ -1,9 +1,9 @@
 ﻿using System.Text.Json.Serialization;
 
 
-class AccountModel
+public class AccountModel
 {
-    [JsonPropertyName("id")]
+    [JsonPropertyName("id")] //TODO: fix id to increase automatically.
     public int Id { get; set; }
 
     [JsonPropertyName("emailAddress")]
@@ -14,13 +14,17 @@ class AccountModel
 
     [JsonPropertyName("fullName")]
     public string FullName { get; set; }
+    
+    [JsonPropertyName("role")]
+    public string Role { get; set; }
 
-    public AccountModel(int id, string emailAddress, string password, string fullName)
+    public AccountModel(int id, string emailAddress, string password, string fullName, string role)
     {
         Id = id;
         EmailAddress = emailAddress;
         Password = password;
         FullName = fullName;
+        Role = role;
     }
 
 }
