@@ -57,9 +57,10 @@ static class UserLogin
         else
         {
             Console.WriteLine("No account found with that email and password");
-            Thread.Sleep(500);
+            Thread.Sleep(1500);
             Console.WriteLine("You will be redirected ");
-            Thread.Sleep(300);
+            Thread.Sleep(1500);
+            Console.Clear();
             UserLogin.Start();
             
         }
