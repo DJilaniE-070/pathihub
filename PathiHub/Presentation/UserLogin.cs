@@ -15,6 +15,26 @@ static class UserLogin
         {
             Console.WriteLine("Welcome back " + acc.FullName);
             Console.WriteLine("Your email number is " + acc.EmailAddress);
+            Console.WriteLine("Your role is " + acc.FullName);
+
+            switch (acc.Role)
+            {
+                case "Manager":
+                    // ManagerMenu.Start();
+                    Console.WriteLine("Manager Menu");
+                    Console.WriteLine(acc.GetType());
+                    break;
+                case "Financial Manager":
+                    // FinancialManagerMenu.Start();
+                    Console.WriteLine("Financial Manager Menu");
+                    break;
+                case "Coworker":
+                    // CoworkerMenu.Start();
+                    Console.WriteLine("Coworker Menu");
+                    break;
+                default:
+                    break;
+            }
 
             //Write some code to go back to the menu
             //Menu.Start();

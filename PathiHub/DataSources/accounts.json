@@ -3,12 +3,14 @@
 		"id": 1,
 		"emailAddress": "n@b.c",
 		"password": "xyz",
-		"fullName": "Nikola Tesla"
+		"fullName": "Nikola Tesla",
+		"role": "Manager"
 	},
 	{
 		"id": 2,
 		"emailAddress": "t@b.c",
 		"password": "xyz",
-		"fullName": "Thomas Edison"
+		"fullName": "Thomas Edison",
+		"role": "Financial Manager"
 	}
 ]
