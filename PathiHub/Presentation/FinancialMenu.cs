@@ -4,7 +4,12 @@
 
     public FinancialMenu()
     {
-    Console.WriteLine(@"
+        WriteFinancial();
+    }
+
+    public void WriteFinancial()
+    {
+        Console.WriteLine(@"
 ______ _                        _           _  ___  ___                 
 |  ___(_)                      (_)         | | |  \/  |                 
 | |_   _ _ __   __ _ _ __   ___ _  ___  ___| | | .  . | ___ _ __  _   _ 
@@ -13,10 +18,6 @@ ______ _                        _           _  ___  ___
 \_|   |_|_| |_|\__,_|_| |_|\___|_|\___|\___|_| \_|  |_/\___|_| |_|\__,_|
                                                                         
                                                                        ");
-    }
-
-    public void WriteFinancial()
-    {
         while (exit == false)
         {
             Console.WriteLine("[1] Bekijk aantal reserveringen");
