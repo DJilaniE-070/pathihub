@@ -6,6 +6,7 @@ public class SeatMap
     public SeatMap()
     {
         Seats = new List<SeatData>();
+        // dit kan later nog verander worden naar andere values, bijvoorbeeld door constructor parameters toe tevoegen
         int SeatRows = 4;
         int SeatNumbers = 8;
         for (int row = 1; row <= SeatRows; row++)
@@ -16,10 +17,10 @@ public class SeatMap
             }
         }
     }
-
+    // loop om alle stoelen te printen
     public void DisplaySeatMap()
     {
-        Console.WriteLine("Cinema Seat Map:");
+        Console.WriteLine("All Seats:");
         foreach (SeatData seat in Seats)
         {
             string status = "";
@@ -38,8 +39,9 @@ public class SeatMap
 
     public bool ReserveSeat(int row, int number)
     {
+        // zoekt naar row en number in list seats als het gevonden is wordt het in variabele seat opgeslagen anders blijft het null
         SeatData seat = Seats.Find(s => s.Row == row && s.Number == number);
-
+        //reserveert de seat en checkt of het al niet gereserveert is
         if (seat != null && seat.IsAvailable == true)
         {
             seat.IsAvailable = false;
@@ -52,19 +54,19 @@ public class SeatMap
             return false;
         }
     }
-
+    // showmenu later kan worden opgesplits in usermenu of presentation layer
     public void ShowMenu()
     {
         while (true)
         {
             Console.Clear();
             DisplaySeatMap();
-
+            // vraagt om rij en stoel nummer 
             Console.Write("Enter row number (1-4): ");
-            int Row = int.Parse(Console.ReadLine());
+            int row = int.Parse(Console.ReadLine());
             Console.Write("Enter seat number (1-8): ");
             int number = int.Parse(Console.ReadLine());
-            ReserveSeat(Row, number);
+            ReserveSeat(row, number);
             Console.WriteLine("Press enter to reserve");
             Console.ReadLine();
         }
