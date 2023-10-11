@@ -25,7 +25,7 @@ ___  ___                                   ___  ___
             
             Console.WriteLine("1. Film options");
             Console.WriteLine("2. Reserve movie");
-            Console.WriteLine("3. reservation options");
+            Console.WriteLine("3. Reservation options");
             Console.WriteLine("4. Financial options");
             Console.WriteLine("5. Snacks options");
             Console.WriteLine("6. Exit");
