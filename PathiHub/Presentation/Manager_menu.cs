@@ -71,7 +71,7 @@ ___  ___                                   ___  ___
             Console.WriteLine("\n\n");
             Console.WriteLine("1. Add a movie");
             Console.WriteLine("2. Remove a movie");
-            Console.WriteLine("3. Return to Manger menu");
+            Console.WriteLine("3. Return to Manager menu");
             int option = Convert.ToInt32(Console.ReadLine());
             if (option == 1)
             {
