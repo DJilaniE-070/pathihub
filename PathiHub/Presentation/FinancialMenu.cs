@@ -26,10 +26,10 @@ ______ _                        _           _  ___  ___
             switch (input)
             {
                 case "1":
-                    Console.WriteLine(FinancialLogic.AantalReserveringen);
+                    Console.WriteLine(FinancialLogic.TotalReservations);
                     break;
                 case "2":
-                    Console.WriteLine(FinancialLogic.AlleOpbrengsten);
+                    Console.WriteLine(FinancialLogic.TotalRevenue);
                     break;
                 case "3":
                     exit = true;
