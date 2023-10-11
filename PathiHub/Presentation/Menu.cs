@@ -16,7 +16,7 @@ static class Menu
 
         Console.WriteLine("--------------------------------------------------------------------------------");
         Console.WriteLine();
-        Console.WriteLine("featured films:");
+        Console.WriteLine("featured movies:");
         Console.WriteLine();
 
         //print elke promoted movie van list
