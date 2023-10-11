@@ -1,7 +1,7 @@
-static class Menu
+public static class Menu
 {
     // dit is het scherm is word puur gebruikt als eerste scherm
-    static public void Start()
+    public static void Start()
     {
 
 
@@ -16,7 +16,7 @@ static class Menu
 
         Console.WriteLine("--------------------------------------------------------------------------------");
         Console.WriteLine();
-        Console.WriteLine("featured films:");
+        Console.WriteLine("featured movies:");
         Console.WriteLine();
 
         //print elke promoted movie van list

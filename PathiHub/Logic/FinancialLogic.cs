@@ -1,18 +1,18 @@
 public static class FinancialLogic
 {
-    public static int AantalReserveringen = 0;
-    public static double AlleOpbrengsten = 0;
+    public static int TotalReservations = 0;
+    public static double TotalRevenue = 0;
 
     //methode om aantal reserveringen bij te voegen
-    public static void UpdateAantalReserveringen(int aantal)
+    public static void UpdateTotalReservations(int amount)
     {
-        AantalReserveringen += aantal;
+        TotalReservations += amount;
     }
 
     //methode om de opbrengsten bij te voegen
-    public static void UpdateOpbrengsten(double bedrag)
+    public static void UpdateTotalRevenue(double amount)
     {
-        AlleOpbrengsten += bedrag;
+        TotalRevenue += amount;
     }
 
     /*
