@@ -1,10 +1,11 @@
 ﻿public class FinancialMenu
 {
-    public bool exit = false;
-
-    public FinancialMenu()
+    
+    public static void Financieel_Start()
+    
+   
     {
-    Console.WriteLine(@"
+        Console.WriteLine(@"
 ______ _                        _           _  ___  ___                 
 |  ___(_)                      (_)         | | |  \/  |                 
 | |_   _ _ __   __ _ _ __   ___ _  ___  ___| | | .  . | ___ _ __  _   _ 
@@ -13,15 +14,14 @@ ______ _                        _           _  ___  ___
 \_|   |_|_| |_|\__,_|_| |_|\___|_|\___|\___|_| \_|  |_/\___|_| |_|\__,_|
                                                                         
                                                                        ");
-    }
-
-    public void WriteFinancial()
-    {
+        Console.WriteLine("--------------------------------------------------------------------------------");
+        bool exit = false;
         while (exit == false)
         {
             Console.WriteLine("[1] Bekijk aantal reserveringen");
             Console.WriteLine("[2] Bekijk opbrengsten reserveringen");
             Console.WriteLine("[3] Exit");
+            Console.WriteLine("--------------------------------------------------------------------------------");
             string input =  Console.ReadLine();
             switch (input)
             {

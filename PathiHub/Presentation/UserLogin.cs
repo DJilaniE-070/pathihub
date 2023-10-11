@@ -5,8 +5,22 @@ static class UserLogin
 
     public static void Start()
     {
-        Console.WriteLine("Welcome to the login page");
-        Console.WriteLine("Please enter your email address");
+        Console.WriteLine(@" 
+ _____ _       _           _   _                 _        ______                
+|  __ \ |     | |         | | | |               (_)       | ___ \               
+| |  \/ | ___ | |__   __ _| | | |     ___   __ _ _ _ __   | |_/ /_ _  __ _  ___ 
+| | __| |/ _ \| '_ \ / _` | | | |    / _ \ / _` | | '_ \  |  __/ _` |/ _` |/ _ \
+| |_\ \ | (_) | |_) | (_| | | | |___| (_) | (_| | | | | | | | | (_| | (_| |  __/
+ \____/_|\___/|_.__/ \__,_|_| \_____/\___/ \__, |_|_| |_| \_|  \__,_|\__, |\___|
+                                            __/ |                     __/ |     
+                                           |___/                     |___/      
+");
+        
+        Console.WriteLine("--------------------------------------------------------------------------------");
+        Console.WriteLine("Welcome to the Global login page");
+        Console.WriteLine("--------------------------------------------------------------------------------");
+        Thread.Sleep(300);
+        Console.WriteLine("Please enter your email address:");
         string email = Console.ReadLine();
         Console.WriteLine("Please enter your password");
         string password = Console.ReadLine();
@@ -20,12 +34,13 @@ static class UserLogin
             switch (acc.Role)
             {
                 case "Manager":
-                    // ManagerMenu.Start();
-                    Console.WriteLine("Manager Menu");
+                    Console.Clear();
+                    Manager_menu.Managerstart();
                     Console.WriteLine(acc.GetType());
                     break;
                 case "Financial Manager":
-                    // FinancialManagerMenu.Start();
+                    Console.Clear();
+                    FinancialMenu.Financieel_Start();
                     Console.WriteLine("Financial Manager Menu");
                     break;
                 case "Coworker":
@@ -42,6 +57,11 @@ static class UserLogin
         else
         {
             Console.WriteLine("No account found with that email and password");
+            Thread.Sleep(500);
+            Console.WriteLine("You will be redirected ");
+            Thread.Sleep(300);
+            UserLogin.Start();
+            
         }
     }
 }

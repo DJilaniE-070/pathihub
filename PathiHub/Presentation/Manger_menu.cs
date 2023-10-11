@@ -22,14 +22,15 @@ ___  ___                                   ___  ___
                                                      
 "); 
             
-            
-            Console.WriteLine("1. Film options");
-            Console.WriteLine("2. Reserve movie");
-            Console.WriteLine("3. reservation options");
-            Console.WriteLine("4. Financial options");
-            Console.WriteLine("5. Snacks options");
-            Console.WriteLine("6. Exit");
+            Console.WriteLine("--------------------------------------------------------------------------------");
+            Console.WriteLine("[1]. Film options");
+            Console.WriteLine("[2]. Reserve movie");
+            Console.WriteLine("[3]. reservation options");
+            Console.WriteLine("[4]. Financial options");
+            Console.WriteLine("[5]. Snacks options");
+            Console.WriteLine("[6]. Exit");
             Console.WriteLine("Please enter your choice (1-6):");
+            Console.WriteLine("--------------------------------------------------------------------------------");
 
             choice = Convert.ToInt32(Console.ReadLine());
             
