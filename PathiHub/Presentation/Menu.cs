@@ -1,7 +1,7 @@
-static class Menu
+public static class Menu
 {
     // dit is het scherm is word puur gebruikt als eerste scherm
-    static public void Start()
+    public static void Start()
     {
 
 
