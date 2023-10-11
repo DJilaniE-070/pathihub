@@ -23,12 +23,12 @@ ___  ___                                   ___  ___
 "); 
             
             
-            Console.WriteLine("1. Film options");
-            Console.WriteLine("2. Reserve movie");
-            Console.WriteLine("3. Reservation options");
-            Console.WriteLine("4. Financial options");
-            Console.WriteLine("5. Snacks options");
-            Console.WriteLine("6. Exit");
+            Console.WriteLine("[1] Film options");
+            Console.WriteLine("[2] Reserve movie");
+            Console.WriteLine("[3] Reservation options");
+            Console.WriteLine("[4] Financial options");
+            Console.WriteLine("[5] Snacks options");
+            Console.WriteLine("[6] Exit");
             Console.WriteLine("Please enter your choice (1-6):");
 
             choice = Convert.ToInt32(Console.ReadLine());
@@ -69,9 +69,9 @@ ___  ___                                   ___  ___
             while (true)
             {
             Console.WriteLine("\n\n");
-            Console.WriteLine("1. Add a movie");
-            Console.WriteLine("2. Remove a movie");
-            Console.WriteLine("3. Return to Manager menu");
+            Console.WriteLine("[1] Add a movie");
+            Console.WriteLine("[2] Remove a movie");
+            Console.WriteLine("[3] Return to Manager menu");
             int option = Convert.ToInt32(Console.ReadLine());
             if (option == 1)
             {
