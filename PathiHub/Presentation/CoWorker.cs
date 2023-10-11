@@ -1,6 +1,6 @@
 public class CoWorker
 {
-    static void CoWorkerStart()
+    public static void CoWorkerStart()
     {
         int choice;
         bool exit = false;
