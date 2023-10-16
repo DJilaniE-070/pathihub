@@ -1,14 +1,19 @@
-namespace PathiHub.Presentation;
+using System;
 
-public class UserMenu
+public static class UserMenu
 {
-    static void Start()
+    public static void Start()
     {
-        int choice;
+        Console.CursorVisible = false;
+        int selectedIndex = 0;
         bool exit = false;
-        
+
+        string[] menuOptions = { "[1]. Make a reservation", "[2]. Check reservation", "[3]. Cancel reservation","[4] Exit" };
+
         do
         {
+            Console.Clear();
+
             Console.WriteLine(@"
  _   _                   ___  ___                    
 | | | |                  |  \/  |                    
@@ -19,66 +24,93 @@ public class UserMenu
                                                      
                                                      
 ");
-            
-            
-            Console.WriteLine("[1]. Reserve a seat");
-            Console.WriteLine("[2]. Check reservation");
-            Console.WriteLine("[3]. Cancel reservation");
-            Console.WriteLine("[4]. Exit");
-            Console.WriteLine("Please enter your choice (1-4):");
-            
-            // Get user input
-            // Assuming the input is an integer between 1 and 4
-            choice = Convert.ToInt32(Console.ReadLine());
-            
-            switch (choice)
+
+            Console.WriteLine("--------------------------------------------------------------------------------");
+            Console.WriteLine("Please select an option (using the arrow keys and press Enter):");
+
+            for (int i = 0; i < menuOptions.Length; i++)
             {
-                case 1:
-                    ReserveSeat();
-                    Console.WriteLine("needs to be implemented");
+                if (i == selectedIndex)
+                {
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                }
+
+                Console.WriteLine(menuOptions[i]);
+                Console.ResetColor();
+            }
+            Console.WriteLine("--------------------------------------------------------------------------------");
+
+            ConsoleKeyInfo keyInfo = Console.ReadKey();
+
+            switch (keyInfo.Key)
+            {
+                case ConsoleKey.UpArrow:
+                    if (selectedIndex > 0)
+                    {
+                        selectedIndex--;
+                    }
                     break;
-                case 2:
-                    CheckReservation();
-                    Console.WriteLine("needs to be implemented");
+                case ConsoleKey.DownArrow:
+                    if (selectedIndex < menuOptions.Length - 1)
+                    {
+                        selectedIndex++;
+                    }
                     break;
-                case 3:
-                    CancelReservation();
-                    Console.WriteLine("needs to be implemented");
-                    break;
-                case 4:
+                case ConsoleKey.Enter:
+                    Console.Clear();
+                    PerformAction(menuOptions[selectedIndex]);
                     exit = true;
                     break;
-                default:
-                    Console.WriteLine("Invalid choice. Please try again.");
-                    break;
             }
-            
-            Console.WriteLine();
-        } while (!exit);
-        
-        Console.WriteLine("Thank you for using the Cinema Reservation System. Goodbye!");
 
-        
-        static void ReserveSeat()
+        } while (!exit);
+
+        Console.CursorVisible = true;
+    }
+
+    static void PerformAction(string option)
+    {
+        Console.WriteLine("Selected: " + option);
+        switch (option)
         {
-            Console.WriteLine("Reserve a seat");
-            Console.WriteLine("Here comes the implementations in a later sprint");
+            case "[1]. Make a reservation":
+                Thread.Sleep(1500);
+                ReserveSeat();
+                break;
+            
+            case "[2]. Check reservation":
+                Thread.Sleep(1500);
+                CheckReservation();
+                break;
+            
+                    
+            case "[3]. Cancel reservation":
+                CancelReservation();
+                break;
+            
         }
+    }
+
+    static void ReserveSeat()
+    {
+        Console.WriteLine("Reserve a seat");
+        Console.WriteLine("Here comes the implementations in a later sprint");
+    }
 
        
-        static void CheckReservation()
-        {
+    static void CheckReservation()
+    {
             
-            Console.WriteLine("Check reservation");
-            Console.WriteLine("Here comes the implementations in a later sprint");
-        }
+        Console.WriteLine("Check reservation");
+        Console.WriteLine("Here comes the implementations in a later sprint");
+    }
 
         
-        static void CancelReservation()
-        {
+    static void CancelReservation()
+    {
             
-            Console.WriteLine("Cancel reservation");
-            Console.WriteLine("Here comes the implementations in a later sprint");
-        }
+        Console.WriteLine("Cancel reservation");
+        Console.WriteLine("Here comes the implementations in a later sprint");
     }
 }
