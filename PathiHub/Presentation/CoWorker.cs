@@ -16,13 +16,14 @@ public class CoWorker
     \____/ \___/    \/  \/  \___/ |_|   |_|\_\ \___||_|     \_|  |_/ \___||_| |_| \__,_|
                                                                                         
     ");
-
+            Console.WriteLine("--------------------------------------------------------------------------------");
             Console.WriteLine("[1] Overview all reservations");
             Console.WriteLine("[2] Change reservations");
             Console.WriteLine("[3] Reservate seat for customer");
             Console.WriteLine("[4] Insight total orders");
             Console.WriteLine("[5] Exit Co Worker Menu");
             Console.WriteLine("Enter choice: ");
+            Console.WriteLine("--------------------------------------------------------------------------------");
             
             choice = Convert.ToInt32(Console.ReadLine());
 
