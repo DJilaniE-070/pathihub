@@ -35,7 +35,7 @@ static class UserLogin
             {
                 case "Manager":
                     Console.Clear();
-                    Manager_menu.Managerstart();
+                    Manager_menu.Start_Menu();
                     Console.WriteLine(acc.GetType());
                     break;
                 case "Financial Manager":
