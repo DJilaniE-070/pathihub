@@ -12,5 +12,12 @@
 		"password": "xyz",
 		"fullName": "Thomas Edison",
 		"role": "Financial Manager"
+	},
+	{
+		"id": 3,
+		"emailAddress": "test@test.com",
+		"password":  "test",
+		"fullName": "Coworker 1",
+		"role": "Coworker"
 	}
 ]
