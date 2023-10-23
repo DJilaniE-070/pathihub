@@ -1,0 +1,54 @@
+[
+  {
+    "MovieTitle": "The Adventure Begins",
+    "ReleaseYear": 2023,
+    "Genre": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "Director": "John Directorson",
+    "Writers": [
+      "Jane Writerly",
+      "Michael Scriptson"
+    ],
+    "Plot": "In a futuristic world, Alice, a skilled adventurer, and her loyal sidekick Bob, embark on a thrilling journey to save their city from the evil plans of Eve, a cunning antagonist. With high-tech gadgets and unyielding determination, they must overcome various challenges and foes to restore peace to their homeland.",
+    "Rating": 8.5,
+    "RuntimeMinutes": 120,
+    "Language": "English",
+    "Country": "United States",
+    "Awards": null
+  },
+  {
+    "MovieTitle": "Galactic Quest",
+    "ReleaseYear": 2022,
+    "Genre": [
+      "Sci-Fi",
+      "Adventure"
+    ],
+    "Director": "Lucy Director",
+    "Writers": [
+      "David Scriptwriter",
+      "Emily Storyteller"
+    ],
+    "Plot": "In the vast expanse of the galaxy, Chris, a brave spaceman, and his alien friend Zara embark on a quest to forge alliances between planets and civilizations. Their journey is fraught with intergalactic challenges and unexpected friendships, testing their courage and resolve to bring peace to the universe.",
+    "Rating": 9.0,
+    "RuntimeMinutes": 115,
+    "Language": "English",
+    "Country": "United States",
+    "Awards": null
+  },
+  {
+    "MovieTitle": "test",
+    "ReleaseYear": 1,
+    "Genre": null,
+    "Director": "",
+    "Writers": null,
+    "Plot": "",
+    "Rating": 5.0,
+    "RuntimeMinutes": 120,
+    "Language": "",
+    "Country": "",
+    "Awards": null
+  }
+]
