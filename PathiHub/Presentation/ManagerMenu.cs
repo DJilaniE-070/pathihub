@@ -1,8 +1,8 @@
 using System;
 
-public static class Manager_menu
+public static class ManagerMenu
 {
-    public static void Start_Menu()
+    public static void StartMenu()
     {
         Console.CursorVisible = false;
         int selectedIndex = 0;
@@ -77,22 +77,22 @@ ___  ___                                   ___  ___
         {
             case "[1] Film options":
                 Thread.Sleep(1500);
-                Film_options();
+                FilmOptions();
                 break;
             
             case "[2] Reserve movie":
                 Thread.Sleep(1500);
-                Order_film();
+                OrderFilm();
                 break;
             
             case "[3] Reservation options":
                 Thread.Sleep(1500);
-                Reservations_options();
+                ReservationsOptions();
                 break;
             
             case "[4] Financial options":
                 Thread.Sleep(1500);
-                Financial_options();
+                FinancialOptions();
                 break;
             
             case "[5] Snacks options":
@@ -107,31 +107,53 @@ ___  ___                                   ___  ___
     }
 
     
-    static void Film_options()
-    {
-        // Moet nog geimplementeerd worden.
-        Console.WriteLine("Test completed. Still function still needs to be implemented(Order Film Options)");
-    }
+        static void FilmOptions()
+        {   
+            while (true)
+            {
+            Thread.Sleep(1500);
+            Console.WriteLine("\n\n");
+            Console.WriteLine("[1] Add a movie");
+            Console.WriteLine("[2] Remove a movie");
+            Console.WriteLine("[3] Return to Manager menu");
+            int option = Convert.ToInt32(Console.ReadLine());
+            if (option == 1)
+            {
+                MovieOptionPresentation.AddMoviePresentation();
+            }
+            else if (option == 2)
+            {
+                MovieOptionPresentation.RemoveMovie();
+            }
+            else if (option == 3)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid option");
+            }
+            }
+        }
     
+        static void OrderFilm()
+        {
+            // Moet nog geimplementeerd worden.
+            Console.WriteLine("Test completed. Still function still needs to be implemented (Order Film)");
+        }
 
-    static void Order_film()
-    {
-        // Moet nog geimplementeerd worden.
-        Console.WriteLine("Test completed. Still function still needs to be implemented (Order Film)");
-    }
+        static void ReservationsOptions()
+        {
+            Console.WriteLine("Test completed. Still function still needs to be implemented");
+        }
 
-    static void Reservations_options()
-    {
-        Console.WriteLine("Test completed. Still function still needs to be implemented");
-    }
+        static void FinancialOptions()
+        {
+            Console.WriteLine("Test completed. Still function still needs to be implemented Financial option");
+        }
 
-    static void Financial_options()
-    {
-        Console.WriteLine("Test completed. Still function still needs to be implemented Financial option");
-    }
-
-    static void Snacks()
-    {
-        Console.WriteLine("Test completed ");
-    }
+        static void Snacks()
+        {
+            Console.WriteLine("Test completed ");
+        }
 }
