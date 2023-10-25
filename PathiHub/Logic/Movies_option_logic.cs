@@ -30,7 +30,7 @@ public class Movie_Options
         }
     }
 
-    public bool RemoveMovie(string movieTitle,string Director)
+    public bool RemoveMovie(string movieTitle, string Director)
     {
         Movie movieToRemove = null;
 

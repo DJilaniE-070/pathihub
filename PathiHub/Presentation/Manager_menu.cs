@@ -1,4 +1,6 @@
 using System;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 
 public static class Manager_menu
 {
@@ -106,14 +108,12 @@ ___  ___                                   ___  ___
         }
     }
 
-    
     static void Film_options()
     {
         // Moet nog geimplementeerd worden.
         Console.WriteLine("Test completed. Still function still needs to be implemented(Order Film Options)");
     }
     
-
     static void Order_film()
     {
         // Moet nog geimplementeerd worden.
@@ -123,6 +123,44 @@ ___  ___                                   ___  ___
     static void Reservations_options()
     {
         Console.WriteLine("Test completed. Still function still needs to be implemented");
+        Console.WriteLine("[1] Add reservations");
+        Console.WriteLine("[2] Remove reservation");
+        Console.WriteLine("[3] Display reservations");
+
+        Console.WriteLine("Enter option: ");
+        int option = Convert.ToInt32(Console.ReadLine());
+
+        switch (option)
+        {
+            case 1:
+                Console.WriteLine("Should be implemented to add reservation");
+                Add_Reservation();
+                break;
+            case 2:
+                Console.WriteLine("Should be implemented to remove reservation");
+                Remove_Reservation();
+                break;
+            case 3:
+                Console.WriteLine("Should be implemented to display reservations");
+                Display_Reservations();
+                break;
+        }
+    }
+
+    static void Add_Reservation()
+    {
+        Console.WriteLine("Test completed add reservation");
+
+    }
+
+    static void Remove_Reservation()
+    {
+        Console.WriteLine("Test completed remove reservation");
+    }
+
+    static void Display_Reservations()
+    {
+        Console.WriteLine("Test completed display reservations");
     }
 
     static void Financial_options()
@@ -132,6 +170,6 @@ ___  ___                                   ___  ___
 
     static void Snacks()
     {
-        Console.WriteLine("Test completed ");
+        Console.WriteLine("Test completed");
     }
 }
