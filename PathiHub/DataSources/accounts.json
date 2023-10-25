@@ -19,5 +19,12 @@
 		"password":  "test",
 		"fullName": "Coworker 1",
 		"role": "Coworker"
+	},
+	{
+		"id": 4,
+		"emailAddress": "1",
+		"password":  "1",
+		"fullName": "Jelly",
+		"role": "User"
 	}
 ]
