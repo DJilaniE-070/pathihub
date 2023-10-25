@@ -101,6 +101,8 @@ ___  ___                                   ___  ___
                 break;
             
             case "[6] Exit":
+                Thread.Sleep(1500);
+                Console.WriteLine("Thank you for using our programme.");
                 break;
             
         }
