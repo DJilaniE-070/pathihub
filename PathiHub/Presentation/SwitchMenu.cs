@@ -1,28 +1,27 @@
-using System;
-
-public static class Manager_menu
+public static class SwitchMenu
 {
-    public static void Start_Menu()
+    public static void start()
+    {
     {
         Console.CursorVisible = false;
         int selectedIndex = 0;
         bool exit = false;
 
-        string[] menuOptions = { "[1] Film options", "[2] Reserve movie", "[3] Reservation options", "[4] Financial options", "[5] Snacks options", "[6] Exit" };
+        string[] menuOptions = { "Login as Guest", " Login as User", " Creating an account"};
 
         do
         {
             Console.Clear();
 
-            Console.WriteLine(@"
-___  ___                                   ___  ___                 
-|  \/  |                                   |  \/  |                 
-| .  . | __ _ _ __   __ _  __ _  ___ _ __  | .  . | ___ _ __  _   _ 
-| |\/| |/ _` | '_ \ / _` |/ _` |/ _ \ '__| | |\/| |/ _ \ '_ \| | | |
-| |  | | (_| | | | | (_| | (_| |  __/ |    | |  | |  __/ | | | |_| |
-\_|  |_/\__,_|_| |_|\__,_|\__, |\___|_|    \_|  |_/\___|_| |_|\__,_|
-                           __/ |                                    
-                          |___/                                     
+            Console.WriteLine(@" 
+______     _   _     _ _   _       _      
+| ___ \   | | | |   (_) | | |     | |     
+| |_/ /_ _| |_| |__  _| |_| |_   _| |__   
+|  __/ _` | __| '_ \| |  _  | | | | '_ \  
+| | | (_| | |_| | | | | | | | |_| | |_) | 
+\_|  \__,_|\__|_| |_|_\_| |_/\__,_|_.__/  
+                                          
+                                                                            
                                                      
 ");
 
@@ -75,7 +74,7 @@ ___  ___                                   ___  ___
         Console.WriteLine("Selected: " + option);
         switch (option)
         {
-            case "[1] Film options":
+            case "Login as Guest":
                 Thread.Sleep(1500);
                 Film_options();
                 break;
@@ -137,3 +136,6 @@ ___  ___                                   ___  ___
         Console.WriteLine("Test completed ");
     }
 }
+    }
+
+ 
