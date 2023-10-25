@@ -78,7 +78,7 @@ ______     _   _     _ _   _       _
             {
                 case "Login as Guest":
                     Thread.Sleep(1500);
-                    Console.WriteLine("must be created");
+                    Console.WriteLine("must be created!");
                     break;
 
                 case "Login as User":
