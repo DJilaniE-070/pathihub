@@ -31,7 +31,7 @@ static class UserLogin
             Console.WriteLine("Your email number is " + acc.EmailAddress);
             Console.WriteLine("Your role is " + acc.FullName);
 
-            switch (acc.Role)
+            switch (acc.Role) //TODO: fix roles based on class types.
             {
                 case "Manager":
                     Console.Clear();
@@ -46,6 +46,11 @@ static class UserLogin
                 case "Coworker":
                     CoWorker.CoWorkerStart();
                     Console.WriteLine("Coworker Menu");
+                    break;
+                case "Customer":
+                    Console.Clear();
+                    // CustomerMenu.CustomerStart();
+                    Console.WriteLine("Customer Menu");
                     break;
                 default:
                     break;
