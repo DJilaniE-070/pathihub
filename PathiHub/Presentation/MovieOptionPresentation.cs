@@ -104,9 +104,9 @@ public static class MovieOptionPresentation
                                                                      ");
 
             Console.WriteLine("--------------------------------------------------------------------------------");
-            Console.Write("\n\nTitle of the movie You want to remove :");
+            Console.Write("\n\nTitle of the movie You want to remove: ");
             string MovieTitle = WriteInputColor.Color("DarkYellow");
-            Console.Write("\nDirector of the movie You want to remove :");
+            Console.Write("\nDirector of the movie You want to remove: ");
             string MovieDirector = WriteInputColor.Color("DarkYellow");
             MovieOptions Options = new MovieOptions();
             if (Options.LoadMoviesFromJson() == true)
