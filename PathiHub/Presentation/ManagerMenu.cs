@@ -72,11 +72,10 @@ ___  ___                                   ___  ___
 
     static void PerformAction(string option)
     {
-        Console.WriteLine("Selected: " + option);
+        
         switch (option)
         {
             case "[1] Film options":
-                Thread.Sleep(1500);
                 FilmOptions();
                 break;
             
@@ -109,34 +108,84 @@ ___  ___                                   ___  ___
     }
 
     
-        static void FilmOptions()
-        {   
-            while (true)
+static void FilmOptions()
+{
+    string[] menuOptions = { "Add a movie", "Remove a movie", "Return to Manager menu" };
+    int selectedIndex = 0;
+    bool exit = false;
+
+    Console.CursorVisible = false;
+
+    do
+    {
+        Console.Clear();
+        Console.WriteLine(@"
+___  ___           _        _____       _   _                 
+|  \/  |          (_)      |  _  |     | | (_)                
+| .  . | _____   ___  ___  | | | |_ __ | |_ _  ___  _ __  ___ 
+| |\/| |/ _ \ \ / / |/ _ \ | | | | '_ \| __| |/ _ \| '_ \/ __|
+| |  | | (_) \ V /| |  __/ \ \_/ / |_) | |_| | (_) | | | \__ \
+\_|  |_/\___/ \_/ |_|\___|  \___/| .__/ \__|_|\___/|_| |_|___/
+                                 | |                          ");
+
+        Console.WriteLine("--------------------------------------------------------------------------------");
+        for (int i = 0; i < menuOptions.Length; i++)
+        {
+            if (i == selectedIndex)
             {
-            Thread.Sleep(1500);
-            Console.WriteLine("\n\n");
-            Console.WriteLine("[1] Add a movie");
-            Console.WriteLine("[2] Remove a movie");
-            Console.WriteLine("[3] Return to Manager menu");
-            int option = Convert.ToInt32(Console.ReadLine());
-            if (option == 1)
-            {
-                MovieOptionPresentation.AddMoviePresentation();
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
             }
-            else if (option == 2)
-            {
-                MovieOptionPresentation.RemoveMovie();
-            }
-            else if (option == 3)
-            {
-                break;
-            }
-            else
-            {
-                Console.WriteLine("Invalid option");
-            }
-            }
+
+            Console.WriteLine($"[{(i + 1)}] {menuOptions[i]}");
+            Console.ResetColor();
         }
+        Console.WriteLine("--------------------------------------------------------------------------------");
+
+        ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+
+        switch (keyInfo.Key)
+        {
+            case ConsoleKey.UpArrow:
+                if (selectedIndex > 0)
+                {
+                    selectedIndex--;
+                }
+                break;
+            case ConsoleKey.DownArrow:
+                if (selectedIndex < menuOptions.Length - 1)
+                {
+                    selectedIndex++;
+                }
+                break;
+            case ConsoleKey.Enter:
+                Console.Clear();
+                int option = selectedIndex + 1;
+                if (option == 1)
+                {
+                    MovieOptionPresentation.AddMoviePresentation();
+                }
+                else if (option == 2)
+                {
+                    MovieOptionPresentation.RemoveMoviePresentation();
+                }
+                else if (option == 3)
+                {
+                    exit = true;
+                    ManagerMenu.StartMenu();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid option");
+                }
+                break;
+        }
+
+    } while (!exit);
+
+    Console.CursorVisible = true;
+}
+
     
         static void OrderFilm()
         {

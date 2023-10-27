@@ -2,57 +2,66 @@ public static class MovieOptionPresentation
 {
         public static void AddMoviePresentation()
         {
+            Console.Clear();
+            Console.WriteLine(@"
+          ___      _     _  ___  ___           _      
+   _     / _ \    | |   | | |  \/  |          (_)     
+ _| |_  / /_\ \ __| | __| | | .  . | _____   ___  ___ 
+|_   _| |  _  |/ _` |/ _` | | |\/| |/ _ \ \ / / |/ _ \
+  |_|   | | | | (_| | (_| | | |  | | (_) \ V /| |  __/
+        \_| |_/\__,_|\__,_| \_|  |_/\___/ \_/ |_|\___|
+                                                      ");
             Movie movie = new Movie();
             Console.WriteLine("\n\n");
-            Console.WriteLine("Enter movie title: ");
-            movie.MovieTitle = Console.ReadLine();
+            Console.WriteLine("--------------------------------------------------------------------------------");
+            Console.Write("Enter movie title: ");
+            movie.MovieTitle = WriteInputColor.Color("DarkYellow");
 
-            Console.WriteLine("Enter release year: ");
-            int? releaseYearInput = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter release year: ");
+            int? releaseYearInput = Convert.ToInt32(WriteInputColor.Color("DarkYellow"));
             movie.ReleaseYear = releaseYearInput;
 
-            Console.WriteLine("Enter genres (comma-separated, or press Enter for none): ");
-            string? genresInput = Console.ReadLine();
+            Console.Write("Enter genres (comma-separated, or press Enter for none): ");
+            string? genresInput = WriteInputColor.Color("DarkYellow");
             movie.Genre = string.IsNullOrEmpty(genresInput)
                 ? null
                 : new List<string>(genresInput.Split(','));
 
-
-            Console.WriteLine("Enter director: ");
-            string Director = Console.ReadLine();
+            Console.Write("Enter director: ");
+            string Director = WriteInputColor.Color("DarkYellow");
             movie.Director = Director;
 
-            Console.WriteLine("Enter writers (comma-separated, or press Enter for none): ");
-            string? writersInput = Console.ReadLine();
+            Console.Write("Enter writers (comma-separated, or press Enter for none): ");
+            string? writersInput = WriteInputColor.Color("DarkYellow");
             movie.Writers = string.IsNullOrEmpty(writersInput)
                 ?null
                 : new List<string>(writersInput.Split(','));
 
-            Console.WriteLine("Enter plot: ");
-            string? plot = Console.ReadLine();
+            Console.Write("Enter plot: ");
+            string? plot = WriteInputColor.Color("DarkYellow");
             movie.Plot = plot;
 
-            Console.WriteLine("Enter rating: ");
-            string ratingInputString = Console.ReadLine();
+            Console.Write("Enter rating: ");
+            string ratingInputString = WriteInputColor.Color("DarkYellow");
             double? ratingInput = string.IsNullOrEmpty(ratingInputString) 
                 ? null 
                 : Convert.ToDouble(ratingInputString);
             movie.Rating = ratingInput;
 
-            Console.WriteLine("Enter runtime in minutes: ");
-            int? runtimeInput = Convert.ToInt32( Console.ReadLine());
+            Console.Write("Enter runtime in minutes: ");
+            int? runtimeInput = Convert.ToInt32( WriteInputColor.Color("DarkYellow"));
             movie.RuntimeMinutes = runtimeInput;
 
-            Console.WriteLine("Enter language: ");
-            string? Language = Console.ReadLine();
+            Console.Write("Enter language: ");
+            string? Language = WriteInputColor.Color("DarkYellow");
             movie.Language = Language;
 
-            Console.WriteLine("Enter country: ");
-            string Country = Console.ReadLine();
+            Console.Write("Enter country: ");
+            string Country = WriteInputColor.Color("DarkYellow");
             movie.Country = Country;
 
-            Console.WriteLine("Enter Awards (comma-separated, or press Enter for none): ");
-            string? AwardsInput = Console.ReadLine();
+            Console.Write("Enter Awards (comma-separated, or press Enter for none): ");
+            string? AwardsInput = WriteInputColor.Color("DarkYellow");
             movie.Awards = string.IsNullOrEmpty(AwardsInput)
                 ?null
                 : new List<string>(AwardsInput.Split(','));
@@ -62,42 +71,64 @@ public static class MovieOptionPresentation
             {
                 if (Option.AddMovie(movie) != true)
                 {
-                    Console.WriteLine("Movie already exits\n");
+                    PrintStringToColor.Color("\nMovie already exits\n","red");
                 }
                 else
                 {
-                    Console.WriteLine("Movie has been added\n");
+                    PrintStringToColor.Color($"\n+ {movie.MovieTitle}  has been added\n","green");
+                    Option.SaveMoviesToJson();
                 }
-                Option.SaveMoviesToJson();
+
+            Console.WriteLine("Press ENTER to continue");
+            string Enter = Console.ReadLine();
+
             }
             else
             {
-                Console.WriteLine("File not found. No movies loaded.");
+                PrintStringToColor.Color("File not found. No movies loaded.\n", "red");
+                Console.WriteLine("Press ENTER to continue");
+                string enter = Console.ReadLine();
             }
         }   
 
-        public static void RemoveMovie()
+        public static void RemoveMoviePresentation()
         {
-            Console.WriteLine("\n\n\n\n\nTitle of the movie You want to remove");
-            string MovieTitle = Console.ReadLine();
-            Console.WriteLine("Director of the movie You want to remove");
-            string MovieDirector = Console.ReadLine();
+            Console.WriteLine(@"
+         ______                                ___  ___           _      
+         | ___ \                               |  \/  |          (_)     
+ ______  | |_/ /___ _ __ ___   _____   _____   | .  . | _____   ___  ___ 
+|______| |    // _ \ '_ ` _ \ / _ \ \ / / _ \  | |\/| |/ _ \ \ / / |/ _ \
+         | |\ \  __/ | | | | | (_) \ V /  __/  | |  | | (_) \ V /| |  __/
+         \_| \_\___|_| |_| |_|\___/ \_/ \___|  \_|  |_/\___/ \_/ |_|\___|
+                                                                         
+                                                                     ");
+
+            Console.WriteLine("--------------------------------------------------------------------------------");
+            Console.Write("\n\nTitle of the movie You want to remove :");
+            string MovieTitle = WriteInputColor.Color("DarkYellow");
+            Console.Write("\nDirector of the movie You want to remove :");
+            string MovieDirector = WriteInputColor.Color("DarkYellow");
             MovieOptions Options = new MovieOptions();
             if (Options.LoadMoviesFromJson() == true)
             {
-                if (Options.RemoveMovie(MovieTitle,MovieDirector) !=true)
+                if (Options.RemoveMovie(MovieTitle,MovieDirector) == false)
                 {
-                    Console.WriteLine("\nMovie doesn't exist");
+                    PrintStringToColor.Color("\nMovie doesn't exist", "red");
+
                 }
                 else
                 {
-                    Console.WriteLine("\nMovie has been removed");
+                    Options.SaveMoviesToJson();
+                    PrintStringToColor.Color($"\n- {MovieTitle} has been removed\n", "red");
                 }
-                Options.SaveMoviesToJson();
+            Console.WriteLine("Press ENTER to continue");
+            string Enter = Console.ReadLine();  
             }
             else
             {
             Console.WriteLine("File not found. No movies loaded.");
+            Console.WriteLine("Press ENTER to continue");
+            string enter = Console.ReadLine();
             }
         }
 }
