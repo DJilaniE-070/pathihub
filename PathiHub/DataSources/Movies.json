@@ -37,18 +37,5 @@
     "Language": "English",
     "Country": "United States",
     "Awards": null
-  },
-  {
-    "MovieTitle": "test",
-    "ReleaseYear": 1,
-    "Genre": null,
-    "Director": "",
-    "Writers": null,
-    "Plot": "",
-    "Rating": 5.0,
-    "RuntimeMinutes": 120,
-    "Language": "",
-    "Country": "",
-    "Awards": null
   }
 ]

@@ -43,7 +43,7 @@ public static class Menu
             Thread.Sleep(1000);
             
             Console.Clear();
-            UserLogin.Start();
+            SwitchMenu.Start();
         }
         
         else
