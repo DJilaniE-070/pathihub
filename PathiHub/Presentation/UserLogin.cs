@@ -24,11 +24,6 @@ static class UserLogin
         Console.ResetColor();
         Console.WriteLine("• Managers,\n• Co-Workers,\n• Recurring Users with an account,\n• Financial workers.");
         Console.WriteLine("--------------------------------------------------------------------------------");
-        Console.ForegroundColor = ConsoleColor.DarkCyan;
-        Console.WriteLine("Dear users,");
-        Console.ResetColor();
-        Console.WriteLine("If you want to make an account or login as a guest.\nPlease enter 1 and 1 to go to our dedicated user page.");
-        Console.WriteLine("--------------------------------------------------------------------------------");
         Thread.Sleep(300);
         Console.WriteLine("Please enter your email address:");
         string email = Console.ReadLine();
