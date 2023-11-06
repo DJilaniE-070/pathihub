@@ -17,9 +17,27 @@ public static class MovieOptionPresentation
             Console.Write("Enter movie title: ");
             movie.MovieTitle = WriteInputColor.Color("DarkYellow");
 
-            Console.Write("Enter release year: ");
-            int? releaseYearInput = Convert.ToInt32(WriteInputColor.Color("DarkYellow"));
-            movie.ReleaseYear = releaseYearInput;
+            bool inputIsValid = false;
+            while (!inputIsValid)
+            {
+                try
+                {
+                    Console.Write("Enter release year: ");
+                    int? releaseYearInput = Convert.ToInt32(WriteInputColor.Color("DarkYellow"));
+                    movie.ReleaseYear = releaseYearInput;
+                    inputIsValid = true; 
+                }
+                catch (FormatException e)
+                {
+                    PrintStringToColor.Color("Invalid input format. Please enter a valid integer.\nA valid option is when the date has 4 digits ", "red");
+                }
+                catch (OverflowException e)
+                {
+                    PrintStringToColor.Color("Input value is too large or too small. Please enter a valid integer.\nA valid option is when the date has 4 digits", "red");
+                }
+            }
+
+
 
             Console.Write("Enter genres (comma-separated, or press Enter for none): ");
             string? genresInput = WriteInputColor.Color("DarkYellow");

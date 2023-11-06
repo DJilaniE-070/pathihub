@@ -26,9 +26,9 @@ static class UserLogin
         Console.WriteLine("--------------------------------------------------------------------------------");
         Thread.Sleep(300);
         Console.WriteLine("Please enter your email address:");
-        string email = Console.ReadLine();
+        string email = WriteInputColor.Color("darkyellow");
         Console.WriteLine("Please enter your password");    
-        string password = Console.ReadLine();
+        string password = WriteInputColor.Color("darkyellow");
         AccountModel acc = accountsLogic.CheckLogin(email, password);
         if (acc != null)
         {
@@ -40,12 +40,12 @@ static class UserLogin
             {
                 case "Manager":
                     Console.Clear();
-                    ManagerMenu.StartMenu();
+                    ManagerMenu.Start();
                     Console.WriteLine(acc.GetType());
                     break;
                 case "Financial Manager":
                     Console.Clear();
-                    FinancialMenu.Financieel_Start();
+                    FinancialMenu.Start();
                     Console.WriteLine("Financial Manager Menu");
                     break;
                 case "Coworker":
@@ -57,7 +57,7 @@ static class UserLogin
                     Console.WriteLine("You will be redirected to the Co-Worker menu.");
                     Thread.Sleep(2000);
                     Console.Clear();
-                    CoWorker.CoWorkerStart();
+                    CoWorker.Start();
                     break;
                 
                 
