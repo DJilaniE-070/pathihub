@@ -1,5 +1,5 @@
 using Newtonsoft.Json;
-public class Movie_Options
+public class MovieOptions
 {
     private static List<Movie> movies = new List<Movie>();
 
@@ -30,7 +30,7 @@ public class Movie_Options
         }
     }
 
-    public bool RemoveMovie(string movieTitle, string Director)
+    public bool RemoveMovie(string movieTitle,string Director)
     {
         Movie movieToRemove = null;
 
@@ -63,17 +63,18 @@ public class Movie_Options
         File.WriteAllText(filePath, json);
     }
 
-    public void LoadMoviesFromJson()
+    public bool LoadMoviesFromJson()
     {
         string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Environment.CurrentDirectory, @"DataSources/Movies.json"));
         if (File.Exists(filePath))
         {
             string json = File.ReadAllText(filePath);
             movies = JsonConvert.DeserializeObject<List<Movie>>(json);
+            return true;
         }
         else
         {
-            Console.WriteLine("File not found. No movies loaded.");
+            return false;
         }
     }
 }

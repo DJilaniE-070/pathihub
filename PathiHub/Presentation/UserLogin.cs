@@ -17,12 +17,17 @@ static class UserLogin
 ");
         
         Console.WriteLine("--------------------------------------------------------------------------------");
-        Console.WriteLine("Welcome to the Global login page");
+        Console.WriteLine("Welcome to the Global login page.");
+        Console.WriteLine("Within this page you can login in to your account off choice.\n");
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
+        Console.WriteLine("Options include:\n");
+        Console.ResetColor();
+        Console.WriteLine("• Managers,\n• Co-Workers,\n• Recurring Users with an account,\n• Financial workers.");
         Console.WriteLine("--------------------------------------------------------------------------------");
         Thread.Sleep(300);
         Console.WriteLine("Please enter your email address:");
         string email = Console.ReadLine();
-        Console.WriteLine("Please enter your password");
+        Console.WriteLine("Please enter your password");    
         string password = Console.ReadLine();
         AccountModel acc = accountsLogic.CheckLogin(email, password);
         if (acc != null)
@@ -31,11 +36,11 @@ static class UserLogin
             Console.WriteLine("Your email number is " + acc.EmailAddress);
             Console.WriteLine("Your role is " + acc.FullName);
 
-            switch (acc.Role)
+            switch (acc.Role) //TODO: fix roles based on class types.
             {
                 case "Manager":
                     Console.Clear();
-                    Manager_menu.Start_Menu();
+                    ManagerMenu.StartMenu();
                     Console.WriteLine(acc.GetType());
                     break;
                 case "Financial Manager":
@@ -44,8 +49,26 @@ static class UserLogin
                     Console.WriteLine("Financial Manager Menu");
                     break;
                 case "Coworker":
+                    Console.WriteLine("--------------------------------------------------------------------------------");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("You're username and password are correct.");
+                    Console.ResetColor();
+                    Thread.Sleep(1500);
+                    Console.WriteLine("You will be redirected to the Co-Worker menu.");
+                    Thread.Sleep(2000);
+                    Console.Clear();
                     CoWorker.CoWorkerStart();
-                    Console.WriteLine("Coworker Menu");
+                    break;
+                
+                
+                case "User":
+                    Console.Clear();
+                    UserMenu.Start();
+                    break;
+                case "Customer":
+                    Console.Clear();
+                    // CustomerMenu.CustomerStart();
+                    Console.WriteLine("Customer Menu");
                     break;
                 default:
                     break;
@@ -57,7 +80,9 @@ static class UserLogin
         }
         else
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("No account found with that email and password");
+            Console.ResetColor();
             Thread.Sleep(1500);
             Console.WriteLine("You will be redirected ");
             Thread.Sleep(1500);

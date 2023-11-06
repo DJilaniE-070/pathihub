@@ -39,16 +39,22 @@
     "Awards": null
   },
   {
-    "MovieTitle": "test",
-    "ReleaseYear": 1,
-    "Genre": null,
-    "Director": "",
-    "Writers": null,
-    "Plot": "",
-    "Rating": 5.0,
+    "MovieTitle": "pinda",
+    "ReleaseYear": 2012,
+    "Genre": [
+      "horror"
+    ],
+    "Director": "Test",
+    "Writers": [
+      "Test1"
+    ],
+    "Plot": "a pinut warrior travels the world",
+    "Rating": 8.0,
     "RuntimeMinutes": 120,
-    "Language": "",
-    "Country": "",
-    "Awards": null
+    "Language": "english",
+    "Country": "USA",
+    "Awards": [
+      "note"
+    ]
   }
 ]
