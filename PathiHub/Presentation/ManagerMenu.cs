@@ -185,8 +185,6 @@ ___  ___           _        _____       _   _
 
     Console.CursorVisible = true;
 }
-
-    
         static void OrderFilm()
         {
             // Moet nog geimplementeerd worden.

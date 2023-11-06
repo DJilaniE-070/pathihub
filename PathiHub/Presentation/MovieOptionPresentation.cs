@@ -111,7 +111,7 @@ public static class MovieOptionPresentation
             MovieOptions Options = new MovieOptions();
             if (Options.LoadMoviesFromJson() == true)
             {
-                if (Options.RemoveMovie(MovieTitle,MovieDirector) == false)
+                if (Options.RemoveMovie(MovieTitle, MovieDirector) == false)
                 {
                     PrintStringToColor.Color("\nMovie doesn't exist", "red");
 
