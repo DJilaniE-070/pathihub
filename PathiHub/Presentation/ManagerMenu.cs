@@ -187,7 +187,6 @@ ___  ___           _        _____       _   _
 }
         static void OrderFilm()
         {
-            // Moet nog geimplementeerd worden.
             Console.WriteLine("Test completed. Still function still needs to be implemented (Order Film)");
         }
 
