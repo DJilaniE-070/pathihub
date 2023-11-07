@@ -1,7 +1,12 @@
+using System.Net.Security;
 using Newtonsoft.Json;
 public class MovieOptions
 {
-    private static List<Movie> movies = new List<Movie>();
+    public static List<Movie> movies = new List<Movie>();
+    public MovieOptions(List<Movie> movielist)
+    {
+        movies = movielist;
+    }
 
     public bool AddMovie(Movie Movie)
     {
@@ -48,28 +53,6 @@ public class MovieOptions
         if (movieToRemove != null)
         {
             movies.Remove(movieToRemove);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public void SaveMoviesToJson()
-    {
-        string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Environment.CurrentDirectory, @"DataSources/Movies.json"));
-        string json = JsonConvert.SerializeObject(movies, Formatting.Indented);
-        File.WriteAllText(filePath, json);
-    }
-
-    public bool LoadMoviesFromJson()
-    {
-        string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Environment.CurrentDirectory, @"DataSources/Movies.json"));
-        if (File.Exists(filePath))
-        {
-            string json = File.ReadAllText(filePath);
-            movies = JsonConvert.DeserializeObject<List<Movie>>(json);
             return true;
         }
         else

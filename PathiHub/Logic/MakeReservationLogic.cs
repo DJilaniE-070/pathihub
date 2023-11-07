@@ -29,7 +29,7 @@ public class MakeReservation
         }
     }
 
-    public bool RemoveMovie(string FullName,string Email, string movieTitle)
+    public bool RemoveReservation(string FullName,string Email, string movieTitle)
     {
         Reservation ReservationToRemove = null;
 
@@ -56,25 +56,4 @@ public class MakeReservation
         }
     }
 
-    public void SaveReservationJson()
-    {
-        string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Environment.CurrentDirectory, @"DataSources/reservation.json"));
-        string json = JsonConvert.SerializeObject(Reservations, Formatting.Indented);
-        File.WriteAllText(filePath, json);
-    }
-
-    public bool LoadReservationJson()
-    {
-        string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Environment.CurrentDirectory, @"DataSources/reservation.json"));
-        if (File.Exists(filePath))
-        {
-            string json = File.ReadAllText(filePath);
-            Reservations = JsonConvert.DeserializeObject<List<Reservation>>(json);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 }
