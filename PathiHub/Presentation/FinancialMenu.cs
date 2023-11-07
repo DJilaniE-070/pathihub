@@ -1,7 +1,7 @@
 ﻿using System;
 public static class FinancialMenu
 {
-    public static void Financieel_Start()
+    public static void Start()
     {
         Console.CursorVisible = false;
         int selectedIndex = 0;

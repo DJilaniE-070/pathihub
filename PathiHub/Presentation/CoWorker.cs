@@ -2,7 +2,7 @@ using System;
 
 public static class CoWorker
 {
-    public static void CoWorkerStart()
+    public static void Start()
     {
         Console.CursorVisible = false;
         int selectedIndex = 0;
