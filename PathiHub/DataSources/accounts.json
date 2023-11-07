@@ -22,8 +22,8 @@
 	},
 	{
 		"id": 4,
-		"emailAddress": "1",
-		"password":  "1",
+		"emailAddress": "123",
+		"password":  "123",
 		"fullName": "Jelly",
 		"role": "User"
 	}

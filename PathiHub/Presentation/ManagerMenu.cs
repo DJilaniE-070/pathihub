@@ -2,7 +2,7 @@ using System;
 
 public static class ManagerMenu
 {
-    public static void StartMenu()
+    public static void Start()
     {
         Console.CursorVisible = false;
         int selectedIndex = 0;
@@ -172,7 +172,7 @@ ___  ___           _        _____       _   _
                 else if (option == 3)
                 {
                     exit = true;
-                    ManagerMenu.StartMenu();
+                    ManagerMenu.Start();
                 }
                 else
                 {
