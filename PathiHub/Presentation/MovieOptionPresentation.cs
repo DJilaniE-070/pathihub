@@ -84,9 +84,11 @@ public static class MovieOptionPresentation
                 ?null
                 : new List<string>(AwardsInput.Split(','));
 
-            MovieOptions Option = new MovieOptions();
-            if (Option.LoadMoviesFromJson() == true)
+
+            MoviesAcces acces = new MoviesAcces();
+            if (acces.LoadMoviesFromJson() == true)
             {
+                MovieOptions Option = new MovieOptions(acces.movies);
                 if (Option.AddMovie(movie) != true)
                 {
                     PrintStringToColor.Color("\nMovie already exits\n","red");
@@ -94,7 +96,7 @@ public static class MovieOptionPresentation
                 else
                 {
                     PrintStringToColor.Color($"\n+ {movie.MovieTitle}  has been added\n","green");
-                    Option.SaveMoviesToJson();
+                    acces.SaveMoviesToJson();
                 }
 
             Console.WriteLine("Press ENTER to continue");
@@ -126,17 +128,18 @@ public static class MovieOptionPresentation
             string MovieTitle = WriteInputColor.Color("DarkYellow");
             Console.Write("\nDirector of the movie You want to remove: ");
             string MovieDirector = WriteInputColor.Color("DarkYellow");
-            MovieOptions Options = new MovieOptions();
-            if (Options.LoadMoviesFromJson() == true)
+            MoviesAcces acces = new MoviesAcces();
+            if (acces.LoadMoviesFromJson() == true)
             {
-                if (Options.RemoveMovie(MovieTitle,MovieDirector) == false)
+                MovieOptions Option = new MovieOptions(acces.movies);
+                if (Option.RemoveMovie(MovieTitle,MovieDirector) == false)
                 {
                     PrintStringToColor.Color("\nMovie doesn't exist", "red");
 
                 }
                 else
                 {
-                    Options.SaveMoviesToJson();
+                    acces.SaveMoviesToJson();
                     PrintStringToColor.Color($"\n- {MovieTitle} has been removed\n", "red");
                 }
             Console.WriteLine("Press ENTER to continue");
