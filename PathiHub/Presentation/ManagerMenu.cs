@@ -2,7 +2,7 @@ using System;
 
 public static class ManagerMenu
 {
-    public static void StartMenu()
+    public static void Start()
     {
         Console.CursorVisible = false;
         int selectedIndex = 0;
@@ -71,7 +71,8 @@ ___  ___                                   ___  ___
     }
 
     static void PerformAction(string option)
-    {    
+    {
+        
         switch (option)
         {
             case "[1] Film options":
@@ -80,11 +81,10 @@ ___  ___                                   ___  ___
             
             case "[2] Reserve movie":
                 Thread.Sleep(1500);
-                OrderFilm();
+                ReserveAMovie();
                 break;
             
             case "[3] Reservation options":
-                Thread.Sleep(1500);
                 ReservationsOptions();
                 break;
             
@@ -106,7 +106,7 @@ ___  ___                                   ___  ___
         }
     }
 
-
+    
 static void FilmOptions()
 {
     string[] menuOptions = { "Add a movie", "Remove a movie", "Return to Manager menu" };
@@ -171,7 +171,7 @@ ___  ___           _        _____       _   _
                 else if (option == 3)
                 {
                     exit = true;
-                    ManagerMenu.StartMenu();
+                    ManagerMenu.Start();
                 }
                 else
                 {
@@ -184,12 +184,87 @@ ___  ___           _        _____       _   _
 
     Console.CursorVisible = true;
 }
-        static void OrderFilm()
+
+static void ReservationsOptions()
+{
+    string[] menuOptions = { "Make a Reservation", "Remove a reservation", "Return to Manager menu" };
+    int selectedIndex = 0;
+    bool exit = false;
+
+    Console.CursorVisible = false;
+
+    do
+    {
+        Console.Clear();
+        Console.WriteLine(@"
+______                               _   _               _____       _   _                 
+| ___ \                             | | (_)             |  _  |     | | (_)                
+| |_/ /___  ___  ___ _ ____   ____ _| |_ _  ___  _ __   | | | |_ __ | |_ _  ___  _ __  ___ 
+|    // _ \/ __|/ _ \ '__\ \ / / _` | __| |/ _ \| '_ \  | | | | '_ \| __| |/ _ \| '_ \/ __|
+| |\ \  __/\__ \  __/ |   \ V / (_| | |_| | (_) | | | | \ \_/ / |_) | |_| | (_) | | | \__ \
+\_| \_\___||___/\___|_|    \_/ \__,_|\__|_|\___/|_| |_|  \___/| .__/ \__|_|\___/|_| |_|___/
+                                                              | |                          
+                                                              |_|                          ");
+
+        Console.WriteLine("--------------------------------------------------------------------------------");
+        for (int i = 0; i < menuOptions.Length; i++)
         {
-            Console.WriteLine("Test completed. Still function still needs to be implemented (Order Film)");
+            if (i == selectedIndex)
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
+            }
+
+            Console.WriteLine($"[{(i + 1)}] {menuOptions[i]}");
+            Console.ResetColor();
+        }
+        Console.WriteLine("--------------------------------------------------------------------------------");
+
+        ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+
+        switch (keyInfo.Key)
+        {
+            case ConsoleKey.UpArrow:
+                if (selectedIndex > 0)
+                {
+                    selectedIndex--;
+                }
+                break;
+            case ConsoleKey.DownArrow:
+                if (selectedIndex < menuOptions.Length - 1)
+                {
+                    selectedIndex++;
+                }
+                break;
+            case ConsoleKey.Enter:
+                Console.Clear();
+                int option = selectedIndex + 1;
+                if (option == 1)
+                {
+                    ReservationPresentation.AddReservation();
+                }
+                else if (option == 2)
+                {
+                    ReservationPresentation.RemoveMoviePresentation();
+                }
+                else if (option == 3)
+                {
+                    exit = true;
+                    ManagerMenu.Start();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid option");
+                }
+                break;
         }
 
-        static void ReservationsOptions()
+    } while (!exit);
+
+    Console.CursorVisible = true;
+}
+
+        static void ReserveAMovie()
         {
             Console.WriteLine("Test completed. Still function still needs to be implemented");
         }
