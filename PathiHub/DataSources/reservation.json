@@ -1,0 +1,13 @@
+[
+  {
+    "FullName": "test",
+    "Email": "123@test.nl",
+    "Auditorium": "2",
+    "SeatName": "5",
+    "movie": "Jaws",
+    "Date": "12/12/2023",
+    "Price": 12,
+    "ReservationCode": "klajd1",
+    "CinemaLocation": "Rotterdam"
+  }
+]

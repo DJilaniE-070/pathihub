@@ -3,13 +3,22 @@ public class MakeReservation
 {
     private static List<Reservation> Reservations = new List<Reservation>();
 
+
+    public MakeReservation(List<Reservation> Reservationlist)
+    {
+        Reservations = Reservationlist;
+    }
     public bool AddReservation(Reservation reservation)
     {
+        if (reservation == null)
+    {
+        throw new ArgumentNullException(nameof(reservation), "Reservation object cannot be null");
+    }
         bool reservationExist = false;
         foreach (Reservation reservation_ in Reservations)
         {
             if (string.Equals(reservation_.FullName, reservation.FullName) &&
-                string.Equals(reservation_.ReservationCode, reservation.ReservationCode))
+                string.Equals(reservation_.Date, reservation.Date))
             {
                 // Reservation already exists
                 reservationExist = true;
@@ -38,7 +47,7 @@ public class MakeReservation
             //search based on title and director
             if (string.Equals(reservation.FullName, FullName ) &&
                 string.Equals(reservation.Email, Email ) &&
-                string.Equals(reservation.movie.MovieTitle, movieTitle))
+                string.Equals(reservation.movie, movieTitle))
             {
                 ReservationToRemove = reservation;
                 break;

@@ -12,7 +12,7 @@ public class ReservationAcces
         File.WriteAllText(filePath, json);
     }
 
-    public bool LoadMoviesFromJson()
+    public bool LoadReservationFromJson()
     {
         string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Environment.CurrentDirectory, @"DataSources/reservation.json"));
         if (File.Exists(filePath))
