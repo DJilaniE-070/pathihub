@@ -23,10 +23,8 @@ ______                               _   _
         Console.Write("Enter your Email: ");
         reservation.Email = WriteInputColor.Color("DarkYellow");
 
-
         Console.Write("Enter wich Auditorium:  ");
         reservation.Auditorium = WriteInputColor.Color("DarkYellow");
-
 
         Console.Write("Enter SeatNumber: ");
         reservation.SeatName = WriteInputColor.Color("DarkYellow");
