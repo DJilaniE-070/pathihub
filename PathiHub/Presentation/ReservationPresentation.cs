@@ -62,7 +62,7 @@ ______                               _   _
 
         reservation.ReservationCode = random;
 
-        Console.WriteLine("The random alphabet generated is: {0}", random);
+        Console.WriteLine("Your unique reservation code is: {0}", random);
 
        ReservationAcces reservations = new ReservationAcces();
         if (reservations.LoadReservationFromJson() == true)
@@ -74,7 +74,7 @@ ______                               _   _
             }
             else
             {
-                PrintStringToColor.Color($"\n+ {reservation.ReservationCode}  has been added\n","green");
+                PrintStringToColor.Color($"\n+ {reservation.ReservationCode} for {reservation.FullName}  has been added\n","green");
                 reservations.SaveReservationToJson();
             }
 

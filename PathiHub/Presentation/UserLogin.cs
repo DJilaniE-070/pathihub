@@ -5,7 +5,7 @@ static class UserLogin
 
     public static void Start()
     {
-        Console.WriteLine(@" 
+        PrintStringToColor.Color(@" 
  _____ _       _           _   _                 _        ______                
 |  __ \ |     | |         | | | |               (_)       | ___ \               
 | |  \/ | ___ | |__   __ _| | | |     ___   __ _ _ _ __   | |_/ /_ _  __ _  ___ 
@@ -14,7 +14,7 @@ static class UserLogin
  \____/_|\___/|_.__/ \__,_|_| \_____/\___/ \__, |_|_| |_| \_|  \__,_|\__, |\___|
                                             __/ |                     __/ |     
                                            |___/                     |___/      
-");
+","DarkYellow");
         
         Console.WriteLine("--------------------------------------------------------------------------------");
         Console.WriteLine("Welcome to the Global login page.");

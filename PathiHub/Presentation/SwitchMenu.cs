@@ -13,7 +13,7 @@ public static class SwitchMenu
             {
                 Console.Clear();
 
-                Console.WriteLine(@" 
+                PrintStringToColor.Color(@" 
 ______     _   _     _ _   _       _      
 | ___ \   | | | |   (_) | | |     | |     
 | |_/ /_ _| |_| |__  _| |_| |_   _| |__   
@@ -22,7 +22,7 @@ ______     _   _     _ _   _       _
 \_|  \__,_|\__|_| |_|_\_| |_/\__,_|_.__/  
                                                                                                         
                                                      
-");
+","DarkYellow");
 
                 Console.WriteLine("--------------------------------------------------------------------------------");
                 Console.WriteLine("Please select an option (using the arrow keys and press Enter):");

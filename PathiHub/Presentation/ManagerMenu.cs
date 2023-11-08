@@ -85,7 +85,6 @@ ___  ___                                   ___  ___
                 break;
             
             case "[3] Reservation options":
-                Thread.Sleep(1500);
                 ReservationsOptions();
                 break;
             
@@ -188,7 +187,7 @@ ___  ___           _        _____       _   _
 
 static void ReservationsOptions()
 {
-    string[] menuOptions = { "make a Reservation", "Remove a reservation", "Return to Manager menu" };
+    string[] menuOptions = { "Make a Reservation", "Remove a reservation", "Return to Manager menu" };
     int selectedIndex = 0;
     bool exit = false;
 
