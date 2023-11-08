@@ -173,6 +173,10 @@ ___  ___           _        _____       _   _
                     exit = true;
                     ManagerMenu.Start();
                 }
+                else if (option == 4)
+                {
+                    ReservationPresentation.AllReservations();
+                }
                 else
                 {
                     Console.WriteLine("Invalid option");
@@ -187,7 +191,7 @@ ___  ___           _        _____       _   _
 
 static void ReservationsOptions()
 {
-    string[] menuOptions = { "Make a Reservation", "Remove a reservation", "Return to Manager menu" };
+    string[] menuOptions = { "Make a Reservation", "Remove a reservation", "Return to Manager menu", "Show all reservations" }; // volgorde moet nog gefixt worden
     int selectedIndex = 0;
     bool exit = false;
 
@@ -251,6 +255,10 @@ ______                               _   _               _____       _   _
                 {
                     exit = true;
                     ManagerMenu.Start();
+                }
+                else if (option == 4)
+                {
+                    ReservationPresentation.AllReservations();
                 }
                 else
                 {
