@@ -71,8 +71,7 @@ ___  ___                                   ___  ___
     }
 
     static void PerformAction(string option)
-    {
-        
+    {    
         switch (option)
         {
             case "[1] Film options":
@@ -107,7 +106,7 @@ ___  ___                                   ___  ___
         }
     }
 
-    
+
 static void FilmOptions()
 {
     string[] menuOptions = { "Add a movie", "Remove a movie", "Return to Manager menu" };
