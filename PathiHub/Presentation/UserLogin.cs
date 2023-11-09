@@ -18,16 +18,20 @@ static class UserLogin
         
         Console.WriteLine("--------------------------------------------------------------------------------");
         Console.WriteLine("Welcome to the Global login page.");
-        Console.WriteLine("Within this page you can login in to your account off choice.\n");
-        Console.ForegroundColor = ConsoleColor.DarkCyan;
-        Console.WriteLine("Options include:\n");
-        Console.ResetColor();
-        Console.WriteLine("• Managers,\n• Co-Workers,\n• Recurring Users with an account,\n• Financial workers.");
+        Console.WriteLine("Within this page you can login in to your account.\n");
+
         Console.WriteLine("--------------------------------------------------------------------------------");
         Thread.Sleep(300);
+
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.WriteLine("Please enter your email address:");
+        Console.ResetColor(); 
         string email = WriteInputColor.Color("darkyellow");
-        Console.WriteLine("Please enter your password");    
+
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
+        Console.WriteLine("Please enter your password");  
+        Console.ResetColor(); 
+
         string password = WriteInputColor.Color("darkyellow");
         AccountModel acc = accountsLogic.CheckLogin(email, password);
         if (acc != null)
