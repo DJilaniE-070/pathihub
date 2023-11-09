@@ -8,7 +8,7 @@ public static class SecurePassword
         do
         {
             key = Console.ReadKey(true);
-            // als back en enter niet wordt ingedrukt, 
+            // als back en enter niet wordt ingedrukt, elke input veranderen in *
             if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
             {
                 password += key.KeyChar;
@@ -18,7 +18,7 @@ public static class SecurePassword
             else if (key.Key == ConsoleKey.Backspace && password.Length > 0)
             {
                 password = password.Remove(password.Length - 1);
-                // backspace gevolgd door spatie en weer backspace zodat de asterisk ook dynamische wordt weergegeven
+                // backspace gevolgd door spatie en weer backspace zodat de asterisk ook dynamisch wordt weergegeven
                 Console.Write("\b \b");
             }
             else
