@@ -1,3 +1,5 @@
+using System.Drawing;
+
 static class UserLogin
 {
     static private AccountsLogic accountsLogic = new AccountsLogic();
@@ -16,23 +18,27 @@ static class UserLogin
                                            |___/                     |___/      
 ","DarkYellow");
         
-        Console.WriteLine("--------------------------------------------------------------------------------");
+        Console.WriteLine("--------------------------------------------------------------------------------\n");
         Console.WriteLine("Welcome to the Global login page.");
         Console.WriteLine("Within this page you can login in to your account.\n");
-
         Console.WriteLine("--------------------------------------------------------------------------------");
         Thread.Sleep(300);
-
+        // color for mail
         Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.WriteLine("Please enter your email address:");
         Console.ResetColor(); 
         string email = WriteInputColor.Color("darkyellow");
-
+        //color for password
         Console.ForegroundColor = ConsoleColor.DarkCyan;
-        Console.WriteLine("Please enter your password");  
+        Console.WriteLine("Please enter your password:");  
         Console.ResetColor(); 
 
-        string password = WriteInputColor.Color("darkyellow");
+        //string password = WriteInputColor.Color("darkyellow");
+
+        // mask password
+        string password = SecurePassword.MaskPassword("");
+        // end
+
         AccountModel acc = accountsLogic.CheckLogin(email, password);
         if (acc != null)
         {
