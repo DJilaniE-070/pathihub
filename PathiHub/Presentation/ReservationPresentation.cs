@@ -129,32 +129,4 @@ ______                               ______                               _   _
             string enter = Console.ReadLine();
             }
         }
-        public static void AllReservations()
-        {
-            Console.WriteLine(@"
- _____  _                         ___   _  _  ______                                       _    _                    
-/  ___|| |                       / _ \ | || | | ___ \                                     | |  (_)                   
-\ `--. | |__    ___  __      __ / /_\ \| || | | |_/ /  ___  ___   ___  _ __ __   __  __ _ | |_  _   ___   _ __   ___ 
- `--. \| '_ \  / _ \ \ \ /\ / / |  _  || || | |    /  / _ \/ __| / _ \| '__|\ \ / / / _` || __|| | / _ \ | '_ \ / __|
-/\__/ /| | | || (_) | \ V  V /  | | | || || | | |\ \ |  __/\__ \|  __/| |    \ V / | (_| || |_ | || (_) || | | |\__ \
-\____/ |_| |_| \___/   \_/\_/   \_| |_/|_||_| \_| \_| \___||___/ \___||_|     \_/   \__,_| \__||_| \___/ |_| |_||___/ ");
-            Console.WriteLine("--------------------------------------------------------------------------------");
-
-            List<Reservation> reservations = new List<Reservation>();
-
-            Console.WriteLine("All reservations: ");
-
-            foreach (var reservation in reservations)
-            {
-                Console.WriteLine($"Full name: {reservation.FullName}");
-                Console.WriteLine($"Email: {reservation.Email}");
-                Console.WriteLine($"Auditorium: {reservation.Auditorium}");
-                Console.WriteLine($"Seat name: {reservation.SeatName}");
-                Console.WriteLine($"Movie: {reservation.movie}");
-                Console.WriteLine($"Date: {reservation.Date}");
-                Console.WriteLine($"Price: {reservation.Price}");
-                Console.WriteLine($"Reservation code: {reservation.ReservationCode}");
-                Console.WriteLine($"Cinema location: {reservation.CinemaLocation}\n");
-            }
-        }
-    }
+}
