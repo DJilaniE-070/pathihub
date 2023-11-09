@@ -1,7 +1,44 @@
+using System.Collections;
 using System.Text.RegularExpressions;
+using Microsoft.Win32.SafeHandles;
 
 public static class PasswordCheck
 {   
+    public static bool IsValid(string password)
+    {
+        if (PasswordIssue(password).Count == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public static List<string> PasswordIssue(string password)
+    {
+        var invalid = new List<string>();
+        if (IsLower(password))
+        {
+            invalid.Add("Password");
+        }
+        if (IsUpper(password))
+        {
+            invalid.Add("upper");
+        }
+        if (IsLength(password))
+        {
+            invalid.Add("length");
+        }
+        if (IsNumber(password))
+        {
+            invalid.Add("number");
+        }
+        if (IsSymbol(password))
+        {
+            invalid.Add("symbol");
+        }
+        return invalid;
+    }
+
     public static bool IsLower(string password)
     {
         if (!Regex.IsMatch(password, @"[a-z]"))
@@ -29,7 +66,7 @@ public static class PasswordCheck
         return true;
     }
 
-    public static bool IsInt(string password)
+    public static bool IsNumber(string password)
     {
         if (!Regex.IsMatch(password, @"[0-9]"))
         {
@@ -40,7 +77,7 @@ public static class PasswordCheck
 
     public static bool IsSymbol(string password)
     {
-        if (!Regex.IsMatch(password, @"[!@#$%^&*]"))
+        if (!Regex.IsMatch(password, @"[!@#$%^&*()_+=\[{\]};:<>|./?,-]"))
         {
             return false;
         }
