@@ -9,7 +9,7 @@ public static class SecurePassword
             key = Console.ReadKey(true);
 
             // back en enter werkt niet
-            if (key.Key != ConsoleKey.Backspace)
+            if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
             {
                 password += key.KeyChar;
                 Console.Write("*");
