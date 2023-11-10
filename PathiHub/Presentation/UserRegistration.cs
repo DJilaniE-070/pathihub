@@ -15,4 +15,22 @@ public class UserRegistration
         AccountModel acc = new AccountModel(0, email, password, fullName, "Customer");
         AccountsLogic.UpdateList(acc);
     }
+
+    public void RegisterUser()
+    {
+        Console.WriteLine("Please follow the steps below to create a user account:");
+
+        Console.WriteLine("Enter your email address: ");
+        string userEmail = Console.ReadLine() ?? string.Empty;
+        Console.WriteLine("Enter your password: ");
+        string userPassword = Console.ReadLine() ?? string.Empty;
+        Console.WriteLine("Enter your full name: ");
+        string userFullname = Console.ReadLine() ?? string.Empty;
+
+        AccountModel userAccount = new AccountModel(0, userEmail, userPassword, userFullname, "User");
+        AccountsLogic.UpdateList(userAccount);
+
+        Console.WriteLine("User account created successfully.");
+    }
+
 }
