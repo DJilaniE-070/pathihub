@@ -3,14 +3,14 @@ public static class MovieOptionPresentation
         public static void AddMoviePresentation()
         {
             Console.Clear();
-            Console.WriteLine(@"
+            PrintStringToColor.Color(@"
           ___      _     _  ___  ___           _      
    _     / _ \    | |   | | |  \/  |          (_)     
  _| |_  / /_\ \ __| | __| | | .  . | _____   ___  ___ 
 |_   _| |  _  |/ _` |/ _` | | |\/| |/ _ \ \ / / |/ _ \
   |_|   | | | | (_| | (_| | | |  | | (_) \ V /| |  __/
         \_| |_/\__,_|\__,_| \_|  |_/\___/ \_/ |_|\___|
-                                                      ");
+                                                      ","Yellow");
             Movie movie = new Movie();
             Console.WriteLine("\n\n");
             Console.WriteLine("--------------------------------------------------------------------------------");
@@ -113,7 +113,7 @@ public static class MovieOptionPresentation
 
         public static void RemoveMoviePresentation()
         {
-            Console.WriteLine(@"
+            PrintStringToColor.Color(@"
          ______                                ___  ___           _      
          | ___ \                               |  \/  |          (_)     
  ______  | |_/ /___ _ __ ___   _____   _____   | .  . | _____   ___  ___ 
@@ -121,7 +121,7 @@ public static class MovieOptionPresentation
          | |\ \  __/ | | | | | (_) \ V /  __/  | |  | | (_) \ V /| |  __/
          \_| \_\___|_| |_| |_|\___/ \_/ \___|  \_|  |_/\___/ \_/ |_|\___|
                                                                          
-                                                                     ");
+                                                                     ", "yellow");
 
             Console.WriteLine("--------------------------------------------------------------------------------");
             Console.Write("\n\nTitle of the movie You want to remove: ");
