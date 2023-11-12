@@ -7,6 +7,7 @@ static class UserLogin
 
     public static void Start()
     {
+        Console.Clear();
         PrintStringToColor.Color(@" 
  _____ _       _           _   _                 _        ______                
 |  __ \ |     | |         | | | |               (_)       | ___ \               
