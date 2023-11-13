@@ -50,7 +50,7 @@ public class MovieCatalogePrinter
 
             // Nu heb je toegang tot de geselecteerde film in de "movies" lijst
             Console.Clear();
-            Console.WriteLine($"you have selected the mocie: '{movies[selectedMovieIndex].MovieTitle}'.");
+            Console.WriteLine($"you have selected the movie: '{movies[selectedMovieIndex].MovieTitle}'.");
             Console.ReadLine(); // Voeg deze regel toe om het programma niet onmiddellijk te sluiten
         }
     }
