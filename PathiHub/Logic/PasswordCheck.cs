@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using Microsoft.Win32.SafeHandles;
 
 public static class PasswordCheck
-{   
+{
     public static bool IsValid(string password)
     {
         if (PasswordIssue(password).Count == 0)

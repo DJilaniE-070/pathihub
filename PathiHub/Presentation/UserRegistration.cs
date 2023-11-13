@@ -16,21 +16,29 @@ public class UserRegistration
         AccountsLogic.UpdateList(acc);
     }
 
-    public void RegisterUser()
+    public static void RegisterUser()
     {
         Console.WriteLine("Please follow the steps below to create a user account:");
 
         Console.WriteLine("Enter your email address: ");
-        string userEmail = Console.ReadLine() ?? string.Empty;
+        string userEmail = Console.ReadLine();
+
         Console.WriteLine("Enter your password: ");
-        string userPassword = Console.ReadLine() ?? string.Empty;
+        string userPassword = Console.ReadLine();
+
+        // Check if password is valid
+        if (!PasswordCheck.IsValid(userPassword))
+        {
+            Console.WriteLine("Invalid password. Please check the password requirements.");
+            return;
+        }
+
         Console.WriteLine("Enter your full name: ");
-        string userFullname = Console.ReadLine() ?? string.Empty;
+        string userFullname = Console.ReadLine();
 
         AccountModel userAccount = new AccountModel(0, userEmail, userPassword, userFullname, "User");
         AccountsLogic.UpdateList(userAccount);
 
         Console.WriteLine("User account created successfully.");
     }
-
 }
