@@ -37,5 +37,82 @@
     "Language": "English",
     "Country": "United States",
     "Awards": null
+  },
+  {
+    "MovieTitle": "pinda",
+    "ReleaseYear": 2012,
+    "Genre": [
+      "horror"
+    ],
+    "Director": "Test",
+    "Writers": [
+      "Test1"
+    ],
+    "Plot": "a pinut warrior travels the world",
+    "Rating": 8.0,
+    "RuntimeMinutes": 120,
+    "Language": "english",
+    "Country": "USA",
+    "Awards": [
+      "note"
+    ]
+  },
+  {
+    "MovieTitle": "Scarface",
+    "ReleaseYear": 1983,
+    "Genre": [
+      "Thriller"
+    ],
+    "Director": "MB",
+    "Writers": [
+      "BM"
+    ],
+    "Plot": "Crime",
+    "Rating": 9.0,
+    "RuntimeMinutes": 120,
+    "Language": "English",
+    "Country": "USA",
+    "Awards": [
+      "Many"
+    ]
+  },
+  {
+    "MovieTitle": "test2",
+    "ReleaseYear": 2020,
+    "Genre": [
+      "Horror",
+      "Scary"
+    ],
+    "Director": "Pro Tester",
+    "Writers": [
+      "none"
+    ],
+    "Plot": "in a world where people test programs",
+    "Rating": 5.0,
+    "RuntimeMinutes": 111,
+    "Language": "English",
+    "Country": "USA",
+    "Awards": [
+      "none"
+    ]
+  },
+  {
+    "MovieTitle": "Peep",
+    "ReleaseYear": 2012,
+    "Genre": [
+      "none"
+    ],
+    "Director": "test",
+    "Writers": [
+      "none"
+    ],
+    "Plot": "test",
+    "Rating": 7.0,
+    "RuntimeMinutes": 120,
+    "Language": "english",
+    "Country": "usa",
+    "Awards": [
+      "none"
+    ]
   }
 ]

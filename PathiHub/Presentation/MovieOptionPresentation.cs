@@ -3,23 +3,41 @@ public static class MovieOptionPresentation
         public static void AddMoviePresentation()
         {
             Console.Clear();
-            Console.WriteLine(@"
+            PrintStringToColor.Color(@"
           ___      _     _  ___  ___           _      
    _     / _ \    | |   | | |  \/  |          (_)     
  _| |_  / /_\ \ __| | __| | | .  . | _____   ___  ___ 
 |_   _| |  _  |/ _` |/ _` | | |\/| |/ _ \ \ / / |/ _ \
   |_|   | | | | (_| | (_| | | |  | | (_) \ V /| |  __/
         \_| |_/\__,_|\__,_| \_|  |_/\___/ \_/ |_|\___|
-                                                      ");
+                                                      ","Yellow");
             Movie movie = new Movie();
             Console.WriteLine("\n\n");
             Console.WriteLine("--------------------------------------------------------------------------------");
             Console.Write("Enter movie title: ");
             movie.MovieTitle = WriteInputColor.Color("DarkYellow");
 
-            Console.Write("Enter release year: ");
-            int? releaseYearInput = Convert.ToInt32(WriteInputColor.Color("DarkYellow"));
-            movie.ReleaseYear = releaseYearInput;
+            bool inputIsValid = false;
+            while (!inputIsValid)
+            {
+                try
+                {
+                    Console.Write("Enter release year: ");
+                    int? releaseYearInput = Convert.ToInt32(WriteInputColor.Color("DarkYellow"));
+                    movie.ReleaseYear = releaseYearInput;
+                    inputIsValid = true; 
+                }
+                catch (FormatException e)
+                {
+                    PrintStringToColor.Color("Invalid input format. Please enter a valid integer.\nA valid option is when the date has 4 digits ", "red");
+                }
+                catch (OverflowException e)
+                {
+                    PrintStringToColor.Color("Input value is too large or too small. Please enter a valid integer.\nA valid option is when the date has 4 digits", "red");
+                }
+            }
+
+
 
             Console.Write("Enter genres (comma-separated, or press Enter for none): ");
             string? genresInput = WriteInputColor.Color("DarkYellow");
@@ -66,9 +84,11 @@ public static class MovieOptionPresentation
                 ?null
                 : new List<string>(AwardsInput.Split(','));
 
-            MovieOptions Option = new MovieOptions();
-            if (Option.LoadMoviesFromJson() == true)
+
+            MoviesAcces acces = new MoviesAcces();
+            if (acces.LoadMoviesFromJson() == true)
             {
+                MovieOptions Option = new MovieOptions(acces.movies);
                 if (Option.AddMovie(movie) != true)
                 {
                     PrintStringToColor.Color("\nMovie already exits\n","red");
@@ -76,7 +96,7 @@ public static class MovieOptionPresentation
                 else
                 {
                     PrintStringToColor.Color($"\n+ {movie.MovieTitle}  has been added\n","green");
-                    Option.SaveMoviesToJson();
+                    acces.SaveMoviesToJson();
                 }
 
             Console.WriteLine("Press ENTER to continue");
@@ -93,7 +113,7 @@ public static class MovieOptionPresentation
 
         public static void RemoveMoviePresentation()
         {
-            Console.WriteLine(@"
+            PrintStringToColor.Color(@"
          ______                                ___  ___           _      
          | ___ \                               |  \/  |          (_)     
  ______  | |_/ /___ _ __ ___   _____   _____   | .  . | _____   ___  ___ 
@@ -101,24 +121,25 @@ public static class MovieOptionPresentation
          | |\ \  __/ | | | | | (_) \ V /  __/  | |  | | (_) \ V /| |  __/
          \_| \_\___|_| |_| |_|\___/ \_/ \___|  \_|  |_/\___/ \_/ |_|\___|
                                                                          
-                                                                     ");
+                                                                     ", "yellow");
 
             Console.WriteLine("--------------------------------------------------------------------------------");
             Console.Write("\n\nTitle of the movie You want to remove: ");
             string MovieTitle = WriteInputColor.Color("DarkYellow");
             Console.Write("\nDirector of the movie You want to remove: ");
             string MovieDirector = WriteInputColor.Color("DarkYellow");
-            MovieOptions Options = new MovieOptions();
-            if (Options.LoadMoviesFromJson() == true)
+            MoviesAcces acces = new MoviesAcces();
+            if (acces.LoadMoviesFromJson() == true)
             {
-                if (Options.RemoveMovie(MovieTitle,MovieDirector) == false)
+                MovieOptions Option = new MovieOptions(acces.movies);
+                if (Option.RemoveMovie(MovieTitle,MovieDirector) == false)
                 {
                     PrintStringToColor.Color("\nMovie doesn't exist", "red");
 
                 }
                 else
                 {
-                    Options.SaveMoviesToJson();
+                    acces.SaveMoviesToJson();
                     PrintStringToColor.Color($"\n- {MovieTitle} has been removed\n", "red");
                 }
             Console.WriteLine("Press ENTER to continue");

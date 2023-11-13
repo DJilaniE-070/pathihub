@@ -1,6 +1,6 @@
-/*
-public static class SwitchMenu
+public static class GuestLogin 
 {
+    
     public static void Start()
     {
         {
@@ -8,22 +8,24 @@ public static class SwitchMenu
             int selectedIndex = 0;
             bool exit = false;
 
-            string[] menuOptions = { "Login as a guest", "Login as an user", "Creating an account" };
+            string[] menuOptions = { "Our movie selection", "Our Menu selection" };
 
             do
             {
                 Console.Clear();
 
-                PrintStringToColor.Color(@" 
-______     _   _     _ _   _       _      
-| ___ \   | | | |   (_) | | |     | |     
-| |_/ /_ _| |_| |__  _| |_| |_   _| |__   
-|  __/ _` | __| '_ \| |  _  | | | | '_ \  
-| | | (_| | |_| | | | | | | | |_| | |_) | 
-\_|  \__,_|\__|_| |_|_\_| |_/\__,_|_.__/  
+                Console.WriteLine(@" 
+ _____                 _     _                 _       
+|  __ \               | |   | |               (_)      
+| |  \/_   _  ___  ___| |_  | |     ___   __ _ _ _ __  
+| | __| | | |/ _ \/ __| __| | |    / _ \ / _` | | '_ \ 
+| |_\ \ |_| |  __/\__ \ |_  | |___| (_) | (_| | | | | |
+ \____/\__,_|\___||___/\__| \_____/\___/ \__, |_|_| |_|
+                                          __/ |        
+                                         |___/          
                                                                                                         
                                                      
-","DarkYellow");
+");
 
                 Console.WriteLine("--------------------------------------------------------------------------------");
                 Console.WriteLine("Please select an option (using the arrow keys and press Enter):");
@@ -77,23 +79,22 @@ ______     _   _     _ _   _       _
             Console.WriteLine("Selected: " + option);
             switch (option)
             {
-                case "Login as a guest":
+                case "Our movie selection":
                     Thread.Sleep(1500);
-                    GuestLogin.Start();
+                    Console.Clear();
+                    ShowMovieCataloge.PresentateTabel();
                     break;
 
-                case "Login as an user":
+                case "Our Menu selection":
                     Thread.Sleep(1500);
-                    UserLogin.Start();
+                    Console.WriteLine("must be created!");
                     break;
 
-                case "Creating an account":
-                    Thread.Sleep(1500);
-                    Console.WriteLine(" Must be implemented");
-                    break;
 
             }
         }
     }
 }
-*/ 
+
+
+ 

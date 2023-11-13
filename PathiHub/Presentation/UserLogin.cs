@@ -1,3 +1,5 @@
+using System.Drawing;
+
 static class UserLogin
 {
     static private AccountsLogic accountsLogic = new AccountsLogic();
@@ -5,7 +7,8 @@ static class UserLogin
 
     public static void Start()
     {
-        Console.WriteLine(@" 
+        Console.Clear();
+        PrintStringToColor.Color(@" 
  _____ _       _           _   _                 _        ______                
 |  __ \ |     | |         | | | |               (_)       | ___ \               
 | |  \/ | ___ | |__   __ _| | | |     ___   __ _ _ _ __   | |_/ /_ _  __ _  ___ 
@@ -14,26 +17,29 @@ static class UserLogin
  \____/_|\___/|_.__/ \__,_|_| \_____/\___/ \__, |_|_| |_| \_|  \__,_|\__, |\___|
                                             __/ |                     __/ |     
                                            |___/                     |___/      
-");
+","DarkYellow");
         
-        Console.WriteLine("--------------------------------------------------------------------------------");
+        Console.WriteLine("--------------------------------------------------------------------------------\n");
         Console.WriteLine("Welcome to the Global login page.");
-        Console.WriteLine("Within this page you can login in to your account off choice.\n");
-        Console.ForegroundColor = ConsoleColor.DarkCyan;
-        Console.WriteLine("Options include:\n");
-        Console.ResetColor();
-        Console.WriteLine("• Managers,\n• Co-Workers,\n• Recurring Users with an account,\n• Financial workers.");
-        Console.WriteLine("--------------------------------------------------------------------------------");
-        Console.ForegroundColor = ConsoleColor.DarkCyan;
-        Console.WriteLine("Dear users,");
-        Console.ResetColor();
-        Console.WriteLine("If you want to make an account or login as a guest.\nPlease enter 1 and 1 to go to our dedicated user page.");
+        Console.WriteLine("Within this page you can login in to your account.\n");
         Console.WriteLine("--------------------------------------------------------------------------------");
         Thread.Sleep(300);
+        // color for mail
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.WriteLine("Please enter your email address:");
-        string email = Console.ReadLine();
-        Console.WriteLine("Please enter your password");    
-        string password = Console.ReadLine();
+        Console.ResetColor(); 
+        string email = WriteInputColor.Color("darkyellow");
+        //color for password
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
+        Console.WriteLine("Please enter your password:");  
+        Console.ResetColor(); 
+
+        //string password = WriteInputColor.Color("darkyellow");
+
+        // mask password
+        string password = SecurePassword.MaskPassword("");
+        // end
+
         AccountModel acc = accountsLogic.CheckLogin(email, password);
         if (acc != null)
         {
@@ -45,12 +51,12 @@ static class UserLogin
             {
                 case "Manager":
                     Console.Clear();
-                    ManagerMenu.StartMenu();
+                    ManagerMenu.Start();
                     Console.WriteLine(acc.GetType());
                     break;
                 case "Financial Manager":
                     Console.Clear();
-                    FinancialMenu.Financieel_Start();
+                    FinancialMenu.Start();
                     Console.WriteLine("Financial Manager Menu");
                     break;
                 case "Coworker":
@@ -62,7 +68,7 @@ static class UserLogin
                     Console.WriteLine("You will be redirected to the Co-Worker menu.");
                     Thread.Sleep(2000);
                     Console.Clear();
-                    CoWorker.CoWorkerStart();
+                    CoWorker.Start();
                     break;
                 
                 
