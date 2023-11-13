@@ -21,10 +21,10 @@ public class UserRegistration
         Console.WriteLine("Please follow the steps below to create a user account:");
 
         Console.WriteLine("Enter your email address: ");
-        string userEmail = Console.ReadLine();
+        string? userEmail = Console.ReadLine();
 
         Console.WriteLine("Enter your password: ");
-        string userPassword = Console.ReadLine();
+        string? userPassword = Console.ReadLine();
 
         // Check if password is valid
         if (!PasswordCheck.IsValid(userPassword))

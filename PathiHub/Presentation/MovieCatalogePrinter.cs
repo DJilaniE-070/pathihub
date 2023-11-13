@@ -75,9 +75,9 @@ ___  ___           _        _____       _        _
         Console.WriteLine("This our movie Catalog");
         Console.WriteLine("--------------------------------------------------------------------------------");
         Console.WriteLine("");
-                Console.WriteLine("");
-                Console.WriteLine("");
-                Console.WriteLine("");
+        Console.WriteLine("");
+        Console.WriteLine("");
+        Console.WriteLine("");
         
         Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", "Movie Title", "Release Year",
             "Director", "Genre", "Rating");
