@@ -12,7 +12,7 @@ public class MovieCatalogePrinter
         if (acces.LoadMoviesFromJson() == true)
         {
             
-            // Hieronder staat een voorbeeld van hoe je de JSON-data kunt lezen uit een bestand met de naam "movies.json"
+            
             string jsonFilePath = @"DataSources/Movies.json"; // Zorg ervoor dat je het juiste pad naar je JSON-bestand opgeeft
 
             // Lees de JSON-data uit het bestand
@@ -85,6 +85,7 @@ ___  ___           _        _____       _        _
         Console.WriteLine(new string('-', 110));
 
         // Weergave van films met markering voor de geselecteerde film
+        //Maak een functie max length voor de maximale lengte die word gebruikt bij de tabel
         for (int i = 0; i < movies.Count; i++)
         {
             if (i == selectedMovieIndex)
