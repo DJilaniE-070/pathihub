@@ -26,7 +26,19 @@ public class UserRegistration
         Console.WriteLine("Enter your password: ");
         string? userPassword = Console.ReadLine();
 
-        // Check if password is valid
+        List<string> passwordIssues = PasswordCheck.PasswordIssue(userPassword);
+
+        if (passwordIssues.Count > 0)
+        {
+            Console.WriteLine("Invalid password. Please check the following requirements:");
+
+            foreach (var issue in passwordIssues)
+            {
+                Console.WriteLine($"- {PasswordCheck.GetIssueDescription(issue)}");
+            }
+            return;
+        }
+
         if (!PasswordCheck.IsValid(userPassword))
         {
             Console.WriteLine("Invalid password. Please check the password requirements.");
@@ -34,7 +46,7 @@ public class UserRegistration
         }
 
         Console.WriteLine("Enter your full name: ");
-        string userFullname = Console.ReadLine();
+        string? userFullname = Console.ReadLine();
 
         AccountModel userAccount = new AccountModel(0, userEmail, userPassword, userFullname, "User");
         AccountsLogic.UpdateList(userAccount);
