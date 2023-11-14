@@ -19,10 +19,11 @@ static class UserLogin
                                            |___/                     |___/      
 ","DarkYellow");
         
-        Console.WriteLine("--------------------------------------------------------------------------------\n");
+        Helpers.StringLine(80);
+        Console.WriteLine("");
         Console.WriteLine("Welcome to the Global login page.");
         Console.WriteLine("Within this page you can login in to your account.\n");
-        Console.WriteLine("--------------------------------------------------------------------------------");
+        Helpers.StringLine(80);
         Thread.Sleep(300);
         // color for mail
         Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -60,7 +61,7 @@ static class UserLogin
                     Console.WriteLine("Financial Manager Menu");
                     break;
                 case "Coworker":
-                    Console.WriteLine("--------------------------------------------------------------------------------");
+                    Helpers.StringLine(80);
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("You're username and password are correct.");
                     Console.ResetColor();

@@ -13,7 +13,7 @@ public static class MovieOptionPresentation
                                                       ","Yellow");
             Movie movie = new Movie();
             Console.WriteLine("\n\n");
-            Console.WriteLine("--------------------------------------------------------------------------------");
+            Helpers.StringLine(80);
             Console.Write("Enter movie title: ");
             movie.MovieTitle = WriteInputColor.Color("DarkYellow");
 
@@ -111,6 +111,14 @@ public static class MovieOptionPresentation
             }
         }   
 
+        
+        
+        
+//----------------------------------------------------------------------------------------------------------------------        
+        
+        
+        
+        
         public static void RemoveMoviePresentation()
         {
             PrintStringToColor.Color(@"
@@ -123,11 +131,15 @@ public static class MovieOptionPresentation
                                                                          
                                                                      ", "yellow");
 
-            Console.WriteLine("--------------------------------------------------------------------------------");
+            Helpers.StringLine(80);
+            
+            
             Console.Write("\n\nTitle of the movie You want to remove: ");
             string MovieTitle = WriteInputColor.Color("DarkYellow");
+            
             Console.Write("\nDirector of the movie You want to remove: ");
             string MovieDirector = WriteInputColor.Color("DarkYellow");
+            
             MoviesAcces acces = new MoviesAcces();
             if (acces.LoadMoviesFromJson() == true)
             {

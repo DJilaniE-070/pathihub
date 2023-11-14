@@ -51,6 +51,8 @@ public class MovieCatalogePrinter
             } while (key.Key != ConsoleKey.Enter);
 
             // Nu heb je toegang tot de geselecteerde film in de "movies" lijst
+            
+            
             Console.Clear();
             Console.WriteLine($"you have selected the mocie: '{movies[selectedMovieIndex].MovieTitle}'.");
             Console.ReadLine(); // Voeg deze regel toe om het programma niet onmiddellijk te sluiten
@@ -71,9 +73,9 @@ ___  ___           _        _____       _        _
                                                          |___/     
 ");
 
-        Console.WriteLine("--------------------------------------------------------------------------------");
+        Helpers.StringLine(80);
         Console.WriteLine("This our movie Catalog");
-        Console.WriteLine("--------------------------------------------------------------------------------");
+        Helpers.StringLine(80);
         Console.WriteLine("");
                 Console.WriteLine("");
                 Console.WriteLine("");

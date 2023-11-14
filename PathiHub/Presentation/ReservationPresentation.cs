@@ -16,6 +16,7 @@ ______                               _   _
         Console.WriteLine("\n\n\n");
 
         Reservation reservation = new Reservation();
+        
         Console.WriteLine("--------------------------------------------------------------------------------");
         Console.Write("Enter Your Full name (First and LastName): ");
         reservation.FullName = WriteInputColor.Color("DarkYellow");
