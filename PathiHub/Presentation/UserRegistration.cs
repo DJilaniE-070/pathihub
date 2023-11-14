@@ -20,8 +20,13 @@ public class UserRegistration
     {
         Console.WriteLine("Please follow the steps below to create a user account:");
 
-        Console.WriteLine("Enter your email address: ");
+        Console.WriteLine("Enter your email address: \n");
         string? userEmail = Console.ReadLine();
+
+        Console.WriteLine("Password should be between 8 and 20 letters");
+        Console.WriteLine("Password should contain at least one special character");
+        Console.WriteLine("Password should contain at least one number");
+        Console.WriteLine("Password should contain at least one uppercase\n");
 
         Console.WriteLine("Enter your password: ");
         string? userPassword = Console.ReadLine();
