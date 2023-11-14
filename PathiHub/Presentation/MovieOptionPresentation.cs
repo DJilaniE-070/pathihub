@@ -121,7 +121,10 @@ public static class MovieOptionPresentation
         
         public static void RemoveMoviePresentation()
         {
-            PrintStringToColor.Color(@"
+            
+            
+            Console.Clear();
+            string HeaderX = @"
          ______                                ___  ___           _      
          | ___ \                               |  \/  |          (_)     
  ______  | |_/ /___ _ __ ___   _____   _____   | .  . | _____   ___  ___ 
@@ -129,39 +132,41 @@ public static class MovieOptionPresentation
          | |\ \  __/ | | | | | (_) \ V /  __/  | |  | | (_) \ V /| |  __/
          \_| \_\___|_| |_| |_|\___/ \_/ \___|  \_|  |_/\___/ \_/ |_|\___|
                                                                          
-                                                                     ", "yellow");
+                                                                     ";
 
-            Helpers.StringLine(80);
+            Console.WriteLine("Select the movie you want to remove:");
+            DeleteMovieOutTabel.MovieDeletor(HeaderX);
             
-            
-            Console.Write("\n\nTitle of the movie You want to remove: ");
-            string MovieTitle = WriteInputColor.Color("DarkYellow");
-            
-            Console.Write("\nDirector of the movie You want to remove: ");
-            string MovieDirector = WriteInputColor.Color("DarkYellow");
-            
-            MoviesAcces acces = new MoviesAcces();
-            if (acces.LoadMoviesFromJson() == true)
-            {
-                MovieOptions Option = new MovieOptions(acces.movies);
-                if (Option.RemoveMovie(MovieTitle,MovieDirector) == false)
-                {
-                    PrintStringToColor.Color("\nMovie doesn't exist", "red");
-
-                }
-                else
-                {
-                    acces.SaveMoviesToJson();
-                    PrintStringToColor.Color($"\n- {MovieTitle} has been removed\n", "red");
-                }
-            Console.WriteLine("Press ENTER to continue");
-            string Enter = Console.ReadLine();  
-            }
-            else
-            {
-            Console.WriteLine("File not found. No movies loaded.");
-            Console.WriteLine("Press ENTER to continue");
-            string enter = Console.ReadLine();
-            }
+            // Helpers.StringLine(80);
+            //
+            // Console.Write("\n\nTitle of the movie You want to remove: ");
+            // string MovieTitle = WriteInputColor.Color("DarkYellow");
+            //
+            // Console.Write("\nDirector of the movie You want to remove: ");
+            // string MovieDirector = WriteInputColor.Color("DarkYellow");
+            //
+            // MoviesAcces acces = new MoviesAcces();
+            // if (acces.LoadMoviesFromJson() == true)
+            // {
+            //     MovieOptions Option = new MovieOptions(acces.movies);
+            //     if (Option.RemoveMovie(MovieTitle,MovieDirector) == false)
+            //     {
+            //         PrintStringToColor.Color("\nMovie doesn't exist", "red");
+            //
+            //     }
+            //     else
+            //     {
+            //         acces.SaveMoviesToJson();
+            //         PrintStringToColor.Color($"\n- {MovieTitle} has been removed\n", "red");
+            //     }
+            // Console.WriteLine("Press ENTER to continue");
+            // string Enter = Console.ReadLine();  
+            // }
+            // else
+            // {
+            // Console.WriteLine("File not found. No movies loaded.");
+            // Console.WriteLine("Press ENTER to continue");
+            // string enter = Console.ReadLine();
+            // }
         }
 }
