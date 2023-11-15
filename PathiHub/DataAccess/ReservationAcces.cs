@@ -2,7 +2,6 @@ using Newtonsoft.Json;
 
 public class ReservationAcces
 {
-
     public List<Reservation> reservationlist = new List<Reservation>();
     
     public void SaveReservationToJson()

@@ -1,3 +1,5 @@
+using PathiHub.Presentation;
+
 public static class Menu 
 {
     // dit is het scherm is word puur gebruikt als eerste scherm
@@ -114,7 +116,8 @@ ______     _   _     _   _   _       _
 
             case "Creating an account":
                 Thread.Sleep(1500);
-                Console.WriteLine(" Must be implemented");
+                // Console.WriteLine(" Must be implemented");
+                UserRegistration.RegisterUser();
                 break;
         }
     }

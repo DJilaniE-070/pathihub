@@ -2,6 +2,7 @@
 
 public class UserRegistration
 {
+    /*
     public void Start()
     {
         Console.WriteLine("Please follow the steps below to create an account:");
@@ -15,6 +16,7 @@ public class UserRegistration
         AccountModel acc = new AccountModel(0, email, password, fullName, "Customer");
         AccountsLogic.UpdateList(acc);
     }
+    */
 
     public static void RegisterUser()
     {
@@ -22,6 +24,14 @@ public class UserRegistration
 
         Console.WriteLine("Enter your email address: \n");
         string? userEmail = Console.ReadLine();
+
+        /* implement to check if email adres is valid
+        if (userEmail == null && !userEmail.Contains('@'))
+        {
+            Console.WriteLine($"{userEmail} is not valid, please enter a valid email");
+            RegisterUser();
+        }
+        */
 
         Console.WriteLine("Password should be between 8 and 20 letters");
         Console.WriteLine("Password should contain at least one special character");
