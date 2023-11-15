@@ -19,27 +19,27 @@ ______                               _   _
         
         Console.WriteLine("--------------------------------------------------------------------------------");
         Console.Write("Enter Your Full name (First and LastName): ");
-        reservation.FullName = WriteInputColor.Color("DarkYellow");
+        reservation.FullName = Helpers.Color("DarkYellow");
 
         Console.Write("Enter your Email: ");
-        reservation.Email = WriteInputColor.Color("DarkYellow");
+        reservation.Email = Helpers.Color("DarkYellow");
 
 
         Console.Write("Enter wich Auditorium:  ");
-        reservation.Auditorium = WriteInputColor.Color("DarkYellow");
+        reservation.Auditorium = Helpers.Color("DarkYellow");
 
 
         Console.Write("Enter SeatNumber: ");
-        reservation.SeatName = WriteInputColor.Color("DarkYellow");
+        reservation.SeatName = Helpers.Color("DarkYellow");
         
         Console.Write("Enter name of the Movie ");
-        reservation.movie = WriteInputColor.Color("DarkYellow");
+        reservation.movie = Helpers.Color("DarkYellow");
 
         Console.Write("Price of the Movie ");
-        reservation.Price = Convert.ToInt32(WriteInputColor.Color("DarkYellow"));
+        reservation.Price = Convert.ToInt32(Helpers.Color("DarkYellow"));
 
         Console.Write("Enter CinemaLocation ");
-        reservation.movie = WriteInputColor.Color("DarkYellow");
+        reservation.movie = Helpers.Color("DarkYellow");
 
         Random ran = new Random();
     
@@ -51,15 +51,16 @@ ______                               _   _
         string random = "";
 
         for(int i =0; i<length; i++)
-                        {
-                                    int a = ran.Next(b.Length); //string.Lenght gets the size of string
-                                    random = random + b.ElementAt(a);
-                        }
+        {
+            int a = ran.Next(b.Length); //string.Lenght gets the size of string
+            random = random + b.ElementAt(a);
+        }
+        
         for(int j =0; j<2; j++)
-                        {
-                                    int sz = ran.Next(sc.Length); 
-                                    random = random + sc.ElementAt(sz);
-                        }
+        {
+            int sz = ran.Next(sc.Length); 
+            random = random + sc.ElementAt(sz);
+        }
 
         reservation.ReservationCode = random;
 
@@ -71,11 +72,11 @@ ______                               _   _
             MakeReservation Option = new MakeReservation(reservations.GetItemList());
             if (Option.AddReservation(reservation) != true)
             {
-                PrintStringToColor.Color("\nMovie already exits\n","red");
+                Helpers.PrintStringToColor("\nMovie already exits\n","red");
             }
             else
             {
-                PrintStringToColor.Color($"\n+ {reservation.ReservationCode} for {reservation.FullName}  has been added\n","green");
+                Helpers.PrintStringToColor($"\n+ {reservation.ReservationCode} for {reservation.FullName}  has been added\n","green");
                 reservations.SaveToJson();
             }
 
@@ -85,7 +86,7 @@ ______                               _   _
         }
         else
         {
-            PrintStringToColor.Color("File not found. No movies loaded.\n", "red");
+            Helpers.PrintStringToColor("File not found. No movies loaded.\n", "red");
             Console.WriteLine("Press ENTER to continue");
             string enter = Console.ReadLine();
         }
@@ -103,24 +104,24 @@ ______                               ______                               _   _
 
             Console.WriteLine("--------------------------------------------------------------------------------");
             Console.Write("\n\nFullName on the ticket. You want to remove: ");
-            string FullName = WriteInputColor.Color("DarkYellow");
+            string FullName = Helpers.Color("DarkYellow");
             Console.Write("\nName of the movie You want to remove: ");
-            string movie = WriteInputColor.Color("DarkYellow");
+            string movie = Helpers.Color("DarkYellow");
             Console.Write("\n Your email: ");
-            string email = WriteInputColor.Color("DarkYellow");
+            string email = Helpers.Color("DarkYellow");
             ReservationAccess acces = new ReservationAccess();
             if (acces.LoadFromJson() == true)
             {
                 MakeReservation Option = new MakeReservation(acces.GetItemList());
                 if (Option.RemoveReservation(FullName,email, movie) == false)
                 {
-                    PrintStringToColor.Color("\nReservation doesn't exist", "red");
+                    Helpers.PrintStringToColor("\nReservation doesn't exist", "red");
 
                 }
                 else
                 {  
                     acces.SaveToJson();
-                    PrintStringToColor.Color($"\n- Reservation for {FullName} has been removed\n", "red");
+                    Helpers.PrintStringToColor($"\n- Reservation for {FullName} has been removed\n", "red");
                 }
             Console.WriteLine("Press ENTER to continue");
             string Enter = Console.ReadLine();  

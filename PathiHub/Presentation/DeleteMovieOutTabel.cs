@@ -44,7 +44,7 @@ public  class DeleteMovieOutTabel
             // Console.WriteLine($"Are you sure you want to delete movie:'{selectedMovie.MovieTitle}'.");
 
             movies.Remove(selectedMovie);
-            PrintStringToColor.Color($"You have deleted the movie: '{selectedMovie.MovieTitle}'.", "red");
+            Helpers.PrintStringToColor($"You have deleted the movie: '{selectedMovie.MovieTitle}'.", "red");
             Thread.Sleep(2000);
 
             // Serialize the updated list back to JSON
@@ -61,9 +61,9 @@ public  class DeleteMovieOutTabel
     {
         Console.WriteLine(HeaderX);
 
-        Helpers.StringLine(80);
+        Helpers.CharLine('-' ,80);
         Console.WriteLine("This our movie Catalog");
-        Helpers.StringLine(80);
+        Helpers.CharLine('-' ,80);
         Console.WriteLine("\n\n\n\n");
 
         Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", "Movie Title", "Release Year",

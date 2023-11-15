@@ -39,25 +39,6 @@
     "Awards": null
   },
   {
-    "MovieTitle": "pinda",
-    "ReleaseYear": 2012,
-    "Genre": [
-      "horror"
-    ],
-    "Director": "Test",
-    "Writers": [
-      "Test1"
-    ],
-    "Plot": "a pinut warrior travels the world",
-    "Rating": 8.0,
-    "RuntimeMinutes": 120,
-    "Language": "english",
-    "Country": "USA",
-    "Awards": [
-      "note"
-    ]
-  },
-  {
     "MovieTitle": "Scarface",
     "ReleaseYear": 1983,
     "Genre": [
