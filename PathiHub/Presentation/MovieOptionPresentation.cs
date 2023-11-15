@@ -85,10 +85,10 @@ public static class MovieOptionPresentation
                 : new List<string>(AwardsInput.Split(','));
 
 
-            MoviesAcces acces = new MoviesAcces();
-            if (acces.LoadMoviesFromJson() == true)
+            MoviesAccess acces = new MoviesAccess();
+            if (acces.LoadFromJson() == true)
             {
-                MovieOptions Option = new MovieOptions(acces.movies);
+                MovieOptions Option = new MovieOptions(acces.GetItemList());
                 if (Option.AddMovie(movie) != true)
                 {
                     PrintStringToColor.Color("\nMovie already exits\n","red");
@@ -96,7 +96,7 @@ public static class MovieOptionPresentation
                 else
                 {
                     PrintStringToColor.Color($"\n+ {movie.MovieTitle}  has been added\n","green");
-                    acces.SaveMoviesToJson();
+                    acces.SaveToJson();
                 }
 
             Console.WriteLine("Press ENTER to continue");
