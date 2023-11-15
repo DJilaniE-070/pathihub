@@ -14,7 +14,7 @@ public static class ManagerMenu
         {
             Console.Clear();
 
-            PrintStringToColor.Color(@"
+            Helpers.PrintStringToColor(@"
 ___  ___                                   ___  ___                 
 |  \/  |                                   |  \/  |                 
 | .  . | __ _ _ __   __ _  __ _  ___ _ __  | .  . | ___ _ __  _   _ 
@@ -119,7 +119,7 @@ static void FilmOptions()
     do
     {
         Console.Clear();
-        PrintStringToColor.Color(@"
+        Helpers.PrintStringToColor(@"
 ___  ___           _        _____       _   _                 
 |  \/  |          (_)      |  _  |     | | (_)                
 | .  . | _____   ___  ___  | | | |_ __ | |_ _  ___  _ __  ___ 
@@ -197,7 +197,7 @@ static void ReservationsOptions()
     do
     {
         Console.Clear();
-        PrintStringToColor.Color(@"
+        Helpers.PrintStringToColor(@"
 ______                               _   _               _____       _   _                 
 | ___ \                             | | (_)             |  _  |     | | (_)                
 | |_/ /___  ___  ___ _ ____   ____ _| |_ _  ___  _ __   | | | |_ __ | |_ _  ___  _ __  ___ 

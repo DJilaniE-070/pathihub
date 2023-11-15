@@ -46,7 +46,7 @@ public  class DeleteMovieOutTabel
             // Console.WriteLine($"Are you sure you want to delete movie:'{selectedMovie.MovieTitle}'.");
 
             movies.Remove(selectedMovie);
-            PrintStringToColor.Color($"You have deleted the movie: '{selectedMovie.MovieTitle}'.", "red");
+            Helpers.PrintStringToColor($"You have deleted the movie: '{selectedMovie.MovieTitle}'.", "red");
             Thread.Sleep(2000);
 
             // Serialize the updated list back to JSON
