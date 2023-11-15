@@ -15,7 +15,7 @@ public static class Menu
 
             // promotie menu start
             
-            PrintStringToColor.Color(
+            Helpers.PrintStringToColor(
             @"
 ______     _   _     _   _   _       _     
 | ___ \   | | | |   (_) | | | |     | |    

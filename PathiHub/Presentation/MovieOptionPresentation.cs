@@ -3,7 +3,7 @@ public static class MovieOptionPresentation
         public static void AddMoviePresentation()
         {
             Console.Clear();
-            PrintStringToColor.Color(@"
+            Helpers.PrintStringToColor(@"
           ___      _     _  ___  ___           _      
    _     / _ \    | |   | | |  \/  |          (_)     
  _| |_  / /_\ \ __| | __| | | .  . | _____   ___  ___ 
@@ -29,11 +29,11 @@ public static class MovieOptionPresentation
                 }
                 catch (FormatException e)
                 {
-                    PrintStringToColor.Color("Invalid input format. Please enter a valid integer.\nA valid option is when the date has 4 digits ", "red");
+                    Helpers.PrintStringToColor("Invalid input format. Please enter a valid integer.\nA valid option is when the date has 4 digits ", "red");
                 }
                 catch (OverflowException e)
                 {
-                    PrintStringToColor.Color("Input value is too large or too small. Please enter a valid integer.\nA valid option is when the date has 4 digits", "red");
+                    Helpers.PrintStringToColor("Input value is too large or too small. Please enter a valid integer.\nA valid option is when the date has 4 digits", "red");
                 }
             }
 
@@ -91,11 +91,11 @@ public static class MovieOptionPresentation
                 MovieOptions Option = new MovieOptions(acces.movies);
                 if (Option.AddMovie(movie) != true)
                 {
-                    PrintStringToColor.Color("\nMovie already exits\n","red");
+                    Helpers.PrintStringToColor("\nMovie already exits\n","red");
                 }
                 else
                 {
-                    PrintStringToColor.Color($"\n+ {movie.MovieTitle}  has been added\n","green");
+                    Helpers.PrintStringToColor($"\n+ {movie.MovieTitle}  has been added\n","green");
                     acces.SaveMoviesToJson();
                 }
 
@@ -105,7 +105,7 @@ public static class MovieOptionPresentation
             }
             else
             {
-                PrintStringToColor.Color("File not found. No movies loaded.\n", "red");
+                Helpers.PrintStringToColor("File not found. No movies loaded.\n", "red");
                 Console.WriteLine("Press ENTER to continue");
                 string enter = Console.ReadLine();
             }

@@ -72,11 +72,11 @@ ______                               _   _
             MakeReservation Option = new MakeReservation(reservations.reservationlist);
             if (Option.AddReservation(reservation) != true)
             {
-                PrintStringToColor.Color("\nMovie already exits\n","red");
+                Helpers.PrintStringToColor("\nMovie already exits\n","red");
             }
             else
             {
-                PrintStringToColor.Color($"\n+ {reservation.ReservationCode} for {reservation.FullName}  has been added\n","green");
+                Helpers.PrintStringToColor($"\n+ {reservation.ReservationCode} for {reservation.FullName}  has been added\n","green");
                 reservations.SaveReservationToJson();
             }
 
@@ -86,7 +86,7 @@ ______                               _   _
         }
         else
         {
-            PrintStringToColor.Color("File not found. No movies loaded.\n", "red");
+            Helpers.PrintStringToColor("File not found. No movies loaded.\n", "red");
             Console.WriteLine("Press ENTER to continue");
             string enter = Console.ReadLine();
         }
@@ -115,13 +115,13 @@ ______                               ______                               _   _
                 MakeReservation Option = new MakeReservation(acces.reservationlist);
                 if (Option.RemoveReservation(FullName,email, movie) == false)
                 {
-                    PrintStringToColor.Color("\nReservation doesn't exist", "red");
+                    Helpers.PrintStringToColor("\nReservation doesn't exist", "red");
 
                 }
                 else
                 {  
                     acces.SaveReservationToJson();
-                    PrintStringToColor.Color($"\n- Reservation for {FullName} has been removed\n", "red");
+                    Helpers.PrintStringToColor($"\n- Reservation for {FullName} has been removed\n", "red");
                 }
             Console.WriteLine("Press ENTER to continue");
             string Enter = Console.ReadLine();  
