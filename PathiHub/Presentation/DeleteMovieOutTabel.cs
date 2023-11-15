@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
 public  class DeleteMovieOutTabel
@@ -8,8 +6,8 @@ public  class DeleteMovieOutTabel
 
     public static void MovieDeletor(string HeaderX)
     {
-        MoviesAcces acces = new MoviesAcces();
-        if (acces.LoadMoviesFromJson())
+        MoviesAccess acces = new MoviesAccess();
+        if (acces.LoadFromJson())
         {
             string jsonFilePath = @"DataSources/Movies.json";
 

@@ -66,10 +66,10 @@ ______                               _   _
 
         Console.WriteLine("Your unique reservation code is: {0}", random);
 
-       ReservationAcces reservations = new ReservationAcces();
-        if (reservations.LoadReservationFromJson() == true)
+       ReservationAccess reservations = new ReservationAccess();
+        if (reservations.LoadFromJson() == true)
         {
-            MakeReservation Option = new MakeReservation(reservations.reservationlist);
+            MakeReservation Option = new MakeReservation(reservations.GetItemList());
             if (Option.AddReservation(reservation) != true)
             {
                 Helpers.PrintStringToColor("\nMovie already exits\n","red");
@@ -77,7 +77,7 @@ ______                               _   _
             else
             {
                 Helpers.PrintStringToColor($"\n+ {reservation.ReservationCode} for {reservation.FullName}  has been added\n","green");
-                reservations.SaveReservationToJson();
+                reservations.SaveToJson();
             }
 
         Console.WriteLine("Press ENTER to continue");
@@ -109,10 +109,10 @@ ______                               ______                               _   _
             string movie = Helpers.Color("DarkYellow");
             Console.Write("\n Your email: ");
             string email = Helpers.Color("DarkYellow");
-            ReservationAcces acces = new ReservationAcces();
-            if (acces.LoadReservationFromJson() == true)
+            ReservationAccess acces = new ReservationAccess();
+            if (acces.LoadFromJson() == true)
             {
-                MakeReservation Option = new MakeReservation(acces.reservationlist);
+                MakeReservation Option = new MakeReservation(acces.GetItemList());
                 if (Option.RemoveReservation(FullName,email, movie) == false)
                 {
                     Helpers.PrintStringToColor("\nReservation doesn't exist", "red");
@@ -120,7 +120,7 @@ ______                               ______                               _   _
                 }
                 else
                 {  
-                    acces.SaveReservationToJson();
+                    acces.SaveToJson();
                     Helpers.PrintStringToColor($"\n- Reservation for {FullName} has been removed\n", "red");
                 }
             Console.WriteLine("Press ENTER to continue");

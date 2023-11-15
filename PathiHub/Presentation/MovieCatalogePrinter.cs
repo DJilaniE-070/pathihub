@@ -8,8 +8,8 @@ public class MovieCatalogePrinter
 
     public static void TabelPrinter()
     {
-        MoviesAcces acces = new MoviesAcces();
-        if (acces.LoadMoviesFromJson() == true)
+        MoviesAccess acces = new MoviesAccess();
+        if (acces.LoadFromJson() == true)
         {
             
             
