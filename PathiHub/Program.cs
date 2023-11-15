@@ -4,5 +4,3 @@ using PathiHub.Presentation;
 Console.Clear();
 Console.WriteLine("Welcome to this amazing program");
 Menu.Start();
-
-// UserRegistration.RegisterUser();
