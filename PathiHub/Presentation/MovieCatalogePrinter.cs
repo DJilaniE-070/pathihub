@@ -8,11 +8,11 @@ public class MovieCatalogePrinter
 
     public static void TabelPrinter()
     {
-        MoviesAcces acces = new MoviesAcces();
-        if (acces.LoadMoviesFromJson() == true)
+        MoviesAccess acces = new MoviesAccess();
+        if (acces.LoadFromJson() == true)
         {
             
-            // Hieronder staat een voorbeeld van hoe je de JSON-data kunt lezen uit een bestand met de naam "movies.json"
+            
             string jsonFilePath = @"DataSources/Movies.json"; // Zorg ervoor dat je het juiste pad naar je JSON-bestand opgeeft
 
             // Lees de JSON-data uit het bestand
@@ -51,6 +51,8 @@ public class MovieCatalogePrinter
             } while (key.Key != ConsoleKey.Enter);
 
             // Nu heb je toegang tot de geselecteerde film in de "movies" lijst
+            
+            
             Console.Clear();
             Console.WriteLine($"you have selected the mocie: '{movies[selectedMovieIndex].MovieTitle}'.");
             Console.ReadLine(); // Voeg deze regel toe om het programma niet onmiddellijk te sluiten
@@ -70,21 +72,19 @@ ___  ___           _        _____       _        _
                                                           __/ |     
                                                          |___/     
 ");
-
-        Console.WriteLine("--------------------------------------------------------------------------------");
-        Console.WriteLine("This our movie Catalog");
-        Console.WriteLine("--------------------------------------------------------------------------------");
-        Console.WriteLine("");
-                Console.WriteLine("");
-                Console.WriteLine("");
-                Console.WriteLine("");
         
+        Helpers.CharLine('-' ,80);
+        Console.WriteLine("This our movie Catalog");
+        Helpers.CharLine('-' ,80);
+        Console.WriteLine("\n\n\n\n");
+
         Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", "Movie Title", "Release Year",
             "Director", "Genre", "Rating");
         
         Console.WriteLine(new string('-', 110));
 
         // Weergave van films met markering voor de geselecteerde film
+        //Maak een functie max length voor de maximale lengte die word gebruikt bij de tabel
         for (int i = 0; i < movies.Count; i++)
         {
             if (i == selectedMovieIndex)

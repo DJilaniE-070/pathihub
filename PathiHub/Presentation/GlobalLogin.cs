@@ -1,6 +1,6 @@
 using System.Drawing;
 
-static class UserLogin
+static class GlobalLogin
 {
     static private AccountsLogic accountsLogic = new AccountsLogic();
 
@@ -8,7 +8,7 @@ static class UserLogin
     public static void Start()
     {
         Console.Clear();
-        PrintStringToColor.Color(@" 
+        Helpers.PrintStringToColor(@" 
  _____ _       _           _   _                 _        ______                
 |  __ \ |     | |         | | | |               (_)       | ___ \               
 | |  \/ | ___ | |__   __ _| | | |     ___   __ _ _ _ __   | |_/ /_ _  __ _  ___ 
@@ -19,16 +19,17 @@ static class UserLogin
                                            |___/                     |___/      
 ","DarkYellow");
         
-        Console.WriteLine("--------------------------------------------------------------------------------\n");
+        Helpers.CharLine('-' ,80);
+        Console.WriteLine("");
         Console.WriteLine("Welcome to the Global login page.");
         Console.WriteLine("Within this page you can login in to your account.\n");
-        Console.WriteLine("--------------------------------------------------------------------------------");
+        Helpers.CharLine('-' ,80);
         Thread.Sleep(300);
         // color for mail
         Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.WriteLine("Please enter your email address:");
         Console.ResetColor(); 
-        string email = WriteInputColor.Color("darkyellow");
+        string email = Helpers.Color("darkyellow");
         //color for password
         Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.WriteLine("Please enter your password:");  
@@ -60,7 +61,7 @@ static class UserLogin
                     Console.WriteLine("Financial Manager Menu");
                     break;
                 case "Coworker":
-                    Console.WriteLine("--------------------------------------------------------------------------------");
+                    Helpers.CharLine('-' ,80);
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("You're username and password are correct.");
                     Console.ResetColor();
@@ -98,7 +99,7 @@ static class UserLogin
             Console.WriteLine("You will be redirected ");
             Thread.Sleep(1500);
             Console.Clear();
-            UserLogin.Start();
+            GlobalLogin.Start();
             
         }
     }
