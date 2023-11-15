@@ -26,7 +26,7 @@ ___  ___                                   ___  ___
                                                      
 ","yellow");
 
-            Helpers.StringLine(80);
+            Helpers.CharLine('-' ,80);
             Console.WriteLine("Please select an option (using the arrow keys and press Enter):");
 
             for (int i = 0; i < menuOptions.Length; i++)
@@ -40,7 +40,7 @@ ___  ___                                   ___  ___
                 Console.WriteLine(menuOptions[i]);
                 Console.ResetColor();
             }
-            Helpers.StringLine(80);
+            Helpers.CharLine('-' ,80);
 
             ConsoleKeyInfo keyInfo = Console.ReadKey();
 

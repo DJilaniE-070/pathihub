@@ -63,9 +63,9 @@ public  class DeleteMovieOutTabel
     {
         Console.WriteLine(HeaderX);
 
-        Helpers.StringLine(80);
+        Helpers.CharLine('-' ,80);
         Console.WriteLine("This our movie Catalog");
-        Helpers.StringLine(80);
+        Helpers.CharLine('-' ,80);
         Console.WriteLine("\n\n\n\n");
 
         Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", "Movie Title", "Release Year",
