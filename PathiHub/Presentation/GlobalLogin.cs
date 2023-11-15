@@ -1,6 +1,6 @@
 using System.Drawing;
 
-static class UserLogin
+static class GlobalLogin
 {
     static private AccountsLogic accountsLogic = new AccountsLogic();
 
@@ -99,7 +99,7 @@ static class UserLogin
             Console.WriteLine("You will be redirected ");
             Thread.Sleep(1500);
             Console.Clear();
-            UserLogin.Start();
+            GlobalLogin.Start();
             
         }
     }

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-public  class DeleteMovieOutTabel
+public class DeleteMovieOutTabel
 {
     private static int selectedMovieIndex = 0;
 
@@ -44,14 +44,44 @@ public  class DeleteMovieOutTabel
             
             Movie selectedMovie = movies[selectedMovieIndex];
             // Console.WriteLine($"Are you sure you want to delete movie:'{selectedMovie.MovieTitle}'.");
+            Helpers.PrintStringToColor($"Are you sure you want to delete the movie'{selectedMovie.MovieTitle}'.\nPlease type 'yes' or 'no'.", "blue");
+            Console.Write("\u2192 ");
+            string answer = Console.ReadLine().ToLower();
+            
+            if (answer == "yes")
+            {
+                movies.Remove(selectedMovie);
+                Helpers.PrintStringToColor($"You have deleted the movie: '{selectedMovie.MovieTitle}'.", "red");
+                Thread.Sleep(2000);
+                
+                // Serialize the updated list back to JSON
+                 string updatedJsonContent = JsonConvert.SerializeObject(movies, Formatting.Indented);
+                 System.IO.File.WriteAllText(jsonFilePath, updatedJsonContent);
+            }
 
-            movies.Remove(selectedMovie);
-            Helpers.PrintStringToColor($"You have deleted the movie: '{selectedMovie.MovieTitle}'.", "red");
-            Thread.Sleep(2000);
+            if (answer == "no")
+            {
+                Console.WriteLine($"You have chosen not to delete the movie:{selectedMovie.MovieTitle}.");
+                Helpers.PrintStringToColor("Do you want to choose an other movie to remove?", "blue");
+                Console.Write("\u2192 ");
+                string answer2 = Console.ReadLine().ToLower();
+                if(answer2 == "yes")
+                {
+                    Console.WriteLine("You will be redirected");
+                    Thread.Sleep(800);
+                    MovieOptionPresentation.RemoveMoviePresentation();
+                }
 
-            // Serialize the updated list back to JSON
-            string updatedJsonContent = JsonConvert.SerializeObject(movies, Formatting.Indented);
-            System.IO.File.WriteAllText(jsonFilePath, updatedJsonContent);
+                if (answer2 == "no")
+                {
+                    Console.WriteLine("you will be redirected");
+                    Thread.Sleep(800);
+                    ManagerMenu.Start();
+                }
+            }
+            
+            
+            
 
             Console.Clear();
             
