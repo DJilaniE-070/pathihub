@@ -25,7 +25,7 @@ public static class UserMenu
                                                      
 ");
 
-            Helpers.StringLine(80);
+            Helpers.CharLine('-' ,80);
             Console.WriteLine("Please select an option (using the arrow keys and press Enter):");
 
             for (int i = 0; i < menuOptions.Length; i++)
@@ -39,7 +39,7 @@ public static class UserMenu
                 Console.WriteLine(menuOptions[i]);
                 Console.ResetColor();
             }
-            Helpers.StringLine(80);
+            Helpers.CharLine('-' ,80);;
 
             ConsoleKeyInfo keyInfo = Console.ReadKey();
 

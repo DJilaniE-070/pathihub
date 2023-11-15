@@ -13,9 +13,9 @@ public static class MovieOptionPresentation
                                                       ","Yellow");
             Movie movie = new Movie();
             Console.WriteLine("\n\n");
-            Helpers.StringLine(80);
+            Helpers.CharLine('-' ,80);
             Console.Write("Enter movie title: ");
-            movie.MovieTitle = WriteInputColor.Color("DarkYellow");
+            movie.MovieTitle = Helpers.Color("DarkYellow");
 
             bool inputIsValid = false;
             while (!inputIsValid)
@@ -23,7 +23,7 @@ public static class MovieOptionPresentation
                 try
                 {
                     Console.Write("Enter release year: ");
-                    int? releaseYearInput = Convert.ToInt32(WriteInputColor.Color("DarkYellow"));
+                    int? releaseYearInput = Convert.ToInt32(Helpers.Color("DarkYellow"));
                     movie.ReleaseYear = releaseYearInput;
                     inputIsValid = true; 
                 }
@@ -40,46 +40,46 @@ public static class MovieOptionPresentation
 
 
             Console.Write("Enter genres (comma-separated, or press Enter for none): ");
-            string? genresInput = WriteInputColor.Color("DarkYellow");
+            string? genresInput = Helpers.Color("DarkYellow");
             movie.Genre = string.IsNullOrEmpty(genresInput)
                 ? null
                 : new List<string>(genresInput.Split(','));
 
             Console.Write("Enter director: ");
-            string Director = WriteInputColor.Color("DarkYellow");
+            string Director = Helpers.Color("DarkYellow");
             movie.Director = Director;
 
             Console.Write("Enter writers (comma-separated, or press Enter for none): ");
-            string? writersInput = WriteInputColor.Color("DarkYellow");
+            string? writersInput = Helpers.Color("DarkYellow");
             movie.Writers = string.IsNullOrEmpty(writersInput)
                 ?null
                 : new List<string>(writersInput.Split(','));
 
             Console.Write("Enter plot: ");
-            string? plot = WriteInputColor.Color("DarkYellow");
+            string? plot = Helpers.Color("DarkYellow");
             movie.Plot = plot;
 
             Console.Write("Enter rating: ");
-            string ratingInputString = WriteInputColor.Color("DarkYellow");
+            string ratingInputString = Helpers.Color("DarkYellow");
             double? ratingInput = string.IsNullOrEmpty(ratingInputString) 
                 ? null 
                 : Convert.ToDouble(ratingInputString);
             movie.Rating = ratingInput;
 
             Console.Write("Enter runtime in minutes: ");
-            int? runtimeInput = Convert.ToInt32( WriteInputColor.Color("DarkYellow"));
+            int? runtimeInput = Convert.ToInt32( Helpers.Color("DarkYellow"));
             movie.RuntimeMinutes = runtimeInput;
 
             Console.Write("Enter language: ");
-            string? Language = WriteInputColor.Color("DarkYellow");
+            string? Language = Helpers.Color("DarkYellow");
             movie.Language = Language;
 
             Console.Write("Enter country: ");
-            string Country = WriteInputColor.Color("DarkYellow");
+            string Country = Helpers.Color("DarkYellow");
             movie.Country = Country;
 
             Console.Write("Enter Awards (comma-separated, or press Enter for none): ");
-            string? AwardsInput = WriteInputColor.Color("DarkYellow");
+            string? AwardsInput = Helpers.Color("DarkYellow");
             movie.Awards = string.IsNullOrEmpty(AwardsInput)
                 ?null
                 : new List<string>(AwardsInput.Split(','));

@@ -1,13 +1,21 @@
 //In deze class gaan we de alle helpers toevoegen
 public class Helpers
 {
-    public static void  StringLine(int NumberOfPrints)
+    
+    //deze functie schrijft een char uit meerdere keren 
+    public static void  CharLine(char CharItem,int NumberOfPrints)
     {
         // Voor het standaard menu is de int 80
-        Console.WriteLine(new string('-', NumberOfPrints));
+        Console.WriteLine(new string(CharItem, NumberOfPrints));
     }
     
-    
+    //deze functie print een string uit merdere keren
+     public static void  StringLine(string StringItem,int NumberOfPrints)
+     {
+         // Voor het standaard menu is de int 80
+         Console.WriteLine();
+     }
+
     
     // Mini versie van het printen voor een cursor
     public static int Minicuror(string[] menuOptions, string info)
@@ -61,5 +69,29 @@ public class Helpers
         } while (true);
     }
     
+    // This Method return a string with a Readline() as input
+    public static string Color(string color)
+    {
+        ConsoleColor consoleColor;
+
+        try
+        {
+            consoleColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), color, true);
+        }
+        catch (ArgumentException)
+        {
+            consoleColor = ConsoleColor.White; // Default to White for invalid input
+            Console.WriteLine("Invalid color name. Defaulting to White color.");
+        }
+
+        Console.ForegroundColor = consoleColor; // Set text color to the parsed color
+        string sentence = Console.ReadLine();
+        Console.ResetColor(); // Reset text color to default
+        return sentence;
+    }
     
+    public static void stringprinter(int stringstimeX)
+    {
+        Console.WriteLine(new string('-', stringstimeX));
+    }
 }
