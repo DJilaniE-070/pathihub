@@ -81,20 +81,14 @@ public static class PasswordCheck
     }
     public static string GetIssueDescription(string issue)
     {
-        switch (issue)
+        return issue switch
         {
-            case "Password":
-                return "Password must contain at least one lowercase letter.";
-            case "upper":
-                return "Password must contain at least one uppercase letter.";
-            case "length":
-                return "Password must be between 8 and 20 characters long.";
-            case "number":
-                return "Password must contain at least one numeric digit.";
-            case "symbol":
-                return "Password must contain at least one special symbol (!@#$%^&*()_+[]{};:<>|./?,-).";
-            default:
-                return "Don't know error";
-        }
+            "Password" => "Password must contain at least one lowercase letter.",
+            "upper" => "Password must contain at least one uppercase letter.",
+            "length" => "Password must be between 8 and 20 characters long.",
+            "number" => "Password must contain at least one numeric digit.",
+            "symbol" => "Password must contain at least one special symbol (!@#$%^&*()_+[]{};:<>|./?,-).",
+            _ => "Don't know error",
+        };
     }
 }
