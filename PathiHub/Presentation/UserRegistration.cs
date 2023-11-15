@@ -25,13 +25,11 @@ public class UserRegistration
         Console.WriteLine("Enter your email address: \n");
         string? userEmail = Console.ReadLine();
 
-        /* implement to check if email adres is valid
-        if (userEmail == null && !userEmail.Contains('@'))
+        if (!userEmail.Contains('@'))
         {
-            Console.WriteLine($"{userEmail} is not valid, please enter a valid email");
-            RegisterUser();
+            Console.WriteLine("The email is invalid. Please enter a valid email adress");
+            return;
         }
-        */
 
         Console.WriteLine("Password should be between 8 and 20 letters");
         Console.WriteLine("Password should contain at least one special character");
