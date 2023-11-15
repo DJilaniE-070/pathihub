@@ -2,37 +2,28 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-public class MovieCatalogePrinter
+public  class DeleteMovieOutTabel
 {
     private static int selectedMovieIndex = 0;
 
-    public static void TabelPrinter()
+    public static void MovieDeletor(string HeaderX)
     {
         MoviesAcces acces = new MoviesAcces();
-        if (acces.LoadMoviesFromJson() == true)
+        if (acces.LoadMoviesFromJson())
         {
-            
-            
-            string jsonFilePath = @"DataSources/Movies.json"; // Zorg ervoor dat je het juiste pad naar je JSON-bestand opgeeft
+            string jsonFilePath = @"DataSources/Movies.json";
 
-            // Lees de JSON-data uit het bestand
             string jsonContent = System.IO.File.ReadAllText(jsonFilePath);
 
-            // Deserialiseer de JSON naar een lijst van Movie-objecten
             List<Movie> movies = JsonConvert.DeserializeObject<List<Movie>>(jsonContent);
 
-            // Teken de tabel met films
-            DrawMovieTable(movies);
+            DrawMovieTable(movies, HeaderX);
 
-            // Wacht op invoer van de gebruiker
             ConsoleKeyInfo key;
             do
             {
-                
-                
                 key = Console.ReadKey();
 
-                // Pas de index van de geselecteerde film aan op basis van de pijltjestoetsen
                 switch (key.Key)
                 {
                     case ConsoleKey.UpArrow:
@@ -44,35 +35,34 @@ public class MovieCatalogePrinter
                         break;
                 }
 
-                // Teken de tabel met films (opnieuw) om de geselecteerde film te markeren
                 Console.Clear();
-                DrawMovieTable(movies);
+                DrawMovieTable(movies, HeaderX);
 
             } while (key.Key != ConsoleKey.Enter);
 
-            // Nu heb je toegang tot de geselecteerde film in de "movies" lijst
+            // Delete the selected movie from the list
             
-            
+            Movie selectedMovie = movies[selectedMovieIndex];
+            // Console.WriteLine($"Are you sure you want to delete movie:'{selectedMovie.MovieTitle}'.");
+
+            movies.Remove(selectedMovie);
+            PrintStringToColor.Color($"You have deleted the movie: '{selectedMovie.MovieTitle}'.", "red");
+            Thread.Sleep(2000);
+
+            // Serialize the updated list back to JSON
+            string updatedJsonContent = JsonConvert.SerializeObject(movies, Formatting.Indented);
+            System.IO.File.WriteAllText(jsonFilePath, updatedJsonContent);
+
             Console.Clear();
-            Console.WriteLine($"you have selected the mocie: '{movies[selectedMovieIndex].MovieTitle}'.");
-            Console.ReadLine(); // Voeg deze regel toe om het programma niet onmiddellijk te sluiten
+            
         }
     }
 
-    private static void DrawMovieTable(List<Movie> movies)
-    {
-        Console.WriteLine(@"
 
-___  ___           _        _____       _        _                  
-|  \/  |          (_)      /  __ \     | |      | |                 
-| .  . | _____   ___  ___  | /  \/ __ _| |_ __ _| | ___   __ _  
-| |\/| |/ _ \ \ / / |/ _ \ | |    / _` | __/ _` | |/ _ \ / _` |
-| |  | | (_) \ V /| |  __/ | \__/\ (_| | || (_| | | (_) | (_| |
-\_|  |_/\___/ \_/ |_|\___|  \____/\__,_|\__\__,_|_|\___/ \__, |
-                                                          __/ |     
-                                                         |___/     
-");
-        
+    private static void DrawMovieTable(List<Movie> movies, string HeaderX)
+    {
+        Console.WriteLine(HeaderX);
+
         Helpers.StringLine(80);
         Console.WriteLine("This our movie Catalog");
         Helpers.StringLine(80);
@@ -82,8 +72,7 @@ ___  ___           _        _____       _        _
             "Director", "Genre", "Rating");
         
         Console.WriteLine(new string('-', 110));
-
-        // Weergave van films met markering voor de geselecteerde film
+        
         //Maak een functie max length voor de maximale lengte die word gebruikt bij de tabel
         for (int i = 0; i < movies.Count; i++)
         {
