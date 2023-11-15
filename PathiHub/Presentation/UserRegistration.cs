@@ -12,7 +12,12 @@ public class UserRegistration
         string password = Console.ReadLine() ?? String.Empty;
         Console.WriteLine("3. Enter your full name");
         string fullName = Console.ReadLine() ?? String.Empty;
-        // TODO: check input validation
+        // TODO: check if input validation is enough or if more should be added
+        if (!CheckInput(email) && !CheckInput(password) && !CheckInput(fullName))
+        {
+            Console.WriteLine("Please try again");
+            Start();
+        }
         AccountModel acc = new AccountModel(0, email, password, fullName, "Customer");
         AccountsLogic.UpdateList(acc);
     }
