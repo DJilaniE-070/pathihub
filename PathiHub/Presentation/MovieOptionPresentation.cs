@@ -88,7 +88,7 @@ public static class MovieOptionPresentation
             MoviesAcces acces = new MoviesAcces();
             if (acces.LoadMoviesFromJson() == true)
             {
-                MovieOptions Option = new MovieOptions(acces.movies);
+                MovieOptions Option = new MovieOptions(acces.Movies);
                 if (Option.AddMovie(movie) != true)
                 {
                     PrintStringToColor.Color("\nMovie already exits\n","red");
@@ -131,7 +131,7 @@ public static class MovieOptionPresentation
             MoviesAcces acces = new MoviesAcces();
             if (acces.LoadMoviesFromJson() == true)
             {
-                MovieOptions Option = new MovieOptions(acces.movies);
+                MovieOptions Option = new MovieOptions(acces.Movies);
                 if (Option.RemoveMovie(MovieTitle,MovieDirector) == false)
                 {
                     PrintStringToColor.Color("\nMovie doesn't exist", "red");
