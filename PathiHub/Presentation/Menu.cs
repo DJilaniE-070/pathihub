@@ -15,7 +15,7 @@ public static class Menu
 
             // promotie menu start
             
-            PrintStringToColor.Color(
+            Helpers.PrintStringToColor(
             @"
 ______     _   _     _   _   _       _     
 | ___ \   | | | |   (_) | | | |     | |    
@@ -109,7 +109,7 @@ ______     _   _     _   _   _       _
 
             case "Login as an user":
                 Thread.Sleep(1500);
-                UserLogin.Start();
+                GlobalLogin.Start();
                 break;
 
             case "Creating an account":

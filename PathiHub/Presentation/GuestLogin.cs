@@ -81,7 +81,8 @@ public static class GuestLogin
             {
                 case "Our movie selection":
                     Thread.Sleep(1500);
-                    Console.WriteLine("must be created!");
+                    Console.Clear();
+                    MovieCatalogePrinter.TabelPrinter();
                     break;
 
                 case "Our Menu selection":

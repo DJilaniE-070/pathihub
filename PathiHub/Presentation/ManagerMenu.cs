@@ -8,13 +8,13 @@ public static class ManagerMenu
         int selectedIndex = 0;
         bool exit = false;
 
-        string[] menuOptions = { "[1] Film options", "[2] Reserve movie", "[3] Reservation options", "[4] Financial options", "[5] Snacks options", "[6] Exit" };
+        string[] menuOptions = { "[1] Film options", "[2] Reserve a movie", "[3] Reservation options", "[4] Financial options", "[5] Snacks options", "[6] Exit" };
 
         do
         {
             Console.Clear();
 
-            Console.WriteLine(@"
+            Helpers.PrintStringToColor(@"
 ___  ___                                   ___  ___                 
 |  \/  |                                   |  \/  |                 
 | .  . | __ _ _ __   __ _  __ _  ___ _ __  | .  . | ___ _ __  _   _ 
@@ -24,9 +24,9 @@ ___  ___                                   ___  ___
                            __/ |                                    
                           |___/                                     
                                                      
-");
+","yellow");
 
-            Console.WriteLine("--------------------------------------------------------------------------------");
+            Helpers.CharLine('-' ,80);
             Console.WriteLine("Please select an option (using the arrow keys and press Enter):");
 
             for (int i = 0; i < menuOptions.Length; i++)
@@ -40,7 +40,7 @@ ___  ___                                   ___  ___
                 Console.WriteLine(menuOptions[i]);
                 Console.ResetColor();
             }
-            Console.WriteLine("--------------------------------------------------------------------------------");
+            Helpers.CharLine('-' ,80);
 
             ConsoleKeyInfo keyInfo = Console.ReadKey();
 
@@ -79,12 +79,13 @@ ___  ___                                   ___  ___
                 FilmOptions();
                 break;
             
-            case "[2] Reserve movie":
+            case "[2] Reserve a movie":
                 Thread.Sleep(1500);
                 ReserveAMovie();
                 break;
             
             case "[3] Reservation options":
+                Thread.Sleep(1500);
                 ReservationsOptions();
                 break;
             
@@ -118,14 +119,14 @@ static void FilmOptions()
     do
     {
         Console.Clear();
-        Console.WriteLine(@"
+        Helpers.PrintStringToColor(@"
 ___  ___           _        _____       _   _                 
 |  \/  |          (_)      |  _  |     | | (_)                
 | .  . | _____   ___  ___  | | | |_ __ | |_ _  ___  _ __  ___ 
 | |\/| |/ _ \ \ / / |/ _ \ | | | | '_ \| __| |/ _ \| '_ \/ __|
 | |  | | (_) \ V /| |  __/ \ \_/ / |_) | |_| | (_) | | | \__ \
 \_|  |_/\___/ \_/ |_|\___|  \___/| .__/ \__|_|\___/|_| |_|___/
-                                 | |                          ");
+                                 | |                          ","Yellow");
 
         Console.WriteLine("--------------------------------------------------------------------------------");
         for (int i = 0; i < menuOptions.Length; i++)
@@ -196,7 +197,7 @@ static void ReservationsOptions()
     do
     {
         Console.Clear();
-        Console.WriteLine(@"
+        Helpers.PrintStringToColor(@"
 ______                               _   _               _____       _   _                 
 | ___ \                             | | (_)             |  _  |     | | (_)                
 | |_/ /___  ___  ___ _ ____   ____ _| |_ _  ___  _ __   | | | |_ __ | |_ _  ___  _ __  ___ 
@@ -204,7 +205,7 @@ ______                               _   _               _____       _   _
 | |\ \  __/\__ \  __/ |   \ V / (_| | |_| | (_) | | | | \ \_/ / |_) | |_| | (_) | | | \__ \
 \_| \_\___||___/\___|_|    \_/ \__,_|\__|_|\___/|_| |_|  \___/| .__/ \__|_|\___/|_| |_|___/
                                                               | |                          
-                                                              |_|                          ");
+                                                              |_|                          ","yellow");
 
         Console.WriteLine("--------------------------------------------------------------------------------");
         for (int i = 0; i < menuOptions.Length; i++)
@@ -266,7 +267,8 @@ ______                               _   _               _____       _   _
 
         static void ReserveAMovie()
         {
-            Console.WriteLine("Test completed. Still function still needs to be implemented");
+            Thread.Sleep(1500);
+            ReservationPresentation.AddReservation();
         }
 
         static void FinancialOptions()

@@ -39,22 +39,22 @@
     "Awards": null
   },
   {
-    "MovieTitle": "pinda",
-    "ReleaseYear": 2012,
+    "MovieTitle": "Scarface",
+    "ReleaseYear": 1983,
     "Genre": [
-      "horror"
+      "Thriller"
     ],
-    "Director": "Test",
+    "Director": "MB",
     "Writers": [
-      "Test1"
+      "BM"
     ],
-    "Plot": "a pinut warrior travels the world",
-    "Rating": 8.0,
+    "Plot": "Crime",
+    "Rating": 9.0,
     "RuntimeMinutes": 120,
-    "Language": "english",
+    "Language": "English",
     "Country": "USA",
     "Awards": [
-      "note"
+      "Many"
     ]
   }
 ]
