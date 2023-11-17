@@ -111,7 +111,7 @@ ______     _   _     _   _   _       _
 
             case "Login as an user":
                 Thread.Sleep(1500);
-                UserLogin.Start();
+                GlobalLogin.Start();
                 break;
 
             case "Creating an account":
