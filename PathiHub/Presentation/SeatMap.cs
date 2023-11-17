@@ -2,8 +2,10 @@
 
 public class SeatMap
 {    
+    // 3 auditoriums hardcoded en cursor logic
     public static void Auditoriums(int audit)
     {
+        // auditorium 1 met 150 stoelen (14 rijen en 12 stoelen per rij)
         List<List<string>> auditorium1 = new List<List<string>>
         {
             // seat             1    2    3    4    5    6    7    8    9    10   11   12
@@ -22,7 +24,7 @@ public class SeatMap
             new List<string> { "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
             new List<string> { "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" }
         };
-
+        // auditorium 2 met 300 stoelen (19 rijen en 18 stoelen per rij)
         List<List<string>> auditorium2 = new List<List<string>>
         {
             // seat             1    2    3    4    5    6    7    8    9    10   11   12   13   14   15   16   17   18
@@ -46,7 +48,7 @@ public class SeatMap
             new List<string> { "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
             new List<string> { "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" }
         };
-
+        // auditorium 3 met 500 stoelen (20 rijen en 30 stoelen per rij)
         List<List<string>> auditorium3 = new List<List<string>>
         {
             // seat             1    2    3    4    5    6    7    8    9    10   11   12   13   14   15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30
@@ -71,13 +73,13 @@ public class SeatMap
             new List<string> { "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X" },
             new List<string> { "X", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X", "X" }
         };
-
+        // positie rij en stoel
         int CursorRow = 0;
         int CursorSeat = 0;
-
+        // laat de auditorium eerst zien samen met scherm
         DisplayAuditorium(auditorium3, CursorRow, CursorSeat);
         DisplayScreen(audit);
-
+        // cursor om te navigeren
         ConsoleKeyInfo key;
         do
         {
@@ -104,25 +106,30 @@ public class SeatMap
                     Console.CursorVisible = true;
                     return;
             }
+            // clear het scherm en laat auditorium weer zien samen met scherm
             Console.Clear();
             DisplayAuditorium(auditorium3, CursorRow, CursorSeat);
             DisplayScreen(audit);
         } while (key.Key != ConsoleKey.Escape);
     }
 
+    // auditorium printen
     public static void DisplayAuditorium(List<List<string>> auditorium, int cursorrow, int cursorseat)
     {   
+        // output van symbool in console te kunnen laten tonen
         Console.OutputEncoding = Encoding.UTF8;
-    
+        // auditorium printen loops
         for (int row = 0; row < auditorium.Count; row++)
         {
             for (int seat = 0; seat < auditorium[row].Count; seat++)
             {
+                // als positie row en seat gelijk zijn aan cursorrow en cursorseat dan print symbool met kleur
                 if (row == cursorrow && seat == cursorseat)
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.Write("∎ ");
                 }
+                // print wat in auditorium staat met kleur en symbool
                 else
                 {
                     switch (auditorium[row][seat])
@@ -145,12 +152,15 @@ public class SeatMap
                             break;
                     }
                 }
+                // reset kleur van symbool
                 Console.ResetColor();
                 }
+            // nieuwe rij printen
             Console.WriteLine();
         }
     }
 
+    // scherm printen
     public static void DisplayScreen(int number)
     {
         if (number == 1)
