@@ -99,7 +99,7 @@ public class SeatMap
         int CursorRow = 0;
         int CursorSeat = 0;
 
-        // message
+        // message test dit kanworden aangepast
         string message = "";
 
         // laat de auditorium eerst zien samen met titel, scherm, legenda en cursor
@@ -134,6 +134,10 @@ public class SeatMap
                     break;
 
                 case ConsoleKey.Enter:
+                // Reserveer een stoel 
+
+                    // dit stukje blijkt nog niet te werken, loop hier een beetje vast
+
                     // veranderd lijst naar reserve met R
                     if (Auditorium[CursorRow][CursorSeat] == "A" || Auditorium[CursorRow][CursorSeat] == "B" || Auditorium[CursorRow][CursorSeat] == "C")
                     {
