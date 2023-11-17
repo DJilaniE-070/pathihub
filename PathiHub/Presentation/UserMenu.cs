@@ -101,11 +101,11 @@ public static class UserMenu
         {
             SeatMap.Auditoriums(1);
         }
-        if (userinput == "1")
+        if (userinput == "2")
         {
             SeatMap.Auditoriums(2);
         }
-        if (userinput == "1")
+        if (userinput == "3")
         {
             SeatMap.Auditoriums(3);
         }
