@@ -2,8 +2,11 @@
 
 public class SeatMap
 {    
+    // lijst om reservaties op te slaan
+    public static List<List<string>> ReservedSeats = new List<List<string>>();
+
     // 3 auditoriums hardcoded en cursor logic
-    public static void Auditoriums(int audit)
+    public static void Auditoriums(int auditoriumnumber)
     {
         // auditorium 1 met 150 stoelen (14 rijen en 12 stoelen per rij)
         List<List<string>> auditorium1 = new List<List<string>>
@@ -73,14 +76,42 @@ public class SeatMap
             new List<string> { "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X" },
             new List<string> { "X", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X", "X" }
         };
-        // positie rij en stoel
+
+        // welke auditorium kiezen, maak 2 kopies van de list
+        List<List<string>> Auditorium = new();
+        if (auditoriumnumber == 1)
+        {
+            Auditorium = auditorium1;
+            ReservedSeats = Auditorium;
+        }
+        if (auditoriumnumber == 2)
+        {
+            Auditorium = auditorium2;
+            ReservedSeats = Auditorium;
+        }
+        if (auditoriumnumber == 3)
+        {
+            Auditorium = auditorium3;
+            ReservedSeats = Auditorium;
+        }
+
+        // cursor positie rij en stoel
         int CursorRow = 0;
         int CursorSeat = 0;
-        // laat de auditorium eerst zien samen met scherm
-        DisplayAuditorium(auditorium3, CursorRow, CursorSeat);
-        DisplayScreen(audit);
+
+        // message
+        string message = "";
+
+        // laat de auditorium eerst zien samen met titel, scherm, legenda en cursor
+        DisplayTitle(auditoriumnumber);
+        DisplayAuditorium(Auditorium, CursorRow, CursorSeat);
+        DisplayScreen(auditoriumnumber);
+        DisplayCursorPosition(CursorRow, CursorSeat);
+        DisplayLegenda();
+
         // cursor om te navigeren
         ConsoleKeyInfo key;
+        Console.CursorVisible = true;
         do
         {
             key = Console.ReadKey(true);
@@ -91,7 +122,7 @@ public class SeatMap
                     break;
 
                 case ConsoleKey.DownArrow:
-                    CursorRow = Math.Min(auditorium3.Count - 1, CursorRow + 1);
+                    CursorRow = Math.Min(Auditorium.Count - 1, CursorRow + 1);
                     break;
 
                 case ConsoleKey.LeftArrow:
@@ -99,17 +130,36 @@ public class SeatMap
                     break;
 
                 case ConsoleKey.RightArrow:
-                    CursorSeat = Math.Min(auditorium3[CursorRow].Count - 1, CursorSeat + 1);
+                    CursorSeat = Math.Min(Auditorium[CursorRow].Count - 1, CursorSeat + 1);
                     break;
 
                 case ConsoleKey.Enter:
-                    Console.CursorVisible = true;
-                    return;
+                    // veranderd lijst naar reserve met R
+                    if (Auditorium[CursorRow][CursorSeat] == "A" || Auditorium[CursorRow][CursorSeat] == "B" || Auditorium[CursorRow][CursorSeat] == "C")
+                    {
+                        Auditorium[CursorRow][CursorSeat] = "R";
+                        message = $"Stoel in rij {CursorRow + 1} met nummer {CursorSeat + 1} is gereserveerd, Dank u wel voor het reserveren";
+                    }
+                    else if (ReservedSeats[CursorRow][CursorSeat] == "X")
+                    {
+                        message = $"Rij " + (CursorRow + 1) + ", nummer " + (CursorSeat + 1) + " is geen stoel";
+                    }
+                    else if (ReservedSeats[CursorRow][CursorSeat] == "X")
+                    {
+                        message = $"Stoel in rij " + (CursorRow + 1) + " met nummer " + (CursorSeat + 1) + " is al gereserveerd";
+                    }
+                    //ReservedSeats reservedSeats = new(CursorRow, CursorSeat);
+                    break;
             }
-            // clear het scherm en laat auditorium weer zien samen met scherm
+            // clear het scherm en laat auditorium weer zien samen met titel, scherm, legenda en cursor
             Console.Clear();
-            DisplayAuditorium(auditorium3, CursorRow, CursorSeat);
-            DisplayScreen(audit);
+            DisplayTitle(auditoriumnumber);
+            DisplayAuditorium(Auditorium, CursorRow, CursorSeat);
+            DisplayScreen(auditoriumnumber);
+            DisplayCursorPosition(CursorRow, CursorSeat);
+            Console.WriteLine(message);
+            DisplayLegenda();
+        // escape button om uit loop te gaan
         } while (key.Key != ConsoleKey.Escape);
     }
 
@@ -150,6 +200,10 @@ public class SeatMap
                             Console.ForegroundColor = ConsoleColor.Blue;
                             Console.Write("❏ ");
                             break;
+                        case "R":
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            Console.Write("▣ ");
+                            break;
                     }
                 }
                 // reset kleur van symbool
@@ -160,21 +214,67 @@ public class SeatMap
         }
     }
 
-    // scherm printen
-    public static void DisplayScreen(int number)
+    // titel printen
+    public static void DisplayTitle(int auditoriumnumber)
     {
-        if (number == 1)
+        if (auditoriumnumber == 1)
         {
+            Console.WriteLine("      Auditorium 1:");
+        }
+        if (auditoriumnumber == 2)
+        {
+            Console.WriteLine("\t    Auditorium 2:");
+        }
+        if (auditoriumnumber == 3)
+        {
+            Console.WriteLine("\t\t\tAuditorium 3:");
+        }
+    }
+
+    // scherm printen
+    public static void DisplayScreen(int auditoriumnumber)
+    {
+        if (auditoriumnumber == 1)
+        {
+            Console.WriteLine();
+            Console.WriteLine("         Screen");
             Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
-        if (number == 2)
+        if (auditoriumnumber == 2)
         {
+            Console.WriteLine();
+            Console.WriteLine("               Screen");
             Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
-        if (number == 3)
+        if (auditoriumnumber == 3)
         {
+            Console.WriteLine();
+            Console.WriteLine("                          Screen");
             Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
+    }
+
+    // legenda printen
+    public static void DisplayLegenda()
+    {
+        Console.WriteLine();
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("❏ = 20 euro");
+        Console.ResetColor();
+
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("❏ = 15 euro");
+        Console.ResetColor();
+
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("❏ = 10 euro");
+        Console.ResetColor();
+    }
+
+    // cursor positie printen
+    public static void DisplayCursorPosition(int cursorrow, int cursorseat)
+    {
+        Console.WriteLine($"Geselecteerde rij: {cursorrow + 1} , geselecteerde stoel: {cursorseat + 1}");
     }
 }
 
@@ -261,7 +361,6 @@ public class SeatMap
                     break;
 
                 case ConsoleKey.Enter:
-                    // Handle seat selection or other actions
                     Console.WriteLine($"Seat selected at ({cursorLeft}, {cursorTop})");
                     ReservedSeats seat = new ReservedSeats(cursorTop, cursorLeft);
                     break;
