@@ -95,7 +95,20 @@ public static class UserMenu
     static void ReserveSeat()
     {
         Console.WriteLine("Reserve a seat");
-        Console.WriteLine("Here comes the implementations in a later sprint");
+        Console.WriteLine("Choose the auditorium you want to reserve a seat in");
+        string userinput = Console.ReadLine();
+        if (userinput == "1")
+        {
+            SeatMap.Auditoriums(1);
+        }
+        if (userinput == "1")
+        {
+            SeatMap.Auditoriums(2);
+        }
+        if (userinput == "1")
+        {
+            SeatMap.Auditoriums(3);
+        }
     }
 
        
