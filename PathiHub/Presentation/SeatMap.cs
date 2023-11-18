@@ -3,10 +3,62 @@
 public class SeatMap
 {    
     // lijst om reservaties op te slaan
-    public static List<List<string>> ReservedSeats = new List<List<string>>();
+    //public static List<List<string>> ReservedSeats = new List<List<string>>();
+    //public static List<ReservedSeats> ReserveSeat = new List<ReservedSeats>();
+    
+    private double Astoelen;
+    private double Bstoelen;
+    private double Cstoelen;
+    public string Message = "";
+    public int AuditoriumNumber;
+    public int CursorRow = 0;
+    public int CursorSeat = 0;
+    public List<List<string>> Auditorium = new();
+    public double ASTOEL 
+    { 
+        get
+        {
+            return Astoelen;
+        } 
+        set
+        {
+            Astoelen = value > 8 ? value : 8;
+        }
+    }
+    public double BSTOEL 
+    { 
+        get
+        {
+            return Bstoelen;
+        } 
+        set
+        {
+            Bstoelen = value > 5 ? value : 5;
+        }
+    }
+    public double CSTOEL 
+    { 
+        get
+        {
+            return Cstoelen;
+        } 
+        set
+        {
+            Cstoelen = value > 3 ? value : 3;
+        }
+    }
+
+    public SeatMap(int auditoriumnumber)
+    {
+        ASTOEL = 25;
+        BSTOEL = 20;
+        CSTOEL = 15;
+        AuditoriumNumber = auditoriumnumber;
+        Auditoriums();
+    }
 
     // 3 auditoriums hardcoded en cursor logic
-    public static void Auditoriums(int auditoriumnumber)
+    public void Auditoriums()
     {
         // auditorium 1 met 150 stoelen (14 rijen en 12 stoelen per rij)
         List<List<string>> auditorium1 = new List<List<string>>
@@ -77,37 +129,39 @@ public class SeatMap
             new List<string> { "X", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X", "X" }
         };
 
-        // welke auditorium kiezen, maak 2 kopies van de list
-        List<List<string>> Auditorium = new();
-        if (auditoriumnumber == 1)
+        // auditorium kiezen, maakt een kopie van de auditorium 1 tot en met 3 en zet in Auditorium
+        //List<List<string>> Auditorium = new();
+        if (AuditoriumNumber == 1)
         {
             Auditorium = auditorium1;
-            ReservedSeats = Auditorium;
         }
-        if (auditoriumnumber == 2)
+        if (AuditoriumNumber == 2)
         {
             Auditorium = auditorium2;
-            ReservedSeats = Auditorium;
         }
-        if (auditoriumnumber == 3)
+        if (AuditoriumNumber == 3)
         {
             Auditorium = auditorium3;
-            ReservedSeats = Auditorium;
         }
 
-        // cursor positie rij en stoel
-        int CursorRow = 0;
-        int CursorSeat = 0;
+        // cursor positie voor rij en stoel
+        //int CursorRow = 0;
+        //int CursorSeat = 0;
 
-        // message test dit kanworden aangepast
-        string message = "";
+        // message wordt altijd geprint, maar is default op leeg en print normaal niks totdat je op enter klikt
+        //string message = "";
 
         // laat de auditorium eerst zien samen met titel, scherm, legenda en cursor
-        DisplayTitle(auditoriumnumber);
+        /* ben van plan om een DisplayAll() te maken om alles aan te roepen, zodat minder code hoeft te worden uitgevoerd
+        DisplayTitle(AuditoriumNumber);
         DisplayAuditorium(Auditorium, CursorRow, CursorSeat);
-        DisplayScreen(auditoriumnumber);
+        DisplayScreen(AuditoriumNumber);
         DisplayCursorPosition(CursorRow, CursorSeat);
         DisplayLegenda();
+        */
+
+        // laat de hele auditorium zien
+        DisplayAll();
 
         // cursor om te navigeren
         ConsoleKeyInfo key;
@@ -118,67 +172,77 @@ public class SeatMap
             switch (key.Key)
             {
                 case ConsoleKey.UpArrow:
-                    CursorRow = Math.Max(0, CursorRow - 1);
+                    CursorRow = CursorRow > 0 ? CursorRow - 1 : CursorRow;
                     break;
-
                 case ConsoleKey.DownArrow:
-                    CursorRow = Math.Min(Auditorium.Count - 1, CursorRow + 1);
+                    CursorRow = CursorRow < Auditorium.Count - 1 ? CursorRow + 1 : CursorRow;
                     break;
-
                 case ConsoleKey.LeftArrow:
-                    CursorSeat = Math.Max(0, CursorSeat - 1);
+                    CursorSeat = CursorSeat > 0 ? CursorSeat - 1 : CursorSeat;
                     break;
-
                 case ConsoleKey.RightArrow:
-                    CursorSeat = Math.Min(Auditorium[CursorRow].Count - 1, CursorSeat + 1);
+                    CursorSeat = CursorSeat < Auditorium[CursorRow].Count - 1 ? CursorSeat + 1 : CursorSeat;
                     break;
-
+                // Reserveer een stoel in de auditorium
                 case ConsoleKey.Enter:
-                // Reserveer een stoel 
-
-                    // dit stukje blijkt nog niet te werken, loop hier een beetje vast
-
-                    // veranderd lijst naar reserve met R
+                    // als A, B of C is reserveer stoel en verander positie in list naar R
                     if (Auditorium[CursorRow][CursorSeat] == "A" || Auditorium[CursorRow][CursorSeat] == "B" || Auditorium[CursorRow][CursorSeat] == "C")
                     {
                         Auditorium[CursorRow][CursorSeat] = "R";
-                        message = $"Stoel in rij {CursorRow + 1} met nummer {CursorSeat + 1} is gereserveerd, Dank u wel voor het reserveren";
+                        Message = $"Stoel in rij {CursorRow + 1} met nummer {CursorSeat + 1} is gereserveerd, Dank u wel voor het reserveren";
                     }
-                    else if (ReservedSeats[CursorRow][CursorSeat] == "X")
+                    // als X is print dat het geen stoel is en doet niks 
+                    else if (Auditorium[CursorRow][CursorSeat] == "X")
                     {
-                        message = $"Rij " + (CursorRow + 1) + ", nummer " + (CursorSeat + 1) + " is geen stoel";
+                        Message = $"Dit is geen stoel";
                     }
-                    else if (ReservedSeats[CursorRow][CursorSeat] == "X")
+                    // als R is dan is het al gereserveerd en print dit, doet niks verder
+                    else if (Auditorium[CursorRow][CursorSeat] == "R")
                     {
-                        message = $"Stoel in rij " + (CursorRow + 1) + " met nummer " + (CursorSeat + 1) + " is al gereserveerd";
+                        Message = $"Dit is een gereserveerde stoel, kies een andere stoel";
                     }
-                    //ReservedSeats reservedSeats = new(CursorRow, CursorSeat);
                     break;
             }
-            // clear het scherm en laat auditorium weer zien samen met titel, scherm, legenda en cursor
+            // laat de hele auditorium zien
+            DisplayAll();
+            
+            /* clear het scherm en laat auditorium weer zien samen met titel, scherm, legenda en cursor
             Console.Clear();
-            DisplayTitle(auditoriumnumber);
+            DisplayTitle(AuditoriumNumber);
             DisplayAuditorium(Auditorium, CursorRow, CursorSeat);
-            DisplayScreen(auditoriumnumber);
+            DisplayScreen(AuditoriumNumber);
             DisplayCursorPosition(CursorRow, CursorSeat);
             Console.WriteLine(message);
-            DisplayLegenda();
+            DisplayLegenda();*/
+
         // escape button om uit loop te gaan
         } while (key.Key != ConsoleKey.Escape);
     }
 
+    // print alles
+    public void DisplayAll()
+    {
+        Console.Clear();
+        DisplayTitle();
+        DisplayAuditorium();
+        DisplayScreen();
+        DisplayCursorPosition();
+        DisplayMessage();
+        DisplayLegenda();
+    }
+
     // auditorium printen
-    public static void DisplayAuditorium(List<List<string>> auditorium, int cursorrow, int cursorseat)
+    public void DisplayAuditorium()
     {   
         // output van symbool in console te kunnen laten tonen
         Console.OutputEncoding = Encoding.UTF8;
         // auditorium printen loops
-        for (int row = 0; row < auditorium.Count; row++)
+        for (int row = 0; row < Auditorium.Count; row++)
         {
-            for (int seat = 0; seat < auditorium[row].Count; seat++)
+            for (int seat = 0; seat < Auditorium[row].Count; seat++)
             {
                 // als positie row en seat gelijk zijn aan cursorrow en cursorseat dan print symbool met kleur
-                if (row == cursorrow && seat == cursorseat)
+                if (row == CursorRow && seat == CursorSeat)
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.Write("∎ ");
@@ -186,7 +250,7 @@ public class SeatMap
                 // print wat in auditorium staat met kleur en symbool
                 else
                 {
-                    switch (auditorium[row][seat])
+                    switch (Auditorium[row][seat])
                     {
                         case "X":
                             Console.ForegroundColor = ConsoleColor.White;
@@ -194,15 +258,15 @@ public class SeatMap
                             break;
                         case "A":
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("❏ ");
+                            Console.Write("❑ ");
                             break;
                         case "B":
                             Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.Write("❏ ");
+                            Console.Write("❑ ");
                             break;
                         case "C":
                             Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.Write("❏ ");
+                            Console.Write("❑ ");
                             break;
                         case "R":
                             Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -219,38 +283,38 @@ public class SeatMap
     }
 
     // titel printen
-    public static void DisplayTitle(int auditoriumnumber)
+    public void DisplayTitle()
     {
-        if (auditoriumnumber == 1)
+        if (AuditoriumNumber == 1)
         {
             Console.WriteLine("      Auditorium 1:");
         }
-        if (auditoriumnumber == 2)
+        if (AuditoriumNumber == 2)
         {
             Console.WriteLine("\t    Auditorium 2:");
         }
-        if (auditoriumnumber == 3)
+        if (AuditoriumNumber == 3)
         {
             Console.WriteLine("\t\t\tAuditorium 3:");
         }
     }
 
     // scherm printen
-    public static void DisplayScreen(int auditoriumnumber)
+    public void DisplayScreen()
     {
-        if (auditoriumnumber == 1)
+        if (AuditoriumNumber == 1)
         {
             Console.WriteLine();
             Console.WriteLine("         Screen");
             Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
-        if (auditoriumnumber == 2)
+        if (AuditoriumNumber == 2)
         {
             Console.WriteLine();
             Console.WriteLine("               Screen");
             Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
-        if (auditoriumnumber == 3)
+        if (AuditoriumNumber == 3)
         {
             Console.WriteLine();
             Console.WriteLine("                          Screen");
@@ -259,26 +323,39 @@ public class SeatMap
     }
 
     // legenda printen
-    public static void DisplayLegenda()
+    public void DisplayLegenda()
     {
         Console.WriteLine();
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("❏ = 20 euro");
+        Console.WriteLine($"❏ = {Astoelen} euro");
         Console.ResetColor();
 
         Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine("❏ = 15 euro");
+        Console.WriteLine($"❏ = {Bstoelen} euro");
         Console.ResetColor();
 
         Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine("❏ = 10 euro");
+        Console.WriteLine($"❏ = {Cstoelen} euro");
         Console.ResetColor();
     }
 
     // cursor positie printen
-    public static void DisplayCursorPosition(int cursorrow, int cursorseat)
+    public void DisplayCursorPosition()
     {
-        Console.WriteLine($"Geselecteerde rij: {cursorrow + 1} , geselecteerde stoel: {cursorseat + 1}");
+        Console.Write("Rij: ");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write($"[{CursorRow + 1}]");
+        Console.ResetColor();
+        Console.Write(" Stoel: ");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.Write($"[{CursorSeat + 1}]\n\n");
+        Console.ResetColor();
+    }
+
+    // message printen
+    public void DisplayMessage()
+    {
+        Console.WriteLine(Message);
     }
 }
 
