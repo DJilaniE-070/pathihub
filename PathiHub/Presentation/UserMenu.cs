@@ -95,20 +95,38 @@ public static class UserMenu
     static void ReserveSeat()
     {
         Console.WriteLine("Reserve a seat");
-        Console.WriteLine("Choose the auditorium you want to reserve a seat in");
-        string userinput = Console.ReadLine();
-        if (userinput == "1")
+        int CursorIndex = 1;
+        ConsoleKeyInfo key;
+        do
         {
-            SeatMap seatmap = new SeatMap(1);
-        }
-        if (userinput == "2")
-        {
-            SeatMap seatmap = new SeatMap(2);
-        }
-        if (userinput == "3")
-        {
-            SeatMap seatmap = new SeatMap(3);
-        }
+            Console.Clear();
+            Console.WriteLine("Choose the auditorium you want to reserve a seat in:");
+            Console.WriteLine("1. Auditorium 1");
+            Console.WriteLine("2. Auditorium 2");
+            Console.WriteLine("3. Auditorium 3");
+            if (CursorIndex == 1)
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write("∎ ");
+            }
+            key = Console.ReadKey();
+            switch (key.Key)
+            {
+                case ConsoleKey.UpArrow:
+                    if (CursorIndex > 1)
+                    {
+                        CursorIndex--;
+                    }
+                    break;
+                case ConsoleKey.DownArrow:
+                    if (CursorIndex < 3)
+                    {
+                        CursorIndex++;
+                    }
+                    break;
+            }
+        } while (key.Key != ConsoleKey.Enter);
+        SeatMap seatmap = new SeatMap(CursorIndex);
     }
 
        

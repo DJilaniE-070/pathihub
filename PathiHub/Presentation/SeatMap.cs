@@ -216,11 +216,11 @@ public class SeatMap
     public void DisplayAll()
     {
         Console.Clear();
-        DisplayTitle(AuditoriumNumber);
+        DisplayTitle();
         DisplayAuditorium(Auditorium, CursorRow, CursorSeat);
-        DisplayScreen(AuditoriumNumber);
-        DisplayCursorPosition(CursorRow, CursorSeat);
-        Console.WriteLine(Message);
+        DisplayScreen();
+        DisplayCursorPosition();
+        DisplayMessage();
         DisplayLegenda();
     }
 
@@ -276,38 +276,38 @@ public class SeatMap
     }
 
     // titel printen
-    public void DisplayTitle(int auditoriumnumber)
+    public void DisplayTitle()
     {
-        if (auditoriumnumber == 1)
+        if (AuditoriumNumber == 1)
         {
             Console.WriteLine("      Auditorium 1:");
         }
-        if (auditoriumnumber == 2)
+        if (AuditoriumNumber == 2)
         {
             Console.WriteLine("\t    Auditorium 2:");
         }
-        if (auditoriumnumber == 3)
+        if (AuditoriumNumber == 3)
         {
             Console.WriteLine("\t\t\tAuditorium 3:");
         }
     }
 
     // scherm printen
-    public void DisplayScreen(int auditoriumnumber)
+    public void DisplayScreen()
     {
-        if (auditoriumnumber == 1)
+        if (AuditoriumNumber == 1)
         {
             Console.WriteLine();
             Console.WriteLine("         Screen");
             Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
-        if (auditoriumnumber == 2)
+        if (AuditoriumNumber == 2)
         {
             Console.WriteLine();
             Console.WriteLine("               Screen");
             Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
-        if (auditoriumnumber == 3)
+        if (AuditoriumNumber == 3)
         {
             Console.WriteLine();
             Console.WriteLine("                          Screen");
@@ -333,9 +333,14 @@ public class SeatMap
     }
 
     // cursor positie printen
-    public void DisplayCursorPosition(int cursorrow, int cursorseat)
+    public void DisplayCursorPosition()
     {
-        Console.WriteLine($"Rij: {cursorrow + 1}, stoel: {cursorseat + 1}");
+        Console.WriteLine($"Rij: {CursorRow + 1}, stoel: {CursorSeat + 1}");
+    }
+
+    public void DisplayMessage()
+    {
+        Console.WriteLine(Message);
     }
 }
 
