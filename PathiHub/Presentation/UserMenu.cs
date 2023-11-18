@@ -8,7 +8,7 @@ public static class UserMenu
         int selectedIndex = 0;
         bool exit = false;
 
-        string[] menuOptions = { "[1]. Make a reservation", "[2]. Check reservation", "[3]. Cancel reservation","[4] Exit" };
+        string[] menuOptions = { "[1]. Make a reservation", "[2]. Check reservation", "[3]. Cancel reservation", "[4] Exit" };
 
         do
         {
@@ -58,8 +58,8 @@ public static class UserMenu
                     }
                     break;
                 case ConsoleKey.Enter:
+                    ReserveSeat();
                     Console.Clear();
-                    PerformAction(menuOptions[selectedIndex]);
                     exit = true;
                     break;
             }
@@ -75,8 +75,7 @@ public static class UserMenu
         switch (option)
         {
             case "[1]. Make a reservation":
-                Thread.Sleep(1500);
-                ReserveSeat();
+                //ReserveSeat();
                 break;
             
             case "[2]. Check reservation":
@@ -88,47 +87,62 @@ public static class UserMenu
             case "[3]. Cancel reservation":
                 CancelReservation();
                 break;
-            
         }
     }
 
     static void ReserveSeat()
     {
-        Console.WriteLine("Reserve a seat");
-        int CursorIndex = 1;
+        string[] Options = { "[1] Auditorium 1", "[2] Auditorium 2", "[3] Auditorium 3" };
         ConsoleKeyInfo key;
-        do
+        int CursorIndex = 0; 
+        Console.CursorVisible = false; 
+        for (int i = 0; i < Options.Length; i++)
         {
-            Console.Clear();
-            Console.WriteLine("Choose the auditorium you want to reserve a seat in:");
-            Console.WriteLine("1. Auditorium 1");
-            Console.WriteLine("2. Auditorium 2");
-            Console.WriteLine("3. Auditorium 3");
-            if (CursorIndex == 1)
+            if (i == CursorIndex)
             {
                 Console.BackgroundColor = ConsoleColor.White;
-                Console.Write("∎ ");
             }
-            key = Console.ReadKey();
+            Console.WriteLine(Options[i]);
+            Console.ResetColor();
+        }
+        do
+        {
+            key = Console.ReadKey(true);
+            Console.Clear();
+            Console.WriteLine("Please select an option (use the arrow keys and press Enter):");
+
+            for (int i = 0; i < Options.Length; i++)
+            {
+                if (i == CursorIndex)
+                {
+                    Console.BackgroundColor = ConsoleColor.White;
+                }
+                Console.WriteLine(Options[i]);
+                Console.ResetColor();
+            }
+
             switch (key.Key)
             {
                 case ConsoleKey.UpArrow:
-                    if (CursorIndex > 1)
+                    if (CursorIndex > 0)
                     {
                         CursorIndex--;
                     }
                     break;
                 case ConsoleKey.DownArrow:
-                    if (CursorIndex < 3)
+                    if (CursorIndex < Options.Length - 1)
                     {
                         CursorIndex++;
                     }
                     break;
+                case ConsoleKey.Enter:
+                    Console.Clear();
+                    SeatMap seatmap = new SeatMap(CursorIndex + 1);
+                    break;
             }
-        } while (key.Key != ConsoleKey.Enter);
-        SeatMap seatmap = new SeatMap(CursorIndex);
+        } while (key.Key != ConsoleKey.Escape);
+        Console.CursorVisible = true;
     }
-
        
     static void CheckReservation()
     {
