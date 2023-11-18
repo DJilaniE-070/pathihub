@@ -258,15 +258,15 @@ public class SeatMap
                             break;
                         case "A":
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("❏ ");
+                            Console.Write("❑ ");
                             break;
                         case "B":
                             Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.Write("❏ ");
+                            Console.Write("❑ ");
                             break;
                         case "C":
                             Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.Write("❏ ");
+                            Console.Write("❑ ");
                             break;
                         case "R":
                             Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -342,7 +342,14 @@ public class SeatMap
     // cursor positie printen
     public void DisplayCursorPosition()
     {
-        Console.WriteLine($"Rij: {CursorRow + 1}, stoel: {CursorSeat + 1}");
+        Console.Write("Rij: ");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write($"[{CursorRow + 1}]");
+        Console.ResetColor();
+        Console.Write(" Stoel: ");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.Write($"[{CursorSeat + 1}]\n\n");
+        Console.ResetColor();
     }
 
     // message printen
