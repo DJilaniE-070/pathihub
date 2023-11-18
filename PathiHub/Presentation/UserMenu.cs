@@ -99,15 +99,15 @@ public static class UserMenu
         string userinput = Console.ReadLine();
         if (userinput == "1")
         {
-            SeatMap.Auditoriums(1);
+            SeatMap seatmap = new SeatMap(1);
         }
         if (userinput == "2")
         {
-            SeatMap.Auditoriums(2);
+            SeatMap seatmap = new SeatMap(2);
         }
         if (userinput == "3")
         {
-            SeatMap.Auditoriums(3);
+            SeatMap seatmap = new SeatMap(3);
         }
     }
 
