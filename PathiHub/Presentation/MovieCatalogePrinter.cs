@@ -6,21 +6,12 @@ public class MovieCatalogePrinter
 {
     private static int selectedMovieIndex = 0;
 
-    public static void TabelPrinter()
+
+    public static Movie TabelPrinter(MoviesAccess access)
     {
-        MoviesAccess acces = new MoviesAccess();
-        if (acces.LoadFromJson() == true)
-        {
-            
-            
-            string jsonFilePath = @"DataSources/Movies.json"; // Zorg ervoor dat je het juiste pad naar je JSON-bestand opgeeft
-
-            // Lees de JSON-data uit het bestand
-            string jsonContent = System.IO.File.ReadAllText(jsonFilePath);
-
-            // Deserialiseer de JSON naar een lijst van Movie-objecten
-            List<Movie> movies = JsonConvert.DeserializeObject<List<Movie>>(jsonContent);
-
+        if (access.LoadFromJson() == true)
+        {   
+            List<Movie> movies = access.GetItemList();
             // Teken de tabel met films
             DrawMovieTable(movies);
 
@@ -52,14 +43,15 @@ public class MovieCatalogePrinter
 
             // Nu heb je toegang tot de geselecteerde film in de "movies" lijst
             
-            
-            Console.Clear();
-            Console.WriteLine($"you have selected the mocie: '{movies[selectedMovieIndex].MovieTitle}'.");
-            Console.ReadLine(); // Voeg deze regel toe om het programma niet onmiddellijk te sluiten
+            Console.WriteLine($"\nyou have selected the movie: '{movies[selectedMovieIndex].MovieTitle}'.");
+            Thread.Sleep(500);
+            return movies[selectedMovieIndex];
         }
+
+        return null;
     }
 
-    private static void DrawMovieTable(List<Movie> movies)
+    public static void DrawMovieTable(List<Movie> movies)
     {
         Console.WriteLine(@"
 

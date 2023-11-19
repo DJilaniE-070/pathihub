@@ -37,24 +37,5 @@
     "Language": "English",
     "Country": "United States",
     "Awards": null
-  },
-  {
-    "MovieTitle": "Scarface",
-    "ReleaseYear": 1983,
-    "Genre": [
-      "Thriller"
-    ],
-    "Director": "MB",
-    "Writers": [
-      "BM"
-    ],
-    "Plot": "Crime",
-    "Rating": 9.0,
-    "RuntimeMinutes": 120,
-    "Language": "English",
-    "Country": "USA",
-    "Awards": [
-      "Many"
-    ]
   }
 ]

@@ -37,4 +37,13 @@ public class JsonFileAccess<T>
     {
         return itemList;
     }
+    public void RemoveThing(T Thing)
+    {
+        itemList.Remove(Thing);
+    }
+
+    public void AddThing (T Thing)
+    {
+        itemList.Add(Thing);
+    }
 }

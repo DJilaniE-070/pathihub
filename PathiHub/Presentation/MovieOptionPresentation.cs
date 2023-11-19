@@ -135,7 +135,7 @@ public static class MovieOptionPresentation
                                                                      ";
 
             Console.WriteLine("Select the movie you want to remove:");
-            DeleteMovieOutTabel.MovieDeletor(HeaderX);
+            DeleteMovieOutTabel2.MovieDeletor(HeaderX);
             
             // Helpers.StringLine(80);
             //
@@ -169,4 +169,9 @@ public static class MovieOptionPresentation
             // string enter = Console.ReadLine();
             // }
         }
+    public static void EditMoviePresentation()
+    {
+    MoviesAccess access = new ();
+    EditObjOutTabel.Editor("Movie", access);
+    }
 }
