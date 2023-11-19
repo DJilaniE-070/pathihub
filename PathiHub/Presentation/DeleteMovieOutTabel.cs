@@ -6,16 +6,11 @@ public class DeleteMovieOutTabel
 
     public static void MovieDeletor(string HeaderX)
     {
-        MoviesAccess acces = new MoviesAccess();
-        if (acces.LoadFromJson())
-        {
-            string jsonFilePath = @"DataSources/Movies.json";
-
-            string jsonContent = System.IO.File.ReadAllText(jsonFilePath);
-
-            List<Movie> movies = JsonConvert.DeserializeObject<List<Movie>>(jsonContent);
-
-            DrawMovieTable(movies, HeaderX);
+            MoviesAccess MovieData = new();
+            if (MovieData.LoadFromJson() == true)
+            {
+                List<Movie> movies = MovieData.GetItemList();
+                DrawMovieTable(movies, HeaderX);
 
             ConsoleKeyInfo key;
             do
@@ -31,6 +26,11 @@ public class DeleteMovieOutTabel
                     case ConsoleKey.DownArrow:
                         selectedMovieIndex = (selectedMovieIndex + 1) % movies.Count;
                         break;
+                    case ConsoleKey.Backspace:
+                        Console.WriteLine("\nGoing back to Manager Menu");
+                        Thread.Sleep(800);
+                        ManagerMenu.Start();
+                        return;
                 }
 
                 Console.Clear();
@@ -51,10 +51,10 @@ public class DeleteMovieOutTabel
                 movies.Remove(selectedMovie);
                 Helpers.PrintStringToColor($"You have deleted the movie: '{selectedMovie.MovieTitle}'.", "red");
                 Thread.Sleep(2000);
-                
+
                 // Serialize the updated list back to JSON
-                 string updatedJsonContent = JsonConvert.SerializeObject(movies, Formatting.Indented);
-                 System.IO.File.WriteAllText(jsonFilePath, updatedJsonContent);
+                MovieData.SaveToJson();
+                
             }
 
             if (answer == "no")
@@ -77,16 +77,10 @@ public class DeleteMovieOutTabel
                     ManagerMenu.Start();
                 }
             }
-            
-            
-            
 
             Console.Clear();
-            
         }
     }
-
-
     private static void DrawMovieTable(List<Movie> movies, string HeaderX)
     {
         Console.WriteLine(HeaderX);

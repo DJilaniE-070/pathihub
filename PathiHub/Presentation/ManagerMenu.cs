@@ -110,7 +110,7 @@ ___  ___                                   ___  ___
     
 static void FilmOptions()
 {
-    string[] menuOptions = { "Add a movie", "Remove a movie", "Return to Manager menu" };
+    string[] menuOptions = { "Add a movie", "Remove a movie", "Edit a movie", "Return to Manager menu" };
     int selectedIndex = 0;
     bool exit = false;
 
@@ -170,6 +170,10 @@ ___  ___           _        _____       _   _
                     MovieOptionPresentation.RemoveMoviePresentation();
                 }
                 else if (option == 3)
+                {
+                    MovieOptionPresentation.EditMoviePresentation();
+                }
+                else if (option == 4)
                 {
                     exit = true;
                     ManagerMenu.Start();
