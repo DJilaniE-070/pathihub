@@ -171,18 +171,7 @@ public static class MovieOptionPresentation
         }
     public static void EditMoviePresentation()
     {
-        string HeaderX = @"
-         ______                                ___  ___           _      
-         | ___ \                               |  \/  |          (_)     
- ______  | |_/ /___ _ __ ___   _____   _____   | .  . | _____   ___  ___ 
-|______| |    // _ \ '_ ` _ \ / _ \ \ / / _ \  | |\/| |/ _ \ \ / / |/ _ \
-         | |\ \  __/ | | | | | (_) \ V /  __/  | |  | | (_) \ V /| |  __/
-         \_| \_\___|_| |_| |_|\___/ \_/ \___|  \_|  |_/\___/ \_/ |_|\___|
-                                                                         
-                                                                     ";
-
-            Console.WriteLine("Select the movie you want to remove:");
-
-    EditMovieOutTabel.MovieEditor(HeaderX);
+    MoviesAccess access = new ();
+    EditObjOutTabel.Editor("Movie", access);
     }
 }

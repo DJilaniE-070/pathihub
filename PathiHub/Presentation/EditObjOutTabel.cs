@@ -1,42 +1,48 @@
 using System.Reflection;
 
-public class EditMovieOutTabel
+public class EditObjOutTabel
 {   
-    public static void MovieEditor(string HeaderX)
+
+    public static void Editor<T>(string ObjName ,T DataAcces)
      {
-        MoviesAccess movieData = new();
-        Movie SelectedMovie = MovieCatalogePrinter.TabelPrinter(movieData);
-        Helpers.PrintStringToColor($"\nAre you sure you want to Edit the movie '{SelectedMovie.MovieTitle} from {SelectedMovie.ReleaseYear}'.\nPlease type 'yes' or 'no'.", "blue");
-        Console.Write("\u2192 ");
-        string answer = Console.ReadLine().ToLower();
-
-        if (answer == "yes")
+        MoviesAccess selectedMovieAccess;
+        if (DataAcces is MoviesAccess movieAccess)
         {
-            DisplayObj(SelectedMovie);
-        }
-
-        if (answer == "no")
-        {
-            Console.WriteLine($"You have chosen not to Edit the movie: {SelectedMovie.MovieTitle} from {SelectedMovie.MovieTitle} from {SelectedMovie.ReleaseYear}.");
-            Helpers.PrintStringToColor("Do you want to change another movie?", "blue");
+            selectedMovieAccess = movieAccess;
+            
+            var SelectedObj = MovieCatalogePrinter.TabelPrinter(selectedMovieAccess);
+            Helpers.PrintStringToColor($"\nAre you sure you want to Edit the {ObjName} '{SelectedObj.MovieTitle} from {SelectedObj.ReleaseYear}'.\nPlease type 'yes' or 'no'.", "blue");
             Console.Write("\u2192 ");
-            string answer2 = Console.ReadLine().ToLower();
-            if (answer2 == "yes")
+            string answer = Console.ReadLine().ToLower();
+
+            if (answer == "yes")
             {
-                Console.WriteLine("You will be redirected");
-                Thread.Sleep(800);
-                MovieOptionPresentation.EditMoviePresentation();
+                DisplayObj(SelectedObj);
             }
 
-            if (answer2 == "no")
+            if (answer == "no")
             {
-                Console.WriteLine("You will be redirected");
-                Thread.Sleep(800);
-                ManagerMenu.Start();
+                Console.WriteLine($"You have chosen not to Edit the {ObjName}: {SelectedObj.MovieTitle} from {SelectedObj.MovieTitle} from {SelectedObj.ReleaseYear}.");
+                Helpers.PrintStringToColor($"Do you want to change another {ObjName}?", "blue");
+                Console.Write("\u2192 ");
+                string answer2 = Console.ReadLine().ToLower();
+                if (answer2 == "yes")
+                {
+                    Console.WriteLine("You will be redirected");
+                    Thread.Sleep(800);
+                    MovieOptionPresentation.EditMoviePresentation();
+                }
+
+                if (answer2 == "no")
+                {
+                    Console.WriteLine("You will be redirected");
+                    Thread.Sleep(800);
+                    ManagerMenu.Start();
+                }
             }
+
+            Console.Clear();
         }
-
-        Console.Clear();
     }
     static List<string> GetPropertyNames<T>(T obj)
     {
