@@ -2,6 +2,60 @@
 
 public class UserRegistration
 {
+    public static void RegisterUser()
+    {
+        Console.WriteLine("Please follow the steps below to create a user account:");
+
+        string? userEmail = null;
+        while (string.IsNullOrEmpty(userEmail) || !userEmail.Contains('@'))
+        {
+            Console.WriteLine("Enter your email address: ");
+            userEmail = Console.ReadLine();
+
+            if (!userEmail.Contains('@'))
+            {
+                Console.WriteLine("The email is invalid. Please enter a valid email address");
+            }
+        }
+
+        Console.WriteLine("Password should be between 8 and 20 characters");
+        Console.WriteLine("Password should contain at least one special character");
+        Console.WriteLine("Password should contain at least one number");
+        Console.WriteLine("Password should contain at least one uppercase");
+
+        string? userPassword = null;
+        List<string> passwordIssues = new List<string>();
+        while (string.IsNullOrEmpty(userPassword) || passwordIssues.Count > 0 || !PasswordCheck.IsValid(userPassword))
+        {
+            Console.WriteLine("Enter your password: ");
+            userPassword = Console.ReadLine();
+
+            passwordIssues = PasswordCheck.PasswordIssue(userPassword);
+
+            if (passwordIssues.Count > 0 || !PasswordCheck.IsValid(userPassword))
+            {
+                Console.WriteLine("Invalid password. Please check the following requirements:");
+
+                foreach (var issue in passwordIssues)
+                {
+                    Console.WriteLine($"- {PasswordCheck.GetIssueDescription(issue)}");
+                }
+            }
+        }
+
+        Console.WriteLine("Enter your full name: ");
+        string userFullname = Console.ReadLine();
+        string test = string.IsNullOrEmpty(userFullname)
+                        ? "N/A"
+                        :userFullname;
+
+
+        AccountModel userAccount = new AccountModel(0, userEmail, userPassword, test, "User");
+        AccountsLogic.UpdateList(userAccount);
+
+        Console.WriteLine("User account created successfully.");
+    }
+
     /*
     public void Start()
     {
@@ -22,53 +76,4 @@ public class UserRegistration
         AccountsLogic.UpdateList(acc);
     }
     */
-
-    public static void RegisterUser()
-    {
-        Console.WriteLine("Please follow the steps below to create a user account:");
-
-        Console.WriteLine("Enter your email address: \n");
-        string? userEmail = Console.ReadLine();
-
-        if (!userEmail.Contains('@'))
-        {
-            Console.WriteLine("The email is invalid. Please enter a valid email adress");
-            return;
-        }
-
-        Console.WriteLine("Password should be between 8 and 20 letters");
-        Console.WriteLine("Password should contain at least one special character");
-        Console.WriteLine("Password should contain at least one number");
-        Console.WriteLine("Password should contain at least one uppercase\n");
-
-        Console.WriteLine("Enter your password: ");
-        string? userPassword = Console.ReadLine();
-
-        List<string> passwordIssues = PasswordCheck.PasswordIssue(userPassword);
-
-        if (passwordIssues.Count > 0)
-        {
-            Console.WriteLine("Invalid password. Please check the following requirements:");
-
-            foreach (var issue in passwordIssues)
-            {
-                Console.WriteLine($"- {PasswordCheck.GetIssueDescription(issue)}");
-            }
-            return;
-        }
-
-        if (!PasswordCheck.IsValid(userPassword))
-        {
-            Console.WriteLine("Invalid password. Please check the password requirements.");
-            return;
-        }
-
-        Console.WriteLine("Enter your full name: ");
-        string? userFullname = Console.ReadLine();
-
-        AccountModel userAccount = new AccountModel(0, userEmail, userPassword, userFullname, "User");
-        AccountsLogic.UpdateList(userAccount);
-
-        Console.WriteLine("User account created successfully.");
-    }
 }

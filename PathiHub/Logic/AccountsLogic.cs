@@ -19,7 +19,6 @@ class AccountsLogic
         _accounts = AccountsAccess.LoadAll();
     }
 
-
     public static void UpdateList(AccountModel acc)
     {
         //Find if there is already an model with the same id
@@ -57,7 +56,3 @@ class AccountsLogic
         return CurrentAccount;
     }
 }
-
-
-
-
