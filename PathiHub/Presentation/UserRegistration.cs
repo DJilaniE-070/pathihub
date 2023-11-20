@@ -44,13 +44,13 @@ public class UserRegistration
         }
 
         Console.WriteLine("Enter your full name: ");
-        string userFullname = Console.ReadLine();
-        string test = string.IsNullOrEmpty(userFullname)
-                        ? "N/A"
-                        :userFullname;
+        string? Name = Console.ReadLine();
+          
 
-
-        AccountModel userAccount = new AccountModel(0, userEmail, userPassword, test, "User");
+        List<AccountModel> ListOfAccounts = AccountsAccess.LoadAll();
+        int index = ListOfAccounts.Count()+1;
+        Console.WriteLine(index);
+        AccountModel userAccount = new AccountModel(index, userEmail, userPassword, Name, "User");
         AccountsLogic.UpdateList(userAccount);
 
         Console.WriteLine("User account created successfully.");
