@@ -23,7 +23,7 @@ public static class MovieOptionPresentation
                 try
                 {
                     Console.Write("Enter release year: ");
-                    int? releaseYearInput = Convert.ToInt32(Helpers.Color("DarkYellow"));
+                    int releaseYearInput = Convert.ToInt32(Helpers.Color("DarkYellow"));
                     movie.ReleaseYear = releaseYearInput;
                     inputIsValid = true; 
                 }
@@ -42,46 +42,57 @@ public static class MovieOptionPresentation
             Console.Write("Enter genres (comma-separated, or press Enter for none): ");
             string? genresInput = Helpers.Color("DarkYellow");
             movie.Genre = string.IsNullOrEmpty(genresInput)
-                ? null
+                ? new List<string> { "X" } 
                 : new List<string>(genresInput.Split(','));
 
             Console.Write("Enter director: ");
-            string Director = Helpers.Color("DarkYellow");
-            movie.Director = Director;
+            string? Director = Helpers.Color("DarkYellow");
+            movie.Director = string.IsNullOrEmpty(Director)
+                ? "X" 
+                : Director;
+            
 
             Console.Write("Enter writers (comma-separated, or press Enter for none): ");
             string? writersInput = Helpers.Color("DarkYellow");
             movie.Writers = string.IsNullOrEmpty(writersInput)
-                ?null
+                ?  new List<string> { "X" }  
                 : new List<string>(writersInput.Split(','));
 
             Console.Write("Enter plot: ");
             string? plot = Helpers.Color("DarkYellow");
-            movie.Plot = plot;
+            movie.Plot = string.IsNullOrEmpty(plot) 
+                ?"X"
+                :movie.Plot = plot;       
+
 
             Console.Write("Enter rating: ");
-            string ratingInputString = Helpers.Color("DarkYellow");
-            double? ratingInput = string.IsNullOrEmpty(ratingInputString) 
-                ? null 
+            string? ratingInputString = Helpers.Color("DarkYellow");
+            movie.Rating = string.IsNullOrEmpty(ratingInputString) 
+                ? 0
                 : Convert.ToDouble(ratingInputString);
-            movie.Rating = ratingInput;
 
             Console.Write("Enter runtime in minutes: ");
-            int? runtimeInput = Convert.ToInt32( Helpers.Color("DarkYellow"));
-            movie.RuntimeMinutes = runtimeInput;
-
+            string runtimeInput = Helpers.Color("DarkYellow");
+            movie.RuntimeMinutes = string.IsNullOrEmpty(runtimeInput)
+                ? 0
+                : Convert.ToInt32(runtimeInput);
+            
             Console.Write("Enter language: ");
             string? Language = Helpers.Color("DarkYellow");
-            movie.Language = Language;
-
+            movie.Language = string.IsNullOrEmpty(Language)
+            ?"X"
+            :Language;
+            
             Console.Write("Enter country: ");
             string Country = Helpers.Color("DarkYellow");
-            movie.Country = Country;
+            movie.Country = string.IsNullOrEmpty(Country)
+            ?"X"
+            :Country;
 
             Console.Write("Enter Awards (comma-separated, or press Enter for none): ");
             string? AwardsInput = Helpers.Color("DarkYellow");
             movie.Awards = string.IsNullOrEmpty(AwardsInput)
-                ?null
+                ? new List<string> { "X" } 
                 : new List<string>(AwardsInput.Split(','));
 
 
@@ -172,6 +183,9 @@ public static class MovieOptionPresentation
     public static void EditMoviePresentation()
     {
     MoviesAccess access = new ();
-    EditObjOutTabel.Editor("Movie", access);
+    List<string> ColomnNames = new(){"MovieTitle", "ReleaseYear",
+    "Director", "Genre", "Rating"};
+    
+    PerformActionToTabel.Editor("Edit","Movie", access, ColomnNames);
     }
 }
