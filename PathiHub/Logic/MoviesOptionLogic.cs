@@ -60,6 +60,4 @@ public class MovieOptions
             return false;
         }
     }
-    
-    public List<Movie> GetList() => movies;
 }
