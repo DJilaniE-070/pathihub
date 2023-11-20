@@ -5,7 +5,7 @@ using System.Text.Json;
 
 
 //This class is not static so later on we can use inheritance and interfaces
-class AccountsLogic
+public class AccountsLogic
 {
     private static List<AccountModel> _accounts;
 
@@ -42,12 +42,12 @@ class AccountsLogic
 
     }
 
-    public AccountModel GetById(int id)
+    public static AccountModel GetById(int id)
     {
         return _accounts.Find(i => i.Id == id);
     }
 
-    public AccountModel CheckLogin(string email, string password)
+    public static AccountModel CheckLogin(string email, string password)
     {
         if (email == null || password == null)
         {
@@ -56,6 +56,13 @@ class AccountsLogic
         CurrentAccount = _accounts.Find(i => i.EmailAddress == email && i.Password == password);
         return CurrentAccount;
     }
+    
+    public List<AccountModel> GetAccounts()
+    {
+        return _accounts;
+    }
+
+    // public static void SetupTestData();
 }
 
 
