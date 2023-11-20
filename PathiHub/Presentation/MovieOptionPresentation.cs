@@ -83,6 +83,10 @@ public static class MovieOptionPresentation
             movie.Awards = string.IsNullOrEmpty(AwardsInput)
                 ?null
                 : new List<string>(AwardsInput.Split(','));
+            
+            Console.Write("Enter the auditorium (1,2,3): ");
+            int? auditorium = Convert.ToInt32( Helpers.Color("DarkYellow"));
+            movie.Auditorium = auditorium;
 
 
             MoviesAccess acces = new MoviesAccess();
