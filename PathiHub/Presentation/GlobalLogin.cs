@@ -38,10 +38,10 @@ static class GlobalLogin
         //string password = WriteInputColor.Color("darkyellow");
 
         // mask password
-        string password = SecurePassword.MaskPassword("");
+        string password = SecurePassword.MaskPassword();
         // end
 
-        AccountModel acc = accountsLogic.CheckLogin(email, password);
+        AccountModel acc = AccountsLogic.CheckLogin(email, password);
         if (acc != null)
         {
             Console.WriteLine("Welcome back " + acc.FullName);
