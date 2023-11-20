@@ -56,6 +56,17 @@ public class UserRegistration
         Console.WriteLine("User account created successfully.");
     }
 
+    private bool CheckInput(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            Console.WriteLine("Input cannot be empty");
+            return false;
+        }
+
+        return true;
+    }
+
     /*
     public void Start()
     {
