@@ -1,13 +1,13 @@
-public class SeatData
+public class ReservedSeats
 {
     public int Row;
-    public int Number;
+    public int Seat;
     public bool IsAvailable;
 
-    public SeatData(int row, int number)
+    public ReservedSeats(int row, int seat)
     {
         Row = row;
-        Number = number;
+        Seat = seat;
         IsAvailable = true;
     }
 }
