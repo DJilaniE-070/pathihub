@@ -17,7 +17,8 @@
     "RuntimeMinutes": 120,
     "Language": "English",
     "Country": "United States",
-    "Awards": null
+    "Awards": null,
+    "Auditoruim": null
   },
   {
     "MovieTitle": "Galactic Quest",
@@ -36,6 +37,47 @@
     "RuntimeMinutes": 115,
     "Language": "English",
     "Country": "United States",
-    "Awards": null
+    "Awards": null,
+    "Auditoruim": null
+  },
+  {
+    "MovieTitle": "test",
+    "ReleaseYear": 123,
+    "Genre": [
+      "test"
+    ],
+    "Director": "test",
+    "Writers": [
+      "tes"
+    ],
+    "Plot": "test",
+    "Rating": 9.0,
+    "RuntimeMinutes": 120,
+    "Language": "english",
+    "Country": "England",
+    "Awards": [
+      "blblabal"
+    ],
+    "Auditoruim": null
+  },
+  {
+    "MovieTitle": "Tester",
+    "ReleaseYear": 1200,
+    "Genre": [
+      "none"
+    ],
+    "Director": "Test Master",
+    "Writers": [
+      "none"
+    ],
+    "Plot": "test test test",
+    "Rating": 10.0,
+    "RuntimeMinutes": 100,
+    "Language": "English",
+    "Country": "USA",
+    "Awards": [
+      "none"
+    ],
+    "auditorium": 1
   }
 ]

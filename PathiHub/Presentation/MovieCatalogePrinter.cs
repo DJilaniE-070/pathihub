@@ -45,7 +45,11 @@ public class MovieCatalogePrinter
             
             Console.WriteLine($"\nyou have selected the movie: '{movies[selectedMovieIndex].MovieTitle}'.");
             Thread.Sleep(500);
+            DiscriptionPrinter.DrawBox(movies[selectedMovieIndex]);
+            Thread.Sleep(100000);
+            
             return movies[selectedMovieIndex];
+            
         }
 
         return null;

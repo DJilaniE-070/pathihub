@@ -11,4 +11,6 @@ public class Movie
     public string? Language { get; set; }
     public string? Country { get; set; }
     public List<string>? Awards { get; set; }
+    
+    public int? Auditorium { get; set; }
 }
