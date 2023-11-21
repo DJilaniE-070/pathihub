@@ -124,13 +124,49 @@ ______                               ______                               _   _
                     Helpers.PrintStringToColor($"\n- Reservation for {FullName} has been removed\n", "red");
                 }
             Console.WriteLine("Press ENTER to continue");
-            string Enter = Console.ReadLine();  
+            Console.ReadLine();  
             }
             else
             {
             Console.WriteLine("File not found. No movies loaded.");
             Console.WriteLine("Press ENTER to continue");
-            string enter = Console.ReadLine();
+            Console.ReadLine();
             }
         }
+
+    public static void EditReservationPresentation()
+    {
+        List<string> ColomnNames = new(){"FullName", "ReservationCode",
+        "Email", "Date", "Price"};
+        string HeaderX = @"
+______                               _   _                 
+| ___ \                             | | (_)                
+| |_/ /___  ___  ___ _ ____   ____ _| |_ _  ___  _ __  ___ 
+|    // _ \/ __|/ _ \ '__\ \ / / _` | __| |/ _ \| '_ \/ __|
+| |\ \  __/\__ \  __/ |   \ V / (_| | |_| | (_) | | | \__ \
+\_| \_\___||___/\___|_|    \_/ \__,_|\__|_|\___/|_| |_|___/
+
+";
+        PerformActionToTabel.Editor(HeaderX,"Reservation", ColomnNames);
+    }
+    public static void ShowReservations()
+    {
+    string HeaderX = @"
+______                               _   _                 
+| ___ \                             | | (_)                
+| |_/ /___  ___  ___ _ ____   ____ _| |_ _  ___  _ __  ___ 
+|    // _ \/ __|/ _ \ '__\ \ / / _` | __| |/ _ \| '_ \/ __|
+| |\ \  __/\__ \  __/ |   \ V / (_| | |_| | (_) | | | \__ \
+\_| \_\___||___/\___|_|    \_/ \__,_|\__|_|\___/|_| |_|___/
+
+";
+    ReservationAccess access = new();
+    List<string> ColomnNames = new(){"FullName", "ReservationCode",
+        "Email", "Date", "Price"};
+    if(access.LoadFromJson()!= false)
+    {
+    List<Reservation> reservations = access.GetItemList();
+    ObjCatalogePrinter.TabelPrinter(HeaderX, reservations, ColomnNames);
+    }
+    }
     }
