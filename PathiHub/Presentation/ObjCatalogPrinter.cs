@@ -7,14 +7,14 @@ public class ObjCatalogePrinter
     private static int selectedObjIndex = 0;
 
 
-    public static object TabelPrinter<T>(List<T> itemList, List<string> ColomnNames)
+    public static object TabelPrinter<T>(string HeaderX, List<T> itemList, List<string> ColomnNames)
     {
          if (itemList != null && itemList.Count > 0)
         {   
             
             // Teken de tabel met films
 
-            DrawTable(itemList, ColomnNames);
+            DrawTable(HeaderX, itemList, ColomnNames);
 
             // Wacht op invoer van de gebruiker
             ConsoleKeyInfo key;
@@ -34,11 +34,15 @@ public class ObjCatalogePrinter
                     case ConsoleKey.DownArrow:
                         selectedObjIndex = (selectedObjIndex + 1) % itemList.Count;
                         break;
+                    case ConsoleKey.Backspace:
+                        ManagerMenu.Start();
+                        break;
+
                 }
 
                 // Teken de tabel met films (opnieuw) om de geselecteerde film te markeren
                 Console.Clear();
-                DrawTable(itemList, ColomnNames);
+                DrawTable(HeaderX, itemList, ColomnNames);
 
             } while (key.Key != ConsoleKey.Enter);
 
@@ -51,23 +55,14 @@ public class ObjCatalogePrinter
         return null;
     }
 
-    public static void DrawTable<T>(List<T> objList, List<string> displayFields)    {
-        Console.WriteLine(@"
-
-___  ___           _        _____       _        _                  
-|  \/  |          (_)      /  __ \     | |      | |                 
-| .  . | _____   ___  ___  | /  \/ __ _| |_ __ _| | ___   __ _  
-| |\/| |/ _ \ \ / / |/ _ \ | |    / _` | __/ _` | |/ _ \ / _` |
-| |  | | (_) \ V /| |  __/ | \__/\ (_| | || (_| | | (_) | (_| |
-\_|  |_/\___/ \_/ |_|\___|  \____/\__,_|\__\__,_|_|\___/ \__, |
-                                                          __/ |     
-                                                         |___/     
-");
+    public static void DrawTable<T>(string HeaderX ,List<T> objList, List<string> displayFields)    {
+        Console.WriteLine(HeaderX);
+    
+        Helpers.CharLine('-' ,80);
+        Console.WriteLine("This our Catalog");
+        Helpers.CharLine('-' ,80);
         
-        Helpers.CharLine('-' ,80);
-        Console.WriteLine("This our movie Catalog");
-        Helpers.CharLine('-' ,80);
-        Console.WriteLine("\n\n\n\n");
+        Console.WriteLine("\n Navigate the menu with Up and Down arrows. Press Backspace to return to the manager menu\n\n\n");
 
         Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", "MovieTitle", "ReleaseYear", "Director", "Genre", "Rating");
         Console.WriteLine(new string('-', 110));

@@ -182,10 +182,43 @@ public static class MovieOptionPresentation
         }
     public static void EditMoviePresentation()
     {
-    MoviesAccess access = new ();
     List<string> ColomnNames = new(){"MovieTitle", "ReleaseYear",
     "Director", "Genre", "Rating"};
-    
-    PerformActionToTabel.Editor("Edit","Movie", access, ColomnNames);
+    string HeaderX = @"
+
+___  ___           _        _____       _        _                  
+|  \/  |          (_)      /  __ \     | |      | |                 
+| .  . | _____   ___  ___  | /  \/ __ _| |_ __ _| | ___   __ _  
+| |\/| |/ _ \ \ / / |/ _ \ | |    / _` | __/ _` | |/ _ \ / _` |
+| |  | | (_) \ V /| |  __/ | \__/\ (_| | || (_| | | (_) | (_| |
+\_|  |_/\___/ \_/ |_|\___|  \____/\__,_|\__\__,_|_|\___/ \__, |
+                                                          __/ |     
+                                                         |___/     
+";
+
+    PerformActionToTabel.Editor(HeaderX, "Movie", ColomnNames);
+    }
+
+    public static void ShowMovies()
+    {
+    string HeaderX = @"
+
+___  ___           _        _____       _        _                  
+|  \/  |          (_)      /  __ \     | |      | |                 
+| .  . | _____   ___  ___  | /  \/ __ _| |_ __ _| | ___   __ _  
+| |\/| |/ _ \ \ / / |/ _ \ | |    / _` | __/ _` | |/ _ \ / _` |
+| |  | | (_) \ V /| |  __/ | \__/\ (_| | || (_| | | (_) | (_| |
+\_|  |_/\___/ \_/ |_|\___|  \____/\__,_|\__\__,_|_|\___/ \__, |
+                                                          __/ |     
+                                                         |___/     
+";
+    MoviesAccess access = new();
+    List<string> ColomnNames = new(){"MovieTitle", "ReleaseYear",
+    "Director", "Genre", "Rating"};
+    if(access.LoadFromJson()!= false)
+    {
+    List<Movie> movies = access.GetItemList();
+    ObjCatalogePrinter.TabelPrinter(HeaderX, movies, ColomnNames);
+    }
     }
 }
