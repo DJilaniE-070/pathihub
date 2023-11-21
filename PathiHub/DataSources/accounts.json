@@ -28,10 +28,10 @@
     "role": "User"
   },
   {
-    "id": 5,
-    "emailAddress": "123@nl",
-    "password": "Ajnk123!",
-    "fullName": "Jay",
+    "id": 6,
+    "emailAddress": "@",
+    "password": "Thomas123!",
+    "fullName": "THomase2",
     "role": "User"
   }
 ]
