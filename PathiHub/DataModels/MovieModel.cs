@@ -10,5 +10,6 @@ public class Movie
     public int RuntimeMinutes { get; set; }
     public string Language { get; set; }
     public string Country { get; set; }
+    public int Auditorium {get; set;}
     public List<string> Awards { get; set; }
 }
