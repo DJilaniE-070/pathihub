@@ -51,13 +51,15 @@ public class UserRegistration
         Helpers.CharLine('-' ,80);
 
         string? userPassword = null;
+        string? confirmPassword = null;
         List<string> passwordIssues = new List<string>();
 
         while (string.IsNullOrEmpty(userPassword) || passwordIssues.Count > 0 || !PasswordCheck.IsValid(userPassword))
         {
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("Enter your password: ");
-            userPassword = Helpers.Color("DarkYellow");
+            // userPassword = Helpers.Color("DarkYellow");
+            userPassword = SecurePassword.MaskPassword(""); // Hij geeft invalid key aan als ik enter klik?
             Console.ResetColor();
 
             passwordIssues = PasswordCheck.PasswordIssue(userPassword);
@@ -77,7 +79,8 @@ public class UserRegistration
 
         Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.WriteLine("Please confirm your password: ");
-        string? confirmPassword = Helpers.Color("DarkYellow");
+        // confirmPassword = Helpers.Color("DarkYellow");
+        confirmPassword = SecurePassword.MaskPassword(""); // Hij geeft invalid key aan als ik enter klik?
 
         while (userPassword != confirmPassword)
         {
