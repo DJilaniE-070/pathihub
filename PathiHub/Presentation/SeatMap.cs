@@ -172,16 +172,32 @@ public class SeatMap
             switch (key.Key)
             {
                 case ConsoleKey.UpArrow:
-                    CursorRow = CursorRow > 0 ? CursorRow - 1 : CursorRow;
+                    if (CursorRow > 0)
+                    {
+                        CursorRow--;
+                    }
+                    //CursorRow = CursorRow > 0 ? CursorRow - 1 : CursorRow;
                     break;
                 case ConsoleKey.DownArrow:
-                    CursorRow = CursorRow < Auditorium.Count - 1 ? CursorRow + 1 : CursorRow;
+                    if (CursorRow < Auditorium.Count - 1)
+                    {
+                        CursorRow++;
+                    }
+                    //CursorRow = CursorRow < Auditorium.Count - 1 ? CursorRow + 1 : CursorRow;
                     break;
                 case ConsoleKey.LeftArrow:
-                    CursorSeat = CursorSeat > 0 ? CursorSeat - 1 : CursorSeat;
+                    if (CursorSeat > 0)
+                    {
+                        CursorSeat--;
+                    }
+                    //CursorSeat = CursorSeat > 0 ? CursorSeat - 1 : CursorSeat;
                     break;
                 case ConsoleKey.RightArrow:
-                    CursorSeat = CursorSeat < Auditorium[CursorRow].Count - 1 ? CursorSeat + 1 : CursorSeat;
+                    if (CursorSeat < Auditorium[CursorRow].Count - 1)
+                    {
+                        CursorSeat++;
+                    }
+                    //CursorSeat = CursorSeat < Auditorium[CursorRow].Count - 1 ? CursorSeat + 1 : CursorSeat;
                     break;
                 // Reserveer een stoel in de auditorium
                 case ConsoleKey.Enter:
