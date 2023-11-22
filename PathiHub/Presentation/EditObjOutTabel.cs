@@ -151,8 +151,6 @@ public class PerformActionToTabel
         if (field != null)
         {
             PropertyInfo propertyInfo = objectType.GetProperty(fieldName);
-            Console.WriteLine(propertyInfo);
-            Console.ReadLine();
             switch (propertyInfo.PropertyType.Name)
             {
                 case "Int32":
