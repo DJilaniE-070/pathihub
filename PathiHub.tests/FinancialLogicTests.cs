@@ -6,7 +6,7 @@ public class FinancialLogicTests
     [TestMethod]
     public void UpdateTotalReservationsTest()
     {
-        FinancialLogic.UpdateTotalReservations(5);
+        FinancialLogic.UpdateTotalReservations(5); 
         Assert.AreEqual(5, FinancialLogic.TotalReservations);
     }
     

@@ -5,7 +5,7 @@ public class AccountsLogicTests
 {
     private AccountsLogic _accountsLogic = new AccountsLogic();
     [ClassInitialize]
-    public static void Initialize(TestContext context)
+    public static void Initialize(TestContext context) 
     {
     }
     

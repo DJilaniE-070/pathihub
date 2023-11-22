@@ -4,7 +4,7 @@ namespace PathiHub.tests;
 public class MoviesOptionLogicTests
 {
     private Movie movie;
-    private List<Movie> movies;
+    private List<Movie> movies; 
     
     [TestInitialize]
     public void Initialize()

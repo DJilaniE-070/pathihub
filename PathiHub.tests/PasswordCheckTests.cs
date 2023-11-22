@@ -8,7 +8,7 @@ public class PasswordCheckTests
     [DataRow("ABCD", false)]
     [DataRow("1234", false)]
     [DataRow("abcd12345", true)]
-    [DataRow("AbC", true)]
+    [DataRow("AbC", true)] 
     public void IsLowerTest(string password, bool expected)
     {
         Assert.AreEqual(expected, PasswordCheck.IsLower(password));
