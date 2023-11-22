@@ -26,12 +26,5 @@
     "password": "123",
     "fullName": "Jelly",
     "role": "User"
-  },
-  {
-    "id": 6,
-    "emailAddress": "@",
-    "password": "Thomas123!",
-    "fullName": "THomase2",
-    "role": "User"
   }
 ]
