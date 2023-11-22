@@ -17,7 +17,8 @@
     "RuntimeMinutes": 120,
     "Language": "English",
     "Country": "United States",
-    "Awards": null
+    "Awards": null,
+    "Auditoruim": null
   },
   {
     "MovieTitle": "Galactic Quest",
@@ -36,25 +37,47 @@
     "RuntimeMinutes": 115,
     "Language": "English",
     "Country": "United States",
-    "Awards": null
+    "Awards": null,
+    "Auditoruim": null
   },
   {
-    "MovieTitle": "Scarface",
-    "ReleaseYear": 1983,
+    "MovieTitle": "test",
+    "ReleaseYear": 123,
     "Genre": [
-      "Thriller"
+      "test"
     ],
-    "Director": "MB",
+    "Director": "test",
     "Writers": [
-      "BM"
+      "tes"
     ],
-    "Plot": "Crime",
+    "Plot": "test",
     "Rating": 9.0,
     "RuntimeMinutes": 120,
+    "Language": "english",
+    "Country": "England",
+    "Awards": [
+      "blblabal"
+    ],
+    "Auditoruim": null
+  },
+  {
+    "MovieTitle": "Tester",
+    "ReleaseYear": 1200,
+    "Genre": [
+      "none"
+    ],
+    "Director": "Test Master",
+    "Writers": [
+      "none"
+    ],
+    "Plot": "test test test",
+    "Rating": 10.0,
+    "RuntimeMinutes": 100,
     "Language": "English",
     "Country": "USA",
     "Awards": [
-      "Many"
-    ]
+      "none"
+    ],
+    "auditorium": 1
   }
 ]

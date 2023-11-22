@@ -82,7 +82,8 @@ public static class GuestLogin
                 case "Our movie selection":
                     Thread.Sleep(1500);
                     Console.Clear();
-                    MovieCatalogePrinter.TabelPrinter();
+                    MoviesAccess movies = new();
+                    MovieCatalogePrinter.TabelPrinter(movies);
                     break;
 
                 case "Our Menu selection":

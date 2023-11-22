@@ -1,8 +1,7 @@
 public static class SecurePassword
 {
-    public static string MaskPassword()
+    public static string MaskPassword(string password)
     {
-        string password = String.Empty;
         ConsoleKeyInfo key;
         // elke password is geel
         Console.ForegroundColor = ConsoleColor.DarkYellow;

@@ -80,12 +80,10 @@ ___  ___                                   ___  ___
                 break;
             
             case "[2] Reserve a movie":
-                Thread.Sleep(1500);
                 ReserveAMovie();
                 break;
             
             case "[3] Reservation options":
-                Thread.Sleep(1500);
                 ReservationsOptions();
                 break;
             
@@ -110,7 +108,7 @@ ___  ___                                   ___  ___
     
 static void FilmOptions()
 {
-    string[] menuOptions = { "Add a movie", "Remove a movie", "Return to Manager menu" };
+    string[] menuOptions = { "Add a movie", "Remove a movie", "Edit a movie", "Show Movies","Return to Manager menu" };
     int selectedIndex = 0;
     bool exit = false;
 
@@ -171,6 +169,14 @@ ___  ___           _        _____       _   _
                 }
                 else if (option == 3)
                 {
+                    MovieOptionPresentation.EditMoviePresentation();
+                }
+                else if (option == 4)
+                {
+                    MovieOptionPresentation.ShowMovies();
+                }
+                else if (option == 5)
+                {
                     exit = true;
                     ManagerMenu.Start();
                 }
@@ -186,9 +192,9 @@ ___  ___           _        _____       _   _
     Console.CursorVisible = true;
 }
 
-static void ReservationsOptions()
+public static void ReservationsOptions()
 {
-    string[] menuOptions = { "Make a Reservation", "Remove a reservation", "Return to Manager menu" };
+    string[] menuOptions = { "Make a Reservation", "Remove a reservation", "Change a reservation","Show Reservations", "Return to Manager menu" };
     int selectedIndex = 0;
     bool exit = false;
 
@@ -249,6 +255,14 @@ ______                               _   _               _____       _   _
                     ReservationPresentation.RemoveMoviePresentation();
                 }
                 else if (option == 3)
+                {
+                    ReservationPresentation.EditReservationPresentation();
+                }
+                else if (option == 4)
+                {
+                    ReservationPresentation.ShowReservations();
+                }
+                else if (option == 5)
                 {
                     exit = true;
                     ManagerMenu.Start();
