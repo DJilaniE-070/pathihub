@@ -183,12 +183,36 @@ public class SeatMap
                 case ConsoleKey.RightArrow:
                     CursorSeat = CursorSeat < Auditorium[CursorRow].Count - 1 ? CursorSeat + 1 : CursorSeat;
                     break;
+                case ConsoleKey.Backspace:
+                    if (Auditorium[CursorRow][CursorSeat] == "AR")
+                    {
+                        Auditorium[CursorRow][CursorSeat] = "A";
+                    }
+                    else if (Auditorium[CursorRow][CursorSeat] == "BR")
+                    {
+                        Auditorium[CursorRow][CursorSeat] = "B";
+                    }
+                    else if (Auditorium[CursorRow][CursorSeat] == "CR")
+                    {
+                        Auditorium[CursorRow][CursorSeat] = "C";
+                    }
+                    break;
                 // Reserveer een stoel in de auditorium
                 case ConsoleKey.Enter:
                     // als A, B of C is reserveer stoel en verander positie in list naar R
-                    if (Auditorium[CursorRow][CursorSeat] == "A" || Auditorium[CursorRow][CursorSeat] == "B" || Auditorium[CursorRow][CursorSeat] == "C")
+                    if (Auditorium[CursorRow][CursorSeat] == "A")
                     {
-                        Auditorium[CursorRow][CursorSeat] = "R";
+                        Auditorium[CursorRow][CursorSeat] = "AR";
+                        Message = $"Stoel in rij {CursorRow + 1} met nummer {CursorSeat + 1} is gereserveerd, Dank u wel voor het reserveren";
+                    }
+                    else if (Auditorium[CursorRow][CursorSeat] == "B")
+                    {
+                        Auditorium[CursorRow][CursorSeat] = "BR";
+                        Message = $"Stoel in rij {CursorRow + 1} met nummer {CursorSeat + 1} is gereserveerd, Dank u wel voor het reserveren";
+                    }
+                    else if (Auditorium[CursorRow][CursorSeat] == "C")
+                    {
+                        Auditorium[CursorRow][CursorSeat] = "CR";
                         Message = $"Stoel in rij {CursorRow + 1} met nummer {CursorSeat + 1} is gereserveerd, Dank u wel voor het reserveren";
                     }
                     // als X is print dat het geen stoel is en doet niks 
