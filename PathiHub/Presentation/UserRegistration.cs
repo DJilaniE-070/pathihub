@@ -58,8 +58,7 @@ public class UserRegistration
         {
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("Enter your password: ");
-            // userPassword = Helpers.Color("DarkYellow");
-            userPassword = SecurePassword.MaskPassword(""); // Hij geeft invalid key aan als ik enter klik?
+            userPassword = SecurePassword.MaskPassword("");
             Console.ResetColor();
 
             passwordIssues = PasswordCheck.PasswordIssue(userPassword);
@@ -79,8 +78,7 @@ public class UserRegistration
 
         Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.WriteLine("Please confirm your password: ");
-        // confirmPassword = Helpers.Color("DarkYellow");
-        confirmPassword = SecurePassword.MaskPassword(""); // Hij geeft invalid key aan als ik enter klik?
+        confirmPassword = SecurePassword.MaskPassword("");
 
         while (userPassword != confirmPassword)
         {
