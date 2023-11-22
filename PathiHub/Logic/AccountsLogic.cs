@@ -14,11 +14,15 @@ public class AccountsLogic
     //private set, so this can only be set by the class itself
     static public AccountModel? CurrentAccount { get; private set; }
 
+    public AccountsLogic()
+    {
+        _accounts = AccountsAccess.LoadAll();
+    }
+
 
     public static void UpdateList(AccountModel acc)
     {
         //Find if there is already an model with the same id
-        _accounts = AccountsAccess.LoadAll();
         int index = _accounts.FindIndex(s => s.Id == acc.Id);
 
         if (index != -1)
@@ -52,4 +56,13 @@ public class AccountsLogic
         CurrentAccount = _accounts.Find(i => i.EmailAddress == email && i.Password == password);
         return CurrentAccount;
     }
+    
+    public List<AccountModel> GetAccounts()
+    {
+        return _accounts;
+    }
 }
+
+
+
+
