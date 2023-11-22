@@ -71,8 +71,6 @@ static class GlobalLogin
                     Console.Clear();
                     CoWorker.Start();
                     break;
-                
-                
                 case "User":
                     Console.Clear();
                     UserMenu.Start();

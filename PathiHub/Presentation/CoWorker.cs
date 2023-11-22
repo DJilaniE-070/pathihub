@@ -83,7 +83,6 @@ public static class CoWorker
                 ChangeReservations();
                 break;
             
-                    
             case "[3] reserve seat for customer":
                 Thread.Sleep(1500);
                 ReserveSeatCustomer();
@@ -95,8 +94,7 @@ public static class CoWorker
                 break;
             
             case "[5] Exit Co Worker Menu":
-                break;
-            
+                break; 
         }
     }
 

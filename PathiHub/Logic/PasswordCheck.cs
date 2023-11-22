@@ -3,36 +3,32 @@ using System.Text.RegularExpressions;
 using Microsoft.Win32.SafeHandles;
 
 public static class PasswordCheck
-{   
+{
     public static bool IsValid(string password)
     {
-        if (PasswordIssue(password).Count == 0)
-        {
-            return true;
-        }
-        return false;
+        return PasswordIssue(password).Count == 0;
     }
 
     public static List<string> PasswordIssue(string password)
     {
         var invalid = new List<string>();
-        if (IsLower(password))
+        if (!IsLower(password))
         {
             invalid.Add("Password");
         }
-        if (IsUpper(password))
+        if (!IsUpper(password))
         {
             invalid.Add("upper");
         }
-        if (IsLength(password))
+        if (!IsLength(password))
         {
             invalid.Add("length");
         }
-        if (IsNumber(password))
+        if (!IsNumber(password))
         {
             invalid.Add("number");
         }
-        if (IsSymbol(password))
+        if (!IsSymbol(password))
         {
             invalid.Add("symbol");
         }
@@ -82,5 +78,17 @@ public static class PasswordCheck
             return false;
         }
         return true;
+    }
+    public static string GetIssueDescription(string issue)
+    {
+        return issue switch
+        {
+            "Password" => "Password must contain at least one lowercase letter.",
+            "upper" => "Password must contain at least one uppercase letter.",
+            "length" => "Password must be between 8 and 20 characters long.",
+            "number" => "Password must contain at least one numeric digit.",
+            "symbol" => "Password must contain at least one special symbol (!@#$%^&*()_+[]{};:<>|./?,-).",
+            _ => "Don't know error",
+        };
     }
 }
