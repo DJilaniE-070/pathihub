@@ -25,6 +25,7 @@ public class UserRegistration
         Helpers.CharLine('-' ,80);
         Thread.Sleep(300);
 
+        // asks for the user email and checks for @
         string? userEmail = null;
         while (string.IsNullOrEmpty(userEmail) || !userEmail.Contains('@'))
         {
@@ -50,6 +51,7 @@ public class UserRegistration
         Console.WriteLine("Password should contain at least one uppercase");
         Helpers.CharLine('-' ,80);
 
+        // Asks for the password and asks for password confirmation, also checks if password contains all criteria
         string? userPassword = null;
         string? confirmPassword = null;
         List<string> passwordIssues = new List<string>();
@@ -63,6 +65,7 @@ public class UserRegistration
 
             passwordIssues = PasswordCheck.PasswordIssue(userPassword);
 
+            // displays the password issues if contains any
             if (passwordIssues.Count > 0 || !PasswordCheck.IsValid(userPassword))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -94,7 +97,10 @@ public class UserRegistration
         Console.WriteLine("Enter your full name: ");
         string? Name = Helpers.Color("DarkYellow");
 
+        // Loads the existing accounts and creates a new user account
         List<AccountModel> ListOfAccounts = AccountsAccess.LoadAll();
+
+        // to create a new user id
         int index = ListOfAccounts.Count()+1;
         AccountModel userAccount = new AccountModel(index, userEmail, userPassword, Name, "User");
         AccountsLogic.UpdateList(userAccount);
