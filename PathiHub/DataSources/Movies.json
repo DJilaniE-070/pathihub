@@ -17,8 +17,8 @@
     "RuntimeMinutes": 120,
     "Language": "English",
     "Country": "United States",
-    "Awards": null,
-    "Auditoruim": null
+    "Auditorium": 0,
+    "Awards": null
   },
   {
     "MovieTitle": "Galactic Quest",
@@ -37,11 +37,11 @@
     "RuntimeMinutes": 115,
     "Language": "English",
     "Country": "United States",
-    "Awards": null,
-    "Auditoruim": null
+    "Auditorium": 0,
+    "Awards": null
   },
   {
-    "MovieTitle": "test",
+    "MovieTitle": "Pinda",
     "ReleaseYear": 123,
     "Genre": [
       "test"
@@ -55,10 +55,10 @@
     "RuntimeMinutes": 120,
     "Language": "english",
     "Country": "England",
+    "Auditorium": 0,
     "Awards": [
       "blblabal"
-    ],
-    "Auditoruim": null
+    ]
   },
   {
     "MovieTitle": "Tester",
@@ -75,9 +75,49 @@
     "RuntimeMinutes": 100,
     "Language": "English",
     "Country": "USA",
+    "Auditorium": 1,
     "Awards": [
       "none"
+    ]
+  },
+  {
+    "MovieTitle": "pinda",
+    "ReleaseYear": 1120,
+    "Genre": [
+      "test"
     ],
-    "auditorium": 1
+    "Director": "1120",
+    "Writers": [
+      "pinda"
+    ],
+    "Plot": "Pinda",
+    "Rating": 9.0,
+    "RuntimeMinutes": 110,
+    "Language": "english",
+    "Country": "Pinda",
+    "Auditorium": 1,
+    "Awards": [
+      "none"
+    ]
+  },
+  {
+    "MovieTitle": "test",
+    "ReleaseYear": 1120,
+    "Genre": [
+      "none"
+    ],
+    "Director": "Jay",
+    "Writers": [
+      "none"
+    ],
+    "Plot": "jay ",
+    "Rating": 9.0,
+    "RuntimeMinutes": 110,
+    "Language": "english",
+    "Country": "usa",
+    "Auditorium": 2,
+    "Awards": [
+      "none"
+    ]
   }
 ]
