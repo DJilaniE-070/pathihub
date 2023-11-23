@@ -1,6 +1,6 @@
 public static class SecurePassword
 {
-    public static string MaskPassword(string password)
+    public static string MaskPassword(string password) 
     {
         ConsoleKeyInfo key;
         // elke password is geel
@@ -21,13 +21,10 @@ public static class SecurePassword
                 // backspace gevolgd door spatie en weer backspace zodat de asterisk ook dynamisch wordt weergegeven
                 Console.Write("\b \b");
             }
-            else
-            {
-                Console.WriteLine("Invalid key");
-            }
         }
         // stopt input als enter is geklikt
         while (key.Key != ConsoleKey.Enter);
+        Console.WriteLine();
         return password;
     }
 }
