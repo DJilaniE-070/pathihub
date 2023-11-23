@@ -4,7 +4,7 @@ public class DeleteMovieOutTabel
 {
     private static int selectedMovieIndex = 0;
 
-    public static void MovieDeletor(string HeaderX)
+    public void MovieDeletor(string HeaderX)
     {
             MoviesAccess MovieData = new();
             if (MovieData.LoadFromJson() == true)
