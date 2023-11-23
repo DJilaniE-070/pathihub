@@ -140,7 +140,6 @@ public class SeatMap
             Auditorium = auditorium3;
         }
         Auditoriums();
-        
     }
 
     public void ChangePrices(double stoel_a, double stoel_b, double stoel_c)
@@ -214,16 +213,20 @@ public class SeatMap
                     {
                         Auditorium[CursorRow][CursorSeat] = "A";
                         Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+                        break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "BR")
                     {
                         Auditorium[CursorRow][CursorSeat] = "B";
                         Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+                        break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "CR")
                     {
                         Auditorium[CursorRow][CursorSeat] = "C";
                         Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+                        break;
+
                     }
                     else
                     {
@@ -237,16 +240,19 @@ public class SeatMap
                     {
                         Auditorium[CursorRow][CursorSeat] = "AR";
                         Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is gereserveerd, Dank u wel voor het reserveren";
+                        break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "B")
                     {
                         Auditorium[CursorRow][CursorSeat] = "BR";
                         Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is gereserveerd, Dank u wel voor het reserveren";
+                        break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "C")
                     {
                         Auditorium[CursorRow][CursorSeat] = "CR";
                         Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is gereserveerd, Dank u wel voor het reserveren";
+                        break;
                     }
                     // als X is print dat het geen stoel is en doet niks 
                     else if (Auditorium[CursorRow][CursorSeat] == "X")
@@ -288,7 +294,7 @@ public class SeatMap
         DisplayCursorPosition();
         DisplayMessage();
         DisplayLegenda();
-        DisplayDescription();
+        DisplayOptions();
     }
 
     // auditorium printen
@@ -454,200 +460,10 @@ public class SeatMap
     {
         Console.WriteLine($"\nUse arrow keys to move the cursor.\nPress [enter] to select a seat. Press [backspace] to cancel the seat.\nPress [escape] to return to main menu.");
     }
-}
 
-/*
-    public static void Cursor()
+    // description printen
+    public void DisplayOptions()
     {
-        int cursorRow = 0;
-        int cursorCol = 0;
-
-        ConsoleKeyInfo key;
-        do
-        {
-            key = Console.ReadKey(true);
-
-            // Handle arrow keys to move the cursor
-            switch (key.Key)
-            {
-                case ConsoleKey.UpArrow:
-                    MoveCursor(ref cursorRow, ref cursorCol, -1, 0);
-                    break;
-
-                case ConsoleKey.DownArrow:
-                    MoveCursor(ref cursorRow, ref cursorCol, 1, 0);
-                    break;
-
-                case ConsoleKey.LeftArrow:
-                    MoveCursor(ref cursorRow, ref cursorCol, 0, -1);
-                    break;
-
-                case ConsoleKey.RightArrow:
-                    MoveCursor(ref cursorRow, ref cursorCol, 0, 1);
-                    break;
-            }
-
-            // Redraw the auditorium with the updated cursor position
-            Console.Clear();
-            DisplayScreen(1);
-
-        } while (key.Key != ConsoleKey.Escape); // Exit the loop when the user presses the Escape key
-    }
-
-    // loop om alle stoelen te printe
-
-    public static void MoveCursor(List<List<string>> auditorium, ref int cursorRow, ref int cursorCol, int rowOffset, int colOffset)
-    {
-        int newRow = cursorRow + rowOffset;
-        int newCol = cursorCol + colOffset;
-
-        // Check if the new position is within bounds and is a valid seat (A, B, or C)
-        if (newRow >= 0 && newRow < auditorium.Count &&
-            newCol >= 0 && newCol < auditorium[newRow].Count &&
-            (auditorium[newRow][newCol] == "A" || auditorium[newRow][newCol] == "B" || auditorium[newRow][newCol] == "C"))
-        {
-            cursorRow = newRow;
-            cursorCol = newCol;
-        }
+        Console.WriteLine($"\nUse arrow keys to move the cursor.\nPress [enter] to select a seat. Press [backspace] to cancel the seat.\nPress [escape] to return to main menu.");
     }
 }
-
-/*    public bool ReserveSeat()
-    {
-        Console.CursorVisible = false;
-
-        while (true)
-        {
-            ConsoleKeyInfo keyInfo = Console.ReadKey(true); // Read key without displaying it
-
-            switch (keyInfo.Key)
-            {
-                case ConsoleKey.UpArrow:
-   
-                    break;
-
-                case ConsoleKey.DownArrow:
-
-                    break;
-
-                case ConsoleKey.LeftArrow:
-     
-                    break;
-
-                case ConsoleKey.RightArrow:
-    
-                    break;
-
-                case ConsoleKey.Enter:
-                    Console.WriteLine($"Seat selected at ({cursorLeft}, {cursorTop})");
-                    ReservedSeats seat = new ReservedSeats(cursorTop, cursorLeft);
-                    break;
-
-                default:
-                    // Handle other keys if needed
-                    break;
-            }
-        }
-    }
-        /* zoekt naar row en number in list seats als het gevonden is wordt het in variabele seat opgeslagen anders blijft het null
-        ReservedSeats seat = Seats.Find(s => s.Row == row && s.Seat == number);
-        //reserveert de seat en checkt of het al niet gereserveert is
-        if (seat != null && seat.IsAvailable == true)
-        {
-            seat.IsAvailable = false;
-            Console.WriteLine($"Seat {row}-{number} has been reserved");
-            return true;
-        }
-        else
-        {
-            Console.WriteLine("Invalid seat or the seat is already reserved");
-            return false;
-        }
-        */
-    // showmenu later kan worden opgesplits in usermenu of presentation layer
- /*   public void ShowMenu()
-    {
-        while (true)
-        {
-            Console.Clear();
-            // vraagt om rij en stoel nummer 
-            Console.Write("Enter row number (1-4): ");
-            int row = int.Parse(Console.ReadLine());
-            Console.Write("Enter seat number (1-8): ");
-            int number = int.Parse(Console.ReadLine());
-            ReservedSeats seat = Seats.Find(s => s.Row == row && s.Seat == number);
-            Console.WriteLine("Press enter to reserve");
-            Console.ReadLine();
-        }
-    }
-}
-*/
-
-/* 
-    public bool ReserveSeat()
-    {
-        Console.CursorVisible = false;
-
-        Display();
-
-        while (true)
-        {
-            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-
-            switch (keyInfo.Key)
-            {
-                case ConsoleKey.UpArrow:
-                    
-                    break;
-
-                case ConsoleKey.DownArrow:
-                    
-                    break;
-
-                case ConsoleKey.LeftArrow:
-                
-                    break;
-
-                case ConsoleKey.RightArrow:
-                    break;
-
-                case ConsoleKey.Enter:
-                    Console.WriteLine($"Seat selected at ({cursorLeft}, {cursorTop})");
-                    ReservedSeats seat = new ReservedSeats(cursorTop, cursorLeft);
-                    break;
-            }
-        }
-    }
-        /* zoekt naar row en number in list seats als het gevonden is wordt het in variabele seat opgeslagen anders blijft het null
-        ReservedSeats seat = Seats.Find(s => s.Row == row && s.Seat == number);
-        //reserveert de seat en checkt of het al niet gereserveert is
-        if (seat != null && seat.IsAvailable == true)
-        {
-            seat.IsAvailable = false;
-            Console.WriteLine($"Seat {row}-{number} has been reserved");
-            return true;
-        }
-        else
-        {
-            Console.WriteLine("Invalid seat or the seat is already reserved");
-            return false;
-        }
-    
-    // showmenu later kan worden opgesplits in usermenu of presentation layer
-    public void ShowMenu()
-    {
-        while (true)
-        {
-            Console.Clear();
-            Display();
-            // vraagt om rij en stoel nummer 
-            Console.Write("Enter row number (1-4): ");
-            int row = int.Parse(Console.ReadLine());
-            Console.Write("Enter seat number (1-8): ");
-            int number = int.Parse(Console.ReadLine());
-            //ReserveSeat(row, number);
-            Console.WriteLine("Press enter to reserve");
-            Console.ReadLine();
-        }
-    }
-}*/
