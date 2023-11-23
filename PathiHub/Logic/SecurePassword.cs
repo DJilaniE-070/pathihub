@@ -21,13 +21,10 @@ public static class SecurePassword
                 // backspace gevolgd door spatie en weer backspace zodat de asterisk ook dynamisch wordt weergegeven
                 Console.Write("\b \b");
             }
-            else
-            {
-                Console.WriteLine("Invalid key");
-            }
         }
         // stopt input als enter is geklikt
         while (key.Key != ConsoleKey.Enter);
+        Console.WriteLine();
         return password;
     }
 }
