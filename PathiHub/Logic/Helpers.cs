@@ -18,20 +18,17 @@ public class Helpers
 
     
     // Mini versie van het printen voor een cursor
-    public static int Minicuror(string[] menuOptions, string info)
+    public static int MiniCursor(string[] menuOptions, DeleteMovieOutTabel movieDeletor)
     {
         Console.CursorVisible = false;
         int selectedIndex = 0;
 
         do
         {
-            
-            Thread.Sleep(5000);
+            Thread.Sleep(500);
             Console.Clear();
-            
-            //hier komt de informatie die eerder is geprint:
-            
-            Console.WriteLine("--------------------------------------------------------------------------------");
+
+            DisplayInfo(movieDeletor);
 
             for (int i = 0; i < menuOptions.Length; i++)
             {
@@ -44,8 +41,7 @@ public class Helpers
                 Console.WriteLine(menuOptions[i]);
                 Console.ResetColor();
             }
-            Console.WriteLine("--------------------------------------------------------------------------------");
-
+            
             ConsoleKeyInfo keyInfo = Console.ReadKey();
 
             switch (keyInfo.Key)
@@ -90,6 +86,12 @@ public class Helpers
         return sentence;
     }
     
+    
+    public static void DisplayInfo(DeleteMovieOutTabel movieDeletor)
+    {
+        Console.Clear();
+        movieDeletor.MovieDeletor("HeaderX");
+    }
     
     
     // This Method return a string with a Readline() as input

@@ -1,17 +1,17 @@
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Threading;
 
 public class MovieCatalogePrinter
 {
     private static int selectedMovieIndex = 0;
 
-
     public static Movie TabelPrinter(MoviesAccess access)
     {
         if (access.LoadFromJson() == true)
-        {   
+        {
             List<Movie> movies = access.GetItemList();
+
             // Teken de tabel met films
             DrawMovieTable(movies);
 
@@ -19,8 +19,6 @@ public class MovieCatalogePrinter
             ConsoleKeyInfo key;
             do
             {
-                
-                
                 key = Console.ReadKey();
 
                 // Pas de index van de geselecteerde film aan op basis van de pijltjestoetsen
@@ -35,16 +33,21 @@ public class MovieCatalogePrinter
                         break;
                 }
 
-                // Teken de tabel met films (opnieuw) om de geselecteerde film te markeren
+                // Clear the console before redrawing the table
                 Console.Clear();
+
+                // Teken de tabel met films (opnieuw) om de geselecteerde film te markeren
                 DrawMovieTable(movies);
+
+                // Toon de plot van de geselecteerde film
+                ShowSelectedMoviePlot(movies[selectedMovieIndex]);
 
             } while (key.Key != ConsoleKey.Enter);
 
             // Nu heb je toegang tot de geselecteerde film in de "movies" lijst
-            
-            Console.WriteLine($"\nyou have selected the movie: '{movies[selectedMovieIndex].MovieTitle}'.");
-            Thread.Sleep(500);
+            Console.WriteLine($"\nYou have selected the movie: '{movies[selectedMovieIndex].MovieTitle}'.");
+            Thread.Sleep(2000); // Optional delay
+
             return movies[selectedMovieIndex];
         }
 
@@ -53,8 +56,7 @@ public class MovieCatalogePrinter
 
     public static void DrawMovieTable(List<Movie> movies)
     {
-        Console.WriteLine(@"
-
+        Console.WriteLine(@" 
 ___  ___           _        _____       _        _                  
 |  \/  |          (_)      /  __ \     | |      | |                 
 | .  . | _____   ___  ___  | /  \/ __ _| |_ __ _| | ___   __ _  
@@ -64,19 +66,18 @@ ___  ___           _        _____       _        _
                                                           __/ |     
                                                          |___/     
 ");
-        
-        Helpers.CharLine('-' ,80);
-        Console.WriteLine("This our movie Catalog");
-        Helpers.CharLine('-' ,80);
-        Console.WriteLine("\n\n\n\n");
+
+        Helpers.CharLine('-', 80);
+        Console.WriteLine("This is our movie Catalog");
+        Helpers.CharLine('-', 80);
+        Console.WriteLine("\n\n");
 
         Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", "Movie Title", "Release Year",
             "Director", "Genre", "Rating");
-        
+
         Console.WriteLine(new string('-', 110));
 
         // Weergave van films met markering voor de geselecteerde film
-        //Maak een functie max length voor de maximale lengte die word gebruikt bij de tabel
         for (int i = 0; i < movies.Count; i++)
         {
             if (i == selectedMovieIndex)
@@ -90,5 +91,11 @@ ___  ___           _        _____       _        _
 
             Console.ResetColor();
         }
+    }
+
+    public static void ShowSelectedMoviePlot(Movie selectedMovie)
+    {
+        Console.WriteLine($"\nThe plot of: '{selectedMovie.MovieTitle}' is:\n");
+        DiscriptionPrinter.DrawBox(selectedMovie);
     }
 }

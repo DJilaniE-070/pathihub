@@ -1,5 +1,6 @@
 using System.Threading;
 using System.Text;
+using PathiHub.Presentation;
 
 public static class Menu 
 {
@@ -132,7 +133,7 @@ ______     _   _     _   _   _       _
 
             case "Creating an account":
                 Thread.Sleep(1500);
-                Console.WriteLine(" Must be implemented");
+                UserRegistration.RegisterUser();
                 break;
         }
     }

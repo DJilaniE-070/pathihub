@@ -1,6 +1,5 @@
 ﻿using System.Text.Json.Serialization;
 
-
 public class AccountModel
 {
     [JsonPropertyName("id")] //TODO: fix id to increase automatically.
@@ -26,9 +25,4 @@ public class AccountModel
         FullName = fullName;
         Role = role;
     }
-
 }
-
-
-
-

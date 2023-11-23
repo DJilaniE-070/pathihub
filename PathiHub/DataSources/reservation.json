@@ -9,5 +9,16 @@
     "Price": 12,
     "ReservationCode": "klajd1",
     "CinemaLocation": "Rotterdam"
+  },
+  {
+    "FullName": "Tester1",
+    "Email": "Test@gmail.com",
+    "Auditorium": "1",
+    "SeatName": "20",
+    "movie": "Rotterdam",
+    "Date": null,
+    "Price": 20,
+    "ReservationCode": "kpkj4z!@",
+    "CinemaLocation": null
   }
 ]

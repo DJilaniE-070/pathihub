@@ -17,6 +17,7 @@
     "RuntimeMinutes": 120,
     "Language": "English",
     "Country": "United States",
+    "Auditorium": 1,
     "Awards": null
   },
   {
@@ -36,6 +37,107 @@
     "RuntimeMinutes": 115,
     "Language": "English",
     "Country": "United States",
+    "Auditorium": 1,
     "Awards": null
+  },
+  {
+    "MovieTitle": "Pinda",
+    "ReleaseYear": 123,
+    "Genre": [
+      "test"
+    ],
+    "Director": "test",
+    "Writers": [
+      "tes"
+    ],
+    "Plot": "test",
+    "Rating": 9.0,
+    "RuntimeMinutes": 120,
+    "Language": "english",
+    "Country": "England",
+    "Auditorium": 1,
+    "Awards": [
+      "blblabal"
+    ]
+  },
+  {
+    "MovieTitle": "Tester",
+    "ReleaseYear": 1200,
+    "Genre": [
+      "none"
+    ],
+    "Director": "Test Master",
+    "Writers": [
+      "none"
+    ],
+    "Plot": "test test test",
+    "Rating": 10.0,
+    "RuntimeMinutes": 100,
+    "Language": "English",
+    "Country": "USA",
+    "Auditorium": 1,
+    "Awards": [
+      "none"
+    ]
+  },
+  {
+    "MovieTitle": "pinda",
+    "ReleaseYear": 1120,
+    "Genre": [
+      "test"
+    ],
+    "Director": "1120",
+    "Writers": [
+      "pinda"
+    ],
+    "Plot": "Pinda",
+    "Rating": 9.0,
+    "RuntimeMinutes": 110,
+    "Language": "english",
+    "Country": "Pinda",
+    "Auditorium": 1,
+    "Awards": [
+      "none"
+    ]
+  },
+  {
+    "MovieTitle": "test",
+    "ReleaseYear": 1120,
+    "Genre": [
+      "none"
+    ],
+    "Director": "Jay",
+    "Writers": [
+      "none"
+    ],
+    "Plot": "jay ",
+    "Rating": 9.0,
+    "RuntimeMinutes": 110,
+    "Language": "english",
+    "Country": "usa",
+    "Auditorium": 2,
+    "Awards": [
+      "none"
+    ]
+  },
+  {
+    "MovieTitle": "THE HUNGER GAMES",
+    "ReleaseYear": 2023,
+    "Genre": [
+      "adventure"
+    ],
+    "Director": "1120",
+    "Writers": [
+      "IDC"
+    ],
+    "Plot": "It's the morning of the tenth annual Hunger Games, and eighteen-year-old Coriolanus Snow (Blyth) - years before he would become the tyrannical president of Panem - prepares for his only chance at fame and success",
+    "Rating": 6.0,
+    "RuntimeMinutes": 158,
+    "Language": "english",
+    "Country": "USA",
+    "Auditorium": 1,
+    "Awards": [
+      "none"
+    ]
   }
 ]

@@ -1,39 +1,76 @@
 using System.Reflection;
 
-public class EditObjOutTabel
+public class PerformActionToTabel
 {   
+    static Movie SelectedMovie = null;
+    static MoviesAccess SelectedMovieData = null;
+    static Reservation SelectedReservation = null;
+    static ReservationAccess SelectedReservationData = null;
 
-    public static void Editor<T>(string ObjName ,T DataAcces)
+    public static void Editor(string Header, string ObjName ,List<string> ColomnNames)
      {
-        MoviesAccess selectedMovieAccess;
-        if (DataAcces is MoviesAccess movieAccess)
+
+
+        if (ObjName.ToLower() == "movie")
         {
-            selectedMovieAccess = movieAccess;
-            
-            var SelectedObj = MovieCatalogePrinter.TabelPrinter(selectedMovieAccess);
-            Helpers.PrintStringToColor($"\nAre you sure you want to Edit the {ObjName} '{SelectedObj.MovieTitle} from {SelectedObj.ReleaseYear}'.\nPlease type 'yes' or 'no'.", "blue");
+            MoviesAccess selectedMovieAccess = new();
+            if (selectedMovieAccess.LoadFromJson() != false)
+            {
+                List<Movie> movies = selectedMovieAccess.GetItemList();
+                Movie movie = (Movie)ObjCatalogePrinter.TabelPrinter<Movie>(Header, movies,ColomnNames);
+                SelectedMovie = movie;
+                SelectedMovieData = selectedMovieAccess;
+            }
+        }
+        else if (ObjName.ToLower() == "reservation")
+        {
+            ReservationAccess SelectedReservationAcces = new();
+            if (SelectedReservationAcces.LoadFromJson() != false)
+            {
+                List<Reservation> reservations = SelectedReservationAcces.GetItemList();
+
+
+                Reservation reservation = (Reservation)ObjCatalogePrinter.TabelPrinter<Reservation>(Header, reservations,ColomnNames);
+                SelectedReservation = reservation;
+                SelectedReservationData = SelectedReservationAcces;
+            }
+        }
+        else
+        {
+            Console.WriteLine("Error object can't be edited");
+            ManagerMenu.Start();
+        }
+            Helpers.PrintStringToColor($"\nAre you sure you want to edit this {ObjName}'.\nPlease type 'yes' or 'no'.", "blue");
             Console.Write("\u2192 ");
             string answer = Console.ReadLine().ToLower();
 
             if (answer == "yes")
-            {
-                DisplayObj(SelectedObj);
-            }
+                {
+                    if (SelectedMovie != null)
+                    {
+                        EditObj(SelectedMovie);
+                    }
+                    else if (SelectedReservation != null)
+                    {
+                        EditObj(SelectedReservation);
+                    }
+                }
 
-            if (answer == "no")
+            if (answer != "yes")
             {
-                Console.WriteLine($"You have chosen not to Edit the {ObjName}: {SelectedObj.MovieTitle} from {SelectedObj.MovieTitle} from {SelectedObj.ReleaseYear}.");
-                Helpers.PrintStringToColor($"Do you want to change another {ObjName}?", "blue");
+                Console.WriteLine($"You have chosen not to edit this {ObjName}");
+                Helpers.PrintStringToColor($"Do you want to edit another {ObjName}?", "blue");
                 Console.Write("\u2192 ");
                 string answer2 = Console.ReadLine().ToLower();
                 if (answer2 == "yes")
                 {
                     Console.WriteLine("You will be redirected");
                     Thread.Sleep(800);
+                    Console.Clear();
                     MovieOptionPresentation.EditMoviePresentation();
                 }
 
-                if (answer2 == "no")
+                if (answer2 != "yes")
                 {
                     Console.WriteLine("You will be redirected");
                     Thread.Sleep(800);
@@ -42,14 +79,11 @@ public class EditObjOutTabel
             }
 
             Console.Clear();
-        }
     }
     static List<string> GetPropertyNames<T>(T obj)
     {
-        // Get the type of the class
         Type objType = typeof(T);
 
-        // Get all public properties of the class
         var properties = objType.GetProperties();
 
         // Extract property names and put them into a list
@@ -61,12 +95,9 @@ public class EditObjOutTabel
 
         return propertyNames;
     }
-        static List<string> GetPropertyValues<T>(T obj)
+    static List<string> GetPropertyValues<T>(T obj)
     {
-        // Get the type of the class
         Type objType = typeof(T);
-
-        // Get all public properties of the class
         var properties = objType.GetProperties();
 
         // Extract property values and put them into a list
@@ -104,15 +135,52 @@ public class EditObjOutTabel
         {
             return input.Substring(0, maxLength - 3) + "...";
         }
-
-        return input.PadRight(maxLength);
+        else
+        {
+            return input + new string(' ', Math.Max(0, maxLength - input.Length));
+        }
     }
 
 
-    public static void DisplayObj<T>(T obj)
+
+    static void ChangeValues<T> (T obj, string fieldName, string NewValue)
+    {
+        Type objectType = obj.GetType();
+        var field = objectType.GetProperty(fieldName);
+
+        if (field != null)
+        {
+            PropertyInfo propertyInfo = objectType.GetProperty(fieldName);
+            switch (propertyInfo.PropertyType.Name)
+            {
+                case "Int32":
+                    field.SetValue(obj, Convert.ToInt32(NewValue));
+
+                    break;
+                case "Double":
+                    field.SetValue(obj, Convert.ToDouble(NewValue));
+                    break;
+                case "String":
+                    field.SetValue(obj, NewValue);
+                    break;
+                // List<string> is represented as List`1 in the type name
+                case "List`1": 
+                    List<string> LOS = NewValue.Split(",").ToList();
+                    field.SetValue(obj,LOS);
+                    break;
+            }
+        }
+        else
+            {
+                Console.WriteLine($"Field '{fieldName}' not found in type '{objectType.Name}'.");
+            }
+    }
+
+    public static void EditObj<T>(T obj)
     {
         List<string> FieldNames = GetPropertyNames(obj);
         List<string> FieldValues = GetPropertyValues(obj);
+
 
         int selectedIndex = 0; 
 
@@ -175,7 +243,7 @@ public class EditObjOutTabel
         Helpers.CharLine('-' ,80);
         Helpers.PrintStringToColor($"Enter new value for {fieldName}: ","blue");
         string newValue = Helpers.Color("Yellow");
-
+        ChangeValues(obj,fieldName, newValue);
         Helpers.CharLine('-' ,80);
         Helpers.PrintStringToColor("Do you want to change something else (type in yes / no)","blue");
         while(true)
@@ -186,20 +254,31 @@ public class EditObjOutTabel
         {
             Console.WriteLine("\nYou will be redirected to the main menu");
             Thread.Sleep(800);
+            if (SelectedMovieData != null)
+            {
+             SelectedMovieData.SaveToJson();
+            }
+            else if (SelectedReservationData != null)
+            {
+                SelectedReservationData.SaveToJson();
+            }
+            else
+            {
+                Helpers.PrintStringToColor("Something went wrong", "red");
+            }
             ManagerMenu.Start();
             break;
         }
         else if (choice == "yes")
         {
-            DisplayObj(obj);
+            EditObj(obj);
         }
         else
         {
             Helpers.PrintStringToColor("Please type in yes or no","red");
         }
-
-
         }
     }
     }
 }
+            
