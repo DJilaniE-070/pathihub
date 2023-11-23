@@ -5,14 +5,87 @@ public class SeatMap
     // lijst om reservaties op te slaan
     //public static List<List<string>> ReservedSeats = new List<List<string>>();
     //public static List<ReservedSeats> ReserveSeat = new List<ReservedSeats>();
-    
+
+    // auditorium 1 met 150 stoelen (14 rijen en 12 stoelen per rij)
+    public List<List<string>> auditorium1 = new List<List<string>>
+    {
+        // seat                  1    2    3    4    5    6    7    8    9    10   11   12
+        new List<string> { "3", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" },
+        new List<string> { "2", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "2", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "2", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "2", "C", "C", "C", "C", "C", "B", "B", "C", "C", "C", "C", "C" },
+        new List<string> { "2", "C", "C", "C", "C", "B", "B", "B", "B", "C", "C", "C", "C" },
+        new List<string> { "2", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
+        new List<string> { "2", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
+        new List<string> { "2", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
+        new List<string> { "2", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
+        new List<string> { "2", "C", "C", "C", "C", "B", "B", "B", "B", "C", "C", "C", "C" },
+        new List<string> { "2", "C", "C", "C", "C", "C", "B", "B", "C", "C", "C", "C", "C" },
+        new List<string> { "2", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "2", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "2", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" }
+    };
+    // auditorium 2 met 300 stoelen (19 rijen en 18 stoelen per rij)
+    public List<List<string>> auditorium2 = new List<List<string>>
+    {
+        // seat                  1    2    3    4    5    6    7    8    9    10   11   12   13   14   15   16   17   18
+        new List<string> { "3", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" },
+        new List<string> { "2", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "2", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "2", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X" },
+        new List<string> { "2", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X" },
+        new List<string> { "2", "X", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "X" },
+        new List<string> { "2", "X", "C", "C", "C", "B", "B", "B", "B", "A", "A", "B", "B", "B", "B", "C", "C", "C", "X" },
+        new List<string> { "2", "C", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "C" },
+        new List<string> { "2", "C", "C", "C", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "C", "C", "C" },
+        new List<string> { "2", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C" },
+        new List<string> { "2", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C" },
+        new List<string> { "2", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C" },
+        new List<string> { "2", "X", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "X" },
+        new List<string> { "2", "X", "C", "C", "C", "B", "B", "B", "B", "A", "A", "B", "B", "B", "B", "C", "C", "C", "X" },
+        new List<string> { "2", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X" },
+        new List<string> { "2", "X", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "2", "X", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "2", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "2", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
+        new List<string> { "2", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" }
+    };
+    // auditorium 3 met 500 stoelen (20 rijen en 30 stoelen per rij)
+    public List<List<string>> auditorium3 = new List<List<string>>
+    {
+        // seat                  1    2    3    4    5    6    7    8    9    10   11   12   13   14   15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30
+        new List<string> { "3", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"},
+        new List<string> { "2", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X" },
+        new List<string> { "2", "X", "X", "X", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
+        new List<string> { "2", "X", "X", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X", "X", "X" },
+        new List<string> { "2", "X", "X", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X", "X", "X" },
+        new List<string> { "2", "X", "X", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X", "X", "X" },
+        new List<string> { "2", "X", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "2", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "2", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C" },
+        new List<string> { "2", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C" },
+        new List<string> { "2", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C" },
+        new List<string> { "2", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C" },
+        new List<string> { "2", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C" },
+        new List<string> { "2", "X", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "2", "X", "X", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "2", "X", "X", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "2", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
+        new List<string> { "2", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
+        new List<string> { "2", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X" },
+        new List<string> { "2", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X" },
+        new List<string> { "2", "X", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X", "X" }
+    };
+
+    public List<string> rows = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "AA", "BB", "CC", "DD"};
     private double Astoelen;
     private double Bstoelen;
     private double Cstoelen;
     public string Message = "";
     public int AuditoriumNumber;
-    public int CursorRow = 0;
-    public int CursorSeat = 0;
+    public int CursorRow = 1;
+    public int CursorSeat = 1;
     public List<List<string>> Auditorium = new();
     public double ASTOEL 
     { 
@@ -54,83 +127,6 @@ public class SeatMap
         BSTOEL = 20;
         CSTOEL = 15;
         AuditoriumNumber = auditoriumnumber;
-        Auditoriums();
-    }
-
-    // 3 auditoriums hardcoded en cursor logic
-    public void Auditoriums()
-    {
-        // auditorium 1 met 150 stoelen (14 rijen en 12 stoelen per rij)
-        List<List<string>> auditorium1 = new List<List<string>>
-        {
-            // seat             1    2    3    4    5    6    7    8    9    10   11   12
-            new List<string> { "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
-            new List<string> { "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
-            new List<string> { "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
-            new List<string> { "C", "C", "C", "C", "C", "B", "B", "C", "C", "C", "C", "C" },
-            new List<string> { "C", "C", "C", "C", "B", "B", "B", "B", "C", "C", "C", "C" },
-            new List<string> { "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
-            new List<string> { "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
-            new List<string> { "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
-            new List<string> { "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
-            new List<string> { "C", "C", "C", "C", "B", "B", "B", "B", "C", "C", "C", "C" },
-            new List<string> { "C", "C", "C", "C", "C", "B", "B", "C", "C", "C", "C", "C" },
-            new List<string> { "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
-            new List<string> { "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
-            new List<string> { "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" }
-        };
-        // auditorium 2 met 300 stoelen (19 rijen en 18 stoelen per rij)
-        List<List<string>> auditorium2 = new List<List<string>>
-        {
-            // seat             1    2    3    4    5    6    7    8    9    10   11   12   13   14   15   16   17   18
-            new List<string> { "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
-            new List<string> { "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X" },
-            new List<string> { "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X" },
-            new List<string> { "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X" },
-            new List<string> { "X", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "X" },
-            new List<string> { "X", "C", "C", "C", "B", "B", "B", "B", "A", "A", "B", "B", "B", "B", "C", "C", "C", "X" },
-            new List<string> { "C", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "C" },
-            new List<string> { "C", "C", "C", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "C", "C", "C" },
-            new List<string> { "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C" },
-            new List<string> { "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C" },
-            new List<string> { "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C" },
-            new List<string> { "X", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "X" },
-            new List<string> { "X", "C", "C", "C", "B", "B", "B", "B", "A", "A", "B", "B", "B", "B", "C", "C", "C", "X" },
-            new List<string> { "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X" },
-            new List<string> { "X", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X", "X" },
-            new List<string> { "X", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X", "X" },
-            new List<string> { "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
-            new List<string> { "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
-            new List<string> { "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" }
-        };
-        // auditorium 3 met 500 stoelen (20 rijen en 30 stoelen per rij)
-        List<List<string>> auditorium3 = new List<List<string>>
-        {
-            // seat             1    2    3    4    5    6    7    8    9    10   11   12   13   14   15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30
-            new List<string> { "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X" },
-            new List<string> { "X", "X", "X", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
-            new List<string> { "X", "X", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X", "X", "X" },
-            new List<string> { "X", "X", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X", "X", "X" },
-            new List<string> { "X", "X", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X", "X", "X" },
-            new List<string> { "X", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X", "X" },
-            new List<string> { "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X" },
-            new List<string> { "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C" },
-            new List<string> { "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C" },
-            new List<string> { "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C" },
-            new List<string> { "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C" },
-            new List<string> { "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C" },
-            new List<string> { "X", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "X" },
-            new List<string> { "X", "X", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "X", "X" },
-            new List<string> { "X", "X", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
-            new List<string> { "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
-            new List<string> { "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
-            new List<string> { "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X" },
-            new List<string> { "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X" },
-            new List<string> { "X", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X", "X" }
-        };
-
-        // auditorium kiezen, maakt een kopie van de auditorium 1 tot en met 3 en zet in Auditorium
-        //List<List<string>> Auditorium = new();
         if (AuditoriumNumber == 1)
         {
             Auditorium = auditorium1;
@@ -143,6 +139,23 @@ public class SeatMap
         {
             Auditorium = auditorium3;
         }
+        Auditoriums();
+        
+    }
+
+    public void ChangePrices(double stoel_a, double stoel_b, double stoel_c)
+    {
+        ASTOEL = stoel_a;
+        BSTOEL = stoel_b;
+        CSTOEL = stoel_c;
+    }
+
+    // 3 auditoriums hardcoded en cursor logic
+    public void Auditoriums()
+    {
+        // auditorium kiezen, maakt een kopie van de auditorium 1 tot en met 3 en zet in Auditorium
+        //List<List<string>> Auditorium = new();
+        
 
         // cursor positie voor rij en stoel
         //int CursorRow = 0;
@@ -172,16 +185,50 @@ public class SeatMap
             switch (key.Key)
             {
                 case ConsoleKey.UpArrow:
-                    CursorRow = CursorRow > 0 ? CursorRow - 1 : CursorRow;
+                    if (CursorRow > 1)
+                    {
+                        CursorRow--;
+                    }
                     break;
                 case ConsoleKey.DownArrow:
-                    CursorRow = CursorRow < Auditorium.Count - 1 ? CursorRow + 1 : CursorRow;
+                    if (CursorRow < Auditorium.Count - 1)
+                    {
+                        CursorRow++;
+                    }
                     break;
                 case ConsoleKey.LeftArrow:
-                    CursorSeat = CursorSeat > 0 ? CursorSeat - 1 : CursorSeat;
+                    if (CursorSeat > 1)
+                    {
+                        CursorSeat--;
+                    }
                     break;
                 case ConsoleKey.RightArrow:
-                    CursorSeat = CursorSeat < Auditorium[CursorRow].Count - 1 ? CursorSeat + 1 : CursorSeat;
+                    if (CursorSeat < Auditorium[CursorRow].Count - 1)
+                    {
+                        CursorSeat++;
+                    }
+                    break;
+                // stoel annuleren
+                case ConsoleKey.Backspace:
+                    if (Auditorium[CursorRow][CursorSeat] == "AR")
+                    {
+                        Auditorium[CursorRow][CursorSeat] = "A";
+                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+                    }
+                    if (Auditorium[CursorRow][CursorSeat] == "BR")
+                    {
+                        Auditorium[CursorRow][CursorSeat] = "B";
+                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+                    }
+                    if (Auditorium[CursorRow][CursorSeat] == "CR")
+                    {
+                        Auditorium[CursorRow][CursorSeat] = "C";
+                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+                    }
+                    else
+                    {
+                        Message = $"Je kan deze stoel niet annuleren";
+                    }
                     break;
                 case ConsoleKey.Backspace:
                     if (Auditorium[CursorRow][CursorSeat] == "AR")
@@ -203,6 +250,7 @@ public class SeatMap
                     if (Auditorium[CursorRow][CursorSeat] == "A")
                     {
                         Auditorium[CursorRow][CursorSeat] = "AR";
+<<<<<<< Updated upstream
                         Message = $"Stoel in rij {CursorRow + 1} met nummer {CursorSeat + 1} is gereserveerd, Dank u wel voor het reserveren";
                     }
                     else if (Auditorium[CursorRow][CursorSeat] == "B")
@@ -214,6 +262,19 @@ public class SeatMap
                     {
                         Auditorium[CursorRow][CursorSeat] = "CR";
                         Message = $"Stoel in rij {CursorRow + 1} met nummer {CursorSeat + 1} is gereserveerd, Dank u wel voor het reserveren";
+=======
+                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is gereserveerd, Dank u wel voor het reserveren";
+                    }
+                    if (Auditorium[CursorRow][CursorSeat] == "B")
+                    {
+                        Auditorium[CursorRow][CursorSeat] = "BR";
+                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is gereserveerd, Dank u wel voor het reserveren";
+                    }
+                    if (Auditorium[CursorRow][CursorSeat] == "C")
+                    {
+                        Auditorium[CursorRow][CursorSeat] = "CR";
+                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is gereserveerd, Dank u wel voor het reserveren";
+>>>>>>> Stashed changes
                     }
                     // als X is print dat het geen stoel is en doet niks 
                     else if (Auditorium[CursorRow][CursorSeat] == "X")
@@ -221,7 +282,7 @@ public class SeatMap
                         Message = $"Dit is geen stoel";
                     }
                     // als R is dan is het al gereserveerd en print dit, doet niks verder
-                    else if (Auditorium[CursorRow][CursorSeat] == "R")
+                    else if (Auditorium[CursorRow][CursorSeat] == "AR" || Auditorium[CursorRow][CursorSeat] == "BR" || Auditorium[CursorRow][CursorSeat] == "CR")
                     {
                         Message = $"Dit is een gereserveerde stoel, kies een andere stoel";
                     }
@@ -241,6 +302,8 @@ public class SeatMap
 
         // escape button om uit loop te gaan
         } while (key.Key != ConsoleKey.Escape);
+        // escape en je gaat terug naar menu.cs scherm
+        Menu.Start();
     }
 
     // print alles
@@ -253,12 +316,12 @@ public class SeatMap
         DisplayCursorPosition();
         DisplayMessage();
         DisplayLegenda();
+        DisplayDescription();
     }
 
     // auditorium printen
     public void DisplayAuditorium()
     {   
-        // output van symbool in console te kunnen laten tonen
         Console.OutputEncoding = Encoding.UTF8;
         // auditorium printen loops
         for (int row = 0; row < Auditorium.Count; row++)
@@ -292,9 +355,40 @@ public class SeatMap
                             Console.ForegroundColor = ConsoleColor.Blue;
                             Console.Write("❑ ");
                             break;
-                        case "R":
+                        case "AR":
                             Console.ForegroundColor = ConsoleColor.DarkGray;
                             Console.Write("▣ ");
+                            break;
+                        case "BR":
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            Console.Write("▣ ");
+                            break;
+                        case "CR":
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            Console.Write("▣ ");
+                            break;
+
+                        // print rij nummer en stoel nummer
+                        case "1":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($"{rows[seat - 1]} ");
+                            break;
+                        case "2":
+                            if (row > 9)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                Console.Write($"{row} ");
+                                break;
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                Console.Write($"{row}  ");
+                                break;
+                            } 
+                        case "3":
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write($"   ");
                             break;
                     }
                 }
@@ -311,15 +405,16 @@ public class SeatMap
     {
         if (AuditoriumNumber == 1)
         {
-            Console.WriteLine("      Auditorium 1:");
+            Console.WriteLine("         Auditorium 1:");
         }
         if (AuditoriumNumber == 2)
         {
-            Console.WriteLine("\t    Auditorium 2:");
+         
+            Console.WriteLine("\t       Auditorium 2:");
         }
         if (AuditoriumNumber == 3)
         {
-            Console.WriteLine("\t\t\tAuditorium 3:");
+            Console.WriteLine("\t\t\t   Auditorium 3:");
         }
     }
 
@@ -329,20 +424,20 @@ public class SeatMap
         if (AuditoriumNumber == 1)
         {
             Console.WriteLine();
-            Console.WriteLine("         Screen");
-            Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            Console.WriteLine("           Screen");
+            Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
         if (AuditoriumNumber == 2)
         {
             Console.WriteLine();
-            Console.WriteLine("               Screen");
-            Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            Console.WriteLine("                 Screen");
+            Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
         if (AuditoriumNumber == 3)
         {
             Console.WriteLine();
-            Console.WriteLine("                          Screen");
-            Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            Console.WriteLine("                              Screen");
+            Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
     }
 
@@ -368,11 +463,11 @@ public class SeatMap
     {
         Console.Write("Rij: ");
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.Write($"[{CursorRow + 1}]");
+        Console.Write($"[{CursorRow}]");
         Console.ResetColor();
         Console.Write(" Stoel: ");
         Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.Write($"[{CursorSeat + 1}]\n\n");
+        Console.Write($"[{rows[CursorSeat - 1]}]\n\n");
         Console.ResetColor();
     }
 
@@ -380,6 +475,12 @@ public class SeatMap
     public void DisplayMessage()
     {
         Console.WriteLine(Message);
+    }
+
+    // description printen
+    public void DisplayDescription()
+    {
+        Console.WriteLine($"\nUse arrow keys to move the cursor.\nPress [enter] to select a seat. Press [backspace] to cancel the seat.\nPress [escape] to return to main menu.");
     }
 }
 
