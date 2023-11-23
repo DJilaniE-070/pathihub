@@ -1,6 +1,6 @@
 public static class SecurePassword
 {
-    public static string MaskPassword(string password)
+    public static string MaskPassword(string password) 
     {
         ConsoleKeyInfo key;
         // elke password is geel
