@@ -230,39 +230,12 @@ public class SeatMap
                         Message = $"Je kan deze stoel niet annuleren";
                     }
                     break;
-                case ConsoleKey.Backspace:
-                    if (Auditorium[CursorRow][CursorSeat] == "AR")
-                    {
-                        Auditorium[CursorRow][CursorSeat] = "A";
-                    }
-                    else if (Auditorium[CursorRow][CursorSeat] == "BR")
-                    {
-                        Auditorium[CursorRow][CursorSeat] = "B";
-                    }
-                    else if (Auditorium[CursorRow][CursorSeat] == "CR")
-                    {
-                        Auditorium[CursorRow][CursorSeat] = "C";
-                    }
-                    break;
                 // Reserveer een stoel in de auditorium
                 case ConsoleKey.Enter:
                     // als A, B of C is reserveer stoel en verander positie in list naar R
                     if (Auditorium[CursorRow][CursorSeat] == "A")
                     {
                         Auditorium[CursorRow][CursorSeat] = "AR";
-<<<<<<< Updated upstream
-                        Message = $"Stoel in rij {CursorRow + 1} met nummer {CursorSeat + 1} is gereserveerd, Dank u wel voor het reserveren";
-                    }
-                    else if (Auditorium[CursorRow][CursorSeat] == "B")
-                    {
-                        Auditorium[CursorRow][CursorSeat] = "BR";
-                        Message = $"Stoel in rij {CursorRow + 1} met nummer {CursorSeat + 1} is gereserveerd, Dank u wel voor het reserveren";
-                    }
-                    else if (Auditorium[CursorRow][CursorSeat] == "C")
-                    {
-                        Auditorium[CursorRow][CursorSeat] = "CR";
-                        Message = $"Stoel in rij {CursorRow + 1} met nummer {CursorSeat + 1} is gereserveerd, Dank u wel voor het reserveren";
-=======
                         Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is gereserveerd, Dank u wel voor het reserveren";
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "B")
@@ -274,7 +247,6 @@ public class SeatMap
                     {
                         Auditorium[CursorRow][CursorSeat] = "CR";
                         Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is gereserveerd, Dank u wel voor het reserveren";
->>>>>>> Stashed changes
                     }
                     // als X is print dat het geen stoel is en doet niks 
                     else if (Auditorium[CursorRow][CursorSeat] == "X")
