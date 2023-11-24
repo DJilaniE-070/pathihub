@@ -79,6 +79,7 @@ public class SeatMap
     };
 
     public List<string> rows = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "AA", "BB", "CC", "DD"};
+    public List<List<string>> Auditorium = new();
     private double _priceA;
     private double _priceB;
     private double _priceC;
@@ -86,7 +87,6 @@ public class SeatMap
     public int AuditoriumNumber;
     public int CursorRow = 1;
     public int CursorSeat = 1;
-    public List<List<string>> Auditorium = new();
     public double PriceA 
     { 
         get
@@ -163,6 +163,11 @@ public class SeatMap
         PriceC = stoel_c;
     }
 
+    public void ReserveSeats()
+    {
+        Reservation newReservation = new();
+    }
+
     // 3 auditoriums hardcoded en cursor logic
     public void Auditoriums()
     {
@@ -226,7 +231,9 @@ public class SeatMap
                     Message = $"Weet je zeker dat je de volgende stoel of stoelen wilt reserveren?\nDruk op [enter] om verder te gaan\nDruk op [backspace] om terug te gaan";	
                     if (key.Key == ConsoleKey.Enter)
                     {
-                        
+                        SnacksMenu snack = new SnacksMenu();
+                        snack.Start();
+                        break;
                     }
                     if (key.Key == ConsoleKey.Backspace)
                     {
@@ -264,19 +271,19 @@ public class SeatMap
                     if (Auditorium[CursorRow][CursorSeat] == "A")
                     {
                         Auditorium[CursorRow][CursorSeat] = "AR";
-                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is gereserveerd, Dank u wel voor het reserveren";
+                        Message = $"Stoel {rows[CursorSeat - 1]} in rij {CursorRow} is geselecteerd. Dank u wel voor het reserveren";
                         break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "B")
                     {
                         Auditorium[CursorRow][CursorSeat] = "BR";
-                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is gereserveerd, Dank u wel voor het reserveren";
+                        Message = $"Stoel {rows[CursorSeat - 1]} in rij {CursorRow} is geselecteerd. Dank u wel voor het reserveren";
                         break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "C")
                     {
                         Auditorium[CursorRow][CursorSeat] = "CR";
-                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is gereserveerd, Dank u wel voor het reserveren";
+                        Message = $"Stoel {rows[CursorSeat - 1]} in rij {CursorRow} is geselecteerd. Dank u wel voor het reserveren";
                         break;
                     }
                     // als X is print dat het geen stoel is en doet niks 
@@ -318,6 +325,7 @@ public class SeatMap
         DisplayScreen();
         DisplayCursorPosition();
         DisplayMessage();
+        DisplayReservedSeats();
         DisplayLegenda();
         DisplayOptions();
     }
@@ -488,5 +496,32 @@ public class SeatMap
         Console.WriteLine($"Press [backspace] to cancel the seat.");
         Console.WriteLine($"Press [enter] to confirm your reservation.");
         Console.WriteLine($"Press [escape] to return to main menu.");
+    }
+
+    public void DisplayReservedSeats()
+    {
+        foreach (List<string> row in Auditorium)
+        {
+            foreach (string seat in row)
+            {
+                if (Auditorium[CursorRow][CursorSeat] == "AR" || Auditorium[CursorRow][CursorSeat] == "BR" || Auditorium[CursorRow][CursorSeat] == "CR")
+                {
+
+                }
+            }
+        }
+    }
+
+    public bool IsReserved(string seat)
+    {
+        if (Auditorium[CursorRow][CursorSeat] == "AR" || Auditorium[CursorRow][CursorSeat] == "BR" || Auditorium[CursorRow][CursorSeat] == "CR")
+        {
+            Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
