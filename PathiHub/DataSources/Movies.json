@@ -17,7 +17,7 @@
     "RuntimeMinutes": 120,
     "Language": "English",
     "Country": "United States",
-    "Auditorium": 0,
+    "Auditorium": 3,
     "Awards": null
   },
   {
@@ -37,7 +37,7 @@
     "RuntimeMinutes": 115,
     "Language": "English",
     "Country": "United States",
-    "Auditorium": 0,
+    "Auditorium": 1,
     "Awards": null
   },
   {
@@ -55,7 +55,7 @@
     "RuntimeMinutes": 120,
     "Language": "english",
     "Country": "England",
-    "Auditorium": 0,
+    "Auditorium": 1,
     "Awards": [
       "blblabal"
     ]
@@ -116,6 +116,26 @@
     "Language": "english",
     "Country": "usa",
     "Auditorium": 2,
+    "Awards": [
+      "none"
+    ]
+  },
+  {
+    "MovieTitle": "THE HUNGER GAMES",
+    "ReleaseYear": 2023,
+    "Genre": [
+      "adventure"
+    ],
+    "Director": "1120",
+    "Writers": [
+      "IDC"
+    ],
+    "Plot": "It's the morning of the tenth annual Hunger Games, and eighteen-year-old Coriolanus Snow (Blyth) - years before he would become the tyrannical president of Panem - prepares for his only chance at fame and success",
+    "Rating": 6.0,
+    "RuntimeMinutes": 158,
+    "Language": "english",
+    "Country": "USA",
+    "Auditorium": 1,
     "Awards": [
       "none"
     ]
