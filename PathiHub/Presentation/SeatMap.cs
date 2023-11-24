@@ -55,7 +55,7 @@ public class SeatMap
     public List<List<string>> auditorium3 = new List<List<string>>
     {
         // seat                  1    2    3    4    5    6    7    8    9    10   11   12   13   14   15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30
-        new List<string> { "3", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"},
+        new List<string> { "3", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" },
         new List<string> { "2", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X" },
         new List<string> { "2", "X", "X", "X", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
         new List<string> { "2", "X", "X", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X", "X", "X" },
@@ -79,74 +79,88 @@ public class SeatMap
     };
 
     public List<string> rows = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "AA", "BB", "CC", "DD"};
-    private double Astoelen;
-    private double Bstoelen;
-    private double Cstoelen;
+    private double _priceA;
+    private double _priceB;
+    private double _priceC;
     public string Message = "";
     public int AuditoriumNumber;
     public int CursorRow = 1;
     public int CursorSeat = 1;
     public List<List<string>> Auditorium = new();
-    public double ASTOEL 
+    public double PriceA 
     { 
         get
         {
-            return Astoelen;
+            return _priceA;
         } 
         set
         {
-            Astoelen = value > 8 ? value : 8;
+            _priceA = value > 8 ? value : 8;
         }
     }
-    public double BSTOEL 
+    public double PriceB 
     { 
         get
         {
-            return Bstoelen;
+            return _priceB;
         } 
         set
         {
-            Bstoelen = value > 5 ? value : 5;
+            _priceB = value > 5 ? value : 5;
         }
     }
-    public double CSTOEL 
+    public double PriceC
     { 
         get
         {
-            return Cstoelen;
+            return _priceC;
         } 
         set
         {
-            Cstoelen = value > 3 ? value : 3;
+            _priceC = value > 3 ? value : 3;
         }
     }
 
-    public SeatMap(int auditoriumnumber)
+    public SeatMap(int auditoriumnumber) : this(auditoriumnumber, 25, 20, 15) 
     {
-        ASTOEL = 25;
-        BSTOEL = 20;
-        CSTOEL = 15;
         AuditoriumNumber = auditoriumnumber;
-        if (AuditoriumNumber == 1)
-        {
-            Auditorium = auditorium1;
-        }
-        if (AuditoriumNumber == 2)
-        {
-            Auditorium = auditorium2;
-        }
-        if (AuditoriumNumber == 3)
-        {
-            Auditorium = auditorium3;
-        }
+        PriceA = 25;
+        PriceB = 20;
+        PriceC = 15;
+        Auditorium = GetAuditorium(auditoriumnumber);
         Auditoriums();
+    }
+
+    public SeatMap(int auditoriumnumber, double astoelen, double bstoelen, double cstoelen)
+    {
+        AuditoriumNumber = auditoriumnumber;
+        PriceA = astoelen;
+        PriceB = bstoelen;
+        PriceC = cstoelen;
+        Auditorium = GetAuditorium(auditoriumnumber);
+        Auditoriums();
+    }
+
+    private List<List<string>> GetAuditorium(int auditoriumNumber) 
+    {
+        switch (auditoriumNumber) 
+        {
+            case 1:
+                return auditorium1;
+            case 2:
+                return auditorium2;
+            case 3:
+                return auditorium3;
+            default:
+                throw new ArgumentOutOfRangeException("Invalid auditorium number");
+        }
     }
 
     public void ChangePrices(double stoel_a, double stoel_b, double stoel_c)
     {
-        ASTOEL = stoel_a;
-        BSTOEL = stoel_b;
-        CSTOEL = stoel_c;
+        PriceA = stoel_a;
+        PriceB = stoel_b;
+        PriceC = stoel_c;
     }
 
     // 3 auditoriums hardcoded en cursor logic
@@ -207,7 +221,19 @@ public class SeatMap
                         CursorSeat++;
                     }
                     break;
-                // stoel annuleren
+                // de geselecteerde stoel of stoelen reserveren
+                case ConsoleKey.Enter:
+                    Message = $"Weet je zeker dat je de volgende stoel of stoelen wilt reserveren?\nDruk op [enter] om verder te gaan\nDruk op [backspace] om terug te gaan";	
+                    if (key.Key == ConsoleKey.Enter)
+                    {
+                        
+                    }
+                    if (key.Key == ConsoleKey.Backspace)
+                    {
+                        break;
+                    }
+                    break;
+                // een stoel annuleren
                 case ConsoleKey.Backspace:
                     if (Auditorium[CursorRow][CursorSeat] == "AR")
                     {
@@ -226,15 +252,14 @@ public class SeatMap
                         Auditorium[CursorRow][CursorSeat] = "C";
                         Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
                         break;
-
                     }
                     else
                     {
                         Message = $"Je kan deze stoel niet annuleren";
                     }
                     break;
-                // Reserveer een stoel in de auditorium
-                case ConsoleKey.Enter:
+                // een stoel selecteren
+                case ConsoleKey.Spacebar:
                     // als A, B of C is reserveer stoel en verander positie in list naar R
                     if (Auditorium[CursorRow][CursorSeat] == "A")
                     {
@@ -387,7 +412,6 @@ public class SeatMap
         }
         if (AuditoriumNumber == 2)
         {
-         
             Console.WriteLine("\t       Auditorium 2:");
         }
         if (AuditoriumNumber == 3)
@@ -424,15 +448,15 @@ public class SeatMap
     {
         Console.WriteLine();
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine($"❏ = {Astoelen} euro");
+        Console.WriteLine($"❏ = {PriceA} euro");
         Console.ResetColor();
 
         Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine($"❏ = {Bstoelen} euro");
+        Console.WriteLine($"❏ = {PriceB} euro");
         Console.ResetColor();
 
         Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine($"❏ = {Cstoelen} euro");
+        Console.WriteLine($"❏ = {PriceC} euro");
         Console.ResetColor();
     }
 
@@ -458,6 +482,11 @@ public class SeatMap
     // description printen
     public void DisplayOptions()
     {
-        Console.WriteLine($"\nUse arrow keys to move the cursor.\nPress [enter] to select a seat.\nPress [backspace] to cancel the seat.\nPress [escape] to return to main menu.");
+        Console.WriteLine();
+        Console.WriteLine($"Use arrow keys to navigate.");
+        Console.WriteLine($"Press [space] to reserve a seat.");
+        Console.WriteLine($"Press [backspace] to cancel the seat.");
+        Console.WriteLine($"Press [enter] to confirm your reservation.");
+        Console.WriteLine($"Press [escape] to return to main menu.");
     }
 }
