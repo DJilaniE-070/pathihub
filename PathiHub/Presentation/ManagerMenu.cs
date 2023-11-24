@@ -108,7 +108,7 @@ ___  ___                                   ___  ___
     
 static void FilmOptions()
 {
-    string[] menuOptions = { "Add a movie", "Remove a movie", "Edit a movie", "Show Movies","Return to Manager menu" };
+    string[] menuOptions = { "Add a movie", "Remove a movie", "Edit a movie", "Show Movies", "Return to Manager menu" };
     int selectedIndex = 0;
     bool exit = false;
 
