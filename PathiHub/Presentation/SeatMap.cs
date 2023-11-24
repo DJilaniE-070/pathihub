@@ -456,12 +456,6 @@ public class SeatMap
     }
 
     // description printen
-    public void DisplayDescription()
-    {
-        Console.WriteLine($"\nUse arrow keys to move the cursor.\nPress [enter] to select a seat. Press [backspace] to cancel the seat.\nPress [escape] to return to main menu.");
-    }
-
-    // description printen
     public void DisplayOptions()
     {
         Console.WriteLine($"\nUse arrow keys to move the cursor.\nPress [enter] to select a seat.\nPress [backspace] to cancel the seat.\nPress [escape] to return to main menu.");
