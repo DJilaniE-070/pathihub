@@ -6,6 +6,8 @@ public class SnacksMenu
 {
     private int CursorIndex = 1;
     private int PageIndex = 0;
+    private int StartIndex = 0;
+    private int Steps = 10;
     public static List<SnacksData> _snacksdata = new List<SnacksData>
     {
         //                     name                    description   price   stock   isavailable
@@ -108,7 +110,8 @@ public class SnacksMenu
                     break;
 
                 case ConsoleKey.RightArrow:
-                    if (PageIndex < _snacksdata.Count / 10)
+                    int LastPage = _snacksdata.Count % 10;
+                    if (PageIndex < LastPage)
                     {
                         PageIndex++;
                     }
@@ -131,14 +134,14 @@ public class SnacksMenu
         
         for (int i = 0; i < _snacksdata.Count; i++)
         {
-            if (_snacksdata[i].IsAvailable)
+            if (_snacksdata[StartIndex].IsAvailable)
             {
                 if (CursorIndex == i)
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.Black;
                 }
-                Console.WriteLine($"{i + 1}. {_snacksdata[i].Name}");
+                Console.Write($"{i + 1}. {_snacksdata[i].Name}");
             }
             else
             {
@@ -146,6 +149,7 @@ public class SnacksMenu
                 Console.WriteLine($"{i + 1}. {_snacksdata[i].Name} is out of stock");
             }
             Console.ResetColor();
+            StartIndex++;
         }
 
         Console.WriteLine();
@@ -191,6 +195,21 @@ public class SnacksMenu
         }
     }
 
+    public void EditSnacks(string name)
+    {
+        foreach (var snack in _snacksdata)
+        {
+
+        }
+    }
+
+    public void RemoveSnacks(string name)
+    {
+        foreach (var snack in _snacksdata)
+        {
+
+        }
+    }
     public void EditSnacks(string name)
     {
         foreach (var snack in _snacksdata)
