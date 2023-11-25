@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
+<<<<<<< Updated upstream
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PathiHub", "PathiHub.csproj", "{3E1B3A46-5245-4A5D-A7C2-E549372F666C}"
+=======
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PathiHub", "PathiHub.csproj", "{D67625FC-5721-40F0-A73A-00056CCCF8FA}"
+>>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +15,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+<<<<<<< Updated upstream
 		{3E1B3A46-5245-4A5D-A7C2-E549372F666C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3E1B3A46-5245-4A5D-A7C2-E549372F666C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E1B3A46-5245-4A5D-A7C2-E549372F666C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E1B3A46-5245-4A5D-A7C2-E549372F666C}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+		{D67625FC-5721-40F0-A73A-00056CCCF8FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D67625FC-5721-40F0-A73A-00056CCCF8FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D67625FC-5721-40F0-A73A-00056CCCF8FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D67625FC-5721-40F0-A73A-00056CCCF8FA}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> Stashed changes
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+<<<<<<< Updated upstream
 		SolutionGuid = {0A68902B-3399-4586-95E3-7EADDD8213C6}
+=======
+		SolutionGuid = {B3394AB5-01F3-4870-9653-070F6EB182FE}
+>>>>>>> Stashed changes
 	EndGlobalSection
 EndGlobal
