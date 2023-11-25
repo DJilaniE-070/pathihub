@@ -169,7 +169,7 @@ public class SeatMap
     }
 
     // 3 auditoriums hardcoded en cursor logic
-    public void Auditoriums()
+    private void Auditoriums()
     {
         // auditorium kiezen, maakt een kopie van de auditorium 1 tot en met 3 en zet in Auditorium
         //List<List<string>> Auditorium = new();
@@ -317,7 +317,7 @@ public class SeatMap
     }
 
     // print alles
-    public void DisplayAll()
+    private void DisplayAll()
     {
         Console.Clear();
         DisplayTitle();
@@ -331,7 +331,7 @@ public class SeatMap
     }
 
     // auditorium printen
-    public void DisplayAuditorium()
+    private void DisplayAuditorium()
     {   
         Console.OutputEncoding = Encoding.UTF8;
         // auditorium printen loops
@@ -343,6 +343,7 @@ public class SeatMap
                 if (row == CursorRow && seat == CursorSeat)
                 {
                     Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Black;
                     Console.Write("∎ ");
                 }
                 // print wat in auditorium staat met kleur en symbool
@@ -412,7 +413,7 @@ public class SeatMap
     }
 
     // titel printen
-    public void DisplayTitle()
+    private void DisplayTitle()
     {
         if (AuditoriumNumber == 1)
         {
@@ -429,7 +430,7 @@ public class SeatMap
     }
 
     // scherm printen
-    public void DisplayScreen()
+    private void DisplayScreen()
     {
         if (AuditoriumNumber == 1)
         {
@@ -452,7 +453,7 @@ public class SeatMap
     }
 
     // legenda printen
-    public void DisplayLegenda()
+    private void DisplayLegenda()
     {
         Console.WriteLine();
         Console.ForegroundColor = ConsoleColor.Red;
@@ -469,7 +470,7 @@ public class SeatMap
     }
 
     // cursor positie printen
-    public void DisplayCursorPosition()
+    private void DisplayCursorPosition()
     {
         Console.Write("Rij: ");
         Console.ForegroundColor = ConsoleColor.Green;
@@ -482,13 +483,13 @@ public class SeatMap
     }
 
     // message printen
-    public void DisplayMessage()
+    private void DisplayMessage()
     {
         Console.WriteLine(Message);
     }
 
     // description printen
-    public void DisplayOptions()
+    private void DisplayOptions()
     {
         Console.WriteLine();
         Console.WriteLine($"Use arrow keys to navigate.");
@@ -498,7 +499,7 @@ public class SeatMap
         Console.WriteLine($"Press [escape] to return to main menu.");
     }
 
-    public void DisplayReservedSeats()
+    private void DisplayReservedSeats()
     {
         foreach (List<string> row in Auditorium)
         {
@@ -512,7 +513,7 @@ public class SeatMap
         }
     }
 
-    public bool IsReserved(string seat)
+    private bool IsReserved(string seat)
     {
         if (Auditorium[CursorRow][CursorSeat] == "AR" || Auditorium[CursorRow][CursorSeat] == "BR" || Auditorium[CursorRow][CursorSeat] == "CR")
         {
