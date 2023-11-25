@@ -169,7 +169,7 @@ public class SeatMap
     }
 
     // 3 auditoriums hardcoded en cursor logic
-    private void Auditoriums()
+    public void Auditoriums()
     {
         // auditorium kiezen, maakt een kopie van de auditorium 1 tot en met 3 en zet in Auditorium
         //List<List<string>> Auditorium = new();

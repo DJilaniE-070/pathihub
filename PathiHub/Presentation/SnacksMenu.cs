@@ -134,26 +134,24 @@ public class SnacksMenu
         
         for (int i = 0; i < _snacksdata.Count; i++)
         {
-            if (_snacksdata[StartIndex].IsAvailable)
+            if (_snacksdata[i].IsAvailable)
             {
                 if (CursorIndex == i)
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.Black;
                 }
-                Console.Write($"{i + 1}. {_snacksdata[i].Name}");
+                Console.WriteLine($"{i + 1}. {_snacksdata[i].Name}");
+                Console.ResetColor();
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"{i + 1}. {_snacksdata[i].Name} is out of stock");
+                Console.ResetColor();
             }
-            Console.ResetColor();
-            StartIndex++;
         }
-
         Console.WriteLine();
-        Console.WriteLine("Press 'Left Arrow' to go to the previous page, 'Right Arrow' to go to the next page.");
     }
 
     public double CalculatePrice(string name)
@@ -179,11 +177,11 @@ public class SnacksMenu
                 {
                     // pas snack aan
                     case 1:
-                        EditSnacks(name);
+                        //EditSnacks(name);
                         break;
                     // verwijder snack
                     case 2:
-                        RemoveSnacks(name);
+                        //RemoveSnacks(name);
                         break;
                 }
             }
@@ -195,21 +193,6 @@ public class SnacksMenu
         }
     }
 
-    public void EditSnacks(string name)
-    {
-        foreach (var snack in _snacksdata)
-        {
-
-        }
-    }
-
-    public void RemoveSnacks(string name)
-    {
-        foreach (var snack in _snacksdata)
-        {
-
-        }
-    }
     public void EditSnacks(string name)
     {
         foreach (var snack in _snacksdata)
