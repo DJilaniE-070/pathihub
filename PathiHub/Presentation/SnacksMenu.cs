@@ -5,9 +5,6 @@ using System.Runtime.InteropServices;
 public class SnacksMenu
 {
     private int CursorIndex = 1;
-    private int PageIndex = 0;
-    private int StartIndex = 0;
-    private int Steps = 10;
     public static List<SnacksData> _snacksdata = new List<SnacksData>
     {
         //                     name                    description   price   stock   isavailable
@@ -19,15 +16,12 @@ public class SnacksMenu
         new SnacksData("Nachos", "Met salsa of guacamole", 1.00, 10),
         new SnacksData("Chocolade reep (groot)", "Chocolade reep", 1.00, false),
         new SnacksData("Chocolade reep (klein)", "Chocolade reep", 1.00, 10),
-        new SnacksData("Fanta Stic", "Pathi's Orange Juice", 1.00, 10),
+        new SnacksData("Fanta", "Pathi's Orange Juice", 1.00, 10),
         new SnacksData("Red Bull", "Energy drink", 1.00, 10),
         new SnacksData("Sprite", "", 1.00, 10, true),
         new SnacksData("Spa Blauw", "Water", 1.00, 10),
         new SnacksData("Spa Rood", "Water met prik", 1.00, 10),
         new SnacksData("Fanta", "Orange Juice", 1.00, 10),
-        new SnacksData("Coca Cola", "Cola", 1.00, 10),
-        new SnacksData("Coca Cola Light", "Cola zonder suiker", 1.00, 10),
-        new SnacksData("Coca Cola Zero", "Cola zonder suiker", 1.00, 10),
         new SnacksData("Pathi Cola Super", "De originele Pathi Cola", 1.25, true),
         new SnacksData("Pathi Cola Ultra", "Pathi Cola zonder suiker", 1.25, 10), 
         new SnacksData("Zoete Popcorn", "Een grote zak zoet popcorn", 2.00, 10, true),
@@ -39,20 +33,17 @@ public class SnacksMenu
         new SnacksData("Twix", "Twix ", 2.00, 10, true),
         new SnacksData("Snickers", "Snickers", 2.00, 10),
         new SnacksData("Skittles", "Skittles", 2.00, 10),
-        new SnacksData("Raffaello", "Raffaello Armani", 2.00, 10, false),
         new SnacksData("Pretzels", "Zoute pretzels met Pathi saus", 2.00, 10),
-        new SnacksData("Crisps", "Crisps", 2.00, 10),
         new SnacksData("Mix Snoep", "Een mix van alle snoep", 2.00, 10),
         new SnacksData("Mix Chocolade", "Een mix van alle chocolade", 2.00, 10),
         new SnacksData("Slush Pathi", "Slush Puppy maar dan Pathi stijl", 2.00, 10),
         new SnacksData("Ijs", "Keuze uit vanilla, chocolade, aardbei, citroen en mango", 2.00, 10),
-        new SnacksData("Hot Dog", "Broodje met hotdog, Pathi stijl", 2.00, 10),
+        new SnacksData("Hot Dog", "Broodje met hotdog, Pathi stijl", 2.00, 10)
     };
-    public List<Snacks> BoughtSnacks;
+    public List<Snacks> BoughtSnacks = new();
     public string Name;
     public int Quantity;
     public double TotalPrice;
-    public int Amount = 1;
     
     public SnacksMenu()
     {
@@ -65,11 +56,11 @@ public class SnacksMenu
 
     public void Start()
     {
-        Cursor();
+        DisplaySnacksCursor();
     }
     
     // print all snacks
-    public void Cursor()
+    public void DisplaySnacksCursor()
     {
         DisplaySnacks();
 
@@ -102,23 +93,15 @@ public class SnacksMenu
                     }
                     break;
 
-                case ConsoleKey.LeftArrow:
-                    if (PageIndex > 0)
-                    {
-                        PageIndex--;
-                    }
-                    break;
-
-                case ConsoleKey.RightArrow:
-                    int LastPage = _snacksdata.Count % 10;
-                    if (PageIndex < LastPage)
-                    {
-                        PageIndex++;
-                    }
-                    break;
-
                 case ConsoleKey.Enter:
-                    BoughtSnacks.Add(new Snacks(_snacksdata[CursorIndex].Name, Amount));
+                    foreach (var item in BoughtSnacks)
+                    {
+                        if (item.Name == _snacksdata[CursorIndex].Name)
+                        {
+                            item.Quantity++;
+                        }
+                    }
+                    BoughtSnacks.Add(new Snacks(_snacksdata[CursorIndex].Name, 1));
                     break;
             }
             DisplaySnacks();
@@ -151,7 +134,6 @@ public class SnacksMenu
                 Console.ResetColor();
             }
         }
-        Console.WriteLine();
     }
 
     public double CalculatePrice(string name)
@@ -166,9 +148,69 @@ public class SnacksMenu
         return 0;
     }
 
-    public void ChangeSnacks(string name)
+    public void DisplayChangeSnacksCursor()
     {
-        foreach (var snack in _snacksdata)
+        DisplayChangeSnacks();
+
+        ConsoleKeyInfo key;
+        Console.CursorVisible = true;
+        do
+        {
+            key = Console.ReadKey(true);
+            switch (key.Key)
+            {
+                case ConsoleKey.UpArrow:
+                    if (CursorIndex > 0)
+                    {
+                        CursorIndex--;
+                    }
+                    break;
+
+                case ConsoleKey.DownArrow:
+                    if (CursorIndex < 3)
+                    {
+                        CursorIndex++;
+                    }
+                    break;
+
+                case ConsoleKey.Enter:
+                    if (CursorIndex == 1)
+                    {
+                        EditSnacks();
+                    }
+                    if (CursorIndex == 2)
+                    {
+                        AddSnacks();
+                    }
+                    if (CursorIndex == 3)
+                    {
+                        RemoveSnacks();
+                    }
+                    break;
+            }
+            DisplayChangeSnacks();
+        } while (key.Key != ConsoleKey.Escape);
+        Menu.Start();
+    }
+
+    public void DisplayChangeSnacks()
+    {
+        string[] Options = new string[] { "Edit", "Add", "Remove" }; 
+        Console.Clear();
+        for (int i = 0; i < Options.Count; i++)
+        {
+            if (CursorIndex == i)
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
+            }
+            Console.WriteLine($"{i + 1}. {Options[i]}");
+            Console.ResetColor();
+        }
+    }
+
+
+    foreach (var snack in _snacksdata)
         {
             if (name == snack.Name)
             {
@@ -191,8 +233,6 @@ public class SnacksMenu
         {
 
         }
-    }
-
     public void EditSnacks(string name)
     {
         foreach (var snack in _snacksdata)
