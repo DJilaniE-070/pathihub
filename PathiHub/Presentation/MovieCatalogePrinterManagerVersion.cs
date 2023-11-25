@@ -1,8 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Threading;
-// Deze methode is eigenlijk alleen bedoeld voor de gebruikers
-public class MovieCatalogePrinter
+namespace PathiHub.Presentation;
+//Dit is een tijdelijke versie van de Movie Cataloge printer zodat de manager methode nog steeds werkt
+
+public class MovieCatalogePrinterManagerVersion
 {
     private static int selectedMovieIndex = 0;
     // private static bool PressedEnter = false;
@@ -47,10 +46,8 @@ public class MovieCatalogePrinter
 
             // Nu heb je toegang tot de geselecteerde film in de "movies" lijst
             Console.WriteLine($"\nYou have selected the movie: '{movies[selectedMovieIndex].MovieTitle}'.");
-            
-            //Hier komt later nog een check die kijkt naar de staat van de inlog waardoor MovieCatalogePrinterManagerVersion kan worden verwijderd
-            MovieToAuditoriumLogic movieToAuditoriumLogic = new MovieToAuditoriumLogic();
-            movieToAuditoriumLogic.Connector(movies[selectedMovieIndex]);
+            // MovieToAuditoriumLogic movieToAuditoriumLogic = new MovieToAuditoriumLogic();
+            // movieToAuditoriumLogic.Connector(movies[selectedMovieIndex]);
             // Thread.Sleep(2000); // Optional delay
            
 

@@ -1,9 +1,11 @@
+using PathiHub.Presentation;
+
 public class DeleteMovieOutTabel2
 {
     public static void MovieDeletor(string HeaderX)
     {
         MoviesAccess movieData = new();
-        Movie selectedMovie = MovieCatalogePrinter.TabelPrinter(movieData);
+        Movie selectedMovie = MovieCatalogePrinterManagerVersion.TabelPrinter(movieData);
 
         Helpers.PrintStringToColor($"\nAre you sure you want to delete the movie '{selectedMovie.MovieTitle}'.\nPlease type 'yes' or 'no'.", "blue");
         Console.Write("\u2192 ");
