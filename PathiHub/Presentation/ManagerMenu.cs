@@ -161,7 +161,7 @@ ___  ___           _        _____       _   _
                 int option = selectedIndex + 1;
                 if (option == 1)
                 {
-                    MovieOptionPresentation.AddMoviePresentation();
+                    MovieOptionPresentation.AddMoviePresentationWebbOption();
                 }
                 else if (option == 2)
                 {
