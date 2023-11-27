@@ -24,4 +24,8 @@ public class Movie
     public List<string> Awards { get; set; }
 
     public string Poster {get;set;}
+
+    public List<string> ScheduleDates {get;set;}
+
+    public List<string> ScheduledTimes {get;set;}
 }
