@@ -2,12 +2,15 @@
   {
     "MovieTitle": "The Adventure Begins",
     "ReleaseYear": 2023,
+    "ReleaseDate": null,
     "Genre": [
       "Action",
       "Adventure",
       "Sci-Fi"
     ],
+    "Actors": null,
     "Director": "John Directorson",
+    "Directors": null,
     "Writers": [
       "Jane Writerly",
       "Michael Scriptson"
@@ -16,18 +19,24 @@
     "Rating": 8.5,
     "RuntimeMinutes": 120,
     "Language": "English",
+    "Languages": null,
     "Country": "United States",
+    "Countrys": null,
     "Auditorium": 3,
-    "Awards": null
+    "Awards": null,
+    "Poster": null
   },
   {
     "MovieTitle": "Galactic Quest",
     "ReleaseYear": 2022,
+    "ReleaseDate": null,
     "Genre": [
       "Sci-Fi",
       "Adventure"
     ],
+    "Actors": null,
     "Director": "Lucy Director",
+    "Directors": null,
     "Writers": [
       "David Scriptwriter",
       "Emily Storyteller"
@@ -36,17 +45,23 @@
     "Rating": 9.0,
     "RuntimeMinutes": 115,
     "Language": "English",
+    "Languages": null,
     "Country": "United States",
+    "Countrys": null,
     "Auditorium": 1,
-    "Awards": null
+    "Awards": null,
+    "Poster": null
   },
   {
     "MovieTitle": "Pinda",
     "ReleaseYear": 123,
+    "ReleaseDate": null,
     "Genre": [
       "test"
     ],
+    "Actors": null,
     "Director": "test",
+    "Directors": null,
     "Writers": [
       "tes"
     ],
@@ -54,19 +69,25 @@
     "Rating": 9.0,
     "RuntimeMinutes": 120,
     "Language": "english",
+    "Languages": null,
     "Country": "England",
+    "Countrys": null,
     "Auditorium": 1,
     "Awards": [
       "blblabal"
-    ]
+    ],
+    "Poster": null
   },
   {
     "MovieTitle": "Tester",
     "ReleaseYear": 1200,
+    "ReleaseDate": null,
     "Genre": [
       "none"
     ],
+    "Actors": null,
     "Director": "Test Master",
+    "Directors": null,
     "Writers": [
       "none"
     ],
@@ -74,19 +95,25 @@
     "Rating": 10.0,
     "RuntimeMinutes": 100,
     "Language": "English",
+    "Languages": null,
     "Country": "USA",
+    "Countrys": null,
     "Auditorium": 1,
     "Awards": [
       "none"
-    ]
+    ],
+    "Poster": null
   },
   {
     "MovieTitle": "pinda",
     "ReleaseYear": 1120,
+    "ReleaseDate": null,
     "Genre": [
       "test"
     ],
+    "Actors": null,
     "Director": "1120",
+    "Directors": null,
     "Writers": [
       "pinda"
     ],
@@ -94,19 +121,25 @@
     "Rating": 9.0,
     "RuntimeMinutes": 110,
     "Language": "english",
+    "Languages": null,
     "Country": "Pinda",
+    "Countrys": null,
     "Auditorium": 1,
     "Awards": [
       "none"
-    ]
+    ],
+    "Poster": null
   },
   {
     "MovieTitle": "test",
     "ReleaseYear": 1120,
+    "ReleaseDate": null,
     "Genre": [
       "none"
     ],
+    "Actors": null,
     "Director": "Jay",
+    "Directors": null,
     "Writers": [
       "none"
     ],
@@ -114,19 +147,25 @@
     "Rating": 9.0,
     "RuntimeMinutes": 110,
     "Language": "english",
+    "Languages": null,
     "Country": "usa",
+    "Countrys": null,
     "Auditorium": 2,
     "Awards": [
       "none"
-    ]
+    ],
+    "Poster": null
   },
   {
     "MovieTitle": "THE HUNGER GAMES",
     "ReleaseYear": 2023,
+    "ReleaseDate": null,
     "Genre": [
       "adventure"
     ],
+    "Actors": null,
     "Director": "1120",
+    "Directors": null,
     "Writers": [
       "IDC"
     ],
@@ -134,10 +173,13 @@
     "Rating": 6.0,
     "RuntimeMinutes": 158,
     "Language": "english",
+    "Languages": null,
     "Country": "USA",
+    "Countrys": null,
     "Auditorium": 1,
     "Awards": [
       "none"
-    ]
+    ],
+    "Poster": null
   }
 ]
