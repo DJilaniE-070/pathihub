@@ -46,7 +46,6 @@ ______     _   _     _   _   _       _
             Console.ResetColor();
             Console.WriteLine("In the vast expanse of the galaxy, Chris, a brave spaceman, and his alien friend Zara\n embark on a quest to forge alliances between planets and civilizations. \nTheir journey is fraught with intergalactic challenges and unexpected friendships, \ntesting their courage and resolve to bring peace to the universe.");
  
-
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine();
             Console.WriteLine("                              The Avengers");

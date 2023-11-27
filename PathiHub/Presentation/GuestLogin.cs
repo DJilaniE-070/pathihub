@@ -88,7 +88,7 @@ public static class GuestLogin
 
                 case "Our Menu selection":
                     Thread.Sleep(1500);
-                    Console.WriteLine("must be created!");
+                    ShowAuditoriums.DisplayAuditoriumOptions();
                     break;
 
 

@@ -82,8 +82,7 @@ public static class UserMenu
                 Thread.Sleep(1500);
                 CheckReservation();
                 break;
-            
-                    
+              
             case "[3]. Cancel reservation":
                 CancelReservation();
                 break;
