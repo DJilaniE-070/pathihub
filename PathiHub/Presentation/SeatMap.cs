@@ -141,6 +141,16 @@ public class SeatMap
         Auditoriums();
     }
 
+    public void Start(int auditoriumnumber)
+    {
+        AuditoriumNumber = auditoriumnumber;
+        PriceA = 25;
+        PriceB = 20;
+        PriceC = 15;
+        Auditorium = GetAuditorium(auditoriumnumber);
+        Auditoriums();
+    }
+
     private List<List<string>> GetAuditorium(int auditoriumNumber) 
     {
         switch (auditoriumNumber) 
