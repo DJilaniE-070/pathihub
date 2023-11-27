@@ -1,21 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Threading;
+namespace PathiHub.DataModels;
+using System.ComponentModel;
 
-// Deze methode is eigenlijk alleen bedoeld voor de gebruikers
-public class MovieCatalogePrinter
+public class PromotedTabelLogic
 {
     private static int selectedMovieIndex = 0;
     // private static bool PressedEnter = false;
 
-    public static Movie TabelPrinter(MoviesAccess access)
+    public static Movie TabelPrinter(PromotionMovieAccess access, string header)
     {
         if (access.LoadFromJson() == true)
         {
             List<Movie> movies = access.GetItemList();
 
             // Teken de tabel met films
-            DrawMovieTable(movies);
+            DrawMovieTable(movies, header);
 
             // Wacht op invoer van de gebruiker
             ConsoleKeyInfo key;
@@ -39,7 +37,7 @@ public class MovieCatalogePrinter
                 Console.Clear();
 
                 // Teken de tabel met films (opnieuw) om de geselecteerde film te markeren
-                DrawMovieTable(movies);
+                DrawMovieTable(movies, header);
 
                 // Toon de plot van de geselecteerde film
                 ShowSelectedMoviePlot(movies[selectedMovieIndex]);
@@ -48,10 +46,8 @@ public class MovieCatalogePrinter
 
             // Nu heb je toegang tot de geselecteerde film in de "movies" lijst
             Console.WriteLine($"\nYou have selected the movie: '{movies[selectedMovieIndex].MovieTitle}'.");
-            
-            //Hier komt later nog een check die kijkt naar de staat van de inlog waardoor MovieCatalogePrinterManagerVersion kan worden verwijderd
-            MovieToAuditoriumLogic movieToAuditoriumLogic = new MovieToAuditoriumLogic();
-            movieToAuditoriumLogic.Connector(movies[selectedMovieIndex]);
+            // MovieToAuditoriumLogic movieToAuditoriumLogic = new MovieToAuditoriumLogic();
+            // movieToAuditoriumLogic.Connector(movies[selectedMovieIndex]);
             // Thread.Sleep(2000); // Optional delay
            
 
@@ -61,18 +57,19 @@ public class MovieCatalogePrinter
         return null;
     }
 
-    public static void DrawMovieTable(List<Movie> movies)
+    public static void DrawMovieTable(List<Movie> movies, string header)
     {
-        Console.WriteLine(@" 
-___  ___           _        _____       _        _                  
-|  \/  |          (_)      /  __ \     | |      | |                 
-| .  . | _____   ___  ___  | /  \/ __ _| |_ __ _| | ___   __ _  
-| |\/| |/ _ \ \ / / |/ _ \ | |    / _` | __/ _` | |/ _ \ / _` |
-| |  | | (_) \ V /| |  __/ | \__/\ (_| | || (_| | | (_) | (_| |
-\_|  |_/\___/ \_/ |_|\___|  \____/\__,_|\__\__,_|_|\___/ \__, |
-                                                          __/ |     
-                                                         |___/     
-");
+        Console.WriteLine(header);
+//         Console.WriteLine(@" 
+// ___  ___           _        _____       _        _                  
+// |  \/  |          (_)      /  __ \     | |      | |                 
+// | .  . | _____   ___  ___  | /  \/ __ _| |_ __ _| | ___   __ _  
+// | |\/| |/ _ \ \ / / |/ _ \ | |    / _` | __/ _` | |/ _ \ / _` |
+// | |  | | (_) \ V /| |  __/ | \__/\ (_| | || (_| | | (_) | (_| |
+// \_|  |_/\___/ \_/ |_|\___|  \____/\__,_|\__\__,_|_|\___/ \__, |
+//                                                           __/ |     
+//                                                          |___/     
+// ");
 
         Helpers.CharLine('-', 80);
         Console.WriteLine("This is our movie Catalog");
@@ -105,6 +102,5 @@ ___  ___           _        _____       _        _
         Console.WriteLine($"\nThe plot of: '{selectedMovie.MovieTitle}' is:\n");
         DiscriptionPrinter.DrawBox(selectedMovie);
         
-         
     }
 }
