@@ -5,6 +5,7 @@ using PathiHub.Presentation;
 public static class Menu 
 {
     // dit is het scherm is word puur gebruikt als eerste scherm
+    //goede versie
     public static void Start()
     {
         Console.OutputEncoding = Encoding.UTF8;
