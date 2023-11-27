@@ -25,11 +25,7 @@ public class UserRegistration
         Helpers.CharLine('-' ,80);
         Thread.Sleep(300);
 
-<<<<<<< Updated upstream
         // asks for the user email and checks for @
-=======
-        // email input and check if it's valid
->>>>>>> Stashed changes
         string? userEmail = null;
         while (string.IsNullOrEmpty(userEmail) || !userEmail.Contains('@'))
         {
