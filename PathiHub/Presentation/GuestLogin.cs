@@ -88,7 +88,8 @@ public static class GuestLogin
 
                 case "Our Menu selection":
                     Thread.Sleep(1500);
-                    ShowAuditoriums.DisplayAuditoriumOptions();
+                    MovieOverview overview = new();
+                    overview.Start();
                     break;
 
 

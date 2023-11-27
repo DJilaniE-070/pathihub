@@ -3,6 +3,4 @@ using PathiHub.Presentation;
 
 Console.Clear();
 Console.WriteLine("Welcome to this amazing program");
-// Menu.Start();
-
-MovieOverview.Start();
+Menu.Start();

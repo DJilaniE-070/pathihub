@@ -1,3 +1,4 @@
+/*
 using System.IO.Compression;
 
 public class ShowAuditoriums
@@ -77,3 +78,5 @@ public class ShowAuditoriums
         Console.CursorVisible = true;
     }
 }
+
+*/

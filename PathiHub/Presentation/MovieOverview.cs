@@ -2,9 +2,10 @@ using System;
 
 public class MovieOverview
 {
-    private int selectedIndex;
-    private string[] days = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-    private string header = "Days of the Week Menu";
+
+    // first ask for movie via MovieCatalogePrinter and the available days
+    public int selectedIndex;
+    public string[] days = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
     public void Start()
     {
@@ -14,8 +15,17 @@ public class MovieOverview
         do
         {
             Console.Clear();
+            Helpers.PrintStringToColor(@"
+  ___                 _  _         _      _        ______                    
+ / _ \               (_)| |       | |    | |       |  _  \                   
+/ /_\ \__   __  __ _  _ | |  __ _ | |__  | |  ___  | | | |  __ _  _   _  ___ 
+|  _  |\ \ / / / _` || || | / _` || '_ \ | | / _ \ | | | | / _` || | | |/ __|
+| | | | \ V / | (_| || || || (_| || |_) || ||  __/ | |/ / | (_| || |_| |\__ \
+\_| |_/  \_/   \__,_||_||_| \__,_||_.__/ |_| \___| |___/   \__,_| \__, ||___/
+                                                                   __/ |     
+                                                                  |___/      
+", "DarkYellow");
 
-            Console.WriteLine(header);
             Console.WriteLine("--------------------------------------------------------------------------------");
             Console.WriteLine("Please select a day (use the arrow keys and press Enter):");
 
