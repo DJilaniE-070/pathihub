@@ -1,19 +1,21 @@
+using System.ComponentModel;
+
 namespace PathiHub.Presentation;
-//Dit is een tijdelijke versie van de Movie Cataloge printer zodat de manager methode nog steeds werkt
+//Dit print de tabel waarmee je een bepaalde header mee geeft die word gebruikt
 
 public class MovieCatalogePrinterManagerVersion
 {
     private static int selectedMovieIndex = 0;
     // private static bool PressedEnter = false;
 
-    public static Movie TabelPrinter(MoviesAccess access)
+    public static Movie TabelPrinter(MoviesAccess access, string header)
     {
         if (access.LoadFromJson() == true)
         {
             List<Movie> movies = access.GetItemList();
 
             // Teken de tabel met films
-            DrawMovieTable(movies);
+            DrawMovieTable(movies, header);
 
             // Wacht op invoer van de gebruiker
             ConsoleKeyInfo key;
@@ -37,7 +39,7 @@ public class MovieCatalogePrinterManagerVersion
                 Console.Clear();
 
                 // Teken de tabel met films (opnieuw) om de geselecteerde film te markeren
-                DrawMovieTable(movies);
+                DrawMovieTable(movies, header);
 
                 // Toon de plot van de geselecteerde film
                 ShowSelectedMoviePlot(movies[selectedMovieIndex]);
@@ -57,18 +59,19 @@ public class MovieCatalogePrinterManagerVersion
         return null;
     }
 
-    public static void DrawMovieTable(List<Movie> movies)
+    public static void DrawMovieTable(List<Movie> movies, string header)
     {
-        Console.WriteLine(@" 
-___  ___           _        _____       _        _                  
-|  \/  |          (_)      /  __ \     | |      | |                 
-| .  . | _____   ___  ___  | /  \/ __ _| |_ __ _| | ___   __ _  
-| |\/| |/ _ \ \ / / |/ _ \ | |    / _` | __/ _` | |/ _ \ / _` |
-| |  | | (_) \ V /| |  __/ | \__/\ (_| | || (_| | | (_) | (_| |
-\_|  |_/\___/ \_/ |_|\___|  \____/\__,_|\__\__,_|_|\___/ \__, |
-                                                          __/ |     
-                                                         |___/     
-");
+        Console.WriteLine(header);
+//         Console.WriteLine(@" 
+// ___  ___           _        _____       _        _                  
+// |  \/  |          (_)      /  __ \     | |      | |                 
+// | .  . | _____   ___  ___  | /  \/ __ _| |_ __ _| | ___   __ _  
+// | |\/| |/ _ \ \ / / |/ _ \ | |    / _` | __/ _` | |/ _ \ / _` |
+// | |  | | (_) \ V /| |  __/ | \__/\ (_| | || (_| | | (_) | (_| |
+// \_|  |_/\___/ \_/ |_|\___|  \____/\__,_|\__\__,_|_|\___/ \__, |
+//                                                           __/ |     
+//                                                          |___/     
+// ");
 
         Helpers.CharLine('-', 80);
         Console.WriteLine("This is our movie Catalog");
@@ -101,6 +104,5 @@ ___  ___           _        _____       _        _
         Console.WriteLine($"\nThe plot of: '{selectedMovie.MovieTitle}' is:\n");
         DiscriptionPrinter.DrawBox(selectedMovie);
         
-         
     }
 }
