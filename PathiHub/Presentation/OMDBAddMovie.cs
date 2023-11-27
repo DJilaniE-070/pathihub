@@ -52,6 +52,8 @@ public static void AddMoviePresentationWebb(string Header)
 
         JObject jsonObject = JObject.Parse(WebSearch);
         JArray SearchResults = (JArray)jsonObject["Search"];
+        Console.WriteLine("Please wait a moment");
+
         foreach (JObject result in SearchResults)
         {
             try
@@ -61,10 +63,7 @@ public static void AddMoviePresentationWebb(string Header)
                 string IMDBurl = $"http://www.omdbapi.com/?i={imdbID}&apikey={apiKey}";
 
                 string IMDBresponse = GetApiResponse(IMDBurl);
-                
-
-                Console.WriteLine("IMDb ID: " + imdbID);
-
+    
                 Movie movie = OMDBMovieMaker(IMDBresponse);
                 movies.Add(movie);
             }
@@ -81,9 +80,7 @@ public static void AddMoviePresentationWebb(string Header)
 
         }
 
-
-        Console.WriteLine("\n\nDit is test of juiste data die ik nodig heb geprint wordt press enter to go to the beauty");
-        Console.ReadLine();
+        Thread.Sleep(600);
         Console.Clear();
         List<string> ColomnNames = new(){"MovieTitle", "ReleaseYear",
         "Director", "Genre", "Rating"};
