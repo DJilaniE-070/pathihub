@@ -1,5 +1,97 @@
+using System.Net;
+using Newtonsoft.Json.Linq;
+using PathiHub;
+
 public static class MovieOptionPresentation
-{
+{       
+
+        public static void AddMoviePresentationWebbOption()
+        {
+        string Header = 
+@"
+___  ___           _       ______                                 
+|  \/  |          (_)      | ___ \                                
+| .  . | _____   ___  ___  | |_/ /_ __ _____      _____  ___ _ __ 
+| |\/| |/ _ \ \ / / |/ _ \ | ___ \ '__/ _ \ \ /\ / / __|/ _ \ '__|
+| |  | | (_) \ V /| |  __/ | |_/ / | | (_) \ V  V /\__ \  __/ |   
+\_|  |_/\___/ \_/ |_|\___| \____/|_|  \___/ \_/\_/ |___/\___|_|   
+                                                                  
+                                                                  ";
+        Helpers.PrintStringToColor(Header,"yellow");       
+        Helpers.CharLine('-',80);
+                                        
+        if (!MovieOptionsLogic.CheckWifi())
+        {
+            Helpers.PrintStringToColor("No internet connection detected. Press enter to try again, press 'M' to enter manual mode without Network access, Backspace to return to the ManagerMenu or Esc to return to the MainMenu", "Red");
+            ConsoleKeyInfo key = Console.ReadKey();
+            
+            if (key.Key == ConsoleKey.M)
+            {
+                // Manual mode without WiFi access
+                AddMoviePresentation();
+            }
+            else if (key.Key == ConsoleKey.Enter)
+            {
+                Console.Clear();
+                AddMoviePresentationWebbOption(); 
+            }
+            else if (key.Key == ConsoleKey.Backspace)
+            {
+                ManagerMenu.Start();
+            }
+            // Dit werkt nog niet ik kan dit niet gebruiken kan niet naar main menu en uitloggen soort van
+            // else if (key.Key == ConsoleKey.Escape)
+            // {
+                
+            //     System.Environment.Exit(0);
+            //     Menu.Start();
+            //     return;
+            // }
+            else
+            {
+                Helpers.PrintStringToColor("Invalid option try again","red");
+                Thread.Sleep(500);
+                Console.Clear();
+                AddMoviePresentationWebbOption();
+            }            
+
+        }
+        else
+        {
+            Helpers.PrintStringToColor("Press enter to continue, press 'M' to enter manual mode without Network access, Backspace to return to the ManagerMenu or Esc to return to the MainMenu\n", "Green");
+            ConsoleKeyInfo key = Console.ReadKey();
+                
+            if (key.Key == ConsoleKey.M)
+            {
+                // Manual mode without WiFi access
+                AddMoviePresentation();
+            }
+            else if (key.Key == ConsoleKey.Enter)
+            {
+                Console.Clear();
+                OMDBAddMovie.AddMoviePresentationWebb(Header);
+
+            }
+            else if (key.Key == ConsoleKey.Backspace)
+            {
+                ManagerMenu.Start();
+            }
+            else if (key.Key == ConsoleKey.Escape)
+            {
+                Menu.Start();
+                return;
+            }
+            else
+            {
+                Helpers.PrintStringToColor("\nInvalid option try again","red");
+                Thread.Sleep(500);
+                Console.Clear();
+                AddMoviePresentationWebbOption();
+            }
+            
+        }
+        }
+        
         public static void AddMoviePresentation()
         {
             Console.Clear();
@@ -68,7 +160,7 @@ public static class MovieOptionPresentation
             Console.Write("Enter rating: ");
             string? ratingInputString = Helpers.Color("DarkYellow");
             movie.Rating = string.IsNullOrEmpty(ratingInputString) 
-                ? 0
+                ? 0.0
                 : Convert.ToDouble(ratingInputString);
 
             Console.Write("Enter runtime in minutes: ");
@@ -103,7 +195,8 @@ public static class MovieOptionPresentation
             MoviesAccess acces = new MoviesAccess();
             if (acces.LoadFromJson() == true)
             {
-                MovieOptions Option = new MovieOptions(acces.GetItemList());
+                MovieOptionsLogic Option = new();
+                Option.InitializeMovies(acces.GetItemList());
                 if (Option.AddMovie(movie) != true)
                 {
                     Helpers.PrintStringToColor("\nMovie already exits\n","red");
@@ -114,15 +207,15 @@ public static class MovieOptionPresentation
                     acces.SaveToJson();
                 }
 
-            Console.WriteLine("Press ENTER to continue");
-            string Enter = Console.ReadLine();
+                Console.WriteLine("Press ENTER to continue");
+                Console.ReadLine();
 
             }
             else
             {
                 Helpers.PrintStringToColor("File not found. No movies loaded.\n", "red");
                 Console.WriteLine("Press ENTER to continue");
-                string enter = Console.ReadLine();
+                Console.ReadLine();
             }
         }   
 

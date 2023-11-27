@@ -1,4 +1,6 @@
 //In deze class gaan we de alle helpers toevoegen
+using System.Diagnostics;
+
 public class Helpers
 {
     
@@ -64,6 +66,7 @@ public class Helpers
             }
         } while (true);
     }
+
     
     // This Method return a string with a Readline() as input
     public static string Color(string color)
