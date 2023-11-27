@@ -25,7 +25,11 @@ public class UserRegistration
         Helpers.CharLine('-' ,80);
         Thread.Sleep(300);
 
+<<<<<<< Updated upstream
         // asks for the user email and checks for @
+=======
+        // email input and check if it's valid
+>>>>>>> Stashed changes
         string? userEmail = null;
         while (string.IsNullOrEmpty(userEmail) || !userEmail.Contains('@'))
         {
@@ -56,6 +60,7 @@ public class UserRegistration
         string? confirmPassword = null;
         List<string> passwordIssues = new List<string>();
 
+        // check if password is valid
         while (string.IsNullOrEmpty(userPassword) || passwordIssues.Count > 0 || !PasswordCheck.IsValid(userPassword))
         {
             Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -79,6 +84,7 @@ public class UserRegistration
             }
         }
 
+        // password confirmation and mask password
         Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.WriteLine("Please confirm your password: ");
         confirmPassword = SecurePassword.MaskPassword("");
@@ -97,7 +103,11 @@ public class UserRegistration
         Console.WriteLine("Enter your full name: ");
         string? Name = Helpers.Color("DarkYellow");
 
+<<<<<<< Updated upstream
         // Loads the existing accounts and creates a new user account
+=======
+        // inserts it into the json
+>>>>>>> Stashed changes
         List<AccountModel> ListOfAccounts = AccountsAccess.LoadAll();
 
         // to create a new user id
