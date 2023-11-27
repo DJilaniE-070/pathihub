@@ -10,11 +10,7 @@ public class Snacks
 
     string data = "4,5";
 
-<<<<<<< Updated upstream
-    int row, int seat = data.Split(",");
-=======
     string row, string seat = data.Split(",");
->>>>>>> Stashed changes
     
     public void ChangeSnack(string name)
     {
