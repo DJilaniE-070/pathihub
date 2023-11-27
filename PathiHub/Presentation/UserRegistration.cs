@@ -103,11 +103,8 @@ public class UserRegistration
         Console.WriteLine("Enter your full name: ");
         string? Name = Helpers.Color("DarkYellow");
 
-<<<<<<< Updated upstream
         // Loads the existing accounts and creates a new user account
-=======
         // inserts it into the json
->>>>>>> Stashed changes
         List<AccountModel> ListOfAccounts = AccountsAccess.LoadAll();
 
         // to create a new user id
