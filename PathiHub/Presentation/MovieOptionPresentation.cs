@@ -79,7 +79,7 @@ ___  ___           _       ______
             else if (key.Key == ConsoleKey.Escape)
             {
                 Menu.Start();
-                return;
+                
             }
             else
             {
