@@ -77,16 +77,15 @@ public class SeatMap
         new List<string> { "2", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X" },
         new List<string> { "2", "X", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X", "X" }
     };
-
-    public List<string> rows = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "AA", "BB", "CC", "DD"};
-    public List<List<string>> Auditorium = new();
+    private List<string> rows = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "AA", "BB", "CC", "DD"};
+    private List<List<string>> Auditorium = new();
     private double _priceA;
     private double _priceB;
     private double _priceC;
     public string Message = "";
     public int AuditoriumNumber;
-    public int CursorRow = 1;
-    public int CursorSeat = 1;
+    private int CursorRow = 1;
+    private int CursorSeat = 1;
     public double PriceA 
     { 
         get
@@ -141,6 +140,16 @@ public class SeatMap
         Auditoriums();
     }
 
+    public void Start(int auditoriumnumber)
+    {
+        AuditoriumNumber = auditoriumnumber;
+        PriceA = 25;
+        PriceB = 20;
+        PriceC = 15;
+        Auditorium = GetAuditorium(auditoriumnumber);
+        Auditoriums();
+    }
+
     private List<List<string>> GetAuditorium(int auditoriumNumber) 
     {
         switch (auditoriumNumber) 
@@ -170,27 +179,7 @@ public class SeatMap
 
     // 3 auditoriums hardcoded en cursor logic
     public void Auditoriums()
-    {
-        // auditorium kiezen, maakt een kopie van de auditorium 1 tot en met 3 en zet in Auditorium
-        //List<List<string>> Auditorium = new();
-        
-
-        // cursor positie voor rij en stoel
-        //int CursorRow = 0;
-        //int CursorSeat = 0;
-
-        // message wordt altijd geprint, maar is default op leeg en print normaal niks totdat je op enter klikt
-        //string message = "";
-
-        // laat de auditorium eerst zien samen met titel, scherm, legenda en cursor
-        /* ben van plan om een DisplayAll() te maken om alles aan te roepen, zodat minder code hoeft te worden uitgevoerd
-        DisplayTitle(AuditoriumNumber);
-        DisplayAuditorium(Auditorium, CursorRow, CursorSeat);
-        DisplayScreen(AuditoriumNumber);
-        DisplayCursorPosition(CursorRow, CursorSeat);
-        DisplayLegenda();
-        */
-
+    {   
         // laat de hele auditorium zien
         DisplayAll();
 
@@ -228,7 +217,7 @@ public class SeatMap
                     break;
                 // de geselecteerde stoel of stoelen reserveren
                 case ConsoleKey.Enter:
-                    Message = $"Weet je zeker dat je de volgende stoel of stoelen wilt reserveren?\nDruk op [enter] om verder te gaan\nDruk op [backspace] om terug te gaan";	
+                    Message = $"Are you sure you want to reserve seat {rows[CursorSeat - 1]}{CursorRow}?\nPress [enter] om verder te gaan\nDruk op [backspace] om terug te gaan";	
                     if (key.Key == ConsoleKey.Enter)
                     {
                         SnacksMenu snack = new SnacksMenu();
@@ -242,27 +231,23 @@ public class SeatMap
                     break;
                 // een stoel annuleren
                 case ConsoleKey.Backspace:
-                    if (Auditorium[CursorRow][CursorSeat] == "AR")
+                    switch (Auditorium[CursorRow][CursorSeat])
                     {
-                        Auditorium[CursorRow][CursorSeat] = "A";
-                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
-                        break;
-                    }
-                    if (Auditorium[CursorRow][CursorSeat] == "BR")
-                    {
-                        Auditorium[CursorRow][CursorSeat] = "B";
-                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
-                        break;
-                    }
-                    if (Auditorium[CursorRow][CursorSeat] == "CR")
-                    {
-                        Auditorium[CursorRow][CursorSeat] = "C";
-                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
-                        break;
-                    }
-                    else
-                    {
-                        Message = $"Je kan deze stoel niet annuleren";
+                        case "AR":
+                            Auditorium[CursorRow][CursorSeat] = "A";
+                            Message = $"Seat {rows[CursorSeat - 1]} in row {CursorRow} is canceled";
+                            break;
+                        case "BR":
+                            Auditorium[CursorRow][CursorSeat] = "B";
+                            Message = $"Seat {rows[CursorSeat - 1]} in row {CursorRow} is canceled";
+                            break;
+                        case "CR":
+                            Auditorium[CursorRow][CursorSeat] = "C";
+                            Message = $"Seat {rows[CursorSeat - 1]} in row {CursorRow} is canceled";
+                            break;
+                        default:
+                            Message = $"You cannot cancel this seat";
+                            break;
                     }
                     break;
                 // een stoel selecteren
@@ -289,27 +274,17 @@ public class SeatMap
                     // als X is print dat het geen stoel is en doet niks 
                     else if (Auditorium[CursorRow][CursorSeat] == "X")
                     {
-                        Message = $"Dit is geen stoel";
+                        Message = $"This is not a valid seat";
                     }
                     // als R is dan is het al gereserveerd en print dit, doet niks verder
                     else if (Auditorium[CursorRow][CursorSeat] == "AR" || Auditorium[CursorRow][CursorSeat] == "BR" || Auditorium[CursorRow][CursorSeat] == "CR")
                     {
-                        Message = $"Dit is een gereserveerde stoel, kies een andere stoel";
+                        Message = $"This is a reserved seat";
                     }
                     break;
             }
             // laat de hele auditorium zien
             DisplayAll();
-            
-            /* clear het scherm en laat auditorium weer zien samen met titel, scherm, legenda en cursor
-            Console.Clear();
-            DisplayTitle(AuditoriumNumber);
-            DisplayAuditorium(Auditorium, CursorRow, CursorSeat);
-            DisplayScreen(AuditoriumNumber);
-            DisplayCursorPosition(CursorRow, CursorSeat);
-            Console.WriteLine(message);
-            DisplayLegenda();*/
-
         // escape button om uit loop te gaan
         } while (key.Key != ConsoleKey.Escape);
         // escape en je gaat terug naar menu.cs scherm
