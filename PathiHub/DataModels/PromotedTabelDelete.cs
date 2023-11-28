@@ -1,7 +1,8 @@
-using PathiHub.Presentation;
+namespace PathiHub.DataModels;
 
-public class DeleteMovieOutTabel2
+public class PromotedTabelDelete
 {
+    
     public static void MovieDeletor(string HeaderX)
     {
         string header = (@"
@@ -14,8 +15,8 @@ ___  ___           _        _____       _        _
                                                           __/ |     
                                                          |___/     
 ");
-        MoviesAccess movieData = new();
-        Movie selectedMovie = MovieCatalogePrinterManagerVersion.TabelPrinter(movieData, header);
+        PromotionMovieAccess movieData = new();
+        Movie selectedMovie = PromotedTabelLogic.TabelPrinter(movieData, header);
 
         Helpers.PrintStringToColor($"\nAre you sure you want to delete the movie '{selectedMovie.MovieTitle}'.\nPlease type 'yes' or 'no'.", "blue");
         Console.Write("\u2192 ");

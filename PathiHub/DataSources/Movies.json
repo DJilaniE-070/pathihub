@@ -2,12 +2,15 @@
   {
     "MovieTitle": "The Adventure Begins",
     "ReleaseYear": 2023,
+    "ReleaseDate": null,
     "Genre": [
       "Action",
       "Adventure",
       "Sci-Fi"
     ],
+    "Actors": null,
     "Director": "John Directorson",
+    "Directors": null,
     "Writers": [
       "Jane Writerly",
       "Michael Scriptson"
@@ -16,18 +19,24 @@
     "Rating": 8.5,
     "RuntimeMinutes": 120,
     "Language": "English",
+    "Languages": null,
     "Country": "United States",
+    "Countrys": null,
     "Auditorium": 3,
-    "Awards": null
+    "Awards": null,
+    "Poster": null
   },
   {
     "MovieTitle": "Galactic Quest",
     "ReleaseYear": 2022,
+    "ReleaseDate": null,
     "Genre": [
       "Sci-Fi",
       "Adventure"
     ],
+    "Actors": null,
     "Director": "Lucy Director",
+    "Directors": null,
     "Writers": [
       "David Scriptwriter",
       "Emily Storyteller"
@@ -36,17 +45,23 @@
     "Rating": 9.0,
     "RuntimeMinutes": 115,
     "Language": "English",
+    "Languages": null,
     "Country": "United States",
+    "Countrys": null,
     "Auditorium": 1,
-    "Awards": null
+    "Awards": null,
+    "Poster": null
   },
   {
     "MovieTitle": "Pinda",
     "ReleaseYear": 123,
+    "ReleaseDate": null,
     "Genre": [
       "test"
     ],
+    "Actors": null,
     "Director": "test",
+    "Directors": null,
     "Writers": [
       "tes"
     ],
@@ -54,19 +69,25 @@
     "Rating": 9.0,
     "RuntimeMinutes": 120,
     "Language": "english",
+    "Languages": null,
     "Country": "England",
+    "Countrys": null,
     "Auditorium": 1,
     "Awards": [
       "blblabal"
-    ]
+    ],
+    "Poster": null
   },
   {
     "MovieTitle": "Tester",
     "ReleaseYear": 1200,
+    "ReleaseDate": null,
     "Genre": [
       "none"
     ],
+    "Actors": null,
     "Director": "Test Master",
+    "Directors": null,
     "Writers": [
       "none"
     ],
@@ -74,19 +95,25 @@
     "Rating": 10.0,
     "RuntimeMinutes": 100,
     "Language": "English",
+    "Languages": null,
     "Country": "USA",
+    "Countrys": null,
     "Auditorium": 1,
     "Awards": [
       "none"
-    ]
+    ],
+    "Poster": null
   },
   {
     "MovieTitle": "pinda",
     "ReleaseYear": 1120,
+    "ReleaseDate": null,
     "Genre": [
       "test"
     ],
+    "Actors": null,
     "Director": "1120",
+    "Directors": null,
     "Writers": [
       "pinda"
     ],
@@ -94,19 +121,25 @@
     "Rating": 9.0,
     "RuntimeMinutes": 110,
     "Language": "english",
+    "Languages": null,
     "Country": "Pinda",
+    "Countrys": null,
     "Auditorium": 1,
     "Awards": [
       "none"
-    ]
+    ],
+    "Poster": null
   },
   {
     "MovieTitle": "test",
     "ReleaseYear": 1120,
+    "ReleaseDate": null,
     "Genre": [
       "none"
     ],
+    "Actors": null,
     "Director": "Jay",
+    "Directors": null,
     "Writers": [
       "none"
     ],
@@ -114,19 +147,25 @@
     "Rating": 9.0,
     "RuntimeMinutes": 110,
     "Language": "english",
+    "Languages": null,
     "Country": "usa",
+    "Countrys": null,
     "Auditorium": 2,
     "Awards": [
       "none"
-    ]
+    ],
+    "Poster": null
   },
   {
     "MovieTitle": "THE HUNGER GAMES",
     "ReleaseYear": 2023,
+    "ReleaseDate": null,
     "Genre": [
       "adventure"
     ],
+    "Actors": null,
     "Director": "1120",
+    "Directors": null,
     "Writers": [
       "IDC"
     ],
@@ -134,10 +173,169 @@
     "Rating": 6.0,
     "RuntimeMinutes": 158,
     "Language": "english",
+    "Languages": null,
     "Country": "USA",
+    "Countrys": null,
     "Auditorium": 1,
     "Awards": [
       "none"
-    ]
+    ],
+    "Poster": null
+  },
+  {
+    "MovieTitle": "test",
+    "ReleaseYear": 1000,
+    "ReleaseDate": null,
+    "Genre": [
+      "test"
+    ],
+    "Actors": null,
+    "Director": "test",
+    "Directors": null,
+    "Writers": [
+      "tes"
+    ],
+    "Plot": "tes",
+    "Rating": 9.0,
+    "RuntimeMinutes": 120,
+    "Language": "english",
+    "Languages": null,
+    "Country": "usa",
+    "Countrys": null,
+    "Auditorium": 3,
+    "Awards": [
+      "none"
+    ],
+    "Poster": null
+  },
+  {
+    "MovieTitle": "John Wick",
+    "ReleaseYear": 2014,
+    "ReleaseDate": "24 Oct 2014",
+    "Genre": [
+      "Action",
+      " Crime",
+      " Thriller"
+    ],
+    "Actors": [
+      "Keanu Reeves",
+      " Michael Nyqvist",
+      " Alfie Allen"
+    ],
+    "Director": "Chad Stahelski, David Leitch",
+    "Directors": [
+      "Chad Stahelski",
+      " David Leitch"
+    ],
+    "Writers": [
+      "Derek Kolstad"
+    ],
+    "Plot": "An ex-hitman comes out of retirement to track down the gangsters who killed his dog and stole his car.",
+    "Rating": 7.4,
+    "RuntimeMinutes": 101,
+    "Language": "English, Russian, Hungarian",
+    "Languages": [
+      "English",
+      " Russian",
+      " Hungarian"
+    ],
+    "Country": "United States, United Kingdom, China",
+    "Countrys": [
+      "United States",
+      " United Kingdom",
+      " China"
+    ],
+    "Auditorium": 0,
+    "Awards": [
+      "5 wins & 10 nominations"
+    ],
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg"
+  },
+  {
+    "MovieTitle": "nasdaklsdasd",
+    "ReleaseYear": 2023,
+    "ReleaseDate": "21 Jul 2023",
+    "Genre": [
+      "Biography",
+      " Drama",
+      " History"
+    ],
+    "Actors": [
+      "Cillian Murphy",
+      " Emily Blunt",
+      " Matt Damon"
+    ],
+    "Director": "Christopher Nolan",
+    "Directors": [
+      "Christopher Nolan"
+    ],
+    "Writers": [
+      "Christopher Nolan",
+      " Kai Bird",
+      " Martin Sherwin"
+    ],
+    "Plot": "The story of American scientist, J. Robert Oppenheimer, and his role in the development of the atomic bomb.",
+    "Rating": 8.5,
+    "RuntimeMinutes": 180,
+    "Language": "English, German, Italian",
+    "Languages": [
+      "English",
+      " German",
+      " Italian"
+    ],
+    "Country": "United States, United Kingdom",
+    "Countrys": [
+      "United States",
+      " United Kingdom"
+    ],
+    "Auditorium": 0,
+    "Awards": [
+      "2 wins & 1 nomination"
+    ],
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_SX300.jpg"
+  },
+  {
+    "MovieTitle": "Avengers: Endgame",
+    "ReleaseYear": 2019,
+    "ReleaseDate": "26 Apr 2019",
+    "Genre": [
+      "Action",
+      " Adventure",
+      " Drama"
+    ],
+    "Actors": [
+      "Robert Downey Jr.",
+      " Chris Evans",
+      " Mark Ruffalo"
+    ],
+    "Director": "Anthony Russo, Joe Russo",
+    "Directors": [
+      "Anthony Russo",
+      " Joe Russo"
+    ],
+    "Writers": [
+      "Christopher Markus",
+      " Stephen McFeely",
+      " Stan Lee"
+    ],
+    "Plot": "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
+    "Rating": 8.4,
+    "RuntimeMinutes": 181,
+    "Language": "English, Japanese, Xhosa, German",
+    "Languages": [
+      "English",
+      " Japanese",
+      " Xhosa",
+      " German"
+    ],
+    "Country": "United States",
+    "Countrys": [
+      "United States"
+    ],
+    "Auditorium": 0,
+    "Awards": [
+      "Nominated for 1 Oscar. 70 wins & 133 nominations total"
+    ],
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg"
   }
 ]
