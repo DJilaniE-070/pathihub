@@ -25,6 +25,7 @@ public class UserRegistration
         Helpers.CharLine('-' ,80);
         Thread.Sleep(300);
 
+        // asks for the user email and checks for @
         string? userEmail = null;
         while (string.IsNullOrEmpty(userEmail) || !userEmail.Contains('@'))
         {
@@ -50,10 +51,12 @@ public class UserRegistration
         Console.WriteLine("Password should contain at least one uppercase");
         Helpers.CharLine('-' ,80);
 
+        // Asks for the password and asks for password confirmation, also checks if password contains all criteria
         string? userPassword = null;
         string? confirmPassword = null;
         List<string> passwordIssues = new List<string>();
 
+        // check if password is valid
         while (string.IsNullOrEmpty(userPassword) || passwordIssues.Count > 0 || !PasswordCheck.IsValid(userPassword))
         {
             Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -63,6 +66,7 @@ public class UserRegistration
 
             passwordIssues = PasswordCheck.PasswordIssue(userPassword);
 
+            // displays the password issues if contains any
             if (passwordIssues.Count > 0 || !PasswordCheck.IsValid(userPassword))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -76,6 +80,7 @@ public class UserRegistration
             }
         }
 
+        // password confirmation and mask password
         Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.WriteLine("Please confirm your password: ");
         confirmPassword = SecurePassword.MaskPassword("");
@@ -94,7 +99,11 @@ public class UserRegistration
         Console.WriteLine("Enter your full name: ");
         string? Name = Helpers.Color("DarkYellow");
 
+        // Loads the existing accounts and creates a new user account
+        // inserts it into the json
         List<AccountModel> ListOfAccounts = AccountsAccess.LoadAll();
+
+        // to create a new user id
         int index = ListOfAccounts.Count()+1;
         
         AccountsLogic accountsLogic = new AccountsLogic();
