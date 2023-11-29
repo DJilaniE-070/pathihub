@@ -88,8 +88,9 @@ public static class GuestLogin
 
                 case "Our Menu selection":
                     Thread.Sleep(1500);
-                    MovieOverview overview = new();
-                    overview.Start();
+                    // MovieOverview overview = new();
+                    // MoviesAcces movies = new();
+                    MovieOverview.GetMovieCataloge();
                     break;
 
 

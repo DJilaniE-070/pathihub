@@ -2,6 +2,12 @@ using System;
 
 public class MovieOverview
 {
+    public MovieCatalogePrinter moviePrinter;
+
+    public MovieOverview()
+    {
+        moviePrinter = new MovieCatalogePrinter();
+    }
 
     // first ask for movie via MovieCatalogePrinter and the available days
     public int selectedIndex;
@@ -66,19 +72,11 @@ public class MovieOverview
         } while (true);
     }
 
-    public void GetMovieCataloge()
+    public static void GetMovieCataloge()
     {
-        // To show the movie cataloge
-
-        MoviesAcces acces = new MoviesAcces();
-        Movie selectedMovie = MovieCatalogePrinter.TabelPrinter(access);
-
-        if (selectedMovie != null)
-        {
-            Console.WriteLine($"Selected Movie: {selectedMovie.MovieTitle}");
-        }
-        
+        Console.WriteLine("Must be implement correctly");
+        // Pass the MoviesAccess instance to the TabelPrinter method of MovieCatalogePrinter and print it (to test for now)
+        // Movie selectedMovie = moviePrinter.TabelPrinter(access);
+        // Console.WriteLine(selectedMovie.MovieTitle);
     }
-
-
 }
