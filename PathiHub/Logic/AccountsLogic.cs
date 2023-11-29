@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -14,10 +14,14 @@ public class AccountsLogic
     //private set, so this can only be set by the class itself
     static public AccountModel? CurrentAccount { get; private set; }
 
+    public AccountsLogic()
+    {
+        _accounts = AccountsAccess.LoadAll();
+    }
+
 
     public static void UpdateList(AccountModel acc)
     {
-        _accounts = AccountsAccess.LoadAll();
         //Find if there is already an model with the same id
         int index = _accounts.FindIndex(s => s.Id == acc.Id);
 
@@ -58,7 +62,3 @@ public class AccountsLogic
         return _accounts;
     }
 }
-
-
-
-
