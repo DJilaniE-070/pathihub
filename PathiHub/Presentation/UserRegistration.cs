@@ -96,6 +96,8 @@ public class UserRegistration
 
         List<AccountModel> ListOfAccounts = AccountsAccess.LoadAll();
         int index = ListOfAccounts.Count()+1;
+        
+        AccountsLogic accountsLogic = new AccountsLogic();
         AccountModel userAccount = new AccountModel(index, userEmail, userPassword, Name, "User");
         AccountsLogic.UpdateList(userAccount);
 
