@@ -1,7 +1,4 @@
-
-using System.Reflection.Metadata;
-using System.Runtime.InteropServices;
-
+/*
 public class SnacksMenu
 {
     private int CursorIndex = 1;
@@ -249,3 +246,4 @@ public class SnacksMenu
         }
     }
 }
+*/

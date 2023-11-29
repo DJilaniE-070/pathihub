@@ -217,17 +217,7 @@ public class SeatMap
                     break;
                 // de geselecteerde stoel of stoelen reserveren
                 case ConsoleKey.Enter:
-                    Message = $"Are you sure you want to reserve seat {rows[CursorSeat - 1]}{CursorRow}?\nPress [enter] om verder te gaan\nDruk op [backspace] om terug te gaan";	
-                    if (key.Key == ConsoleKey.Enter)
-                    {
-                        SnacksMenu snack = new SnacksMenu();
-                        snack.Start();
-                        break;
-                    }
-                    if (key.Key == ConsoleKey.Backspace)
-                    {
-                        break;
-                    }
+                    
                     break;
                 // een stoel annuleren
                 case ConsoleKey.Backspace:
