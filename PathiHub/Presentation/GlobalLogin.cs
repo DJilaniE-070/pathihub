@@ -53,7 +53,6 @@ static class GlobalLogin
                 case "Manager":
                     Console.Clear();
                     ManagerMenu.Start();
-                    Console.WriteLine(acc.GetType());
                     break;
                 case "Financial Manager":
                     Console.Clear();

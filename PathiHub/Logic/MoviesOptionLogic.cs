@@ -1,14 +1,53 @@
 using System.Net.Security;
 using Newtonsoft.Json;
-public class MovieOptions
+using System.Net.NetworkInformation;
+
+public class MovieOptionsLogic
 {
     public static List<Movie> movies = new List<Movie>();
-    public MovieOptions(List<Movie> movielist)
+
+    public static string GetApiKey()
     {
-        movies = movielist;
+        // Example: Use environment variable to store the API key
+        string apiKey = Environment.GetEnvironmentVariable("MY_API_KEY");
+
+        // If environment variable is not set, prompt user to enter the API key
+        if (string.IsNullOrEmpty(apiKey))
+        {
+            apiKey = "761d0214";
+
+            // You can save the entered key to an environment variable for subsequent runs
+            Environment.SetEnvironmentVariable("MY_API_KEY", apiKey);
+        }
+
+        return apiKey;
+    }
+    public static void InitializeMovies (List<Movie> LOM)
+    {
+        movies = LOM;
     }
 
-    public bool AddMovie(Movie Movie)
+    public static bool CheckWifi()
+    {
+        if (NetworkInterface.GetIsNetworkAvailable())
+        {
+            return true;
+        }
+        return false;
+
+    }
+
+    public static bool CheckSearch(string searchterm)
+    {
+        if (searchterm.Contains("\"Response\":\"False\""))
+        {
+            return false;
+        }
+        return true;
+
+    }
+
+    public static bool AddMovie(Movie Movie)
     {
         bool movieExists = false;
         foreach (Movie movie in movies)

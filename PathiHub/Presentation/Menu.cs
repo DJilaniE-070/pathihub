@@ -100,6 +100,7 @@ ______     _   _     _   _   _       _
                     {
                         Thread.Sleep(500); // Wacht 500 milliseconden (0,5 seconden)
                         Console.Write(".");
+                        
                     }
                     Console.WriteLine();
                     Console.WriteLine("Loading Completed.");
