@@ -77,15 +77,25 @@ public class SeatMap
         new List<string> { "2", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X" },
         new List<string> { "2", "X", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X", "X" }
     };
+    // rows lijst voor de auditorium, vertaling van 1
     private List<string> rows = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "AA", "BB", "CC", "DD"};
+    // auditorium opslaan in lijst
     private List<List<string>> Auditorium = new();
+    // lijst van reservaties
+    private List<ReservedSeats> Reservations = new List<ReservedSeats>();
+    // stoel prijzen backing field
     private double _priceA;
     private double _priceB;
     private double _priceC;
+    // voor nu handigheidje om een message te veranderen heletijd en te printen voor de cursor
     public string Message = "";
-    public int AuditoriumNumber;
+    // auditorium zaal nummer
+    private int AuditoriumNumber;
+    // cursor positie
     private int CursorRow = 1;
     private int CursorSeat = 1;
+    // totale prijzen
+    public static double TotalPrice = 0;
     public double PriceA 
     { 
         get
@@ -120,6 +130,7 @@ public class SeatMap
         }
     }
 
+    // 2 constructor voor overloading
     public SeatMap(int auditoriumnumber) : this(auditoriumnumber, 25, 20, 15) 
     {
         AuditoriumNumber = auditoriumnumber;
@@ -140,6 +151,7 @@ public class SeatMap
         Auditoriums();
     }
 
+    // andere manier om programma te runnen
     public void Start(int auditoriumnumber)
     {
         AuditoriumNumber = auditoriumnumber;
@@ -172,6 +184,12 @@ public class SeatMap
         PriceC = stoel_c;
     }
 
+    public void CalculateTotalPrice()
+    {
+        TotalPrice+= 
+    }
+    
+    // werkt nog niet
     public void ReserveSeats()
     {
         Reservation newReservation = new();
@@ -217,7 +235,14 @@ public class SeatMap
                     break;
                 // de geselecteerde stoel of stoelen reserveren
                 case ConsoleKey.Enter:
-                    
+                    foreach (List<string> row in Auditorium)
+                    {
+                        foreach (string seat in row)
+                        {
+                            if (Auditorium[CursorRow][CursorSeat] == "AR" || Auditorium[CursorRow][CursorSeat] == "BR" || Auditorium[CursorRow][CursorSeat] == "CR")
+                        }
+                    }
+                    Reservations.Add(new ReservedSeats(rows[CursorRow], CursorSeat, AuditoriumNumber));
                     break;
                 // een stoel annuleren
                 case ConsoleKey.Backspace:

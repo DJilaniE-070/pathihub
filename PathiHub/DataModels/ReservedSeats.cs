@@ -1,13 +1,15 @@
 public class ReservedSeats
 {
-    public int Row;
+    public string Row;
     public int Seat;
-    public bool IsAvailable;
+    public int AuditoriumNumber;
+    public bool IsAvailable = false;
 
-    public ReservedSeats(int row, int seat)
+    public ReservedSeats(string row, int seat, int auditoriumnumber)
     {
         Row = row;
         Seat = seat;
+        AuditoriumNumber = auditoriumnumber;
         IsAvailable = true;
     }
 }
