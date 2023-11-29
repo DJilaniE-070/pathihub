@@ -65,4 +65,20 @@ public class MovieOverview
             }
         } while (true);
     }
+
+    public void GetMovieCataloge()
+    {
+        // To show the movie cataloge
+
+        MoviesAcces acces = new MoviesAcces();
+        Movie selectedMovie = MovieCatalogePrinter.TabelPrinter(access);
+
+        if (selectedMovie != null)
+        {
+            Console.WriteLine($"Selected Movie: {selectedMovie.MovieTitle}");
+        }
+        
+    }
+
+
 }
