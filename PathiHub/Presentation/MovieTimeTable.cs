@@ -1,10 +1,10 @@
 using System;
 
-public class MovieOverview
+public class MovieTimeTable
 {
     public MovieCatalogePrinter moviePrinter;
 
-    public MovieOverview()
+    public MovieTimeTable()
     {
         moviePrinter = new MovieCatalogePrinter();
     }

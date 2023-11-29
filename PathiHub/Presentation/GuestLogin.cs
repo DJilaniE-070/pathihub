@@ -90,7 +90,7 @@ public static class GuestLogin
                     Thread.Sleep(1500);
                     // MovieOverview overview = new();
                     // MoviesAcces movies = new();
-                    MovieOverview.GetMovieCataloge();
+                    MovieTimeTable.GetMovieCataloge();
                     break;
 
 
