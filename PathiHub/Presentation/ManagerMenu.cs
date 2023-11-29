@@ -108,7 +108,7 @@ ___  ___                                   ___  ___
     
 static void FilmOptions()
 {
-    string[] menuOptions = { "Add a movie", "Remove a movie", "Edit a movie", "Show Movies","Return to Manager menu" };
+    string[] menuOptions = { "Add a movie", "Remove a movie", "Edit a movie", "Show Movies", "Promote Movies","Return to Manager menu" };
     int selectedIndex = 0;
     bool exit = false;
 
@@ -161,7 +161,7 @@ ___  ___           _        _____       _   _
                 int option = selectedIndex + 1;
                 if (option == 1)
                 {
-                    MovieOptionPresentation.AddMoviePresentation();
+                    MovieOptionPresentation.AddMoviePresentationWebbOption();
                 }
                 else if (option == 2)
                 {
@@ -176,6 +176,11 @@ ___  ___           _        _____       _   _
                     MovieOptionPresentation.ShowMovies();
                 }
                 else if (option == 5)
+                {
+                    PromotionMenu promotionMenu = new PromotionMenu();
+                    promotionMenu.Start();
+                }
+                else if (option == 6)
                 {
                     exit = true;
                     ManagerMenu.Start();

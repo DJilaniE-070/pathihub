@@ -5,6 +5,7 @@ using PathiHub.Presentation;
 public static class Menu 
 {
     // dit is het scherm is word puur gebruikt als eerste scherm
+    //goede versie
     public static void Start()
     {
         Console.OutputEncoding = Encoding.UTF8;
@@ -100,6 +101,7 @@ ______     _   _     _   _   _       _
                     {
                         Thread.Sleep(500); // Wacht 500 milliseconden (0,5 seconden)
                         Console.Write(".");
+                        
                     }
                     Console.WriteLine();
                     Console.WriteLine("Loading Completed.");
