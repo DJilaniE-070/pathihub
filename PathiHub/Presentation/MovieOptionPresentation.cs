@@ -40,13 +40,11 @@ ___  ___           _       ______
                 ManagerMenu.Start();
             }
             // Dit werkt nog niet ik kan dit niet gebruiken kan niet naar main menu en uitloggen soort van
-            // else if (key.Key == ConsoleKey.Escape)
-            // {
-                
-            //     System.Environment.Exit(0);
-            //     Menu.Start();
-            //     return;
-            // }
+            else if (key.Key == ConsoleKey.Escape)
+            {
+                Console.WriteLine(" ");
+                Menu.Start();
+            }
             else
             {
                 Helpers.PrintStringToColor("Invalid option try again","red");
@@ -78,6 +76,7 @@ ___  ___           _       ______
             }
             else if (key.Key == ConsoleKey.Escape)
             {
+                Console.WriteLine(" ");
                 Menu.Start();
                 
             }

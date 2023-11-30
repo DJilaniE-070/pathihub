@@ -29,9 +29,15 @@ public class MovieCatalogePrinterManagerVersion
                     case ConsoleKey.UpArrow:
                         selectedMovieIndex = (selectedMovieIndex - 1 + movies.Count) % movies.Count;
                         break;
-
                     case ConsoleKey.DownArrow:
                         selectedMovieIndex = (selectedMovieIndex + 1) % movies.Count;
+                        break;
+                    case ConsoleKey.Backspace:
+                        ManagerMenu.Start();
+                        break;
+                    case ConsoleKey.Escape:
+                        Console.WriteLine(" ");
+                        Menu.Start();
                         break;
                 }
 

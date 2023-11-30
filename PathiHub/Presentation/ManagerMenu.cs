@@ -58,6 +58,10 @@ ___  ___                                   ___  ___
                         selectedIndex++;
                     }
                     break;
+                case ConsoleKey.Escape:
+                    Console.WriteLine(" ");
+                    Menu.Start();
+                    break;
                 case ConsoleKey.Enter:
                     Console.Clear();
                     PerformAction(menuOptions[selectedIndex]);
@@ -93,8 +97,8 @@ ___  ___                                   ___  ___
                 break;
             
             case "[5] Snacks options":
-                Thread.Sleep(1500);
-                Snacks();
+                SnacksMenu snack = new SnacksMenu();
+                snack.Start();
                 break;
             
             case "[6] Exit":
@@ -156,38 +160,42 @@ ___  ___           _        _____       _   _
                     selectedIndex++;
                 }
                 break;
+             case ConsoleKey.Backspace:
+                    Console.WriteLine(" ");
+                    ManagerMenu.Start();
+                    break;
+            case ConsoleKey.Escape:
+                    Console.WriteLine(" ");
+                    Menu.Start();
+                    break;
             case ConsoleKey.Enter:
                 Console.Clear();
                 int option = selectedIndex + 1;
-                if (option == 1)
+                switch (option)
                 {
-                    MovieOptionPresentation.AddMoviePresentationWebbOption();
-                }
-                else if (option == 2)
-                {
-                    MovieOptionPresentation.RemoveMoviePresentation();
-                }
-                else if (option == 3)
-                {
-                    MovieOptionPresentation.EditMoviePresentation();
-                }
-                else if (option == 4)
-                {
-                    MovieOptionPresentation.ShowMovies();
-                }
-                else if (option == 5)
-                {
-                    PromotionMenu promotionMenu = new PromotionMenu();
-                    promotionMenu.Start();
-                }
-                else if (option == 6)
-                {
-                    exit = true;
-                    ManagerMenu.Start();
-                }
-                else
-                {
-                    Console.WriteLine("Invalid option");
+                    case 1:
+                        MovieOptionPresentation.AddMoviePresentationWebbOption();
+                        break;
+                    case 2:
+                        MovieOptionPresentation.RemoveMoviePresentation();
+                        break;
+                    case 3:
+                        MovieOptionPresentation.EditMoviePresentation();
+                        break;
+                    case 4:
+                        MovieOptionPresentation.ShowMovies();
+                        break;
+                    case 5:
+                        PromotionMenu promotionMenu = new PromotionMenu();
+                        promotionMenu.Start();
+                        break;
+                    case 6:
+                        exit = true;
+                        ManagerMenu.Start();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option");
+                        break;
                 }
                 break;
         }
@@ -251,30 +259,27 @@ ______                               _   _               _____       _   _
             case ConsoleKey.Enter:
                 Console.Clear();
                 int option = selectedIndex + 1;
-                if (option == 1)
+                switch (option)
                 {
-                    ReservationPresentation.AddReservation();
-                }
-                else if (option == 2)
-                {
-                    ReservationPresentation.RemoveMoviePresentation();
-                }
-                else if (option == 3)
-                {
-                    ReservationPresentation.EditReservationPresentation();
-                }
-                else if (option == 4)
-                {
-                    ReservationPresentation.ShowReservations();
-                }
-                else if (option == 5)
-                {
-                    exit = true;
-                    ManagerMenu.Start();
-                }
-                else
-                {
-                    Console.WriteLine("Invalid option");
+                    case 1:
+                        ReservationPresentation.AddReservation();
+                        break;
+                    case 2:
+                        ReservationPresentation.RemoveMoviePresentation();
+                        break;
+                    case 3:
+                        ReservationPresentation.EditReservationPresentation();
+                        break;
+                    case 4:
+                        ReservationPresentation.ShowReservations();
+                        break;
+                    case 5:
+                        exit = true;
+                        ManagerMenu.Start();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option");
+                        break;
                 }
                 break;
         }
@@ -282,7 +287,7 @@ ______                               _   _               _____       _   _
     } while (!exit);
 
     Console.CursorVisible = true;
-}
+    }   
 
         static void ReserveAMovie()
         {
@@ -295,8 +300,5 @@ ______                               _   _               _____       _   _
             Console.WriteLine("Test completed. Still function still needs to be implemented Financial option");
         }
 
-        static void Snacks()
-        {
-            Console.WriteLine("Test completed ");
-        }
+
 }

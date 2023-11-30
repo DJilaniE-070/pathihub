@@ -37,6 +37,10 @@ public class ObjCatalogePrinter
                     case ConsoleKey.Backspace:
                         ManagerMenu.Start();
                         break;
+                    case ConsoleKey.Escape:
+                        Console.WriteLine(" ");
+                        Menu.Start();
+                        break;
 
                 }
 
