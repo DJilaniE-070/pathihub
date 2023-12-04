@@ -1,13 +1,44 @@
 [
   {
+    "MovieTitle": "THE HUNGER GAMES",
+    "ReleaseYear": 2023,
+    "ReleaseDate": null,
+    "Genre": [
+      "adventure"
+    ],
+    "Actors": null,
+    "Director": "1120",
+    "Directors": null,
+    "Writers": [
+      "IDC"
+    ],
+    "Plot": "It's the morning of the tenth annual Hunger Games, and eighteen-year-old Coriolanus Snow (Blyth) - years before he would become the tyrannical president of Panem - prepares for his only chance at fame and success",
+    "Rating": 6.0,
+    "RuntimeMinutes": 158,
+    "Language": "english",
+    "Languages": null,
+    "Country": "USA",
+    "Countrys": null,
+    "Auditorium": 1,
+    "Awards": [
+      "none"
+    ],
+    "Poster": null,
+    "ScheduleDates": null,
+    "ScheduledTimes": null
+  },
+  {
     "MovieTitle": "The Adventure Begins",
     "ReleaseYear": 2023,
+    "ReleaseDate": null,
     "Genre": [
       "Action",
       "Adventure",
       "Sci-Fi"
     ],
+    "Actors": null,
     "Director": "John Directorson",
+    "Directors": null,
     "Writers": [
       "Jane Writerly",
       "Michael Scriptson"
@@ -16,37 +47,25 @@
     "Rating": 8.5,
     "RuntimeMinutes": 120,
     "Language": "English",
+    "Languages": null,
     "Country": "United States",
+    "Countrys": null,
     "Auditorium": 3,
-    "Awards": null
-  },
-  {
-    "MovieTitle": "Galactic Quest",
-    "ReleaseYear": 2022,
-    "Genre": [
-      "Sci-Fi",
-      "Adventure"
-    ],
-    "Director": "Lucy Director",
-    "Writers": [
-      "David Scriptwriter",
-      "Emily Storyteller"
-    ],
-    "Plot": "In the vast expanse of the galaxy, Chris, a brave spaceman, and his alien friend Zara embark on a quest to forge alliances between planets and civilizations. Their journey is fraught with intergalactic challenges and unexpected friendships, testing their courage and resolve to bring peace to the universe.",
-    "Rating": 9.0,
-    "RuntimeMinutes": 115,
-    "Language": "English",
-    "Country": "United States",
-    "Auditorium": 1,
-    "Awards": null
+    "Awards": null,
+    "Poster": null,
+    "ScheduleDates": null,
+    "ScheduledTimes": null
   },
   {
     "MovieTitle": "pinda",
     "ReleaseYear": 1120,
+    "ReleaseDate": null,
     "Genre": [
       "test"
     ],
+    "Actors": null,
     "Director": "1120",
+    "Directors": null,
     "Writers": [
       "pinda"
     ],
@@ -54,10 +73,15 @@
     "Rating": 9.0,
     "RuntimeMinutes": 110,
     "Language": "english",
+    "Languages": null,
     "Country": "Pinda",
+    "Countrys": null,
     "Auditorium": 1,
     "Awards": [
       "none"
-    ]
+    ],
+    "Poster": null,
+    "ScheduleDates": null,
+    "ScheduledTimes": null
   }
 ]
