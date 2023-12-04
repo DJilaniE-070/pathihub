@@ -14,7 +14,7 @@ public class AccountsLogicTests
     {
         int count = _accountsLogic.GetAccounts().Count;
         var acc = new AccountModel(count + 1, "test", "test", "test", "test");
-        AccountsLogic.UpdateList(acc);
+        _accountsLogic.UpdateList(acc);
         Assert.AreEqual(count + 1, _accountsLogic.GetAccounts().Count);
         Assert.AreEqual(count + 1, _accountsLogic.GetById(count + 1).Id);
     }
@@ -23,7 +23,7 @@ public class AccountsLogicTests
     public void GetByIdTest()
     {
         var acc = new AccountModel(_accountsLogic.GetAccounts().Count + 1, "test", "test", "test", "test");
-        AccountsLogic.UpdateList(acc);
+        _accountsLogic.UpdateList(acc);
         AccountModel account = _accountsLogic.GetById(_accountsLogic.GetAccounts().Count);
         Assert.AreEqual(account.EmailAddress, "test");
         Assert.AreEqual(account.Password, "test");
@@ -34,7 +34,7 @@ public class AccountsLogicTests
     public void CheckLoginTest()
     {
         var acc = new AccountModel(_accountsLogic.GetAccounts().Count + 1, "test", "test", "test", "test");
-        AccountsLogic.UpdateList(acc);
+        _accountsLogic.UpdateList(acc);
         AccountModel account = _accountsLogic.CheckLogin("test", "test");
         Assert.AreEqual(account.EmailAddress, "test");
         Assert.AreEqual(account.Password, "test");

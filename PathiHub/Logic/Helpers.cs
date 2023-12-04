@@ -1,6 +1,8 @@
 //In deze class gaan we de alle helpers toevoegen
 public class Helpers
 {
+    //deze variabele is nodig om application wide de logged in gebruiker bij te houden.
+    public static AccountModel? CurrentAccount { get; set; }    
     
     //deze functie schrijft een char uit meerdere keren 
     public static void  CharLine(char CharItem,int NumberOfPrints)
