@@ -271,19 +271,19 @@ public class SeatMap
                     if (Auditorium[CursorRow][CursorSeat] == "A")
                     {
                         Auditorium[CursorRow][CursorSeat] = "AR";
-                        Message = $"Stoel {rows[CursorSeat - 1]} in rij {CursorRow} is geselecteerd. Dank u wel voor het reserveren";
+                        Message = $"Seat {rows[CursorSeat - 1]} in row {CursorRow} is selected. Thank you";
                         break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "B")
                     {
                         Auditorium[CursorRow][CursorSeat] = "BR";
-                        Message = $"Stoel {rows[CursorSeat - 1]} in rij {CursorRow} is geselecteerd. Dank u wel voor het reserveren";
+                        Message = $"Seat {rows[CursorSeat - 1]} in row {CursorRow} is selected. Thank you";
                         break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "C")
                     {
                         Auditorium[CursorRow][CursorSeat] = "CR";
-                        Message = $"Stoel {rows[CursorSeat - 1]} in rij {CursorRow} is geselecteerd. Dank u wel voor het reserveren";
+                        Message = $"Seat {rows[CursorSeat - 1]} in row {CursorRow} is selected. Thank you";
                         break;
                     }
                     // als X is print dat het geen stoel is en doet niks 
