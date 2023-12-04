@@ -26,5 +26,12 @@
     "password": "123",
     "fullName": "Jelly",
     "role": "User"
+  },
+  {
+    "id": 5,
+    "emailAddress": "meester@gmail.com",
+    "password": "Thomas123!",
+    "fullName": "Lalalala",
+    "role": "User"
   }
 ]
