@@ -108,7 +108,7 @@ public class UserRegistration
         
         AccountsLogic accountsLogic = new AccountsLogic();
         AccountModel userAccount = new AccountModel(index, userEmail, userPassword, Name, "User");
-        AccountsLogic.UpdateList(userAccount);
+        accountsLogic.UpdateList(userAccount);
 
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("User account created successfully.");
