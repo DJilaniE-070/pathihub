@@ -60,19 +60,9 @@ public class PromotedTabelLogic
     public static void DrawMovieTable(List<Movie> movies, string header)
     {
         Console.WriteLine(header);
-//         Console.WriteLine(@" 
-// ___  ___           _        _____       _        _                  
-// |  \/  |          (_)      /  __ \     | |      | |                 
-// | .  . | _____   ___  ___  | /  \/ __ _| |_ __ _| | ___   __ _  
-// | |\/| |/ _ \ \ / / |/ _ \ | |    / _` | __/ _` | |/ _ \ / _` |
-// | |  | | (_) \ V /| |  __/ | \__/\ (_| | || (_| | | (_) | (_| |
-// \_|  |_/\___/ \_/ |_|\___|  \____/\__,_|\__\__,_|_|\___/ \__, |
-//                                                           __/ |     
-//                                                          |___/     
-// ");
-
+        
         Helpers.CharLine('-', 80);
-        Console.WriteLine("This is our movie Catalog");
+        Console.WriteLine("This is our Promotion menu.\nplease select a movie u want to change\nthe movies shown below are the current promoted movies:");
         Helpers.CharLine('-', 80);
         Console.WriteLine("\n\n");
 
