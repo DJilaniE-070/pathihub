@@ -19,18 +19,20 @@ ______                               _   _
         
         Console.WriteLine("--------------------------------------------------------------------------------");
         Console.Write("Enter Your Full name (First and LastName): ");
-        reservation.FullName = Helpers.Color("DarkYellow");
+        reservation.FullName = AccountsLogic.CurrentAccount.FullName;
+        // reservation.FullName = Helpers.Color("DarkYellow");
 
         Console.Write("Enter your Email: ");
-        reservation.Email = Helpers.Color("DarkYellow");
-
+        // reservation.Email = Helpers.Color("DarkYellow");
+        reservation.Email = AccountsLogic.CurrentAccount.EmailAddress;
 
         Console.Write("Enter wich Auditorium:  ");
-        reservation.Auditorium = Helpers.Color("DarkYellow");
-
-
+        // reservation.Auditorium = Helpers.Color("DarkYellow");
+        // reservation.Auditorium = SeatMap.;
+        
         Console.Write("Enter SeatNumber: ");
         reservation.SeatName = Helpers.Color("DarkYellow");
+        // reservation.SeatName = SeatMap.
         
         Console.Write("Enter name of the Movie ");
         reservation.movie = Helpers.Color("DarkYellow");

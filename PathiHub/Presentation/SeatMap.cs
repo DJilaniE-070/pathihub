@@ -1,10 +1,13 @@
-﻿using System.Text;
+﻿using System.Collections;
+using System.Text;
 
 public class SeatMap
 {    
     // lijst om reservaties op te slaan
     //public static List<List<string>> ReservedSeats = new List<List<string>>();
     //public static List<ReservedSeats> ReserveSeat = new List<ReservedSeats>();
+    public static List<string> ReservedSeats = new List<string>();
+    public static Hashtable ReservedSeat = new Hashtable();
 
     // auditorium 1 met 150 stoelen (14 rijen en 12 stoelen per rij)
     public List<List<string>> auditorium1 = new List<List<string>>
@@ -232,7 +235,8 @@ public class SeatMap
                     if (key.Key == ConsoleKey.Enter)
                     {
                         SnacksMenu snack = new SnacksMenu();
-                        snack.Start();
+                        // snack.Start();
+                        ReservationPresentation.AddReservation();
                         break;
                     }
                     if (key.Key == ConsoleKey.Backspace)
