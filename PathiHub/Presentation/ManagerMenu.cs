@@ -198,7 +198,7 @@ ___  ___           _        _____       _   _
                         break;
                 }
                 break;
-        }
+        }   
 
     } while (!exit);
 
@@ -207,7 +207,7 @@ ___  ___           _        _____       _   _
 
 public static void ReservationsOptions()
 {
-    string[] menuOptions = { "Make a Reservation", "Remove a reservation", "Change a reservation","Show Reservations", "Return to Manager menu" };
+    string[] menuOptions = { "Make a Reervation", "Remove a reservation", "Change a reservation","Show Reservations", "Return to Manager menu" };
     int selectedIndex = 0;
     bool exit = false;
 
