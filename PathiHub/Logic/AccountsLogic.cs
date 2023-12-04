@@ -12,15 +12,14 @@ public class AccountsLogic
     //Static properties are shared across all instances of the class
     //This can be used to get the current logged in account from anywhere in the program
     //private set, so this can only be set by the class itself
-    static public AccountModel? CurrentAccount { get; private set; }
-
+    
     public AccountsLogic()
     {
         _accounts = AccountsAccess.LoadAll();
     }
 
 
-    public static void UpdateList(AccountModel acc)
+    public void UpdateList(AccountModel acc)
     {
         //Find if there is already an model with the same id
         int index = _accounts.FindIndex(s => s.Id == acc.Id);
@@ -53,8 +52,9 @@ public class AccountsLogic
         {
             return null;
         }
-        CurrentAccount = _accounts.Find(i => i.EmailAddress == email && i.Password == password);
-        return CurrentAccount;
+        AccountModel account = _accounts.Find(i => i.EmailAddress == email && i.Password == password);
+        Helpers.CurrentAccount = account;
+        return account;
     }
     
     public List<AccountModel> GetAccounts()
