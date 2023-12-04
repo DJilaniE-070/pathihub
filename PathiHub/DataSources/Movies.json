@@ -24,7 +24,9 @@
     "Countrys": null,
     "Auditorium": 3,
     "Awards": null,
-    "Poster": null
+    "Poster": null,
+    "ScheduleDates": null,
+    "ScheduledTimes": null
   },
   {
     "MovieTitle": "Galactic Quest",
@@ -50,7 +52,9 @@
     "Countrys": null,
     "Auditorium": 1,
     "Awards": null,
-    "Poster": null
+    "Poster": null,
+    "ScheduleDates": null,
+    "ScheduledTimes": null
   },
   {
     "MovieTitle": "Pinda",
@@ -76,7 +80,9 @@
     "Awards": [
       "blblabal"
     ],
-    "Poster": null
+    "Poster": null,
+    "ScheduleDates": null,
+    "ScheduledTimes": null
   },
   {
     "MovieTitle": "Tester",
@@ -102,7 +108,9 @@
     "Awards": [
       "none"
     ],
-    "Poster": null
+    "Poster": null,
+    "ScheduleDates": null,
+    "ScheduledTimes": null
   },
   {
     "MovieTitle": "pinda",
@@ -117,7 +125,7 @@
     "Writers": [
       "pinda"
     ],
-    "Plot": "Pinda",
+    "Plot": " ",
     "Rating": 9.0,
     "RuntimeMinutes": 110,
     "Language": "english",
@@ -128,7 +136,9 @@
     "Awards": [
       "none"
     ],
-    "Poster": null
+    "Poster": null,
+    "ScheduleDates": null,
+    "ScheduledTimes": null
   },
   {
     "MovieTitle": "test",
@@ -154,7 +164,9 @@
     "Awards": [
       "none"
     ],
-    "Poster": null
+    "Poster": null,
+    "ScheduleDates": null,
+    "ScheduledTimes": null
   },
   {
     "MovieTitle": "THE HUNGER GAMES",
@@ -180,7 +192,9 @@
     "Awards": [
       "none"
     ],
-    "Poster": null
+    "Poster": null,
+    "ScheduleDates": null,
+    "ScheduledTimes": null
   },
   {
     "MovieTitle": "test",
@@ -206,7 +220,9 @@
     "Awards": [
       "none"
     ],
-    "Poster": null
+    "Poster": null,
+    "ScheduleDates": null,
+    "ScheduledTimes": null
   },
   {
     "MovieTitle": "John Wick",
@@ -249,7 +265,9 @@
     "Awards": [
       "5 wins & 10 nominations"
     ],
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg"
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg",
+    "ScheduleDates": null,
+    "ScheduledTimes": null
   },
   {
     "MovieTitle": "nasdaklsdasd",
@@ -292,7 +310,9 @@
     "Awards": [
       "2 wins & 1 nomination"
     ],
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_SX300.jpg"
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_SX300.jpg",
+    "ScheduleDates": null,
+    "ScheduledTimes": null
   },
   {
     "MovieTitle": "Avengers: Endgame",
@@ -336,6 +356,8 @@
     "Awards": [
       "Nominated for 1 Oscar. 70 wins & 133 nominations total"
     ],
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg"
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
+    "ScheduleDates": null,
+    "ScheduledTimes": null
   }
 ]

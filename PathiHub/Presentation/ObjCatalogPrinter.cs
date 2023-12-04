@@ -35,7 +35,13 @@ public class ObjCatalogePrinter
                         selectedObjIndex = (selectedObjIndex + 1) % itemList.Count;
                         break;
                     case ConsoleKey.Backspace:
+                        selectedObjIndex = 0;
                         ManagerMenu.Start();
+                        break;
+                    case ConsoleKey.Escape:
+                        selectedObjIndex = 0;
+                        Console.WriteLine(" ");
+                        Menu.Start();
                         break;
 
                 }
@@ -56,7 +62,7 @@ public class ObjCatalogePrinter
     }
 
     public static void DrawTable<T>(string HeaderX ,List<T> objList, List<string> displayFields)    {
-        Console.WriteLine(HeaderX);
+        Helpers.PrintStringToColor(HeaderX, "yellow");
     
         Helpers.CharLine('-' ,80);
         Console.WriteLine("This our Catalog");
