@@ -201,7 +201,6 @@ public class SeatMap
         // cursor om te navigeren
         ConsoleKeyInfo key;
         Console.CursorVisible = true;
-        bool Loop = true;
         do
         {
             key = Console.ReadKey(true);
@@ -239,17 +238,56 @@ public class SeatMap
                         // SnacksMenu snack = new SnacksMenu();
                         // snack.Start();
                         // ReservationPresentation.AddReservation();
-                        AccountModel user = AccountsLogic.CurrentAccount;
-                        if (user!= null)
+                        bool Loop1 = true;
+                        bool Loop2 = true;
+                        if( !SeatmapLogic.CheckCurrentUser())
                         {
-                            // hier je code djilanie doorverwijzen naar registration als je acc hebt
+                            while (Loop1)
+                            {
+                                Console.WriteLine("You are not logged in. Do you have a account? (yes or no)");
+                                string HaveAcc = Helpers.Color("yellow").ToLower();
+                                if (HaveAcc == "no")
+                                {
+                                    while (Loop2)
+                                        {
+                                        Console.WriteLine("Do you wish to make a new account to finish your reservation? (yes or no)");
+                                        string MakeAcc = Helpers.Color("yellow").ToLower();
+                                        if (MakeAcc == "yes")
+                                        {
+                                            UserRegistration.RegisterUser();
+                                            break;
+                                        }
+                                        if (MakeAcc == "no")
+                                        {
+                                        Helpers.PrintStringToColor("You can't finish your reservation without making account\nYou will be redirected to the main page","Red");
+                                        Thread.Sleep(1000);
+                                        Menu.Start();
+                                        Loop2 = false;
+                                        Loop1 = false;
+                                        Environment.Exit(0);
+                                        }
+                                        break;
+                                        }
+
+                                }
+                                else if (HaveAcc == "yes")
+                                {
+                                    //  hierzo de code als je acc hebt dan alleen email password and then check in accountlogic als dat bestaat
+                                    // Accountmodel.Checklogin(email, password)
+                                    Loop1 = false;
+                                    Environment.Exit(0);
+                                }
+                                else
+                                {
+                                    Helpers.PrintStringToColor("Incorrect input", "red");
+                                }
+                            }
+                        break;
                         }
                         else
                         {
-                            UserRegistration.RegisterUser();
+                            // Djilanie hier code voor als user is ingelogd. Dus geen inputs maar read from accountmodel user dan
                         }
-
-                        Loop = false;
                         break;
                     }
                     if (key.Key == ConsoleKey.Backspace)
@@ -315,8 +353,8 @@ public class SeatMap
                     }
                     break;
                 case ConsoleKey.Escape:
-                    Loop = false;
                     Menu.Start();
+                    Environment.Exit(0);
                     break;
 
             }
@@ -333,7 +371,7 @@ public class SeatMap
             DisplayLegenda();*/
 
         // escape button om uit loop te gaan
-        } while (Loop);
+        } while (true);
         // escape en je gaat terug naar menu.cs scherm
     }
 

@@ -54,8 +54,9 @@ public class MovieCatalogePrinter
             Console.WriteLine($"\nYou have selected the movie: '{movies[selectedMovieIndex].MovieTitle}'.");
 
             Thread.Sleep(500);
-            
-            //Hier komt later nog een check die kijkt naar de staat van de inlog waardoor MovieCatalogePrinterManagerVersion kan worden verwijderd
+            MovieSchedule.SelectedMovie = movies[selectedMovieIndex];
+            MovieSchedule.DisplaySchedule();
+            // //Hier komt later nog een check die kijkt naar de staat van de inlog waardoor MovieCatalogePrinterManagerVersion kan worden verwijderd
             MovieToAuditoriumLogic movieToAuditoriumLogic = new MovieToAuditoriumLogic();
             movieToAuditoriumLogic.Connector(movies[selectedMovieIndex]);
             // Thread.Sleep(2000); // Optional delay
