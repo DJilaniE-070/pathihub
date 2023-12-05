@@ -17,31 +17,31 @@ ______                               _   _
 
         Reservation reservation = new Reservation();
         
-        Console.WriteLine("--------------------------------------------------------------------------------");
-        Console.Write("Enter Your Full name (First and LastName): ");
-        reservation.FullName = AccountsLogic.CurrentAccount.FullName;
-        // reservation.FullName = Helpers.Color("DarkYellow");
+        // Console.WriteLine("--------------------------------------------------------------------------------");
+        // Console.Write("Enter Your Full name (First and LastName): ");
+        // reservation.FullName = AccountsLogic.CurrentAccount.FullName;
+        // // reservation.FullName = Helpers.Color("DarkYellow");
 
-        Console.Write("Enter your Email: ");
-        // reservation.Email = Helpers.Color("DarkYellow");
-        reservation.Email = AccountsLogic.CurrentAccount.EmailAddress;
+        // Console.Write("Enter your Email: ");
+        // // reservation.Email = Helpers.Color("DarkYellow");
+        // reservation.Email = AccountsLogic.CurrentAccount.EmailAddress;
 
-        Console.Write("Enter wich Auditorium:  ");
+        // Console.Write("Enter wich Auditorium:  ");
         // reservation.Auditorium = Helpers.Color("DarkYellow");
         // reservation.Auditorium = SeatMap.;
         
-        Console.Write("Enter SeatNumber: ");
-        reservation.SeatName = Helpers.Color("DarkYellow");
+        // Console.Write("Enter SeatNumber: ");
+        // reservation.SeatNames = Helpers.Color("DarkYellow");
         // reservation.SeatName = SeatMap.
         
-        Console.Write("Enter name of the Movie ");
-        reservation.movie = Helpers.Color("DarkYellow");
+        // Console.Write("Enter name of the Movie ");
+        // reservation.movie = Helpers.Color("DarkYellow");
 
-        Console.Write("Price of the Movie ");
-        reservation.Price = Convert.ToInt32(Helpers.Color("DarkYellow"));
+        // Console.Write("Price of the Movie ");
+        // reservation.Price = Convert.ToInt32(Helpers.Color("DarkYellow"));
 
-        Console.Write("Enter CinemaLocation ");
-        reservation.movie = Helpers.Color("DarkYellow");
+        // Console.Write("Enter CinemaLocation ");
+        // reservation.movie = Helpers.Color("DarkYellow");
 
         // Random ran = new Random();
         //

@@ -138,7 +138,7 @@ ___  ___           _       ______
 
             Console.Write("Enter director: ");
             string? Director = Helpers.Color("DarkYellow");
-            movie.Director = string.IsNullOrEmpty(Director)
+            movie.Directors = string.IsNullOrEmpty(Director)
                 ? "X" 
                 : Director;
             
@@ -170,13 +170,13 @@ ___  ___           _       ______
             
             Console.Write("Enter language: ");
             string? Language = Helpers.Color("DarkYellow");
-            movie.Language = string.IsNullOrEmpty(Language)
+            movie.Languages = string.IsNullOrEmpty(Language)
             ?"X"
             :Language;
             
             Console.Write("Enter country: ");
             string Country = Helpers.Color("DarkYellow");
-            movie.Country = string.IsNullOrEmpty(Country)
+            movie.Countrys = string.IsNullOrEmpty(Country)
             ?"X"
             :Country;
 

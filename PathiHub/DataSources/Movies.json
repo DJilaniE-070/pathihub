@@ -2,15 +2,16 @@
   {
     "MovieTitle": "The Adventure Begins",
     "ReleaseYear": 2023,
-    "ReleaseDate": null,
+    "ReleaseDate": "0",
     "Genre": [
       "Action",
       "Adventure",
       "Sci-Fi"
     ],
-    "Actors": null,
-    "Director": "John Directorson",
-    "Directors": null,
+    "Actors": [
+      "N/A"
+    ],
+    "Directors": "John Directorson",
     "Writers": [
       "Jane Writerly",
       "Michael Scriptson"
@@ -18,15 +19,12 @@
     "Plot": "In a futuristic world, Alice, a skilled adventurer, and her loyal sidekick Bob, embark on a thrilling journey to save their city from the evil plans of Eve, a cunning antagonist. With high-tech gadgets and unyielding determination, they must overcome various challenges and foes to restore peace to their homeland.",
     "Rating": 8.5,
     "RuntimeMinutes": 120,
-    "Language": "English",
-    "Languages": null,
-    "Country": "United States",
-    "Countrys": null,
+    "Languages": "English",
+    "Countrys": "United States",
     "Auditorium": 3,
     "Awards": null,
     "Poster": null,
-    "ScheduleDates": null,
-    "ScheduledTimes": null
+    "Scheduled": null
   },
   {
     "MovieTitle": "Galactic Quest",
@@ -36,9 +34,10 @@
       "Sci-Fi",
       "Adventure"
     ],
-    "Actors": null,
-    "Director": "Lucy Director",
-    "Directors": null,
+    "Actors": [
+      "N/A"
+    ],
+    "Directors": "Lucy Director",
     "Writers": [
       "David Scriptwriter",
       "Emily Storyteller"
@@ -46,183 +45,82 @@
     "Plot": "In the vast expanse of the galaxy, Chris, a brave spaceman, and his alien friend Zara embark on a quest to forge alliances between planets and civilizations. Their journey is fraught with intergalactic challenges and unexpected friendships, testing their courage and resolve to bring peace to the universe.",
     "Rating": 9.0,
     "RuntimeMinutes": 115,
-    "Language": "English",
-    "Languages": null,
-    "Country": "United States",
-    "Countrys": null,
-    "Auditorium": 1,
-    "Awards": null,
-    "Poster": null,
-    "ScheduleDates": null,
-    "ScheduledTimes": null
-  },
-  {
-    "MovieTitle": "Pinda",
-    "ReleaseYear": 123,
-    "ReleaseDate": null,
-    "Genre": [
-      "test"
-    ],
-    "Actors": null,
-    "Director": "test",
-    "Directors": null,
-    "Writers": [
-      "tes"
-    ],
-    "Plot": "test",
-    "Rating": 9.0,
-    "RuntimeMinutes": 120,
-    "Language": "english",
-    "Languages": null,
-    "Country": "England",
-    "Countrys": null,
+    "Languages": "English",
+    "Countrys": "United States",
     "Auditorium": 1,
     "Awards": [
-      "blblabal"
+      ""
     ],
-    "Poster": null,
-    "ScheduleDates": null,
-    "ScheduledTimes": null
+    "Poster": "N/A",
+    "Scheduled": [
+      ""
+    ]
   },
   {
-    "MovieTitle": "Tester",
-    "ReleaseYear": 1200,
-    "ReleaseDate": null,
+    "MovieTitle": "De schippers van de Kameleon",
+    "ReleaseYear": 2003,
+    "ReleaseDate": "25 Jun 2003",
     "Genre": [
-      "none"
+      "Adventure",
+      " Family"
     ],
-    "Actors": null,
-    "Director": "Test Master",
-    "Directors": null,
+    "Actors": [
+      "Koen van der Donk",
+      " Jos van der Donk",
+      " Maarten Spanjer"
+    ],
+    "Directors": "Steven de Jong, Marc Willard",
     "Writers": [
-      "none"
+      "Hotze de Roos",
+      " Jean Ummels"
     ],
-    "Plot": "test test test",
-    "Rating": 10.0,
+    "Plot": "Young twin boys receive a boat of their own by a stroke of luck. It turns out to be very fast and they use their boat to help out their friends.",
+    "Rating": 6.1,
     "RuntimeMinutes": 100,
-    "Language": "English",
-    "Languages": null,
-    "Country": "USA",
-    "Countrys": null,
-    "Auditorium": 1,
+    "Languages": "Dutch, Western Frisian",
+    "Countrys": "Netherlands",
+    "Auditorium": 0,
     "Awards": [
-      "none"
+      "2 wins"
     ],
-    "Poster": null,
-    "ScheduleDates": null,
-    "ScheduledTimes": null
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMTY1MjU4OTQxMV5BMl5BanBnXkFtZTcwMTMwNTQ5OA@@._V1_SX300.jpg",
+    "Scheduled": [
+      ""
+    ]
   },
   {
-    "MovieTitle": "pinda",
-    "ReleaseYear": 1120,
-    "ReleaseDate": null,
+    "MovieTitle": "Kameleon 2",
+    "ReleaseYear": 2005,
+    "ReleaseDate": "29 Jun 2005",
     "Genre": [
-      "test"
+      "Adventure",
+      " Comedy",
+      " Family"
     ],
-    "Actors": null,
-    "Director": "1120",
-    "Directors": null,
+    "Actors": [
+      "Koen van der Donk",
+      " Jos van der Donk",
+      " Maarten Spanjer"
+    ],
+    "Directors": "Steven de Jong",
     "Writers": [
-      "pinda"
+      "Hotze de Roos",
+      " Jean Ummels",
+      " Steven de Jong"
     ],
-    "Plot": " ",
-    "Rating": 9.0,
-    "RuntimeMinutes": 110,
-    "Language": "english",
-    "Languages": null,
-    "Country": "Pinda",
-    "Countrys": null,
-    "Auditorium": 1,
-    "Awards": [
-      "none"
-    ],
-    "Poster": null,
-    "ScheduleDates": null,
-    "ScheduledTimes": null
-  },
-  {
-    "MovieTitle": "test",
-    "ReleaseYear": 1120,
-    "ReleaseDate": null,
-    "Genre": [
-      "none"
-    ],
-    "Actors": null,
-    "Director": "Jay",
-    "Directors": null,
-    "Writers": [
-      "none"
-    ],
-    "Plot": "jay ",
-    "Rating": 9.0,
-    "RuntimeMinutes": 110,
-    "Language": "english",
-    "Languages": null,
-    "Country": "usa",
-    "Countrys": null,
-    "Auditorium": 2,
-    "Awards": [
-      "none"
-    ],
-    "Poster": null,
-    "ScheduleDates": null,
-    "ScheduledTimes": null
-  },
-  {
-    "MovieTitle": "THE HUNGER GAMES",
-    "ReleaseYear": 2023,
-    "ReleaseDate": null,
-    "Genre": [
-      "adventure"
-    ],
-    "Actors": null,
-    "Director": "1120",
-    "Directors": null,
-    "Writers": [
-      "IDC"
-    ],
-    "Plot": "It's the morning of the tenth annual Hunger Games, and eighteen-year-old Coriolanus Snow (Blyth) - years before he would become the tyrannical president of Panem - prepares for his only chance at fame and success",
+    "Plot": "The twinbrothers Sietse and Hielke Klinkhamer want to raise money for their ill friend, Marieke.",
     "Rating": 6.0,
-    "RuntimeMinutes": 158,
-    "Language": "english",
-    "Languages": null,
-    "Country": "USA",
-    "Countrys": null,
+    "RuntimeMinutes": 105,
+    "Languages": "Dutch, Western Frisian",
+    "Countrys": "Netherlands",
     "Auditorium": 1,
     "Awards": [
-      "none"
+      "2 wins"
     ],
-    "Poster": null,
-    "ScheduleDates": null,
-    "ScheduledTimes": null
-  },
-  {
-    "MovieTitle": "test",
-    "ReleaseYear": 1000,
-    "ReleaseDate": null,
-    "Genre": [
-      "test"
-    ],
-    "Actors": null,
-    "Director": "test",
-    "Directors": null,
-    "Writers": [
-      "tes"
-    ],
-    "Plot": "tes",
-    "Rating": 9.0,
-    "RuntimeMinutes": 120,
-    "Language": "english",
-    "Languages": null,
-    "Country": "usa",
-    "Countrys": null,
-    "Auditorium": 3,
-    "Awards": [
-      "none"
-    ],
-    "Poster": null,
-    "ScheduleDates": null,
-    "ScheduledTimes": null
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMjA2NTUxODIzOF5BMl5BanBnXkFtZTcwMjMwNTQ5OA@@._V1_SX300.jpg",
+    "Scheduled": [
+      ""
+    ]
   },
   {
     "MovieTitle": "John Wick",
@@ -238,126 +136,54 @@
       " Michael Nyqvist",
       " Alfie Allen"
     ],
-    "Director": "Chad Stahelski, David Leitch",
-    "Directors": [
-      "Chad Stahelski",
-      " David Leitch"
-    ],
+    "Directors": "Chad Stahelski, David Leitch",
     "Writers": [
       "Derek Kolstad"
     ],
     "Plot": "An ex-hitman comes out of retirement to track down the gangsters who killed his dog and stole his car.",
     "Rating": 7.4,
     "RuntimeMinutes": 101,
-    "Language": "English, Russian, Hungarian",
-    "Languages": [
-      "English",
-      " Russian",
-      " Hungarian"
-    ],
-    "Country": "United States, United Kingdom, China",
-    "Countrys": [
-      "United States",
-      " United Kingdom",
-      " China"
-    ],
-    "Auditorium": 0,
+    "Languages": "English, Russian, Hungarian",
+    "Countrys": "United States, United Kingdom, China",
+    "Auditorium": 2,
     "Awards": [
       "5 wins & 10 nominations"
     ],
     "Poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg",
-    "ScheduleDates": null,
-    "ScheduledTimes": null
+    "Scheduled": [
+      ""
+    ]
   },
   {
-    "MovieTitle": "nasdaklsdasd",
-    "ReleaseYear": 2023,
-    "ReleaseDate": "21 Jul 2023",
-    "Genre": [
-      "Biography",
-      " Drama",
-      " History"
-    ],
-    "Actors": [
-      "Cillian Murphy",
-      " Emily Blunt",
-      " Matt Damon"
-    ],
-    "Director": "Christopher Nolan",
-    "Directors": [
-      "Christopher Nolan"
-    ],
-    "Writers": [
-      "Christopher Nolan",
-      " Kai Bird",
-      " Martin Sherwin"
-    ],
-    "Plot": "The story of American scientist, J. Robert Oppenheimer, and his role in the development of the atomic bomb.",
-    "Rating": 8.5,
-    "RuntimeMinutes": 180,
-    "Language": "English, German, Italian",
-    "Languages": [
-      "English",
-      " German",
-      " Italian"
-    ],
-    "Country": "United States, United Kingdom",
-    "Countrys": [
-      "United States",
-      " United Kingdom"
-    ],
-    "Auditorium": 0,
-    "Awards": [
-      "2 wins & 1 nomination"
-    ],
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_SX300.jpg",
-    "ScheduleDates": null,
-    "ScheduledTimes": null
-  },
-  {
-    "MovieTitle": "Avengers: Endgame",
-    "ReleaseYear": 2019,
-    "ReleaseDate": "26 Apr 2019",
+    "MovieTitle": "John Wick: Chapter 2",
+    "ReleaseYear": 2017,
+    "ReleaseDate": "10 Feb 2017",
     "Genre": [
       "Action",
-      " Adventure",
-      " Drama"
+      " Crime",
+      " Thriller"
     ],
     "Actors": [
-      "Robert Downey Jr.",
-      " Chris Evans",
-      " Mark Ruffalo"
+      "Keanu Reeves",
+      " Riccardo Scamarcio",
+      " Ian McShane"
     ],
-    "Director": "Anthony Russo, Joe Russo",
-    "Directors": [
-      "Anthony Russo",
-      " Joe Russo"
-    ],
+    "Directors": "Chad Stahelski",
     "Writers": [
-      "Christopher Markus",
-      " Stephen McFeely",
-      " Stan Lee"
+      "Derek Kolstad"
     ],
-    "Plot": "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
-    "Rating": 8.4,
-    "RuntimeMinutes": 181,
-    "Language": "English, Japanese, Xhosa, German",
-    "Languages": [
-      "English",
-      " Japanese",
-      " Xhosa",
-      " German"
-    ],
-    "Country": "United States",
-    "Countrys": [
-      "United States"
-    ],
-    "Auditorium": 0,
+    "Plot": "After returning to the criminal underworld to repay a debt, John Wick discovers that a large bounty has been put on his life.",
+    "Rating": 7.4,
+    "RuntimeMinutes": 122,
+    "Languages": "English, Italian, Russian, Sign , Hebrew",
+    "Countrys": "United States, Italy, Hong Kong, Canada",
+    "Auditorium": 1,
     "Awards": [
-      "Nominated for 1 Oscar. 70 wins & 133 nominations total"
+      "4 wins & 10 nominations"
     ],
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
-    "ScheduleDates": null,
-    "ScheduledTimes": null
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMjE2NDkxNTY2M15BMl5BanBnXkFtZTgwMDc2NzE0MTI@._V1_SX300.jpg",
+    "Scheduled": [
+      ""
+    ]
   }
 ]

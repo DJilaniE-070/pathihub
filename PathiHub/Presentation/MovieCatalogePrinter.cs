@@ -13,7 +13,7 @@ public class MovieCatalogePrinter
         if (access.LoadFromJson() == true)
         {
             List<Movie> movies = access.GetItemList();
-
+            
             // Teken de tabel met films
             DrawMovieTable(movies);
 
@@ -93,9 +93,12 @@ ___  ___           _        _____       _        _
                 Console.ForegroundColor = ConsoleColor.Black;
             }
 
-            Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", movies[i].MovieTitle,
-                movies[i].ReleaseYear, movies[i].Director, string.Join(", ", movies[i].Genre), movies[i].Rating);
-
+            Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}",
+            TruncateString(movies[i].MovieTitle,20),
+            movies[i].ReleaseYear,
+            TruncateString(movies[i].Directors, 20), 
+            TruncateString( string.Join(", ", movies[i].Genre),20), 
+            movies[i].Rating);
             Console.ResetColor();
         }
     }
@@ -106,5 +109,13 @@ ___  ___           _        _____       _        _
         DiscriptionPrinter.DrawBox(selectedMovie);
         
          
+    }
+    public static string TruncateString(string stringValue, int maxLength)
+    {
+        if (stringValue.Length > maxLength)
+        {
+            stringValue = stringValue.Substring(0, maxLength - 3) + "...";
+        }
+        return stringValue;
     }
 }
