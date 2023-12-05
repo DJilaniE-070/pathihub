@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Text;
+using PathiHub.Presentation;
 
 public class SeatMap
 {    
@@ -200,6 +201,7 @@ public class SeatMap
         // cursor om te navigeren
         ConsoleKeyInfo key;
         Console.CursorVisible = true;
+        bool Loop = true;
         do
         {
             key = Console.ReadKey(true);
@@ -234,9 +236,20 @@ public class SeatMap
                     Message = $"Weet je zeker dat je de volgende stoel of stoelen wilt reserveren?\nDruk op [enter] om verder te gaan\nDruk op [backspace] om terug te gaan";	
                     if (key.Key == ConsoleKey.Enter)
                     {
-                        SnacksMenu snack = new SnacksMenu();
+                        // SnacksMenu snack = new SnacksMenu();
                         // snack.Start();
-                        ReservationPresentation.AddReservation();
+                        // ReservationPresentation.AddReservation();
+                        AccountModel user = AccountsLogic.CurrentAccount;
+                        if (user!= null)
+                        {
+                            // hier je code djilanie doorverwijzen naar registration als je acc hebt
+                        }
+                        else
+                        {
+                            UserRegistration.RegisterUser();
+                        }
+
+                        Loop = false;
                         break;
                     }
                     if (key.Key == ConsoleKey.Backspace)
@@ -301,6 +314,11 @@ public class SeatMap
                         Message = $"Dit is een gereserveerde stoel, kies een andere stoel";
                     }
                     break;
+                case ConsoleKey.Escape:
+                    Loop = false;
+                    Menu.Start();
+                    break;
+
             }
             // laat de hele auditorium zien
             DisplayAll();
@@ -315,9 +333,8 @@ public class SeatMap
             DisplayLegenda();*/
 
         // escape button om uit loop te gaan
-        } while (key.Key != ConsoleKey.Escape);
+        } while (Loop);
         // escape en je gaat terug naar menu.cs scherm
-        Menu.Start();
     }
 
     // print alles

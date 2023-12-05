@@ -24,7 +24,9 @@
     "Auditorium": 3,
     "Awards": null,
     "Poster": null,
-    "Scheduled": null
+    "Scheduled": [
+      "Monday/12:00-14.30","Thursday/18:00-20:30"
+    ]
   },
   {
     "MovieTitle": "Galactic Quest",
@@ -53,7 +55,7 @@
     ],
     "Poster": "N/A",
     "Scheduled": [
-      ""
+      "Monday/12:00-14.30","Thursday/15:00-17:30"
     ]
   },
   {

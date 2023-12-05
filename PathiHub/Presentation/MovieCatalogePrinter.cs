@@ -12,8 +12,12 @@ public class MovieCatalogePrinter
     {
         if (access.LoadFromJson() == true)
         {
-            List<Movie> movies = access.GetItemList();
-            
+            // List<Movie> movies = access.GetItemList(); dit is alle movies
+            List<Movie> Movies = access.GetItemList();
+            MovieOptionsLogic.InitializeMovies(Movies);
+            List<Movie> movies = MovieOptionsLogic.FilterMovies();
+            // de bovenstaande 3 regels zijn om de movies te sorteren
+
             // Teken de tabel met films
             DrawMovieTable(movies);
 
@@ -48,6 +52,8 @@ public class MovieCatalogePrinter
 
             // Nu heb je toegang tot de geselecteerde film in de "movies" lijst
             Console.WriteLine($"\nYou have selected the movie: '{movies[selectedMovieIndex].MovieTitle}'.");
+
+            Thread.Sleep(500);
             
             //Hier komt later nog een check die kijkt naar de staat van de inlog waardoor MovieCatalogePrinterManagerVersion kan worden verwijderd
             MovieToAuditoriumLogic movieToAuditoriumLogic = new MovieToAuditoriumLogic();
@@ -102,6 +108,7 @@ ___  ___           _        _____       _        _
             Console.ResetColor();
         }
     }
+
 
     public static void ShowSelectedMoviePlot(Movie selectedMovie)
     {
