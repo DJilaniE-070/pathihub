@@ -5,16 +5,15 @@ public class PromotedTabelDelete
     
     public static void MovieDeletor(string HeaderX)
     {
-        string header = (@"
-___  ___           _        _____       _        _                  
-|  \/  |          (_)      /  __ \     | |      | |                 
-| .  . | _____   ___  ___  | /  \/ __ _| |_ __ _| | ___   __ _  
-| |\/| |/ _ \ \ / / |/ _ \ | |    / _` | __/ _` | |/ _ \ / _` |
-| |  | | (_) \ V /| |  __/ | \__/\ (_| | || (_| | | (_) | (_| |
-\_|  |_/\___/ \_/ |_|\___|  \____/\__,_|\__\__,_|_|\___/ \__, |
-                                                          __/ |     
-                                                         |___/     
-");
+        string header =    (@"
+    ______                          _   _              ___  ___                 
+    | ___ \                        | | (_)             |  \/  |                 
+    | |_/ / __ ___  _ __ ___   ___ | |_ _  ___  _ __   | .  . | ___ _ __  _   _ 
+    |  __/ '__/ _ \| '_ ` _ \ / _ \| __| |/ _ \| '_ \  | |\/| |/ _ \ '_ \| | | |
+    | |  | | | (_) | | | | | | (_) | |_| | (_) | | | | | |  | |  __/ | | | |_| |
+    \_|  |_|  \___/|_| |_| |_|\___/ \__|_|\___/|_| |_| \_|  |_/\___|_| |_|\__,_|
+                                                                                                       
+                                   ");
         PromotionMovieAccess movieData = new();
         Movie selectedMovie = PromotedTabelLogic.TabelPrinter(movieData, header);
 
@@ -26,7 +25,9 @@ ___  ___           _        _____       _        _
         {
             movieData.RemoveThing(selectedMovie);
             Helpers.PrintStringToColor($"You have deleted the movie: '{selectedMovie.MovieTitle}'.", "red");
+            Console.WriteLine("Dit is de check voor promoted tabeld delete");
             Thread.Sleep(2000);
+            
 
             // Serialize the updated list back to JSON
             movieData.SaveToJson();
