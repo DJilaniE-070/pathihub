@@ -47,7 +47,7 @@ public static class Menu
 
         do
         {
-            // Console.Clear();
+            Console.Clear();
 
             // promotie menu start
             

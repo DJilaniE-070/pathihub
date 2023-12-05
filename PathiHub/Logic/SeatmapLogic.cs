@@ -2,7 +2,7 @@ public static class SeatmapLogic
 {
     public static bool CheckCurrentUser()
     {
-        AccountModel user = AccountsLogic.CurrentAccount;
+        AccountModel user =  Helpers.CurrentAccount;
         if (user!= null)
         {
             return true;
