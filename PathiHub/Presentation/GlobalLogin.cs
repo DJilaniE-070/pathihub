@@ -81,7 +81,6 @@ static class GlobalLogin
                     break;
                 default:
                     break;
-                
             }
 
             //Write some code to go back to the menu
