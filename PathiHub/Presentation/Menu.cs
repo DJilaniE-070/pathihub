@@ -75,7 +75,7 @@ ______     _   _     _   _   _       _
             Console.WriteLine("╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮");
             Console.ResetColor();
             DiscriptionPrinter.DrawBox(FirstDiscription);
-            Console.WriteLine("In a futuristic world, Alice, a skilled adventurer, and her loyal sidekick Bob, \nembark on a thrilling journey to save their city from the evil plans of Eve, \na cunning antagonist. With high-tech gadgets and unyielding determination, \nthey must overcome various challenges and foes to restore peace to their homeland.");
+            // Console.WriteLine("In a futuristic world, Alice, a skilled adventurer, and her loyal sidekick Bob, \nembark on a thrilling journey to save their city from the evil plans of Eve, \na cunning antagonist. With high-tech gadgets and unyielding determination, \nthey must overcome various challenges and foes to restore peace to their homeland.");
 
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine();
@@ -83,7 +83,7 @@ ______     _   _     _   _   _       _
             Console.WriteLine("═════════════════════════════════════════════════════════════════════════════════════");
             Console.ResetColor();
             DiscriptionPrinter.DrawBox(SecondDiscription);
-            Console.WriteLine("In the vast expanse of the galaxy, Chris, a brave spaceman, and his alien friend Zara\n embark on a quest to forge alliances between planets and civilizations. \nTheir journey is fraught with intergalactic challenges and unexpected friendships, \ntesting their courage and resolve to bring peace to the universe.");
+            // Console.WriteLine("In the vast expanse of the galaxy, Chris, a brave spaceman, and his alien friend Zara\n embark on a quest to forge alliances between planets and civilizations. \nTheir journey is fraught with intergalactic challenges and unexpected friendships, \ntesting their courage and resolve to bring peace to the universe.");
  
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine();
