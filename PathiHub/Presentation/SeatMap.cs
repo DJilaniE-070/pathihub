@@ -184,9 +184,9 @@ public class SeatMap
         PriceC = stoel_c;
     }
 
-    public void CalculateTotalPrice()
+    public void CalculateTotalPrice(double prices)
     {
-        TotalPrice+= 
+        TotalPrice += prices;
     }
     
     // werkt nog niet
@@ -231,7 +231,7 @@ public class SeatMap
                     if (CursorSeat < Auditorium[CursorRow].Count - 1)
                     {
                         CursorSeat++;
-                    }
+                    } 
                     break;
                 // de geselecteerde stoel of stoelen reserveren
                 case ConsoleKey.Enter:
