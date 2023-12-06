@@ -87,6 +87,9 @@ public class SeatMap
     private List<List<string>> Auditorium = new();
     // lijst van reservaties
     private List<ReservedSeats> Reservations = new List<ReservedSeats>();
+    // belangrijke informaties
+    private Dictionary<string, double> SeatPrices;
+    //private SeatMapInfo Info = new SeatMapInfo();
     // stoel prijzen backing field
     private double _priceA;
     private double _priceB;
@@ -139,12 +142,11 @@ public class SeatMap
     public static double TotalRevenue;
 
     // 2 constructor voor overloading
-    public SeatMap(int auditoriumnumber) : this(auditoriumnumber, 25, 20, 15) 
+    public SeatMap(int auditoriumnumber)
     {
-        AuditoriumNumber = auditoriumnumber;
-        PriceA = 25;
-        PriceB = 20;
-        PriceC = 15;
+        AuditoriumNumber = auditoriumnumber;     
+        LoadPricesFromJson();
+        
         Auditorium = GetAuditorium(auditoriumnumber);
         Auditoriums();
     }
@@ -166,6 +168,7 @@ public class SeatMap
         PriceA = 25;
         PriceB = 20;
         PriceC = 15;
+        SavePrices();
         Auditorium = GetAuditorium(auditoriumnumber);
         Auditoriums();
     }
@@ -190,6 +193,17 @@ public class SeatMap
         PriceA = stoel_a;
         PriceB = stoel_b;
         PriceC = stoel_c;
+    }
+
+    public void SavePrices()
+    {
+        SeatPrices = new Dictionary<string, double>
+        {
+            { "PriceA", PriceA },
+            { "PriceB", PriceB },
+            { "PriceC", PriceC }
+        };
+        SavePricesToJson();
     }
 
     public void CalculateTotalPrice(double prices)
@@ -410,6 +424,32 @@ public class SeatMap
         File.WriteAllText(FilePath, UpdatedJson);
 
         Console.WriteLine("Reservations saved to: " + FilePath);
+    }
+
+    public void SavePricesToJson()
+    {
+        string FolderPath = @"C:\Users\31685\Documents\GitHub\pathihub\PathiHub\DataSources\seatprices.json";
+
+        string json = JsonConvert.SerializeObject(SeatPrices, Formatting.Indented);
+        File.WriteAllText(FolderPath, json);
+
+        Console.WriteLine("Seat prices saved to: " + FolderPath);
+    }
+
+    private void LoadPricesFromJson()
+    {
+        string FolderPath = @"C:\Users\31685\Documents\GitHub\pathihub\PathiHub\DataSources\seatprices.json";
+
+        if (File.Exists(FolderPath))
+        {
+            string json = File.ReadAllText(FolderPath);
+            SeatPrices = JsonConvert.DeserializeObject<Dictionary<string, double>>(json);
+            Console.WriteLine("Seat prices loaded from: " + FolderPath);
+        }
+        else
+        {
+            Console.WriteLine("No seat prices file found. Using default prices.");
+        }
     }
 
     // print alles
