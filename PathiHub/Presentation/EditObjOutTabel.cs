@@ -192,7 +192,7 @@ ______ _       _
 | |_/ / | ___ | |_ 
 |  __/| |/ _ \| __|
 | |   | | (_) | |_ 
-\_|   |_|\___/ \__| \n\n","yellow");
+\_|   |_|\___/ \__| ","yellow");
         Helpers.CharLine('-' ,80);
 
             if (!originalString.EndsWith(" ")&& !originalString.StartsWith(" "))
