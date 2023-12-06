@@ -20,6 +20,7 @@ public static class Menu
         
         
         List<string> List_Of_Movie_Titles = new List<string>();
+        List<Movie> List_Of_Movie_Discriptions = new List<Movie>();
         
         if (promotedMovies.LoadFromJson())
         {
@@ -27,6 +28,7 @@ public static class Menu
             foreach (var movieTitle in promoted_movies_list)
             {
                 List_Of_Movie_Titles.Add(movieTitle.MovieTitle);
+                List_Of_Movie_Discriptions.Add(movieTitle);
                 // var firstitem = movieTitle.MovieTitle;
                 //
                 // var seconditem = movieTitle.MovieTitle[1];
@@ -39,16 +41,20 @@ public static class Menu
             }
 
         }
-
+        //Correct Indexes for the movie names
         string First_Promoted_Movie = List_Of_Movie_Titles[0];
         string Second_Promoted_Movie = List_Of_Movie_Titles[1];
         string Third_Promoted_Movie = List_Of_Movie_Titles[2];
         
+        //correct Indexes For the movie discriptions
+        Movie FirstDiscription = List_Of_Movie_Discriptions[0];
+        Movie SecondDiscription = List_Of_Movie_Discriptions[1];
+        Movie ThirdDiscription = List_Of_Movie_Discriptions[2];
+        
 
         do
         {
-            // Console.Clear();
-
+            Console.Clear();
             // promotie menu start
             
             Helpers.PrintStringToColor(
@@ -68,6 +74,7 @@ ______     _   _     _   _   _       _
             Console.WriteLine($"                           {First_Promoted_Movie}");
             Console.WriteLine("╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮");
             Console.ResetColor();
+            DiscriptionPrinter.DrawBox(FirstDiscription);
             Console.WriteLine("In a futuristic world, Alice, a skilled adventurer, and her loyal sidekick Bob, \nembark on a thrilling journey to save their city from the evil plans of Eve, \na cunning antagonist. With high-tech gadgets and unyielding determination, \nthey must overcome various challenges and foes to restore peace to their homeland.");
 
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
@@ -75,6 +82,7 @@ ______     _   _     _   _   _       _
             Console.WriteLine($"                             {Second_Promoted_Movie}");
             Console.WriteLine("═════════════════════════════════════════════════════════════════════════════════════");
             Console.ResetColor();
+            DiscriptionPrinter.DrawBox(SecondDiscription);
             Console.WriteLine("In the vast expanse of the galaxy, Chris, a brave spaceman, and his alien friend Zara\n embark on a quest to forge alliances between planets and civilizations. \nTheir journey is fraught with intergalactic challenges and unexpected friendships, \ntesting their courage and resolve to bring peace to the universe.");
  
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -82,7 +90,8 @@ ______     _   _     _   _   _       _
             Console.WriteLine($"                              {Third_Promoted_Movie}");
             Console.WriteLine("♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦ ♦");
             Console.ResetColor();
-            Console.WriteLine("In a world threatened by an imminent cosmic catastrophe, Earth's mightiest heroes, \nThe Avengers, assemble to confront a powerful enemy set on destroying the planet. \nAs they unite their unique powers, the team faces internal conflicts, \nunexpected alliances, and a race against time to save humanity from impending doom. \nGet ready for an epic battle that transcends individual abilities, \nproving that together, they are unstoppable.");
+            DiscriptionPrinter.DrawBox(ThirdDiscription);
+            // Console.WriteLine("In a world threatened by an imminent cosmic catastrophe, Earth's mightiest heroes, \nThe Avengers, assemble to confront a powerful enemy set on destroying the planet. \nAs they unite their unique powers, the team faces internal conflicts, \nunexpected alliances, and a race against time to save humanity from impending doom. \nGet ready for an epic battle that transcends individual abilities, \nproving that together, they are unstoppable.");
 
             //promotie menu einde
             Console.WriteLine();

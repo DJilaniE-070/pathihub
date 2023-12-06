@@ -62,12 +62,15 @@ public class PromotionMenu
                 
                 
                 Helpers.PrintStringToColor($"You have succesfully changed the promotion status for the movie: '{selectedMovie.MovieTitle}'.", "green");
-                PromotedMovieCataloge();
+                Menu.Start();
                 Thread.Sleep(2000);
                 break;
 
             case "no":
-                // Ask if the person wants to promote another movie or perform other actions
+                Console.WriteLine("you will be redirected to make a diffrent choice");
+                Thread.Sleep(2000);
+                Console.Clear();
+                AddNewPromotionMovie();
                 break;
 
             default:

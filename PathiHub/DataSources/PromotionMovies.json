@@ -57,30 +57,47 @@
     "ScheduledTimes": null
   },
   {
-    "MovieTitle": "pinda",
-    "ReleaseYear": 1120,
-    "ReleaseDate": null,
+    "MovieTitle": "John Wick",
+    "ReleaseYear": 2014,
+    "ReleaseDate": "24 Oct 2014",
     "Genre": [
-      "test"
+      "Action",
+      " Crime",
+      " Thriller"
     ],
-    "Actors": null,
-    "Director": "1120",
-    "Directors": null,
+    "Actors": [
+      "Keanu Reeves",
+      " Michael Nyqvist",
+      " Alfie Allen"
+    ],
+    "Director": "Chad Stahelski, David Leitch",
+    "Directors": [
+      "Chad Stahelski",
+      " David Leitch"
+    ],
     "Writers": [
-      "pinda"
+      "Derek Kolstad"
     ],
-    "Plot": "Pinda",
-    "Rating": 9.0,
-    "RuntimeMinutes": 110,
-    "Language": "english",
-    "Languages": null,
-    "Country": "Pinda",
-    "Countrys": null,
-    "Auditorium": 1,
+    "Plot": "An ex-hitman comes out of retirement to track down the gangsters who killed his dog and stole his car.",
+    "Rating": 7.4,
+    "RuntimeMinutes": 101,
+    "Language": "English, Russian, Hungarian",
+    "Languages": [
+      "English",
+      " Russian",
+      " Hungarian"
+    ],
+    "Country": "United States, United Kingdom, China",
+    "Countrys": [
+      "United States",
+      " United Kingdom",
+      " China"
+    ],
+    "Auditorium": 0,
     "Awards": [
-      "none"
+      "5 wins & 10 nominations"
     ],
-    "Poster": null,
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg",
     "ScheduleDates": null,
     "ScheduledTimes": null
   }
