@@ -1,4 +1,8 @@
 ﻿using System.Text;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 
 public class SeatMap
 {    
@@ -129,6 +133,8 @@ public class SeatMap
             _priceC = value > 3 ? value : 3;
         }
     }
+    private string FilePath = @"C:\Users\31685\Documents\GitHub\pathihub\PathiHub\DataSources\reservedseats.json";
+    public List<Tuple<int, int>> ListTupleSeats = new List<Tuple<int, int>>();
 
     // 2 constructor voor overloading
     public SeatMap(int auditoriumnumber) : this(auditoriumnumber, 25, 20, 15) 
@@ -198,6 +204,7 @@ public class SeatMap
     // 3 auditoriums hardcoded en cursor logic
     public void Auditoriums()
     {   
+        bool exit = false;
         // laat de hele auditorium zien
         DisplayAll();
 
@@ -233,16 +240,10 @@ public class SeatMap
                         CursorSeat++;
                     } 
                     break;
-                // de geselecteerde stoel of stoelen reserveren
+                // escape om terug naar main menu
                 case ConsoleKey.Enter:
-                    foreach (List<string> row in Auditorium)
-                    {
-                        foreach (string seat in row)
-                        {
-                            if (Auditorium[CursorRow][CursorSeat] == "AR" || Auditorium[CursorRow][CursorSeat] == "BR" || Auditorium[CursorRow][CursorSeat] == "CR")
-                        }
-                    }
-                    Reservations.Add(new ReservedSeats(rows[CursorRow], CursorSeat, AuditoriumNumber));
+                    RunReservation();
+                    SaveReservedSeatsToJson();
                     break;
                 // een stoel annuleren
                 case ConsoleKey.Backspace:
@@ -302,8 +303,79 @@ public class SeatMap
             DisplayAll();
         // escape button om uit loop te gaan
         } while (key.Key != ConsoleKey.Escape);
-        // escape en je gaat terug naar menu.cs scherm
         Menu.Start();
+        //RunReservation();
+
+        //List<Tuple<int, int>> ListTupleSeats = GetReservedSeats();
+                    //DisplayReservedSeats(ListTupleSeats);
+
+
+                    //exit = true;
+                    /*
+                    foreach (List<string> row in Auditorium)
+                    {
+                        foreach (string seat in row)
+                        {
+                            if (seat == "AR" || seat == "BR" || seat == "CR")
+                            {
+
+                            }
+                        }
+                    }
+                    Reservations.Add(new ReservedSeats(rows[CursorRow], CursorSeat, AuditoriumNumber));
+                    */
+    }
+
+    private void RunReservation()
+    {
+        Console.Clear();
+        ListTupleSeats = GetReservedSeats();
+        DisplayReservedSeats(ListTupleSeats);
+
+        ConsoleKeyInfo key;
+        key = Console.ReadKey(true);
+        switch (key.Key)
+        {
+            case ConsoleKey.Backspace:
+                Auditoriums();
+                break;
+
+            case ConsoleKey.Escape:
+                Menu.Start();
+                break;
+
+            case ConsoleKey.Enter:
+                ReservingSeats();
+                break;
+        }
+    }
+
+    public void ReservingSeats()
+    {
+        foreach (var seat in ListTupleSeats)
+        {
+            Reservations.Add(new ReservedSeats(seat.Item1, rows[seat.Item2 - 1], AuditoriumNumber));
+        }
+    }
+
+    private void SaveReservedSeatsToJson()
+    {
+        List<ReservedSeats> ExistingReservedSeats = new List<ReservedSeats>();
+
+        // Check if the file exists
+        if (File.Exists(FilePath))
+        {
+            // Read the existing data from the file
+            string existingJson = File.ReadAllText(FilePath);
+            ExistingReservedSeats = JsonConvert.DeserializeObject<List<ReservedSeats>>(existingJson);
+        }
+        ExistingReservedSeats.AddRange(Reservations);
+
+        // Serialize the combined data and write it back to the file
+        string updatedJson = JsonConvert.SerializeObject(ExistingReservedSeats, Formatting.Indented);
+        File.WriteAllText(FilePath, updatedJson);
+
+        Console.WriteLine("Reservations saved to: " + FilePath);
     }
 
     // print alles
@@ -315,7 +387,7 @@ public class SeatMap
         DisplayScreen();
         DisplayCursorPosition();
         DisplayMessage();
-        DisplayReservedSeats();
+        //DisplayReservedSeats();
         DisplayLegenda();
         DisplayOptions();
     }
@@ -489,30 +561,45 @@ public class SeatMap
         Console.WriteLine($"Press [escape] to return to main menu.");
     }
 
-    private void DisplayReservedSeats()
+    private void DisplayReservedSeats(List<Tuple<int, int>> ListTupleSeats)
     {
-        foreach (List<string> row in Auditorium)
+        if (ListTupleSeats != null)
         {
-            foreach (string seat in row)
+            Console.WriteLine("You have selected the following seats:");
+            foreach (var seat in ListTupleSeats)
             {
-                if (Auditorium[CursorRow][CursorSeat] == "AR" || Auditorium[CursorRow][CursorSeat] == "BR" || Auditorium[CursorRow][CursorSeat] == "CR")
-                {
-
-                }
+                Console.WriteLine($"Seat at Row {seat.Item1}, Seat {rows[seat.Item2 - 1]}");
             }
-        }
-    }
-
-    private bool IsReserved(string seat)
-    {
-        if (Auditorium[CursorRow][CursorSeat] == "AR" || Auditorium[CursorRow][CursorSeat] == "BR" || Auditorium[CursorRow][CursorSeat] == "CR")
-        {
-            Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
-            return true;
         }
         else
         {
-            return false;
+            Console.WriteLine("There are no selected seats.");
+            return;
+        }
+    }
+
+    private List<Tuple<int, int>> GetReservedSeats()
+    {
+        List<Tuple<int, int>> ListTupleSeats = new List<Tuple<int, int>>();
+
+        for (int row = 1; row < Auditorium.Count; row++)
+        {
+            for (int seat = 1; seat < Auditorium[row].Count; seat++)
+            {
+                if (Auditorium[row][seat] == "AR" || Auditorium[row][seat] == "BR" || Auditorium[row][seat] == "CR") 
+                {
+                    ListTupleSeats.Add(Tuple.Create(row, seat));
+                }
+            }
+        }
+
+        if (ListTupleSeats.Count > 0)
+        {
+            return ListTupleSeats;
+        }
+        else
+        {
+            return null;
         }
     }
 }
