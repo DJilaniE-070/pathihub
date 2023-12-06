@@ -28,5 +28,17 @@
     "Seat": "C",
     "AuditoriumNumber": 2,
     "IsAvailable": true
+  },
+  {
+    "Row": 1,
+    "Seat": "E",
+    "AuditoriumNumber": 1,
+    "IsAvailable": true
+  },
+  {
+    "Row": 1,
+    "Seat": "F",
+    "AuditoriumNumber": 1,
+    "IsAvailable": true
   }
 ]

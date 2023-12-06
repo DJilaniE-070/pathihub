@@ -99,7 +99,7 @@ public class SeatMap
     private int CursorRow = 1;
     private int CursorSeat = 1;
     // totale prijzen
-    public static double TotalPrice = 0;
+    public double TotalPrice = 0;
     public double PriceA 
     { 
         get
@@ -135,6 +135,8 @@ public class SeatMap
     }
     private string FilePath = @"C:\Users\31685\Documents\GitHub\pathihub\PathiHub\DataSources\reservedseats.json";
     public List<Tuple<int, int>> ListTupleSeats = new List<Tuple<int, int>>();
+    public static int TotalReservations;
+    public static double TotalRevenue;
 
     // 2 constructor voor overloading
     public SeatMap(int auditoriumnumber) : this(auditoriumnumber, 25, 20, 15) 
@@ -193,6 +195,21 @@ public class SeatMap
     public void CalculateTotalPrice(double prices)
     {
         TotalPrice += prices;
+    }
+
+    public string ShowTotalPrice()
+    {
+        return TotalPrice.ToString();
+    }
+
+    public string ShowTotalRevenue()
+    {
+        return TotalRevenue.ToString();
+    }
+
+    public string ShowTotalReservations()
+    {
+        return TotalReservations.ToString();
     }
     
     // werkt nog niet
@@ -354,6 +371,22 @@ public class SeatMap
     {
         foreach (var seat in ListTupleSeats)
         {
+            if (Auditorium[seat.Item1][seat.Item2] == "AR")
+            {
+                TotalPrice += PriceA;
+                TotalRevenue += PriceA;
+            }
+            if (Auditorium[seat.Item1][seat.Item2] == "BR")
+            {
+                TotalPrice += PriceB;
+                TotalRevenue += PriceB;
+            }
+            if (Auditorium[seat.Item1][seat.Item2] == "CR")
+            {
+                TotalPrice += PriceC;
+                TotalRevenue += PriceC;
+            }
+            TotalReservations++;
             Reservations.Add(new ReservedSeats(seat.Item1, rows[seat.Item2 - 1], AuditoriumNumber));
         }
         SaveReservedSeatsToJson();
