@@ -242,8 +242,7 @@ public class SeatMap
                     break;
                 // escape om terug naar main menu
                 case ConsoleKey.Enter:
-                    RunReservation();
-                    SaveReservedSeatsToJson();
+                    RunReservationMenu();
                     break;
                 // een stoel annuleren
                 case ConsoleKey.Backspace:
@@ -326,7 +325,8 @@ public class SeatMap
                     */
     }
 
-    private void RunReservation()
+    // mini menu als enter is geklikt voor reserveren 
+    private void RunReservationMenu()
     {
         Console.Clear();
         ListTupleSeats = GetReservedSeats();
@@ -356,24 +356,25 @@ public class SeatMap
         {
             Reservations.Add(new ReservedSeats(seat.Item1, rows[seat.Item2 - 1], AuditoriumNumber));
         }
+        SaveReservedSeatsToJson();
     }
 
+    // slaat reservations op in json
     private void SaveReservedSeatsToJson()
     {
         List<ReservedSeats> ExistingReservedSeats = new List<ReservedSeats>();
 
-        // Check if the file exists
+        // kijkt of de json bestaat
         if (File.Exists(FilePath))
         {
-            // Read the existing data from the file
-            string existingJson = File.ReadAllText(FilePath);
-            ExistingReservedSeats = JsonConvert.DeserializeObject<List<ReservedSeats>>(existingJson);
+            // leest de json bestand
+            string ExistingJson = File.ReadAllText(FilePath);
+            ExistingReservedSeats = JsonConvert.DeserializeObject<List<ReservedSeats>>(ExistingJson);
         }
         ExistingReservedSeats.AddRange(Reservations);
 
-        // Serialize the combined data and write it back to the file
-        string updatedJson = JsonConvert.SerializeObject(ExistingReservedSeats, Formatting.Indented);
-        File.WriteAllText(FilePath, updatedJson);
+        string UpdatedJson = JsonConvert.SerializeObject(ExistingReservedSeats, Formatting.Indented);
+        File.WriteAllText(FilePath, UpdatedJson);
 
         Console.WriteLine("Reservations saved to: " + FilePath);
     }
