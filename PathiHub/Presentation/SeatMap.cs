@@ -286,6 +286,8 @@ public class SeatMap
                         }
                         else
                         {
+                            Console.WriteLine("You are logged in");
+                            Environment.Exit(0);
                             // Djilanie hier code voor als user is ingelogd. Dus geen inputs maar read from accountmodel user dan
                         }
                         break;
