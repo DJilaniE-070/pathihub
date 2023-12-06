@@ -1,10 +1,14 @@
-﻿using System.Text;
+﻿using System.Collections;
+using System.Text;
+using PathiHub.Presentation;
 
 public class SeatMap
 {    
     // lijst om reservaties op te slaan
     //public static List<List<string>> ReservedSeats = new List<List<string>>();
     //public static List<ReservedSeats> ReserveSeat = new List<ReservedSeats>();
+    public static List<string> ReservedSeats = new List<string>();
+    public static Hashtable ReservedSeat = new Hashtable();
 
     // auditorium 1 met 150 stoelen (14 rijen en 12 stoelen per rij)
     public List<List<string>> auditorium1 = new List<List<string>>
@@ -231,8 +235,61 @@ public class SeatMap
                     Message = $"Weet je zeker dat je de volgende stoel of stoelen wilt reserveren?\nDruk op [enter] om verder te gaan\nDruk op [backspace] om terug te gaan";	
                     if (key.Key == ConsoleKey.Enter)
                     {
-                        SnacksMenu snack = new SnacksMenu();
-                        snack.Start();
+                        // SnacksMenu snack = new SnacksMenu();
+                        // snack.Start();
+                        // ReservationPresentation.AddReservation();
+                        bool Loop1 = true;
+                        bool Loop2 = true;
+                        if( !SeatmapLogic.CheckCurrentUser())
+                        {
+                            while (Loop1)
+                            {
+                                Console.WriteLine("You are not logged in. Do you have a account? (yes or no)");
+                                string HaveAcc = Helpers.Color("yellow").ToLower();
+                                if (HaveAcc == "no")
+                                {
+                                    while (Loop2)
+                                        {
+                                        Console.WriteLine("Do you wish to make a new account to finish your reservation? (yes or no)");
+                                        string MakeAcc = Helpers.Color("yellow").ToLower();
+                                        if (MakeAcc == "yes")
+                                        {
+                                            UserRegistration.RegisterUser();
+                                            break;
+                                        }
+                                        if (MakeAcc == "no")
+                                        {
+                                        Helpers.PrintStringToColor("You can't finish your reservation without making account\nYou will be redirected to the main page","Red");
+                                        Thread.Sleep(1000);
+                                        Menu.Start();
+                                        Loop2 = false;
+                                        Loop1 = false;
+                                        Environment.Exit(0);
+                                        }
+                                        break;
+                                        }
+
+                                }
+                                else if (HaveAcc == "yes")
+                                {
+                                    //  hierzo de code als je acc hebt dan alleen email password and then check in accountlogic als dat bestaat
+                                    // Accountmodel.Checklogin(email, password)
+                                    Loop1 = false;
+                                    Environment.Exit(0);
+                                }
+                                else
+                                {
+                                    Helpers.PrintStringToColor("Incorrect input", "red");
+                                }
+                            }
+                        break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You are logged in");
+                            Environment.Exit(0);
+                            // Djilanie hier code voor als user is ingelogd. Dus geen inputs maar read from accountmodel user dan
+                        }
                         break;
                     }
                     if (key.Key == ConsoleKey.Backspace)
@@ -297,6 +354,11 @@ public class SeatMap
                         Message = $"Dit is een gereserveerde stoel, kies een andere stoel";
                     }
                     break;
+                case ConsoleKey.Escape:
+                    Menu.Start();
+                    Environment.Exit(0);
+                    break;
+
             }
             // laat de hele auditorium zien
             DisplayAll();
@@ -311,9 +373,8 @@ public class SeatMap
             DisplayLegenda();*/
 
         // escape button om uit loop te gaan
-        } while (key.Key != ConsoleKey.Escape);
+        } while (true);
         // escape en je gaat terug naar menu.cs scherm
-        Menu.Start();
     }
 
     // print alles

@@ -1,4 +1,6 @@
 using System.Reflection;
+using System.Text;
+
 
 public class PerformActionToTabel
 {   
@@ -175,7 +177,104 @@ public class PerformActionToTabel
                 Console.WriteLine($"Field '{fieldName}' not found in type '{objectType.Name}'.");
             }
     }
+    static string EditPLot (string fieldValue)
+    {
+        string originalString = fieldValue;
+        int currentPosition = 0;
 
+
+        while (true)
+        {
+            Console.Clear();
+Helpers.PrintStringToColor(@"  
+______ _       _   
+| ___ \ |     | |  
+| |_/ / | ___ | |_ 
+|  __/| |/ _ \| __|
+| |   | | (_) | |_ 
+\_|   |_|\___/ \__| ","yellow");
+        Helpers.CharLine('-' ,80);
+
+            if (!originalString.EndsWith(" ")&& !originalString.StartsWith(" "))
+            {   
+                originalString = " " + originalString + " ";
+            }
+
+            DisplayStringWithHighlight(originalString, currentPosition);
+            
+            ConsoleKeyInfo key = Console.ReadKey(true);
+
+            switch (key.Key)
+            {
+                case ConsoleKey.LeftArrow:
+                    currentPosition = Math.Max(0, currentPosition - 1);
+                    break;
+                case ConsoleKey.RightArrow:
+                     currentPosition = Math.Min(originalString.Length-1, currentPosition + 1);
+                    break;
+                case ConsoleKey.Backspace:
+                    try
+                    {
+                    if (currentPosition > -1)
+                    {
+                    
+                        originalString = originalString.Remove(currentPosition , 1);
+                        currentPosition--;
+                    }
+                    break;
+                    }
+                    catch(Exception)
+                    {
+                    break;
+                    }
+                    
+                case ConsoleKey.Enter:
+                    return originalString.Trim();
+                default:
+                    try
+                    {            
+                    
+                    if (currentPosition >= 0 && currentPosition <= originalString.Length)
+                    {
+                        originalString = originalString.Insert(currentPosition+1, key.KeyChar.ToString());
+                    }
+                    else if (currentPosition == -1)
+                    {
+                        originalString = key.KeyChar + originalString;
+                    }                    
+                    currentPosition++;
+                        break;
+                    }
+                    catch(Exception)
+                    {
+                        break;
+                    }
+            }
+
+    }
+    }
+
+    static void DisplayStringWithHighlight(string input, int highlightPosition)
+    {
+
+        Console.Write("Edited plot: ");
+        for (int i = 0; i < input.Length; i++)
+        {
+            if (i == highlightPosition)
+            {
+                Console.BackgroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Black;
+            }
+
+            Console.Write(input[i]);
+
+            if (i == highlightPosition)
+            {
+                Console.ResetColor();
+            }
+        }
+        Console.WriteLine();
+    }
     public static void EditObj<T>(T obj)
     {
         List<string> FieldNames = GetPropertyNames(obj);
@@ -187,14 +286,14 @@ public class PerformActionToTabel
        do
     {
         Console.Clear();
-        Console.WriteLine(@"
+        Helpers.PrintStringToColor(@"
  _____    _ _ _              ___  ___                 
 |  ___|  | (_) |             |  \/  |                 
 | |__  __| |_| |_ ___  _ __  | .  . | ___ _ __  _   _ 
 |  __|/ _` | | __/ _ \| '__| | |\/| |/ _ \ '_ \| | | |
 | |__| (_| | | || (_) | |    | |  | |  __/ | | | |_| |
 \____/\__,_|_|\__\___/|_|    \_|  |_/\___|_| |_|\__,_|                                                                                                                                       
-                                                      ");
+                                                      ","yellow");
         Helpers.CharLine('-' ,80);
         Console.WriteLine("What do you like to change");
         Helpers.CharLine('-' ,80);
@@ -242,8 +341,18 @@ public class PerformActionToTabel
         Console.WriteLine($"This is the current value: {fieldValue}");
         Helpers.CharLine('-' ,80);
         Helpers.PrintStringToColor($"Enter new value for {fieldName}: ","blue");
-        string newValue = Helpers.Color("Yellow");
-        ChangeValues(obj,fieldName, newValue);
+        
+        if (fieldName == "Plot")
+        {
+        string changedplot = EditPLot(fieldValue);
+        ChangeValues(obj,fieldName,changedplot);
+        }
+        else
+        {
+            string NewValue = Helpers.Color("yellow");
+            ChangeValues(obj,fieldName,NewValue);
+        }
+
         Helpers.CharLine('-' ,80);
         Helpers.PrintStringToColor("Do you want to change something else (type in yes / no)","blue");
         while(true)
@@ -280,5 +389,6 @@ public class PerformActionToTabel
         }
     }
     }
-}
-            
+}    
+    
+  

@@ -8,22 +8,7 @@ public class MovieToAuditoriumLogic
                     List<Movie> movies = access.GetItemList();
                     int SelectedAuditoruim = chosenmovie.Auditorium;
                     SeatMap seatmap = new SeatMap(SelectedAuditoruim);
-                    
-                    if (SelectedAuditoruim == 1)
-                    {
-                        seatmap.Auditoriums();
-                    }
-                    
-                    if (SelectedAuditoruim == 2)
-                    {
-                        seatmap.Auditoriums();
-                    }
-                    
-                    if (SelectedAuditoruim == 3)
-                    {
-                        seatmap.Auditoriums();
-                    }
-                   
+                    seatmap.Auditoriums();
                     
                 }
     }

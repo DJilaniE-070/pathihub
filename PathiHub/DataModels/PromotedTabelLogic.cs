@@ -81,7 +81,7 @@ public class PromotedTabelLogic
             }
 
             Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", movies[i].MovieTitle,
-                movies[i].ReleaseYear, movies[i].Director, string.Join(", ", movies[i].Genre), movies[i].Rating);
+                movies[i].ReleaseYear, movies[i].Directors, string.Join(", ", movies[i].Genre), movies[i].Rating);
 
             Console.ResetColor();
         }

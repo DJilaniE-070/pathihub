@@ -135,15 +135,15 @@ ______     _   _     _   _   _       _
                     Console.Write("Loading");
 
                     // loading animatie start
-                    for (int i = 0; i < 4; i++)
-                    {
-                        Thread.Sleep(500); // Wacht 500 milliseconden (0,5 seconden)
-                        Console.Write(".");
+                    // for (int i = 0; i < 4; i++)
+                    // {
+                    //     Thread.Sleep(500); // Wacht 500 milliseconden (0,5 seconden)
+                    //     Console.Write(".");
                         
-                    }
-                    Console.WriteLine();
-                    Console.WriteLine("Loading Completed.");
-                    Thread.Sleep(1000);
+                    // }
+                    // Console.WriteLine();
+                    // Console.WriteLine("Loading Completed.");
+                    // Thread.Sleep(1000);
                     // loading animatie eind
 
                     PerformAction(menuOptions[selectedIndex]);

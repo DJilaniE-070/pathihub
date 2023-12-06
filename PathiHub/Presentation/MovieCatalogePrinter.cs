@@ -12,7 +12,11 @@ public class MovieCatalogePrinter
     {
         if (access.LoadFromJson() == true)
         {
-            List<Movie> movies = access.GetItemList();
+            // List<Movie> movies = access.GetItemList(); dit is alle movies
+            List<Movie> Movies = access.GetItemList();
+            MovieOptionsLogic.InitializeMovies(Movies);
+            List<Movie> movies = MovieOptionsLogic.FilterMovies();
+            // de bovenstaande 3 regels zijn om de movies te sorteren
 
             // Teken de tabel met films
             DrawMovieTable(movies);
@@ -48,8 +52,11 @@ public class MovieCatalogePrinter
 
             // Nu heb je toegang tot de geselecteerde film in de "movies" lijst
             Console.WriteLine($"\nYou have selected the movie: '{movies[selectedMovieIndex].MovieTitle}'.");
-            
-            //Hier komt later nog een check die kijkt naar de staat van de inlog waardoor MovieCatalogePrinterManagerVersion kan worden verwijderd
+
+            Thread.Sleep(500);
+            MovieSchedule.SelectedMovie = movies[selectedMovieIndex];
+            MovieSchedule.DisplaySchedule();
+            // //Hier komt later nog een check die kijkt naar de staat van de inlog waardoor MovieCatalogePrinterManagerVersion kan worden verwijderd
             MovieToAuditoriumLogic movieToAuditoriumLogic = new MovieToAuditoriumLogic();
             movieToAuditoriumLogic.Connector(movies[selectedMovieIndex]);
             // Thread.Sleep(2000); // Optional delay
@@ -93,12 +100,16 @@ ___  ___           _        _____       _        _
                 Console.ForegroundColor = ConsoleColor.Black;
             }
 
-            Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", movies[i].MovieTitle,
-                movies[i].ReleaseYear, movies[i].Director, string.Join(", ", movies[i].Genre), movies[i].Rating);
-
+            Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}",
+            TruncateString(movies[i].MovieTitle,20),
+            movies[i].ReleaseYear,
+            TruncateString(movies[i].Directors, 20), 
+            TruncateString( string.Join(", ", movies[i].Genre),20), 
+            movies[i].Rating);
             Console.ResetColor();
         }
     }
+
 
     public static void ShowSelectedMoviePlot(Movie selectedMovie)
     {
@@ -106,5 +117,13 @@ ___  ___           _        _____       _        _
         DiscriptionPrinter.DrawBox(selectedMovie);
         
          
+    }
+    public static string TruncateString(string stringValue, int maxLength)
+    {
+        if (stringValue.Length > maxLength)
+        {
+            stringValue = stringValue.Substring(0, maxLength - 3) + "...";
+        }
+        return stringValue;
     }
 }

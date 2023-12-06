@@ -118,6 +118,7 @@ public class UserRegistration
         Thread.Sleep(2000);
         Console.Clear();
         Console.ResetColor();
+        AccountModel NewAcc = accountsLogic.CheckLogin(userEmail, userPassword);
         UserMenu.Start();
     }
 
