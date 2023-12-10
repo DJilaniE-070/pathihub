@@ -144,6 +144,27 @@ public class SeatMap
         Auditorium = GetAuditorium(auditoriumnumber);
         Auditoriums();
     }
+    // Dit is voor de Stored Json seatmap te Displayen.
+    public SeatMap(int auditoriumnumber, List<List<String>>StoredMap)
+    {
+        AuditoriumNumber = auditoriumnumber;
+        PriceA = 25;
+        PriceB = 20;
+        PriceC = 15;
+        Auditorium = StoredMap;
+        Auditoriums();
+    }
+
+    // Dit is voor de Stored Json seatmap te Displayen. en Prijzen changen.
+    public SeatMap(int auditoriumnumber, List<List<string>>StoredMap , double astoelen, double bstoelen, double cstoelen)
+    {
+        AuditoriumNumber = auditoriumnumber;
+        PriceA = astoelen;
+        PriceB = bstoelen;
+        PriceC = cstoelen;
+        Auditorium = StoredMap;
+        Auditoriums();
+    }
 
     private List<List<string>> GetAuditorium(int auditoriumNumber) 
     {

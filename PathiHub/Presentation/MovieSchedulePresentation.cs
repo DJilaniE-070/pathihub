@@ -5,6 +5,80 @@ public static class MovieSchedule
     public static Movie SelectedMovie;
     public static string selectedDay;
     public static string selectedTime;
+
+    public static void ChooseAuditorium()
+    {
+        int selectedIndex = 0;
+        List<int> Auditoriums = SelectedMovie.Auditorium;
+        Console.CursorVisible = false;
+
+        while (true)
+        {
+            Console.Clear();
+            PrintList(Auditoriums, selectedIndex);
+
+            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+
+            switch (keyInfo.Key)
+            {
+                case ConsoleKey.UpArrow:
+                    selectedIndex = (selectedIndex == 0) ? Auditoriums.Count - 1 : selectedIndex - 1;
+                    break;
+
+                case ConsoleKey.DownArrow:
+                    selectedIndex = (selectedIndex == Auditoriums.Count - 1) ? 0 : selectedIndex + 1;
+                    break;
+
+                case ConsoleKey.Enter:
+                    Console.WriteLine($"Selected number: {Auditoriums[selectedIndex]}");
+                    DisplaySchedule();
+                    Environment.Exit(0);
+                    break;
+                case ConsoleKey.Backspace:
+                // check op user and if user dan naar de specifieke menu page
+                    break;
+                
+                // Add additional cases for other keys if needed
+
+                default:
+                    break;
+            }
+        }
+    }
+
+    static void PrintList(List<int> numbers, int selectedIndex)
+    {
+        Helpers.PrintStringToColor(@"
+  ___            _ _ _             _                 
+ / _ \          | (_) |           (_)                
+/ /_\ \_   _  __| |_| |_ ___  _ __ _ _   _ _ __ ___  
+|  _  | | | |/ _` | | __/ _ \| '__| | | | | '_ ` _ \ 
+| | | | |_| | (_| | | || (_) | |  | | |_| | | | | | |
+\_| |_/\__,_|\__,_|_|\__\___/|_|  |_|\__,_|_| |_| |_|
+                                                     ","yellow");
+        Console.WriteLine();
+        Helpers.CharLine('-',80);
+
+        for (int i = 0; i < numbers.Count; i++)
+        {
+            if (i == selectedIndex)
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
+            }
+
+            Console.WriteLine($"Auditorium: {numbers[i]}");
+
+            if (i == selectedIndex)
+            {
+                Console.ResetColor();
+            }
+        }
+    }    
+
+
+
+    
     public static void DisplaySchedule()
     {
     // This can een list in de Movie obj zijn
@@ -13,6 +87,7 @@ public static class MovieSchedule
     Dictionary<string, List<string>> formattedSchedule = ParseSchedule(Scheduled);
     int selectedDayIndex = 0;
     int selectedTimeIndex = 0;
+    bool loop = true;
 
         ConsoleKeyInfo key;
 
@@ -51,18 +126,37 @@ public static class MovieSchedule
                     if (selectedTimeIndex < formattedSchedule.ElementAt(selectedDayIndex).Value.Count - 1)
                         selectedTimeIndex++;
                     break;
-            }
+                case ConsoleKey.Backspace:
+                    ChooseAuditorium();
+                    Environment.Exit(0);
+                    break;
+                case ConsoleKey.Escape:
+                    Menu.Start();
+                    Environment.Exit(0);
+                    break;
+                case  ConsoleKey.Enter:
+                    loop = false;
+                    break;
 
-        } while (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Escape);
+            }   
+
+        } while (loop);
 
         if (key.Key == ConsoleKey.Enter)
         {
             string selectedDay = formattedSchedule.Keys.ElementAt(selectedDayIndex);
             string selectedTime = formattedSchedule[selectedDay][selectedTimeIndex];
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
 
             Console.WriteLine($"Selected Day: {selectedDay}");
             
             Console.WriteLine($"Selected Time: {selectedTime}");
+            if (selectedTime == "X")
+            {
+                DisplaySchedule();
+            }
         }
     }
 
@@ -72,21 +166,45 @@ public static class MovieSchedule
 
         foreach (var kvp in schedule)
         {
-            
             Console.SetCursorPosition(0, row);
             Console.Write($"{kvp.Key,-10}");
+
+            // Ensure that there are exactly four time slots for each day
+            while (kvp.Value.Count < 4)
+            {
+                kvp.Value.Add("X");
+            }
 
             for (int i = 0; i < kvp.Value.Count; i++)
             {
                 Console.SetCursorPosition(15 + i * 15, row);
-                Console.Write($"{kvp.Value[i],-10}");
 
-                if (row == selectedDayIndex+10 && i == selectedTimeIndex)
+                // Display 'X' for non-existing times
+                if (i >= kvp.Value.Count || kvp.Value[i] == "X")
+                {
+                    Console.Write($"{'X',-10}");
+                }
+                else
+                {
+                    Console.Write($"{kvp.Value[i],-10}");
+                }
+
+                if (row == selectedDayIndex + 10 && i == selectedTimeIndex)
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.SetCursorPosition(15 + i * 15, row);
-                    Console.Write($"{kvp.Value[i],-10}");
+
+                    // Display 'X' for non-existing times
+                    if (i >= kvp.Value.Count || kvp.Value[i] == "X")
+                    {
+                        Console.Write($"{'X',-10}");
+                    }
+                    else
+                    {
+                        Console.Write($"{kvp.Value[i],-10}");
+                    }
+
                     Console.ResetColor();
                 }
             }
@@ -115,7 +233,7 @@ public static class MovieSchedule
                 else
                 {
                     // If the day doesn't exist, create a new list with the time and add it to the dictionary
-                    schedule[day] = new List<string> { time };
+                    schedule[day] = new List<string> { time };   
                 }
             }
             else

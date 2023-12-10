@@ -1,0 +1,189 @@
+[
+    {
+        "Scheduled": "Monday/12:00-14.30",
+        "MovieTitle": "Galactic Quest",
+        "Directors" : "Lucy Director",
+        "ReleaseYear" : "2022",
+        "StoredAuditorium": 
+        [
+            ["3", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"],
+            ["2", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X"],
+            ["2", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X"],
+            ["2", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X"],
+            ["2", "C", "C", "C", "C", "C", "BR", "BR", "C", "C", "C", "C", "C"],
+            ["2", "C", "C", "C", "C", "B", "B", "B", "B", "C", "C", "C", "C"],
+            ["2", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C"],
+            ["2", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C"],
+            ["2", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C"],
+            ["2", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C"],
+            ["2", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C"],
+            ["2", "C", "C", "C", "C", "B", "B", "B", "B", "C", "C", "C", "C"],
+            ["2", "C", "C", "C", "C", "C", "B", "B", "C", "C", "C", "C", "C"],
+            ["2", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X"],
+            ["2", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X"],
+            ["2", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X"]
+          ]
+    },
+    {
+        "Scheduled": "Monday/15:00-17:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+
+    },
+    {
+        "Scheduled": "Monday/18:00-20:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Monday/21:30-23:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Tuesday/12:00-14:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Tuesday/15:00-17:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Tuesday/18:00-20:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Tuesday/21:30-23:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Wednesday/12:00-14:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Wednesday/15:00-17:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Wednesday/18:00-20:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Wednesday/21:30-23:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Thursday/12:00-14:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Thursday/15:00-17:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Thursday/18:00-20:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Thursday/21:30-23:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Friday/12:00-14:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Friday/15:00-17:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Friday/18:00-20:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Friday/21:30-23:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Saturday/12:00-14:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Saturday/15:00-17:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Saturday/18:00-20:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    },
+    {
+        "Scheduled": "Saturday/21:30-23:30",
+        "MovieTitle": "N/A",
+        "Directors" : "N/A",
+        "ReleaseYear" : "N/A",
+        "StoredAuditorium": "N/A"
+    }
+]

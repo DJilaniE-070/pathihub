@@ -55,10 +55,17 @@ public class MovieCatalogePrinter
 
             Thread.Sleep(500);
             MovieSchedule.SelectedMovie = movies[selectedMovieIndex];
+            // Choose auditorium
+            
+            // Choose time
+            
             MovieSchedule.DisplaySchedule();
+
+            MovieToAuditoriumLogic logic = new();
+            logic.initializerAuditorium(movies);
             // //Hier komt later nog een check die kijkt naar de staat van de inlog waardoor MovieCatalogePrinterManagerVersion kan worden verwijderd
-            MovieToAuditoriumLogic movieToAuditoriumLogic = new MovieToAuditoriumLogic();
-            movieToAuditoriumLogic.Connector(movies[selectedMovieIndex]);
+            // MovieToAuditoriumLogic movieToAuditoriumLogic = new MovieToAuditoriumLogic();
+            // movieToAuditoriumLogic.Connector(movies[selectedMovieIndex]);
             // Thread.Sleep(2000); // Optional delay
            
 
