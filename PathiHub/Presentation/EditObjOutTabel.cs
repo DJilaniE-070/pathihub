@@ -40,7 +40,7 @@ public class PerformActionToTabel
         else
         {
             Console.WriteLine("Error object can't be edited");
-            ManagerMenu.Start();
+            Helpers.BackToYourMenu();
         }
             Helpers.PrintStringToColor($"\nAre you sure you want to edit this {ObjName}'.\nPlease type 'yes' or 'no'.", "blue");
             Console.Write("\u2192 ");
@@ -76,7 +76,7 @@ public class PerformActionToTabel
                 {
                     Console.WriteLine("You will be redirected");
                     Thread.Sleep(800);
-                    ManagerMenu.Start();
+                    Helpers.BackToYourMenu();
                 }
             }
 
@@ -375,7 +375,7 @@ ______ _       _
             {
                 Helpers.PrintStringToColor("Something went wrong", "red");
             }
-            ManagerMenu.Start();
+            Helpers.BackToYourMenu();
             break;
         }
         else if (choice == "yes")

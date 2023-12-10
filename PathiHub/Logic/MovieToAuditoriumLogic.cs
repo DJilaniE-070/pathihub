@@ -2,14 +2,16 @@ public class MovieToAuditoriumLogic
 {
     public void Connector(Movie chosenmovie)
     {
+        Console.Clear();
         int SelectedAuditoruim = MovieSchedule.Selectedauditorium;
-        List<List<string>>Auditorium = HasAuditorium(chosenmovie,SelectedAuditoruim);
-        if (SelectedAuditoruim != null && Auditorium != null)
+        Schedule? schedule = HasAuditorium(chosenmovie,SelectedAuditoruim);
+        if (SelectedAuditoruim != null && schedule != null)
         {
-            SeatMap seatmap = new SeatMap(SelectedAuditoruim,Auditorium);
+            SeatMap seatmap = new SeatMap(SelectedAuditoruim, schedule.StoredAuditorium);
             seatmap.Auditoriums();
         }
-        if (SelectedAuditoruim != null && Auditorium == null)
+        else if
+         (SelectedAuditoruim!= null && schedule == null)
         {
             SeatMap seatmap = new SeatMap(SelectedAuditoruim);
             seatmap.Auditoriums();
@@ -20,9 +22,8 @@ public class MovieToAuditoriumLogic
         }
     }
 
-    public List<List<string>> HasAuditorium(Movie movie, int AudNum)
+    public Schedule? HasAuditorium(Movie movie, int AudNum)
     {
-        List<List<string>> result = new List<List<string>>();
         ScheduleAcces acces = new(AudNum);
         string SelectedSchedule = MovieSchedule.SelectedSchedule;
         if (acces.LoadFromJson())
@@ -30,10 +31,9 @@ public class MovieToAuditoriumLogic
             List<Schedule> WholeSchedule = acces.GetItemList();
             foreach (Schedule schedule in WholeSchedule)
             {
-                if ( movie.MovieTitle == schedule.MovieTitle && SelectedSchedule == schedule.Scheduled)
+                if ( movie.MovieTitle == schedule.MovieTitle && SelectedSchedule == schedule.Scheduled && schedule.StoredAuditorium != null)
                 {
-                    result = schedule.StoredAuditorium;
-                    return result;
+                    return schedule;
                 }
             }
             return null;

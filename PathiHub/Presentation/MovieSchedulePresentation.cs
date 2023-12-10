@@ -3,8 +3,7 @@ using System.Security.Cryptography.X509Certificates;
 public static class MovieSchedule
 {
     public static Movie SelectedMovie;
-    public static string selectedDay;
-    public static string selectedTime;
+
     public static int Selectedauditorium;
     public static string SelectedSchedule;
 
@@ -39,7 +38,12 @@ public static class MovieSchedule
                     break;
                 case ConsoleKey.Backspace:
                 // check op user and if user dan naar de specifieke menu page
+                    Helpers.BackToYourMenu();
                     break;
+                case ConsoleKey.Escape:
+                    Helpers.CurrentAccount = null;
+                    loop = false;
+                    break;    
                 
                 // Add additional cases for other keys if needed
 
@@ -134,6 +138,7 @@ public static class MovieSchedule
                     Environment.Exit(0);
                     break;
                 case ConsoleKey.Escape:
+                    Helpers.CurrentAccount = null;
                     Menu.Start();
                     Environment.Exit(0);
                     break;
@@ -149,13 +154,6 @@ public static class MovieSchedule
         {
             string selectedDay = formattedSchedule.Keys.ElementAt(selectedDayIndex);
             string selectedTime = formattedSchedule[selectedDay][selectedTimeIndex];
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-
-            Console.WriteLine($"Selected Day: {selectedDay}");
-            
-            Console.WriteLine($"Selected Time: {selectedTime}");
             SelectedSchedule = $"{selectedDay}/{selectedTime}";
             if (selectedTime == "X")
             {

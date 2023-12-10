@@ -36,12 +36,14 @@ public class ObjCatalogePrinter
                         break;
                     case ConsoleKey.Backspace:
                         selectedObjIndex = 0;
-                        ManagerMenu.Start();
+                        Helpers.BackToYourMenu();
+                        Environment.Exit(0);
                         break;
                     case ConsoleKey.Escape:
                         selectedObjIndex = 0;
                         Console.WriteLine(" ");
                         Menu.Start();
+                        Environment.Exit(0);
                         break;
 
                 }
