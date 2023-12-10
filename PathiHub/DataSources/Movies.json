@@ -21,11 +21,11 @@
     "RuntimeMinutes": 120,
     "Languages": "English",
     "Countrys": "United States",
-    "Auditorium": [1,2,3],
+    "Auditorium": [1,2],
     "Awards": null,
     "Poster": null,
     "Scheduled": [
-      "Monday/12:00-14:30","Monday/15:00-17:30","Monday/18:00-20:30","Monday/21:00-23:30","Thursday/18:00-20:30","Thursday/21:00-23:30"
+      "Monday/12:00-14:30","Monday/15:00-17:30","Monday/18:00-20:30","Monday/21:30-23:30"
     ]
   },
   {
@@ -55,7 +55,7 @@
     ],
     "Poster": "N/A",
     "Scheduled": [
-      "Monday/12:00-14.30","Thursday/15:00-17:30"
+      "Tuesday/12:00-14:30","Tuesday/15:00-17:30","Tuesday/18:00-20:30", "Tuesday/21:30-23:30"
     ]
   },
   {
@@ -87,7 +87,7 @@
     ],
     "Poster": "https://m.media-amazon.com/images/M/MV5BMTY1MjU4OTQxMV5BMl5BanBnXkFtZTcwMTMwNTQ5OA@@._V1_SX300.jpg",
     "Scheduled": [
-      "Monday/12:00-14:30"
+      "Wednesday/12:00-14:30","Wednesday/15:00-17:30"
     ]
   },
   {
@@ -121,7 +121,7 @@
     ],
     "Poster": "https://m.media-amazon.com/images/M/MV5BMjA2NTUxODIzOF5BMl5BanBnXkFtZTcwMjMwNTQ5OA@@._V1_SX300.jpg",
     "Scheduled": [
-      ""
+      "Wednesday/18:00-20:30","Wednesday/21:30-23:30"
     ]
   },
   {
@@ -153,7 +153,7 @@
     ],
     "Poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg",
     "Scheduled": [
-      ""
+      "Thursday/12:00-14:30","Thursday/15:00-17:30"
     ]
   },
   {
@@ -185,7 +185,7 @@
     ],
     "Poster": "https://m.media-amazon.com/images/M/MV5BMjE2NDkxNTY2M15BMl5BanBnXkFtZTgwMDc2NzE0MTI@._V1_SX300.jpg",
     "Scheduled": [
-      ""
+      "Friday/12:00-14:30","Friday/21:30-23:30"
     ]
   }
 ]

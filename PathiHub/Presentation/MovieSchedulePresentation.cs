@@ -5,14 +5,16 @@ public static class MovieSchedule
     public static Movie SelectedMovie;
     public static string selectedDay;
     public static string selectedTime;
+    public static int Selectedauditorium;
+    public static string SelectedSchedule;
 
     public static void ChooseAuditorium()
     {
         int selectedIndex = 0;
         List<int> Auditoriums = SelectedMovie.Auditorium;
         Console.CursorVisible = false;
-
-        while (true)
+        bool loop = true;
+        while (loop)
         {
             Console.Clear();
             PrintList(Auditoriums, selectedIndex);
@@ -31,8 +33,9 @@ public static class MovieSchedule
 
                 case ConsoleKey.Enter:
                     Console.WriteLine($"Selected number: {Auditoriums[selectedIndex]}");
+                    Selectedauditorium = Auditoriums[selectedIndex];
                     DisplaySchedule();
-                    Environment.Exit(0);
+                    loop=false;
                     break;
                 case ConsoleKey.Backspace:
                 // check op user and if user dan naar de specifieke menu page
@@ -153,6 +156,7 @@ public static class MovieSchedule
             Console.WriteLine($"Selected Day: {selectedDay}");
             
             Console.WriteLine($"Selected Time: {selectedTime}");
+            SelectedSchedule = $"{selectedDay}/{selectedTime}";
             if (selectedTime == "X")
             {
                 DisplaySchedule();

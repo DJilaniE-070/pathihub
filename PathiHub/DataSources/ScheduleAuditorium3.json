@@ -29,7 +29,7 @@
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
 
     },
     {
@@ -37,153 +37,153 @@
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Monday/21:30-23:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Tuesday/12:00-14:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Tuesday/15:00-17:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Tuesday/18:00-20:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Tuesday/21:30-23:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Wednesday/12:00-14:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Wednesday/15:00-17:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Wednesday/18:00-20:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Wednesday/21:30-23:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Thursday/12:00-14:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Thursday/15:00-17:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Thursday/18:00-20:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Thursday/21:30-23:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Friday/12:00-14:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Friday/15:00-17:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Friday/18:00-20:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Friday/21:30-23:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Saturday/12:00-14:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Saturday/15:00-17:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Saturday/18:00-20:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     },
     {
         "Scheduled": "Saturday/21:30-23:30",
         "MovieTitle": "N/A",
         "Directors" : "N/A",
         "ReleaseYear" : "N/A",
-        "StoredAuditorium": "N/A"
+        "StoredAuditorium": null
     }
 ]

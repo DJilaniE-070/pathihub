@@ -17,6 +17,10 @@ public class MovieCatalogePrinter
             MovieOptionsLogic.InitializeMovies(Movies);
             List<Movie> movies = MovieOptionsLogic.FilterMovies();
             // de bovenstaande 3 regels zijn om de movies te sorteren
+            // hieronder is voor de schedule json correct afgesteld te zijn op de films
+            MovieToAuditoriumLogic logic = new();
+            
+            logic.initializerAuditorium(movies);
 
             // Teken de tabel met films
             DrawMovieTable(movies);
@@ -52,23 +56,15 @@ public class MovieCatalogePrinter
 
             // Nu heb je toegang tot de geselecteerde film in de "movies" lijst
             Console.WriteLine($"\nYou have selected the movie: '{movies[selectedMovieIndex].MovieTitle}'.");
-
             Thread.Sleep(500);
             MovieSchedule.SelectedMovie = movies[selectedMovieIndex];
             // Choose auditorium
-            
+            MovieSchedule.ChooseAuditorium();
             // Choose time
-            
-            MovieSchedule.DisplaySchedule();
-
-            MovieToAuditoriumLogic logic = new();
-            logic.initializerAuditorium(movies);
-            // //Hier komt later nog een check die kijkt naar de staat van de inlog waardoor MovieCatalogePrinterManagerVersion kan worden verwijderd
-            // MovieToAuditoriumLogic movieToAuditoriumLogic = new MovieToAuditoriumLogic();
-            // movieToAuditoriumLogic.Connector(movies[selectedMovieIndex]);
-            // Thread.Sleep(2000); // Optional delay
+             //Hier komt later nog een check die kijkt naar de staat van de inlog waardoor MovieCatalogePrinterManagerVersion kan worden verwijderd
+            logic.Connector(MovieSchedule.SelectedMovie);
+            Thread.Sleep(2000); // Optional delay
            
-
             return movies[selectedMovieIndex];
         }
 
