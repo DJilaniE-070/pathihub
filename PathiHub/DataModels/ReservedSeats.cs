@@ -1,9 +1,9 @@
 public class ReservedSeats
 {
-    private int Row { get; set; }
-    private string Seat { get; set; }
-    private int AuditoriumNumber { get; set; }
-    private bool IsAvailable { get; set; }
+    public int Row { get; set; }
+    public string Seat { get; set; }
+    public int AuditoriumNumber { get; set; }
+    public bool IsAvailable { get; set; }
 
     public ReservedSeats(int row, string seat, int auditoriumNumber)
     {
