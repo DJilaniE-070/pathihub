@@ -1,4 +1,8 @@
 ﻿using System.Text;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 
 public class SeatMap
 {    
@@ -83,6 +87,9 @@ public class SeatMap
     private List<List<string>> Auditorium = new();
     // lijst van reservaties
     private List<ReservedSeats> Reservations = new List<ReservedSeats>();
+    // belangrijke informaties
+    private Dictionary<string, double> SeatPrices;
+    //private SeatMapInfo Info = new SeatMapInfo();
     // stoel prijzen backing field
     private double _priceA;
     private double _priceB;
@@ -95,7 +102,7 @@ public class SeatMap
     private int CursorRow = 1;
     private int CursorSeat = 1;
     // totale prijzen
-    public static double TotalPrice = 0;
+    public double TotalPrice = 0;
     public double PriceA 
     { 
         get
@@ -129,14 +136,17 @@ public class SeatMap
             _priceC = value > 3 ? value : 3;
         }
     }
+    private string FilePath = @"C:\Users\31685\Documents\GitHub\pathihub\PathiHub\DataSources\reservedseats.json";
+    public List<Tuple<int, int>> ListTupleSeats = new List<Tuple<int, int>>();
+    public static int TotalReservations;
+    public static double TotalRevenue;
 
     // 2 constructor voor overloading
-    public SeatMap(int auditoriumnumber) : this(auditoriumnumber, 25, 20, 15) 
+    public SeatMap(int auditoriumnumber)
     {
-        AuditoriumNumber = auditoriumnumber;
-        PriceA = 25;
-        PriceB = 20;
-        PriceC = 15;
+        AuditoriumNumber = auditoriumnumber;     
+        LoadPricesFromJson();
+        
         Auditorium = GetAuditorium(auditoriumnumber);
         Auditoriums();
     }
@@ -158,6 +168,7 @@ public class SeatMap
         PriceA = 25;
         PriceB = 20;
         PriceC = 15;
+        SavePrices();
         Auditorium = GetAuditorium(auditoriumnumber);
         Auditoriums();
     }
@@ -184,9 +195,35 @@ public class SeatMap
         PriceC = stoel_c;
     }
 
+    public void SavePrices()
+    {
+        SeatPrices = new Dictionary<string, double>
+        {
+            { "PriceA", PriceA },
+            { "PriceB", PriceB },
+            { "PriceC", PriceC }
+        };
+        SavePricesToJson();
+    }
+
     public void CalculateTotalPrice(double prices)
     {
         TotalPrice += prices;
+    }
+
+    public string ShowTotalPrice()
+    {
+        return TotalPrice.ToString();
+    }
+
+    public string ShowTotalRevenue()
+    {
+        return TotalRevenue.ToString();
+    }
+
+    public string ShowTotalReservations()
+    {
+        return TotalReservations.ToString();
     }
     
     // werkt nog niet
@@ -198,6 +235,7 @@ public class SeatMap
     // 3 auditoriums hardcoded en cursor logic
     public void Auditoriums()
     {   
+        bool exit = false;
         // laat de hele auditorium zien
         DisplayAll();
 
@@ -233,16 +271,9 @@ public class SeatMap
                         CursorSeat++;
                     } 
                     break;
-                // de geselecteerde stoel of stoelen reserveren
+                // escape om terug naar main menu
                 case ConsoleKey.Enter:
-                    foreach (List<string> row in Auditorium)
-                    {
-                        foreach (string seat in row)
-                        {
-                            if (Auditorium[CursorRow][CursorSeat] == "AR" || Auditorium[CursorRow][CursorSeat] == "BR" || Auditorium[CursorRow][CursorSeat] == "CR")
-                        }
-                    }
-                    Reservations.Add(new ReservedSeats(rows[CursorRow], CursorSeat, AuditoriumNumber));
+                    RunReservationMenu();
                     break;
                 // een stoel annuleren
                 case ConsoleKey.Backspace:
@@ -302,8 +333,123 @@ public class SeatMap
             DisplayAll();
         // escape button om uit loop te gaan
         } while (key.Key != ConsoleKey.Escape);
-        // escape en je gaat terug naar menu.cs scherm
         Menu.Start();
+        //RunReservation();
+
+        //List<Tuple<int, int>> ListTupleSeats = GetReservedSeats();
+                    //DisplayReservedSeats(ListTupleSeats);
+
+
+                    //exit = true;
+                    /*
+                    foreach (List<string> row in Auditorium)
+                    {
+                        foreach (string seat in row)
+                        {
+                            if (seat == "AR" || seat == "BR" || seat == "CR")
+                            {
+
+                            }
+                        }
+                    }
+                    Reservations.Add(new ReservedSeats(rows[CursorRow], CursorSeat, AuditoriumNumber));
+                    */
+    }
+
+    // mini menu als enter is geklikt voor reserveren 
+    private void RunReservationMenu()
+    {
+        Console.Clear();
+        ListTupleSeats = GetReservedSeats();
+        DisplayReservedSeats(ListTupleSeats);
+
+        ConsoleKeyInfo key;
+        key = Console.ReadKey(true);
+        switch (key.Key)
+        {
+            case ConsoleKey.Backspace:
+                Auditoriums();
+                break;
+
+            case ConsoleKey.Escape:
+                Menu.Start();
+                break;
+
+            case ConsoleKey.Enter:
+                ReservingSeats();
+                break;
+        }
+    }
+
+    public void ReservingSeats()
+    {
+        foreach (var seat in ListTupleSeats)
+        {
+            if (Auditorium[seat.Item1][seat.Item2] == "AR")
+            {
+                TotalPrice += PriceA;
+                TotalRevenue += PriceA;
+            }
+            if (Auditorium[seat.Item1][seat.Item2] == "BR")
+            {
+                TotalPrice += PriceB;
+                TotalRevenue += PriceB;
+            }
+            if (Auditorium[seat.Item1][seat.Item2] == "CR")
+            {
+                TotalPrice += PriceC;
+                TotalRevenue += PriceC;
+            }
+            TotalReservations++;
+            Reservations.Add(new ReservedSeats(seat.Item1, rows[seat.Item2 - 1], AuditoriumNumber));
+        }
+        SaveReservedSeatsToJson();
+    }
+
+    // slaat reservations op in json
+    private void SaveReservedSeatsToJson()
+    {
+        List<ReservedSeats> ExistingReservedSeats = new List<ReservedSeats>();
+
+        // kijkt of de json bestaat
+        if (File.Exists(FilePath))
+        {
+            // leest de json bestand
+            string ExistingJson = File.ReadAllText(FilePath);
+            ExistingReservedSeats = JsonConvert.DeserializeObject<List<ReservedSeats>>(ExistingJson);
+        }
+        ExistingReservedSeats.AddRange(Reservations);
+
+        string UpdatedJson = JsonConvert.SerializeObject(ExistingReservedSeats, Formatting.Indented);
+        File.WriteAllText(FilePath, UpdatedJson);
+
+        Console.WriteLine("Reservations saved to: " + FilePath);
+    }
+
+    public void SavePricesToJson()
+    {
+        string FolderPath = @"C:\Users\31685\Documents\GitHub\pathihub\PathiHub\DataSources\seatprices.json";
+
+        string json = JsonConvert.SerializeObject(SeatPrices, Formatting.Indented);
+        File.WriteAllText(FolderPath, json);
+
+        Console.WriteLine("Seat prices saved to: " + FolderPath);
+    }
+
+    private void LoadPricesFromJson()
+    {
+        string FolderPath = @"C:\Users\31685\Documents\GitHub\pathihub\PathiHub\DataSources\seatprices.json";
+
+        if (File.Exists(FolderPath))
+        {
+            string json = File.ReadAllText(FolderPath);
+            SeatPrices = JsonConvert.DeserializeObject<Dictionary<string, double>>(json);
+            Console.WriteLine("Seat prices loaded from: " + FolderPath);
+        }
+        else
+        {
+            Console.WriteLine("No seat prices file found. Using default prices.");
+        }
     }
 
     // print alles
@@ -315,7 +461,7 @@ public class SeatMap
         DisplayScreen();
         DisplayCursorPosition();
         DisplayMessage();
-        DisplayReservedSeats();
+        //DisplayReservedSeats();
         DisplayLegenda();
         DisplayOptions();
     }
@@ -489,30 +635,45 @@ public class SeatMap
         Console.WriteLine($"Press [escape] to return to main menu.");
     }
 
-    private void DisplayReservedSeats()
+    private void DisplayReservedSeats(List<Tuple<int, int>> ListTupleSeats)
     {
-        foreach (List<string> row in Auditorium)
+        if (ListTupleSeats != null)
         {
-            foreach (string seat in row)
+            Console.WriteLine("You have selected the following seats:");
+            foreach (var seat in ListTupleSeats)
             {
-                if (Auditorium[CursorRow][CursorSeat] == "AR" || Auditorium[CursorRow][CursorSeat] == "BR" || Auditorium[CursorRow][CursorSeat] == "CR")
-                {
-
-                }
+                Console.WriteLine($"Seat at Row {seat.Item1}, Seat {rows[seat.Item2 - 1]}");
             }
-        }
-    }
-
-    private bool IsReserved(string seat)
-    {
-        if (Auditorium[CursorRow][CursorSeat] == "AR" || Auditorium[CursorRow][CursorSeat] == "BR" || Auditorium[CursorRow][CursorSeat] == "CR")
-        {
-            Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
-            return true;
         }
         else
         {
-            return false;
+            Console.WriteLine("There are no selected seats.");
+            return;
+        }
+    }
+
+    private List<Tuple<int, int>> GetReservedSeats()
+    {
+        List<Tuple<int, int>> ListTupleSeats = new List<Tuple<int, int>>();
+
+        for (int row = 1; row < Auditorium.Count; row++)
+        {
+            for (int seat = 1; seat < Auditorium[row].Count; seat++)
+            {
+                if (Auditorium[row][seat] == "AR" || Auditorium[row][seat] == "BR" || Auditorium[row][seat] == "CR") 
+                {
+                    ListTupleSeats.Add(Tuple.Create(row, seat));
+                }
+            }
+        }
+
+        if (ListTupleSeats.Count > 0)
+        {
+            return ListTupleSeats;
+        }
+        else
+        {
+            return null;
         }
     }
 }
