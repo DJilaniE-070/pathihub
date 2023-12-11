@@ -296,6 +296,8 @@ public class SeatMap
                                     //  hierzo de code als je acc hebt dan alleen email password and then check in accountlogic als dat bestaat
                                     // Accountmodel.Checklogin(email, password)
                                     Loop1 = false;
+                                    // this code under this saves the auditorium to its schedule
+                                    MovieSchedule.SaveAuditorium(Auditorium);
                                     Environment.Exit(0);
                                 }
                                 else

@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+
 public class MovieToAuditoriumLogic
 {
     public void Connector(Movie chosenmovie)
@@ -22,7 +24,7 @@ public class MovieToAuditoriumLogic
         }
     }
 
-    public Schedule? HasAuditorium(Movie movie, int AudNum)
+    public static Schedule? HasAuditorium(Movie movie, int AudNum)
     {
         ScheduleAcces acces = new(AudNum);
         string SelectedSchedule = MovieSchedule.SelectedSchedule;
@@ -42,6 +44,7 @@ public class MovieToAuditoriumLogic
         // Return null if conditions are not met or if there's an issue with loading from JSON
         return null;
     }
+
 
     // Hieronder is de code om de films waarden juist te in laden bij de schedule json
     

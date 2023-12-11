@@ -7,6 +7,25 @@ public static class MovieSchedule
     public static int Selectedauditorium;
     public static string SelectedSchedule;
 
+    public static void SaveAuditorium (List<List<string>> storedAud)
+    {
+        ScheduleAcces scheduleAcces = new(MovieSchedule.Selectedauditorium);
+        if (scheduleAcces.LoadFromJson()!= false);
+        {
+            List<Schedule> WholeSchedule = scheduleAcces.GetItemList();
+            foreach (Schedule schedule in WholeSchedule)
+            {
+            // Check if any of the scheduled times match those from the movie
+                if (schedule.MovieTitle == MovieSchedule.SelectedMovie.MovieTitle
+                && schedule.Scheduled == MovieSchedule.SelectedSchedule
+                && schedule.Directors == MovieSchedule.SelectedMovie.Directors)
+                {
+                    schedule.StoredAuditorium = storedAud;
+                }
+            }  
+            scheduleAcces.SaveToJson();
+        }
+    }
     public static void ChooseAuditorium()
     {
         int selectedIndex = 0;
