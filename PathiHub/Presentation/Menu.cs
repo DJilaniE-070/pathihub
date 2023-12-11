@@ -13,7 +13,7 @@ public static class Menu
         int selectedIndex = 0;
         bool exit = false;
 
-        string[] menuOptions = { "Login as a guest", "Login as an user", "Creating an account" };
+        string[] menuOptions = { "[1] Our movie selection", "[2] Our Menu selection", "[3] Login/Register" };
         
         PromotionMovieAccess promotedMovies = new();
         
@@ -161,20 +161,25 @@ ______     _   _     _   _   _       _
         Console.WriteLine("Selected: " + option);
         switch (option)
         {
-            case "Login as a guest":
+            case "[3] Login/Register":
                 Thread.Sleep(1500);
-                GuestLogin.Start();
+                LoginORRegister.Start();
                 break;
 
-            case "Login as an user":
+            case "[1] Our movie selection":
                 Thread.Sleep(1500);
-                GlobalLogin.Start();
+                Console.Clear();
+                MoviesAccess movies = new();
+                MovieCatalogePrinter.TabelPrinter(movies);
+                break;
+            case "[2] Our Menu selection":
+                Thread.Sleep(1500);
+                MovieTimeTable overview = new();
+                // MoviesAcces movies = new();
+                overview.Start();
                 break;
 
-            case "Creating an account":
-                Thread.Sleep(1500);
-                UserRegistration.RegisterUser();
-                break;
+
         }
     }
 }

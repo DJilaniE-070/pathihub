@@ -37,13 +37,12 @@ ___  ___           _       ______
             }
             else if (key.Key == ConsoleKey.Backspace)
             {
-                ManagerMenu.Start();
+                Helpers.BackToYourMenu();
             }
             // Dit werkt nog niet ik kan dit niet gebruiken kan niet naar main menu en uitloggen soort van
             else if (key.Key == ConsoleKey.Escape)
             {
-                Console.WriteLine(" ");
-                Menu.Start();
+                Helpers.MainMenu();
             }
             else
             {
@@ -72,12 +71,11 @@ ___  ___           _       ______
             }
             else if (key.Key == ConsoleKey.Backspace)
             {
-                ManagerMenu.Start();
+                Helpers.BackToYourMenu();
             }
             else if (key.Key == ConsoleKey.Escape)
             {
-                Console.WriteLine(" ");
-                Menu.Start();
+                Helpers.MainMenu();
                 
             }
             else
@@ -217,27 +215,28 @@ ___  ___           _       ______
             movie.Awards = string.IsNullOrEmpty(AwardsInput)
                 ? new List<string> { "X" } 
                 : new List<string>(AwardsInput.Split(','));
-            
-            while (true)
-            {
-                Console.Write("Enter the auditorium (1,2,3): ");
-                int auditorium = Convert.ToInt32( Helpers.Color("DarkYellow"));
-                if (auditorium >= 1 && auditorium <= 3)
-                {
-                movie.Auditorium = auditorium;
-                break;
-                }
-                else
-                {
-                    Helpers.PrintStringToColor("Choose between 1 and 3","red");
-                }
-            }
-
+                
             Console.Write("Enter poster URl it begins with https://m.media-amazon.com");
             string? poster = Helpers.Color("DarkYellow");
             movie.Poster = string.IsNullOrEmpty(poster)
             ?"X"
             :poster;
+            // while (true)
+            // {
+            //     Console.Write("Enter the auditorium (1,2,3): ");
+            //     int auditorium = Convert.ToInt32( Helpers.Color("DarkYellow"));
+            //     if (auditorium >= 1 && auditorium <= 3)
+            //     {
+            //     movie.Auditorium = auditorium;
+            //     break;
+            //     }
+            //     else
+            //     {
+            //         Helpers.PrintStringToColor("Choose between 1 and 3","red");
+            //     }
+            // }
+
+
             
             // Dit een check laten doen
             Console.Write("Enter Scheduled time as Monday/12:00-14.30,Thursday/18:00-20:30");

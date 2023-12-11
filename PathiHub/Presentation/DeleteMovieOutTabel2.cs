@@ -48,7 +48,7 @@ ___  ___           _        _____       _        _
             {
                 Console.WriteLine("You will be redirected");
                 Thread.Sleep(800);
-                ManagerMenu.Start();
+                Helpers.BackToYourMenu();
             }
         }
 

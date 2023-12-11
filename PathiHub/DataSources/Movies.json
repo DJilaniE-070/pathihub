@@ -16,20 +16,22 @@
       "Jane Writerly",
       "Michael Scriptson"
     ],
-    "Plot": "In a futuristic world, Alice, a skilled adventurer, and her loyal sidekick Bob, embark on a thrilling journey to save their city from the evil plans of Eve, a cunning antagonist. With high-tech gadgets and unyielding determination, they must overcome various challenges and foes to restore peace to their homeland.",
+    "Plot": "In a futuristic world, Alice\u0000\u0000\u0000\u0000\u0000\u0000, a skilled adventurer, and her loyal sidekick Bob, embark on a thrilli\u0000ng journey to save\u001a\u001a\u001a\u001a\u001a\u001a\u001a their city from the evil plans of Eve, a cunning antagonist. With high-tech gadgets and unyielding determination, they must overcome various challenges and foes to restore peace to their homeland.\u0000\u0000",
     "Rating": 8.5,
     "RuntimeMinutes": 120,
     "Languages": "English",
     "Countrys": "United States",
-    "Auditorium": 3,
+    "Auditorium": [
+      1,
+      2
+    ],
     "Awards": null,
     "Poster": null,
     "Scheduled": [
       "Monday/12:00-14:30",
       "Monday/15:00-17:30",
       "Monday/18:00-20:30",
-      "Monday/21:00-23:30",
-      "Thursday/18:00-20:30"
+      "Monday/21:30-23:30"
     ]
   },
   {
@@ -53,14 +55,18 @@
     "RuntimeMinutes": 115,
     "Languages": "English",
     "Countrys": "United States",
-    "Auditorium": 1,
+    "Auditorium": [
+      1
+    ],
     "Awards": [
       ""
     ],
     "Poster": "N/A",
     "Scheduled": [
-      "Monday/12:00-14.30",
-      "Thursday/15:00-17:30"
+      "Tuesday/12:00-14:30",
+      "Tuesday/15:00-17:30",
+      "Tuesday/18:00-20:30",
+      "Tuesday/21:30-23:30"
     ]
   },
   {
@@ -86,13 +92,16 @@
     "RuntimeMinutes": 100,
     "Languages": "Dutch, Western Frisian",
     "Countrys": "Netherlands",
-    "Auditorium": 0,
+    "Auditorium": [
+      2
+    ],
     "Awards": [
       "2 wins"
     ],
     "Poster": "https://m.media-amazon.com/images/M/MV5BMTY1MjU4OTQxMV5BMl5BanBnXkFtZTcwMTMwNTQ5OA@@._V1_SX300.jpg",
     "Scheduled": [
-      ""
+      "Wednesday/12:00-14:30",
+      "Wednesday/15:00-17:30"
     ]
   },
   {
@@ -115,18 +124,21 @@
       " Jean Ummels",
       " Steven de Jong"
     ],
-    "Plot": "The twinbrothers Sietse and Hielke Klinkhamer want to raise money for their ill friend, Marieke. Hallo",
+    "Plot": "The twinbrothers Sietse and Hielke Klinkhamer want to raise money for their ill friend, Marieke.",
     "Rating": 6.0,
     "RuntimeMinutes": 105,
     "Languages": "Dutch, Western Frisian",
     "Countrys": "Netherlands",
-    "Auditorium": 1,
+    "Auditorium": [
+      1
+    ],
     "Awards": [
       "2 wins"
     ],
     "Poster": "https://m.media-amazon.com/images/M/MV5BMjA2NTUxODIzOF5BMl5BanBnXkFtZTcwMjMwNTQ5OA@@._V1_SX300.jpg",
     "Scheduled": [
-      ""
+      "Wednesday/18:00-20:30",
+      "Wednesday/21:30-23:30"
     ]
   },
   {
@@ -152,13 +164,16 @@
     "RuntimeMinutes": 101,
     "Languages": "English, Russian, Hungarian",
     "Countrys": "United States, United Kingdom, China",
-    "Auditorium": 2,
+    "Auditorium": [
+      2
+    ],
     "Awards": [
       "5 wins & 10 nominations"
     ],
     "Poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg",
     "Scheduled": [
-      ""
+      "Thursday/12:00-14:30",
+      "Thursday/15:00-17:30"
     ]
   },
   {
@@ -184,79 +199,16 @@
     "RuntimeMinutes": 122,
     "Languages": "English, Italian, Russian, Sign , Hebrew",
     "Countrys": "United States, Italy, Hong Kong, Canada",
-    "Auditorium": 1,
+    "Auditorium": [
+      1
+    ],
     "Awards": [
       "4 wins & 10 nominations"
     ],
     "Poster": "https://m.media-amazon.com/images/M/MV5BMjE2NDkxNTY2M15BMl5BanBnXkFtZTgwMDc2NzE0MTI@._V1_SX300.jpg",
     "Scheduled": [
-      ""
-    ]
-  },
-  {
-    "MovieTitle": "John Wick: Chapter 4",
-    "ReleaseYear": 2023,
-    "ReleaseDate": "24 Mar 2023",
-    "Genre": [
-      "Action",
-      " Crime",
-      " Thriller"
-    ],
-    "Actors": [
-      "Keanu Reeves",
-      " Laurence Fishburne",
-      " George Georgiou"
-    ],
-    "Directors": "Chad Stahelski",
-    "Writers": [
-      "Shay Hatten",
-      " Michael Finch",
-      " Derek Kolstad"
-    ],
-    "Plot": "John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.",
-    "Rating": 77.0,
-    "RuntimeMinutes": 169,
-    "Languages": "English, Russian, Japanese, Spanish, German, Latin, Cantonese, French",
-    "Countrys": "Germany, United States",
-    "Auditorium": 0,
-    "Awards": [
-      "2 wins & 3 nominations"
-    ],
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMDExZGMyOTMtMDgyYi00NGIwLWJhMTEtOTdkZGFjNmZiMTEwXkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_SX300.jpg",
-    "Scheduled": [
-      ""
-    ]
-  },
-  {
-    "MovieTitle": "Nightcrawler",
-    "ReleaseYear": 2014,
-    "ReleaseDate": "31 Oct 2014",
-    "Genre": [
-      "Crime",
-      " Drama",
-      " Thriller"
-    ],
-    "Actors": [
-      "Jake Gyllenhaal",
-      " Rene Russo",
-      " Bill Paxton"
-    ],
-    "Directors": "Dan Gilroy",
-    "Writers": [
-      "Dan Gilroy"
-    ],
-    "Plot": "When Louis Bloom, a con man desperate for work, muscles into the world of L.A. crime journalism, he blurs the line between observer and participant to become the star of his own story.",
-    "Rating": 78.0,
-    "RuntimeMinutes": 117,
-    "Languages": "English",
-    "Countrys": "United States",
-    "Auditorium": 0,
-    "Awards": [
-      "Nominated for 1 Oscar. 44 wins & 126 nominations total"
-    ],
-    "Poster": "https://m.media-amazon.com/images/M/MV5BN2U1YzdhYWMtZWUzMi00OWI1LWFkM2ItNWVjM2YxMGQ2MmNhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
-    "Scheduled": [
-      ""
+      "Friday/12:00-14:30",
+      "Friday/21:30-23:30"
     ]
   }
 ]

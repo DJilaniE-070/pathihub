@@ -18,7 +18,51 @@ public class Helpers
          Console.WriteLine();
      }
 
+    public static void BackToYourMenu()
+    {
+        if (CurrentAccount == null)
+        {
+            Menu.Start();
+        } 
+        else
+        {
+        string role = CurrentAccount.Role;
+        switch (role)
+        {
+            case "Manager":
+                    Console.Clear();
+                    ManagerMenu.Start();
+                    break;
+                case "Financial Manager":
+                    Console.Clear();
+                    FinancialMenu.Start();
+                    break;
+                case "Coworker":
+                    Console.Clear();
+                    CoWorker.Start();
+                    break;
+                case "User":
+                    Console.Clear();
+                    UserMenu.Start();
+                    break;
+                case "Customer":
+                    Console.Clear();
+                    // CustomerMenu.CustomerStart();
+                    break;
+                default:
+                    Menu.Start();
+                    break;
+        }
+        }
+    }
     
+    public static void MainMenu()
+    {
+        Console.WriteLine(" ");
+        CurrentAccount = null;
+        Menu.Start();
+        Environment.Exit(0);
+    }
     // Mini versie van het printen voor een cursor
     public static int MiniCursor(string[] menuOptions, DeleteMovieOutTabel movieDeletor)
     {

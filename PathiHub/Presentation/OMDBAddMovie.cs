@@ -142,9 +142,10 @@ public static void AddMoviePresentationWebb(string Header)
                 RuntimeMinutes = GetIntOrZero(((string)movieJson["Runtime"]).Split(" ")[0]), 
                 Languages = (string)movieJson["Language"],
                 Countrys = (string)movieJson["Country"],
-                Auditorium = 0, // Set the default value, you may need to change this based on your logic
                 Awards = ((string)movieJson["Awards"]).Split(',').ToList(),
                 Poster = (string)movieJson["Poster"],
+                // Hier een functie to assign to the correct day and time and auditorium
+                Auditorium = new List<int>{0}, // Set the default value, you may need to change this based on your logic
                 // Hierzo een functie die direct een movieschedule hieraan linkt
                 Scheduled = new List<string>{""},
             };

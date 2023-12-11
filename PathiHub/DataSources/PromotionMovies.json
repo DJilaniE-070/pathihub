@@ -21,7 +21,7 @@
     "RuntimeMinutes": 120,
     "Languages": "English",
     "Countrys": "United States",
-    "Auditorium": 3,
+    "Auditorium": [3],
     "Awards": null,
     "Poster": null,
     "Scheduled": [
@@ -30,6 +30,37 @@
       "Monday/18:00-20:30",
       "Monday/21:00-23:30",
       "Thursday/18:00-20:30"
+    ]
+  },
+  {
+    "MovieTitle": "Galactic Quest",
+    "ReleaseYear": 2022,
+    "ReleaseDate": null,
+    "Genre": [
+      "Sci-Fi",
+      "Adventure"
+    ],
+    "Actors": [
+      "N/A"
+    ],
+    "Directors": "Lucy Director",
+    "Writers": [
+      "David Scriptwriter",
+      "Emily Storyteller"
+    ],
+    "Plot": "In the vast expanse of the galaxy, Chris, a brave spaceman, and his alien friend Zara embark on a quest to forge alliances between planets and civilizations. Their journey is fraught with intergalactic challenges and unexpected friendships, testing their courage and resolve to bring peace to the universe.",
+    "Rating": 9.0,
+    "RuntimeMinutes": 115,
+    "Languages": "English",
+    "Countrys": "United States",
+    "Auditorium": [1],
+    "Awards": [
+      ""
+    ],
+    "Poster": "N/A",
+    "Scheduled": [
+      "Monday/12:00-14.30",
+      "Thursday/15:00-17:30"
     ]
   },
   {
@@ -57,45 +88,11 @@
     "RuntimeMinutes": 105,
     "Languages": "Dutch, Western Frisian",
     "Countrys": "Netherlands",
-    "Auditorium": 1,
+    "Auditorium": [1],
     "Awards": [
       "2 wins"
     ],
     "Poster": "https://m.media-amazon.com/images/M/MV5BMjA2NTUxODIzOF5BMl5BanBnXkFtZTcwMjMwNTQ5OA@@._V1_SX300.jpg",
-    "Scheduled": [
-      ""
-    ]
-  },
-  {
-    "MovieTitle": "John Wick: Chapter 4",
-    "ReleaseYear": 2023,
-    "ReleaseDate": "24 Mar 2023",
-    "Genre": [
-      "Action",
-      " Crime",
-      " Thriller"
-    ],
-    "Actors": [
-      "Keanu Reeves",
-      " Laurence Fishburne",
-      " George Georgiou"
-    ],
-    "Directors": "Chad Stahelski",
-    "Writers": [
-      "Shay Hatten",
-      " Michael Finch",
-      " Derek Kolstad"
-    ],
-    "Plot": "John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.",
-    "Rating": 77.0,
-    "RuntimeMinutes": 169,
-    "Languages": "English, Russian, Japanese, Spanish, German, Latin, Cantonese, French",
-    "Countrys": "Germany, United States",
-    "Auditorium": 0,
-    "Awards": [
-      "2 wins & 3 nominations"
-    ],
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMDExZGMyOTMtMDgyYi00NGIwLWJhMTEtOTdkZGFjNmZiMTEwXkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_SX300.jpg",
     "Scheduled": [
       ""
     ]
