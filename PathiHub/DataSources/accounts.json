@@ -33,5 +33,12 @@
     "password": "Thomas123!",
     "fullName": "Lalalala",
     "role": "User"
+  },
+  {
+    "id": 6,
+    "emailAddress": "123@nl",
+    "password": "Password123!",
+    "fullName": "Thomas",
+    "role": "User"
   }
 ]

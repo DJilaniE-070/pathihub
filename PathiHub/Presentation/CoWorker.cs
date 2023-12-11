@@ -8,13 +8,12 @@ public static class CoWorker
         int selectedIndex = 0;
         bool exit = false;
 
-        string[] menuOptions = { "[1] Overview all reservations", "[2] Change reservations", "[3] reserve seat for customer","[4] Insight total orders", "[5] Exit Co Worker Menu"};
+        string[] menuOptions = { "[1] Show reservations", "[2] Change reservations", "[3] Reserve seat for customer", "[4] Exit Co Worker Menu"};
 
         do
         {
             Console.Clear();
-
-            Console.WriteLine(@"
+            Helpers.PrintStringToColor(@"
  _____         _    _               _                 ___  ___                    
 /  __ \       | |  | |             | |                |  \/  |                    
 | /  \/  ___  | |  | |  ___   _ __ | | __  ___  _ __  | .  . |  ___  _ __   _   _ 
@@ -23,7 +22,7 @@ public static class CoWorker
  \____/ \___/  \/  \/  \___/ |_|   |_|\_\ \___||_|    \_|  |_/ \___||_| |_| \__,_|
                                                                                   
                                                                                   
-    ");
+    ", "yellow");
 
             Console.WriteLine("--------------------------------------------------------------------------------");
             Console.WriteLine("Please select an option (using the arrow keys and press Enter):");
@@ -74,48 +73,63 @@ public static class CoWorker
         Console.WriteLine("Selected: " + option);
         switch (option)
         {
-            case "[1] Overview all reservations":
-                Thread.Sleep(1500);
+            case "[1] Show reservations":
                 OverviewAllReservations();
                 break;
             
             case "[2] Change reservations":
-                Thread.Sleep(1500);
                 ChangeReservations();
                 break;
             
-            case "[3] reserve seat for customer":
-                Thread.Sleep(1500);
+            case "[3] Reserve seat for customer":
                 ReserveSeatCustomer();
                 break;
             
-            case "[4] Insight total orders":
-                Thread.Sleep(1500);
-                InsightTotalOrders();
-                break;
-            
             case "[5] Exit Co Worker Menu":
+            Thread.Sleep(1500)
                 break; 
         }
     }
 
     static void OverviewAllReservations()
     {
-        Console.WriteLine("Overview of all reservations");
+    string HeaderX = @"
+ _____  _                       ______                                       _    _                    
+/  ___|| |                      | ___ \                                     | |  (_)                   
+\ `--. | |__    ___  __      __ | |_/ /  ___  ___   ___  _ __ __   __  __ _ | |_  _   ___   _ __   ___ 
+ `--. \| '_ \  / _ \ \ \ /\ / / |    /  / _ \/ __| / _ \| '__|\ \ / / / _` || __|| | / _ \ | '_ \ / __|
+/\__/ /| | | || (_) | \ V  V /  | |\ \ |  __/\__ \|  __/| |    \ V / | (_| || |_ | || (_) || | | |\__ \
+\____/ |_| |_| \___/   \_/\_/   \_| \_| \___||___/ \___||_|     \_/   \__,_| \__||_| \___/ |_| |_||___/
+                                                                                                       
+                                                                                                       
+";
+    ReservationAccess access = new();
+    List<string> ColomnNames = new(){"FullName", "ReservationCode", "Email", "Date", "Price"};
+    if(access.LoadFromJson()!= false)
+    {
+    List<Reservation> reservations = access.GetItemList();
+    ObjCatalogePrinter.TabelPrinter(HeaderX, reservations, ColomnNames);
+    }
     }
 
     static void ChangeReservations()
     {
-        Console.WriteLine("Change reservations");
+        List<string> ColomnNames = new(){"FullName", "ReservationCode", "Email", "Date", "Price"};
+        string HeaderX = @"
+ _____  _                                 ______                                       _    _                    
+/  __ \| |                                | ___ \                                     | |  (_)                   
+| /  \/| |__    __ _  _ __    __ _   ___  | |_/ /  ___  ___   ___  _ __ __   __  __ _ | |_  _   ___   _ __   ___ 
+| |    | '_ \  / _` || '_ \  / _` | / _ \ |    /  / _ \/ __| / _ \| '__|\ \ / / / _` || __|| | / _ \ | '_ \ / __|
+| \__/\| | | || (_| || | | || (_| ||  __/ | |\ \ |  __/\__ \|  __/| |    \ V / | (_| || |_ | || (_) || | | |\__ \
+ \____/|_| |_| \__,_||_| |_| \__, | \___| \_| \_| \___||___/ \___||_|     \_/   \__,_| \__||_| \___/ |_| |_||___/
+                              __/ |                                                                              
+                             |___/                                                                               
+";
+        PerformActionToTabel.Editor(HeaderX,"Reservation", ColomnNames);
     }
 
     static void ReserveSeatCustomer()
     {
         Console.WriteLine("Reservate a seat for a customer");
-    }
-
-    static void InsightTotalOrders()
-    {
-        Console.WriteLine("Insight of total orders");
     }
 }

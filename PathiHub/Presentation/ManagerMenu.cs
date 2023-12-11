@@ -109,7 +109,6 @@ ___  ___                                   ___  ___
         }
     }
 
-    
 static void FilmOptions()
 {
     string[] menuOptions = { "Add a movie", "Remove a movie", "Edit a movie", "Show Movies", "Promote Movies","Return to Manager menu" };
@@ -207,7 +206,7 @@ ___  ___           _        _____       _   _
 
 public static void ReservationsOptions()
 {
-    string[] menuOptions = { "Make a Reervation", "Remove a reservation", "Change a reservation","Show Reservations", "Return to Manager menu" };
+    string[] menuOptions = { "Make a Reservation", "Remove a reservation", "Change a reservation", "Show Reservations", "Return to Manager menu" };
     int selectedIndex = 0;
     bool exit = false;
 
