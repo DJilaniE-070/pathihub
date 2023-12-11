@@ -608,11 +608,11 @@ public class SeatMap
     // cursor positie printen
     private void DisplayCursorPosition()
     {
-        Console.Write("Rij: ");
+        Console.Write("Row: ");
         Console.ForegroundColor = ConsoleColor.Green;
         Console.Write($"[{CursorRow}]");
         Console.ResetColor();
-        Console.Write(" Stoel: ");
+        Console.Write(" Seat: ");
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.Write($"[{rows[CursorSeat - 1]}]\n\n");
         Console.ResetColor();
