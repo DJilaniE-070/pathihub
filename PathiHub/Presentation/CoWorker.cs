@@ -86,7 +86,7 @@ public static class CoWorker
                 break;
             
             case "[5] Exit Co Worker Menu":
-            Thread.Sleep(1500)
+            Thread.Sleep(1500);
                 break; 
         }
     }
