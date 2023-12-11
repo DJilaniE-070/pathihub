@@ -131,5 +131,6 @@ public static class CoWorker
     static void ReserveSeatCustomer()
     {
         Console.WriteLine("Reservate a seat for a customer");
+        Heplers.PrintStringToColor()
     }
 }

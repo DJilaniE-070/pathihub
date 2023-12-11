@@ -13,8 +13,7 @@ public static class UserMenu
         do
         {
             Console.Clear();
-
-            Console.WriteLine(@"
+            Helpers.PrintStringToColor(@"
  _   _                   ___  ___                    
 | | | |                  |  \/  |                    
 | | | | ___   ___  _ __  | .  . |  ___  _ __   _   _ 
@@ -23,7 +22,7 @@ public static class UserMenu
  \___/ |___/ \___||_|    \_|  |_/ \___||_| |_| \__,_|
                                                      
                                                      
-");
+", "yellow");
 
             Helpers.CharLine('-' ,80);
             Console.WriteLine("Please select an option (using the arrow keys and press Enter):");
