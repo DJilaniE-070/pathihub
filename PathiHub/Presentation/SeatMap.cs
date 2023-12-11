@@ -275,6 +275,8 @@ public class SeatMap
                                         string MakeAcc = Helpers.Color("yellow").ToLower();
                                         if (MakeAcc == "yes")
                                         {
+                                            // dit slaat de zaal op in json
+                                            MovieSchedule.SaveAuditorium(Auditorium);
                                             UserRegistration.RegisterUser();
                                             break;
                                         }
@@ -309,6 +311,8 @@ public class SeatMap
                         }
                         else
                         {
+                            // dit slaat de zaal op in json als iemand klaar is met bestellen
+                            MovieSchedule.SaveAuditorium(Auditorium);
                             Console.WriteLine("You are logged in");
                             Environment.Exit(0);
                             // Djilanie hier code voor als user is ingelogd. Dus geen inputs maar read from accountmodel user dan
@@ -322,6 +326,7 @@ public class SeatMap
                     break;
                 // een stoel annuleren
                 case ConsoleKey.Backspace:
+                // Hier zit nog een probleem als je backspace op een stoel die jij niet hebt gereserveerd dan anuleerd het alsnog
                     if (Auditorium[CursorRow][CursorSeat] == "AR")
                     {
                         Auditorium[CursorRow][CursorSeat] = "A";
@@ -347,6 +352,8 @@ public class SeatMap
                     break;
                 // een stoel selecteren
                 case ConsoleKey.Spacebar:
+                    // Hierzo moet zijn een extra functie op de gebruiker die in dit gaat om jouw geselecteerde stoel op te slaan in een private field B.V
+                    // Dus user 1 reserveert en kan alleen stoelen annuleren van hem
                     // als A, B of C is reserveer stoel en verander positie in list naar R
                     if (Auditorium[CursorRow][CursorSeat] == "A")
                     {
