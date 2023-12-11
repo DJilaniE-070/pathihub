@@ -9,26 +9,25 @@ public class MoviesOptionLogicTests
     [TestInitialize]
     public void Initialize()
     {
-        movies = new ();
-        movie = new() { MovieTitle = "MovieTitle", Director = "Director" };
-        movies.Add(movie);
+        movies = MovieOptionsLogic.movies;
     }
     
     [TestMethod]
     public void TestAddMovie()
     {
-        movie = new Movie() { MovieTitle = "test", Director = "test" };
+        int count = movies.Count;
+        movie = new Movie() { MovieTitle = "test", Directors = "test" };
         movies.Add(movie);
-        Assert.AreEqual(2, movies.Count);
-        Assert.AreEqual("MovieTitle", movies[0].MovieTitle);
-        Assert.AreEqual("Director", movies[0].Director);
+        Assert.AreEqual(count + 1, movies.Count);
+        Assert.AreEqual("test", movies.Last().MovieTitle);
+        Assert.AreEqual("test", movies.Last().Directors);
     }
     
     [TestMethod]
     public void TestRemoveMovie()
     {
         int count = movies.Count;
-        movies.Remove(movie);
+        movies.Remove(movies.Last());
         Assert.AreEqual(count - 1, movies.Count);
     }
 }

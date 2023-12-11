@@ -8,7 +8,7 @@ public static class ManagerMenu
         int selectedIndex = 0;
         bool exit = false;
 
-        string[] menuOptions = { "[1] Film options", "[2] Reserve a movie", "[3] Reservation options", "[4] Financial options", "[5] Snacks options", "[6] Exit" };
+        string[] menuOptions = { "[1] Film options","[2] Reserve a movie", "[3] Reservation options", "[4] Financial options", "[5] Snacks options", "[6] Exit" };
 
         do
         {
@@ -58,6 +58,9 @@ ___  ___                                   ___  ___
                         selectedIndex++;
                     }
                     break;
+                case ConsoleKey.Escape:
+                    Helpers.MainMenu();
+                    break;
                 case ConsoleKey.Enter:
                     Console.Clear();
                     PerformAction(menuOptions[selectedIndex]);
@@ -93,13 +96,13 @@ ___  ___                                   ___  ___
                 break;
             
             case "[5] Snacks options":
-                Thread.Sleep(1500);
-                Snacks();
+                SnacksMenu snack = new SnacksMenu();
+                snack.Start();
                 break;
             
             case "[6] Exit":
                 Thread.Sleep(1500);
-                Console.WriteLine("Thank you for using our programme.");
+                Helpers.MainMenu();
                 break;
             
         }
@@ -156,41 +159,44 @@ ___  ___           _        _____       _   _
                     selectedIndex++;
                 }
                 break;
+             case ConsoleKey.Backspace:
+                    Console.WriteLine(" ");
+                    Helpers.BackToYourMenu();
+                    break;
+            case ConsoleKey.Escape:
+                    Helpers.MainMenu();
+                    break;
             case ConsoleKey.Enter:
                 Console.Clear();
                 int option = selectedIndex + 1;
-                if (option == 1)
+                switch (option)
                 {
-                    MovieOptionPresentation.AddMoviePresentationWebbOption();
-                }
-                else if (option == 2)
-                {
-                    MovieOptionPresentation.RemoveMoviePresentation();
-                }
-                else if (option == 3)
-                {
-                    MovieOptionPresentation.EditMoviePresentation();
-                }
-                else if (option == 4)
-                {
-                    MovieOptionPresentation.ShowMovies();
-                }
-                else if (option == 5)
-                {
-                    PromotionMenu promotionMenu = new PromotionMenu();
-                    promotionMenu.Start();
-                }
-                else if (option == 6)
-                {
-                    exit = true;
-                    ManagerMenu.Start();
-                }
-                else
-                {
-                    Console.WriteLine("Invalid option");
+                    case 1:
+                        MovieOptionPresentation.AddMoviePresentationWebbOption();
+                        break;
+                    case 2:
+                        MovieOptionPresentation.RemoveMoviePresentation();
+                        break;
+                    case 3:
+                        MovieOptionPresentation.EditMoviePresentation();
+                        break;
+                    case 4:
+                        MovieOptionPresentation.ShowMovies();
+                        break;
+                    case 5:
+                        PromotionMenu promotionMenu = new PromotionMenu();
+                        promotionMenu.Start();
+                        break;
+                    case 6:
+                        exit = true;
+                        Helpers.BackToYourMenu();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option");
+                        break;
                 }
                 break;
-        }
+        }   
 
     } while (!exit);
 
@@ -199,7 +205,7 @@ ___  ___           _        _____       _   _
 
 public static void ReservationsOptions()
 {
-    string[] menuOptions = { "Make a Reservation", "Remove a reservation", "Change a reservation","Show Reservations", "Return to Manager menu" };
+    string[] menuOptions = { "Make a Reervation", "Remove a reservation", "Change a reservation","Show Reservations" };
     int selectedIndex = 0;
     bool exit = false;
 
@@ -248,33 +254,35 @@ ______                               _   _               _____       _   _
                     selectedIndex++;
                 }
                 break;
+            case ConsoleKey.Backspace:
+                    Console.WriteLine(" ");
+                    Helpers.BackToYourMenu();
+                    Environment.Exit(0);
+                    break;
+            case ConsoleKey.Escape:
+                    Helpers.MainMenu();
+                    break;
             case ConsoleKey.Enter:
                 Console.Clear();
                 int option = selectedIndex + 1;
-                if (option == 1)
+                exit = true;
+                switch (option)
                 {
-                    ReservationPresentation.AddReservation();
-                }
-                else if (option == 2)
-                {
-                    ReservationPresentation.RemoveMoviePresentation();
-                }
-                else if (option == 3)
-                {
-                    ReservationPresentation.EditReservationPresentation();
-                }
-                else if (option == 4)
-                {
-                    ReservationPresentation.ShowReservations();
-                }
-                else if (option == 5)
-                {
-                    exit = true;
-                    ManagerMenu.Start();
-                }
-                else
-                {
-                    Console.WriteLine("Invalid option");
+                    case 1:
+                        ReservationPresentation.AddReservation();
+                        break;
+                    case 2:
+                        ReservationPresentation.RemoveMoviePresentation();
+                        break;
+                    case 3:
+                        ReservationPresentation.EditReservationPresentation();
+                        break;
+                    case 4:
+                        ReservationPresentation.ShowReservations();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option");
+                        break;
                 }
                 break;
         }
@@ -282,7 +290,7 @@ ______                               _   _               _____       _   _
     } while (!exit);
 
     Console.CursorVisible = true;
-}
+    }   
 
         static void ReserveAMovie()
         {
@@ -295,8 +303,5 @@ ______                               _   _               _____       _   _
             Console.WriteLine("Test completed. Still function still needs to be implemented Financial option");
         }
 
-        static void Snacks()
-        {
-            Console.WriteLine("Test completed ");
-        }
+
 }

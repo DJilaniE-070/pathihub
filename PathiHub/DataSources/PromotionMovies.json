@@ -2,12 +2,16 @@
   {
     "MovieTitle": "The Adventure Begins",
     "ReleaseYear": 2023,
+    "ReleaseDate": "0",
     "Genre": [
       "Action",
       "Adventure",
       "Sci-Fi"
     ],
-    "Director": "John Directorson",
+    "Actors": [
+      "N/A"
+    ],
+    "Directors": "John Directorson",
     "Writers": [
       "Jane Writerly",
       "Michael Scriptson"
@@ -15,19 +19,31 @@
     "Plot": "In a futuristic world, Alice, a skilled adventurer, and her loyal sidekick Bob, embark on a thrilling journey to save their city from the evil plans of Eve, a cunning antagonist. With high-tech gadgets and unyielding determination, they must overcome various challenges and foes to restore peace to their homeland.",
     "Rating": 8.5,
     "RuntimeMinutes": 120,
-    "Language": "English",
-    "Country": "United States",
-    "Auditorium": 3,
-    "Awards": null
+    "Languages": "English",
+    "Countrys": "United States",
+    "Auditorium": [3],
+    "Awards": null,
+    "Poster": null,
+    "Scheduled": [
+      "Monday/12:00-14:30",
+      "Monday/15:00-17:30",
+      "Monday/18:00-20:30",
+      "Monday/21:00-23:30",
+      "Thursday/18:00-20:30"
+    ]
   },
   {
     "MovieTitle": "Galactic Quest",
     "ReleaseYear": 2022,
+    "ReleaseDate": null,
     "Genre": [
       "Sci-Fi",
       "Adventure"
     ],
-    "Director": "Lucy Director",
+    "Actors": [
+      "N/A"
+    ],
+    "Directors": "Lucy Director",
     "Writers": [
       "David Scriptwriter",
       "Emily Storyteller"
@@ -35,29 +51,50 @@
     "Plot": "In the vast expanse of the galaxy, Chris, a brave spaceman, and his alien friend Zara embark on a quest to forge alliances between planets and civilizations. Their journey is fraught with intergalactic challenges and unexpected friendships, testing their courage and resolve to bring peace to the universe.",
     "Rating": 9.0,
     "RuntimeMinutes": 115,
-    "Language": "English",
-    "Country": "United States",
-    "Auditorium": 1,
-    "Awards": null
+    "Languages": "English",
+    "Countrys": "United States",
+    "Auditorium": [1],
+    "Awards": [
+      ""
+    ],
+    "Poster": "N/A",
+    "Scheduled": [
+      "Monday/12:00-14.30",
+      "Thursday/15:00-17:30"
+    ]
   },
   {
-    "MovieTitle": "pinda",
-    "ReleaseYear": 1120,
+    "MovieTitle": "Kameleon 2",
+    "ReleaseYear": 2005,
+    "ReleaseDate": "29 Jun 2005",
     "Genre": [
-      "test"
+      "Adventure",
+      " Comedy",
+      " Family"
     ],
-    "Director": "1120",
+    "Actors": [
+      "Koen van der Donk",
+      " Jos van der Donk",
+      " Maarten Spanjer"
+    ],
+    "Directors": "Steven de Jong",
     "Writers": [
-      "pinda"
+      "Hotze de Roos",
+      " Jean Ummels",
+      " Steven de Jong"
     ],
-    "Plot": "Pinda",
-    "Rating": 9.0,
-    "RuntimeMinutes": 110,
-    "Language": "english",
-    "Country": "Pinda",
-    "Auditorium": 1,
+    "Plot": "The twinbrothers Sietse and Hielke Klinkhamer want to raise money for their ill friend, Marieke.",
+    "Rating": 6.0,
+    "RuntimeMinutes": 105,
+    "Languages": "Dutch, Western Frisian",
+    "Countrys": "Netherlands",
+    "Auditorium": [1],
     "Awards": [
-      "none"
+      "2 wins"
+    ],
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMjA2NTUxODIzOF5BMl5BanBnXkFtZTcwMjMwNTQ5OA@@._V1_SX300.jpg",
+    "Scheduled": [
+      ""
     ]
   }
 ]

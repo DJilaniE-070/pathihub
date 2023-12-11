@@ -65,4 +65,16 @@ public class MakeReservation
         }
     }
 
+    public static bool CheckUniqueCode(string code)
+    {
+        foreach (Reservation reservation in Reservations)
+        {
+            if (string.Equals(reservation.ReservationCode, code))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

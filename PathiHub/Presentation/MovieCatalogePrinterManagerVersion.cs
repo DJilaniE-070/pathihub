@@ -29,9 +29,15 @@ public class MovieCatalogePrinterManagerVersion
                     case ConsoleKey.UpArrow:
                         selectedMovieIndex = (selectedMovieIndex - 1 + movies.Count) % movies.Count;
                         break;
-
                     case ConsoleKey.DownArrow:
                         selectedMovieIndex = (selectedMovieIndex + 1) % movies.Count;
+                        break;
+                    case ConsoleKey.Backspace:
+                        ManagerMenu.Start();
+                        break;
+                    case ConsoleKey.Escape:
+                        Console.WriteLine(" ");
+                        Menu.Start();
                         break;
                 }
 
@@ -93,7 +99,7 @@ public class MovieCatalogePrinterManagerVersion
             }
 
             Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", movies[i].MovieTitle,
-                movies[i].ReleaseYear, movies[i].Director, string.Join(", ", movies[i].Genre), movies[i].Rating);
+                movies[i].ReleaseYear, movies[i].Directors, string.Join(", ", movies[i].Genre), movies[i].Rating);
 
             Console.ResetColor();
         }

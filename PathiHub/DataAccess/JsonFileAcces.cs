@@ -2,8 +2,8 @@ using Newtonsoft.Json;
 
 public class JsonFileAccess<T>
 {
-    private List<T> itemList = new List<T>();
-    private string fileName;
+    protected List<T> itemList = new List<T>();
+    protected string fileName;
 
 
     public JsonFileAccess(string fileName)
@@ -11,7 +11,7 @@ public class JsonFileAccess<T>
         this.fileName = fileName;
     }
 
-    public void SaveToJson()
+    public virtual void SaveToJson()
     {
         string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Environment.CurrentDirectory, @"DataSources/", fileName));
         string json = JsonConvert.SerializeObject(itemList, Formatting.Indented);

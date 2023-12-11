@@ -127,6 +127,7 @@ public static void AddMoviePresentationWebb(string Header)
         {
             JObject movieJson = JObject.Parse(OMDBMovie);
 
+            
             Movie movie = new Movie
             {
                 MovieTitle = (string)movieJson["Title"], 
@@ -134,20 +135,19 @@ public static void AddMoviePresentationWebb(string Header)
                 ReleaseDate = (string)movieJson["Released"],
                 Genre = ((string)movieJson["Genre"]).Split(',').ToList(),
                 Actors = ((string)movieJson["Actors"]).Split(',').ToList(),
-                Director = (string)movieJson["Director"],
-                Directors = ((string)movieJson["Director"]).Split(',').ToList(),
+                Directors = (string)movieJson["Director"],
                 Writers = ((string)movieJson["Writer"]).Split(',').ToList(),
                 Plot = (string)movieJson["Plot"],
                 Rating = GetDoubleOrZero(((string)movieJson["imdbRating"])),
                 RuntimeMinutes = GetIntOrZero(((string)movieJson["Runtime"]).Split(" ")[0]), 
-                Language = (string)movieJson["Language"],
-                Languages = ((string)movieJson["Language"]).Split(',').ToList(),
-                Country = (string)movieJson["Country"],
-                Countrys = ((string)movieJson["Country"]).Split(',').ToList(),
-                Auditorium = 0, // Set the default value, you may need to change this based on your logic
+                Languages = (string)movieJson["Language"],
+                Countrys = (string)movieJson["Country"],
                 Awards = ((string)movieJson["Awards"]).Split(',').ToList(),
-                Poster = (string)movieJson["Poster"]
-        
+                Poster = (string)movieJson["Poster"],
+                // Hier een functie to assign to the correct day and time and auditorium
+                Auditorium = new List<int>{0}, // Set the default value, you may need to change this based on your logic
+                // Hierzo een functie die direct een movieschedule hieraan linkt
+                Scheduled = new List<string>{""},
             };
             return movie;
 
@@ -171,7 +171,6 @@ public static void AddMoviePresentationWebb(string Header)
                 string valueCorrected = value.Replace("\u2013", "-");
                 if (valueCorrected.Contains("-"))
                 {   
-                Console.WriteLine("-Detected");
                 return Convert.ToInt32(valueCorrected.Split("-")[0]);
                 }
                 return Convert.ToInt32(value);

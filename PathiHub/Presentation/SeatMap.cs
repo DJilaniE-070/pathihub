@@ -1,10 +1,14 @@
-﻿using System.Text;
+﻿using System.Collections;
+using System.Text;
+using PathiHub.Presentation;
 
 public class SeatMap
 {    
     // lijst om reservaties op te slaan
     //public static List<List<string>> ReservedSeats = new List<List<string>>();
     //public static List<ReservedSeats> ReserveSeat = new List<ReservedSeats>();
+    public static List<string> ReservedSeats = new List<string>();
+    public static Hashtable ReservedSeat = new Hashtable();
 
     // auditorium 1 met 150 stoelen (14 rijen en 12 stoelen per rij)
     public List<List<string>> auditorium1 = new List<List<string>>
@@ -140,6 +144,27 @@ public class SeatMap
         Auditorium = GetAuditorium(auditoriumnumber);
         Auditoriums();
     }
+    // Dit is voor de Stored Json seatmap te Displayen.
+    public SeatMap(int auditoriumnumber, List<List<String>>StoredMap)
+    {
+        AuditoriumNumber = auditoriumnumber;
+        PriceA = 25;
+        PriceB = 20;
+        PriceC = 15;
+        Auditorium = StoredMap;
+        Auditoriums();
+    }
+
+    // Dit is voor de Stored Json seatmap te Displayen. en Prijzen changen.
+    public SeatMap(int auditoriumnumber, List<List<string>>StoredMap , double astoelen, double bstoelen, double cstoelen)
+    {
+        AuditoriumNumber = auditoriumnumber;
+        PriceA = astoelen;
+        PriceB = bstoelen;
+        PriceC = cstoelen;
+        Auditorium = StoredMap;
+        Auditoriums();
+    }
 
     private List<List<string>> GetAuditorium(int auditoriumNumber) 
     {
@@ -231,8 +256,67 @@ public class SeatMap
                     Message = $"Weet je zeker dat je de volgende stoel of stoelen wilt reserveren?\nDruk op [enter] om verder te gaan\nDruk op [backspace] om terug te gaan";	
                     if (key.Key == ConsoleKey.Enter)
                     {
-                        SnacksMenu snack = new SnacksMenu();
-                        snack.Start();
+                        // SnacksMenu snack = new SnacksMenu();
+                        // snack.Start();
+                        // ReservationPresentation.AddReservation();
+                        bool Loop1 = true;
+                        bool Loop2 = true;
+                        if( !SeatmapLogic.CheckCurrentUser())
+                        {
+                            while (Loop1)
+                            {
+                                Console.WriteLine("You are not logged in. Do you have a account? (yes or no)");
+                                string HaveAcc = Helpers.Color("yellow").ToLower();
+                                if (HaveAcc == "no")
+                                {
+                                    while (Loop2)
+                                        {
+                                        Console.WriteLine("Do you wish to make a new account to finish your reservation? (yes or no)");
+                                        string MakeAcc = Helpers.Color("yellow").ToLower();
+                                        if (MakeAcc == "yes")
+                                        {
+                                            // dit slaat de zaal op in json
+                                            MovieSchedule.SaveAuditorium(Auditorium);
+                                            UserRegistration.RegisterUser();
+                                            break;
+                                        }
+                                        if (MakeAcc == "no")
+                                        {
+                                        Helpers.PrintStringToColor("You can't finish your reservation without making account\nYou will be redirected to the main page","Red");
+                                        Thread.Sleep(1000);
+                                        Menu.Start();
+                                        Loop2 = false;
+                                        Loop1 = false;
+                                        Environment.Exit(0);
+                                        }
+                                        break;
+                                        }
+
+                                }
+                                else if (HaveAcc == "yes")
+                                {
+                                    //  hierzo de code als je acc hebt dan alleen email password and then check in accountlogic als dat bestaat
+                                    // Accountmodel.Checklogin(email, password)
+                                    Loop1 = false;
+                                    // this code under this saves the auditorium to its schedule
+                                    MovieSchedule.SaveAuditorium(Auditorium);
+                                    Environment.Exit(0);
+                                }
+                                else
+                                {
+                                    Helpers.PrintStringToColor("Incorrect input", "red");
+                                }
+                            }
+                        break;
+                        }
+                        else
+                        {
+                            // dit slaat de zaal op in json als iemand klaar is met bestellen
+                            MovieSchedule.SaveAuditorium(Auditorium);
+                            Console.WriteLine("You are logged in");
+                            Environment.Exit(0);
+                            // Djilanie hier code voor als user is ingelogd. Dus geen inputs maar read from accountmodel user dan
+                        }
                         break;
                     }
                     if (key.Key == ConsoleKey.Backspace)
@@ -242,6 +326,7 @@ public class SeatMap
                     break;
                 // een stoel annuleren
                 case ConsoleKey.Backspace:
+                // Hier zit nog een probleem als je backspace op een stoel die jij niet hebt gereserveerd dan anuleerd het alsnog
                     if (Auditorium[CursorRow][CursorSeat] == "AR")
                     {
                         Auditorium[CursorRow][CursorSeat] = "A";
@@ -267,6 +352,8 @@ public class SeatMap
                     break;
                 // een stoel selecteren
                 case ConsoleKey.Spacebar:
+                    // Hierzo moet zijn een extra functie op de gebruiker die in dit gaat om jouw geselecteerde stoel op te slaan in een private field B.V
+                    // Dus user 1 reserveert en kan alleen stoelen annuleren van hem
                     // als A, B of C is reserveer stoel en verander positie in list naar R
                     if (Auditorium[CursorRow][CursorSeat] == "A")
                     {
@@ -297,6 +384,11 @@ public class SeatMap
                         Message = $"Dit is een gereserveerde stoel, kies een andere stoel";
                     }
                     break;
+                case ConsoleKey.Escape:
+                    Menu.Start();
+                    Environment.Exit(0);
+                    break;
+
             }
             // laat de hele auditorium zien
             DisplayAll();
@@ -311,9 +403,8 @@ public class SeatMap
             DisplayLegenda();*/
 
         // escape button om uit loop te gaan
-        } while (key.Key != ConsoleKey.Escape);
+        } while (true);
         // escape en je gaat terug naar menu.cs scherm
-        Menu.Start();
     }
 
     // print alles

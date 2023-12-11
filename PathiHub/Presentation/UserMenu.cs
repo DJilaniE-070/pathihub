@@ -58,7 +58,8 @@ public static class UserMenu
                     }
                     break;
                 case ConsoleKey.Enter:
-                    ReserveSeat();
+                    // ReserveSeat();
+                    PerformAction(menuOptions[selectedIndex]);
                     Console.Clear();
                     exit = true;
                     break;
@@ -75,15 +76,14 @@ public static class UserMenu
         switch (option)
         {
             case "[1]. Make a reservation":
-                //ReserveSeat();
+                ReserveSeat();
                 break;
             
             case "[2]. Check reservation":
                 Thread.Sleep(1500);
                 CheckReservation();
                 break;
-            
-                    
+              
             case "[3]. Cancel reservation":
                 CancelReservation();
                 break;
