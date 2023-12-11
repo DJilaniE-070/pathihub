@@ -327,6 +327,17 @@ ______ _       _
         {
             break;
         }
+       else if (key.Key == ConsoleKey.Backspace)
+        {
+            Helpers.BackToYourMenu();
+            break;
+        }
+        else if (key.Key == ConsoleKey.Escape)
+        {
+            Helpers.MainMenu();
+            break;
+        }
+
 
     }   
     while (true);

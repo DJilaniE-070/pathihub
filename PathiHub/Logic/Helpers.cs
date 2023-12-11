@@ -24,6 +24,8 @@ public class Helpers
         {
             Menu.Start();
         } 
+        else
+        {
         string role = CurrentAccount.Role;
         switch (role)
         {
@@ -51,8 +53,16 @@ public class Helpers
                     Menu.Start();
                     break;
         }
+        }
     }
     
+    public static void MainMenu()
+    {
+        Console.WriteLine(" ");
+        CurrentAccount = null;
+        Menu.Start();
+        Environment.Exit(0);
+    }
     // Mini versie van het printen voor een cursor
     public static int MiniCursor(string[] menuOptions, DeleteMovieOutTabel movieDeletor)
     {

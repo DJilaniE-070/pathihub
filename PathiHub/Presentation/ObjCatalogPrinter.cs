@@ -41,9 +41,7 @@ public class ObjCatalogePrinter
                         break;
                     case ConsoleKey.Escape:
                         selectedObjIndex = 0;
-                        Console.WriteLine(" ");
-                        Menu.Start();
-                        Environment.Exit(0);
+                        Helpers.MainMenu();
                         break;
 
                 }

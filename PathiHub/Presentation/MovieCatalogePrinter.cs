@@ -41,6 +41,14 @@ public class MovieCatalogePrinter
                     case ConsoleKey.DownArrow:
                         selectedMovieIndex = (selectedMovieIndex + 1) % movies.Count;
                         break;
+                    case ConsoleKey.Backspace:
+                        Helpers.BackToYourMenu();
+                        Environment.Exit(0);
+                        break;
+                    case ConsoleKey.Escape:
+                        Helpers.MainMenu();
+                        break;
+
                 }
 
                 // Clear the console before redrawing the table
@@ -73,7 +81,7 @@ public class MovieCatalogePrinter
 
     public static void DrawMovieTable(List<Movie> movies)
     {
-        Console.WriteLine(@" 
+        Helpers.PrintStringToColor(@" 
 ___  ___           _        _____       _        _                  
 |  \/  |          (_)      /  __ \     | |      | |                 
 | .  . | _____   ___  ___  | /  \/ __ _| |_ __ _| | ___   __ _  
@@ -82,7 +90,7 @@ ___  ___           _        _____       _        _
 \_|  |_/\___/ \_/ |_|\___|  \____/\__,_|\__\__,_|_|\___/ \__, |
                                                           __/ |     
                                                          |___/     
-");
+","yellow");
 
         Helpers.CharLine('-', 80);
         Console.WriteLine("This is our movie Catalog");

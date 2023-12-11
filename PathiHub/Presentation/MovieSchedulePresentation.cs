@@ -60,7 +60,7 @@ public static class MovieSchedule
                     Helpers.BackToYourMenu();
                     break;
                 case ConsoleKey.Escape:
-                    Helpers.CurrentAccount = null;
+                    Helpers.MainMenu();
                     loop = false;
                     break;    
                 
@@ -157,9 +157,7 @@ public static class MovieSchedule
                     Environment.Exit(0);
                     break;
                 case ConsoleKey.Escape:
-                    Helpers.CurrentAccount = null;
-                    Menu.Start();
-                    Environment.Exit(0);
+                    Helpers.MainMenu();
                     break;
                 case  ConsoleKey.Enter:
                     loop = false;

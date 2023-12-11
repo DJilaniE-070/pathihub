@@ -42,8 +42,7 @@ ___  ___           _       ______
             // Dit werkt nog niet ik kan dit niet gebruiken kan niet naar main menu en uitloggen soort van
             else if (key.Key == ConsoleKey.Escape)
             {
-                Console.WriteLine(" ");
-                Menu.Start();
+                Helpers.MainMenu();
             }
             else
             {
@@ -76,8 +75,7 @@ ___  ___           _       ______
             }
             else if (key.Key == ConsoleKey.Escape)
             {
-                Console.WriteLine(" ");
-                Menu.Start();
+                Helpers.MainMenu();
                 
             }
             else

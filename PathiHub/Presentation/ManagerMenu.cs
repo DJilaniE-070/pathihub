@@ -8,7 +8,7 @@ public static class ManagerMenu
         int selectedIndex = 0;
         bool exit = false;
 
-        string[] menuOptions = { "[1] Film options", "[2] Reserve a movie", "[3] Reservation options", "[4] Financial options", "[5] Snacks options", "[6] Exit" };
+        string[] menuOptions = { "[1] Film options","[2] Reserve a movie", "[3] Reservation options", "[4] Financial options", "[5] Snacks options", "[6] Exit" };
 
         do
         {
@@ -59,8 +59,7 @@ ___  ___                                   ___  ___
                     }
                     break;
                 case ConsoleKey.Escape:
-                    Console.WriteLine(" ");
-                    Menu.Start();
+                    Helpers.MainMenu();
                     break;
                 case ConsoleKey.Enter:
                     Console.Clear();
@@ -103,8 +102,7 @@ ___  ___                                   ___  ___
             
             case "[6] Exit":
                 Thread.Sleep(1500);
-                Helpers.CurrentAccount = null;
-                Menu.Start();
+                Helpers.MainMenu();
                 break;
             
         }
@@ -166,8 +164,7 @@ ___  ___           _        _____       _   _
                     Helpers.BackToYourMenu();
                     break;
             case ConsoleKey.Escape:
-                    Console.WriteLine(" ");
-                    Menu.Start();
+                    Helpers.MainMenu();
                     break;
             case ConsoleKey.Enter:
                 Console.Clear();
@@ -263,9 +260,7 @@ ______                               _   _               _____       _   _
                     Environment.Exit(0);
                     break;
             case ConsoleKey.Escape:
-                    Console.WriteLine(" ");
-                    Menu.Start();
-                    Environment.Exit(0);
+                    Helpers.MainMenu();
                     break;
             case ConsoleKey.Enter:
                 Console.Clear();
