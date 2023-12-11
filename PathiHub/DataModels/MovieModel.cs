@@ -16,7 +16,7 @@ public class Movie
     public string Languages { get; set; }
     public string Countrys { get; set; }
     
-    public int Auditorium {get; set;}
+    public List<int> Auditorium {get; set;}
     public List<string> Awards { get; set; }
 
     public string Poster {get;set;}

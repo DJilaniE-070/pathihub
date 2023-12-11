@@ -103,19 +103,37 @@ public class MovieOptionsLogic
     {
         List<Movie> filteredMovies = new List<Movie>();
 
-         if (movies == null)
+        if (movies == null)
         {
             Console.WriteLine("Movies collection is null.");
             return null;
         }
+
         foreach (Movie movie in MovieOptionsLogic.movies)
         {
-            if (movie.Scheduled != null && movie.Scheduled[0] != "" && movie.Auditorium >= 1 && movie.Auditorium <= 3)
+            if (IsValidMovie(movie))
             {
                 filteredMovies.Add(movie);
             }
         }
+        
+    return filteredMovies;      
+    }
 
-        return filteredMovies;
+    private static bool IsValidMovie(Movie movie)
+    {
+        if (movie.Auditorium != null)
+        {
+            foreach (int num in movie.Auditorium)
+            {
+                if (num <= 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        return false;
     }
 }

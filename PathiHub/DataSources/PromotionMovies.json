@@ -21,7 +21,7 @@
     "RuntimeMinutes": 120,
     "Languages": "English",
     "Countrys": "United States",
-    "Auditorium": 3,
+    "Auditorium": [3],
     "Awards": null,
     "Poster": null,
     "Scheduled": [
@@ -53,7 +53,7 @@
     "RuntimeMinutes": 115,
     "Languages": "English",
     "Countrys": "United States",
-    "Auditorium": 1,
+    "Auditorium": [1],
     "Awards": [
       ""
     ],
@@ -88,7 +88,7 @@
     "RuntimeMinutes": 105,
     "Languages": "Dutch, Western Frisian",
     "Countrys": "Netherlands",
-    "Auditorium": 1,
+    "Auditorium": [1],
     "Awards": [
       "2 wins"
     ],

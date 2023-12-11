@@ -8,7 +8,7 @@ public static class ManagerMenu
         int selectedIndex = 0;
         bool exit = false;
 
-        string[] menuOptions = { "[1] Film options", "[2] Reserve a movie", "[3] Reservation options", "[4] Financial options", "[5] Snacks options", "[6] Exit" };
+        string[] menuOptions = { "[1] Film options","[2] Reserve a movie", "[3] Reservation options", "[4] Financial options", "[5] Snacks options", "[6] Exit" };
 
         do
         {
@@ -59,8 +59,7 @@ ___  ___                                   ___  ___
                     }
                     break;
                 case ConsoleKey.Escape:
-                    Console.WriteLine(" ");
-                    Menu.Start();
+                    Helpers.MainMenu();
                     break;
                 case ConsoleKey.Enter:
                     Console.Clear();
@@ -103,7 +102,7 @@ ___  ___                                   ___  ___
             
             case "[6] Exit":
                 Thread.Sleep(1500);
-                Console.WriteLine("Thank you for using our programme.");
+                Helpers.MainMenu();
                 break;
             
         }
@@ -162,11 +161,10 @@ ___  ___           _        _____       _   _
                 break;
              case ConsoleKey.Backspace:
                     Console.WriteLine(" ");
-                    ManagerMenu.Start();
+                    Helpers.BackToYourMenu();
                     break;
             case ConsoleKey.Escape:
-                    Console.WriteLine(" ");
-                    Menu.Start();
+                    Helpers.MainMenu();
                     break;
             case ConsoleKey.Enter:
                 Console.Clear();
@@ -191,7 +189,7 @@ ___  ___           _        _____       _   _
                         break;
                     case 6:
                         exit = true;
-                        ManagerMenu.Start();
+                        Helpers.BackToYourMenu();
                         break;
                     default:
                         Console.WriteLine("Invalid option");
@@ -207,7 +205,7 @@ ___  ___           _        _____       _   _
 
 public static void ReservationsOptions()
 {
-    string[] menuOptions = { "Make a Reervation", "Remove a reservation", "Change a reservation","Show Reservations", "Return to Manager menu" };
+    string[] menuOptions = { "Make a Reervation", "Remove a reservation", "Change a reservation","Show Reservations" };
     int selectedIndex = 0;
     bool exit = false;
 
@@ -256,9 +254,18 @@ ______                               _   _               _____       _   _
                     selectedIndex++;
                 }
                 break;
+            case ConsoleKey.Backspace:
+                    Console.WriteLine(" ");
+                    Helpers.BackToYourMenu();
+                    Environment.Exit(0);
+                    break;
+            case ConsoleKey.Escape:
+                    Helpers.MainMenu();
+                    break;
             case ConsoleKey.Enter:
                 Console.Clear();
                 int option = selectedIndex + 1;
+                exit = true;
                 switch (option)
                 {
                     case 1:
@@ -272,10 +279,6 @@ ______                               _   _               _____       _   _
                         break;
                     case 4:
                         ReservationPresentation.ShowReservations();
-                        break;
-                    case 5:
-                        exit = true;
-                        ManagerMenu.Start();
                         break;
                     default:
                         Console.WriteLine("Invalid option");
