@@ -37,16 +37,13 @@ ___  ___           _       ______
             }
             else if (key.Key == ConsoleKey.Backspace)
             {
-                ManagerMenu.Start();
+                Helpers.BackToYourMenu();
             }
             // Dit werkt nog niet ik kan dit niet gebruiken kan niet naar main menu en uitloggen soort van
-            // else if (key.Key == ConsoleKey.Escape)
-            // {
-                
-            //     System.Environment.Exit(0);
-            //     Menu.Start();
-            //     return;
-            // }
+            else if (key.Key == ConsoleKey.Escape)
+            {
+                Helpers.MainMenu();
+            }
             else
             {
                 Helpers.PrintStringToColor("Invalid option try again","red");
@@ -74,11 +71,11 @@ ___  ___           _       ______
             }
             else if (key.Key == ConsoleKey.Backspace)
             {
-                ManagerMenu.Start();
+                Helpers.BackToYourMenu();
             }
             else if (key.Key == ConsoleKey.Escape)
             {
-                Menu.Start();
+                Helpers.MainMenu();
                 
             }
             else
@@ -119,16 +116,21 @@ ___  ___           _       ______
                     movie.ReleaseYear = releaseYearInput;
                     inputIsValid = true; 
                 }
-                catch (FormatException e)
+                catch (FormatException)
                 {
                     Helpers.PrintStringToColor("Invalid input format. Please enter a valid integer.\nA valid option is when the date has 4 digits ", "red");
                 }
-                catch (OverflowException e)
+                catch (OverflowException)
                 {
                     Helpers.PrintStringToColor("Input value is too large or too small. Please enter a valid integer.\nA valid option is when the date has 4 digits", "red");
                 }
             }
 
+            Console.Write("Enter Releasedate : ");
+            string? ReleaseDate = Helpers.Color("DarkYellow");
+            movie.ReleaseDate = string.IsNullOrEmpty(ReleaseDate)
+                ? "X" 
+                : ReleaseDate;
 
 
             Console.Write("Enter genres (comma-separated, or press Enter for none): ");
@@ -137,14 +139,20 @@ ___  ___           _       ______
                 ? new List<string> { "X" } 
                 : new List<string>(genresInput.Split(','));
 
-            Console.Write("Enter director: ");
+            Console.Write("Enter Directors (comma-separated, or press Enter for none): : ");
             string? Director = Helpers.Color("DarkYellow");
-            movie.Director = string.IsNullOrEmpty(Director)
+            movie.Directors = string.IsNullOrEmpty(Director)
                 ? "X" 
                 : Director;
+
+            Console.Write("Enter Actors (comma-separated, or press Enter for none): : ");
+            string? Actors = Helpers.Color("DarkYellow");
+            movie.Actors = string.IsNullOrEmpty(Actors)
+                ? new List<string> { "X" } 
+                : new List<string>(Actors.Split(','));
             
 
-            Console.Write("Enter writers (comma-separated, or press Enter for none): ");
+            Console.Write("Enter Writers (comma-separated, or press Enter for none): ");
             string? writersInput = Helpers.Color("DarkYellow");
             movie.Writers = string.IsNullOrEmpty(writersInput)
                 ?  new List<string> { "X" }  
@@ -154,30 +162,51 @@ ___  ___           _       ______
             string? plot = Helpers.Color("DarkYellow");
             movie.Plot = string.IsNullOrEmpty(plot) 
                 ?"X"
-                :movie.Plot = plot;       
+                :plot;       
 
-
-            Console.Write("Enter rating: ");
-            string? ratingInputString = Helpers.Color("DarkYellow");
-            movie.Rating = string.IsNullOrEmpty(ratingInputString) 
-                ? 0.0
-                : Convert.ToDouble(ratingInputString);
-
-            Console.Write("Enter runtime in minutes: ");
-            string runtimeInput = Helpers.Color("DarkYellow");
-            movie.RuntimeMinutes = string.IsNullOrEmpty(runtimeInput)
-                ? 0
-                : Convert.ToInt32(runtimeInput);
+            while(true)
+            {
+                Console.Write("Enter rating: ");
+                string? ratingInputString = Helpers.Color("DarkYellow");
+                try
+                {
+                movie.Rating = string.IsNullOrEmpty(ratingInputString) 
+                    ? 0.0
+                    : Convert.ToDouble(ratingInputString);
+                    break;
+                }
+                catch (FormatException)
+                    {
+                        Helpers.PrintStringToColor("Invalid input format. Please enter a valid number ", "red");
+                    }
+            }
             
-            Console.Write("Enter language: ");
+            while (true)
+            {
+                try
+                {
+                Console.Write("Enter runtime in minutes: ");
+                string runtimeInput = Helpers.Color("DarkYellow");
+                movie.RuntimeMinutes = string.IsNullOrEmpty(runtimeInput)
+                    ? 0
+                    : Convert.ToInt32(runtimeInput);
+                    break;
+                }
+                catch (FormatException)
+                {
+                    Helpers.PrintStringToColor("Invalid input format. Please enter a valid number. ", "red");
+                }
+            }
+
+            Console.Write("Enter language(s) (comma-separated, or press Enter for none): ");
             string? Language = Helpers.Color("DarkYellow");
-            movie.Language = string.IsNullOrEmpty(Language)
+            movie.Languages = string.IsNullOrEmpty(Language)
             ?"X"
             :Language;
             
-            Console.Write("Enter country: ");
+            Console.Write("Enter country(s) (comma-separated, or press Enter for none):: ");
             string Country = Helpers.Color("DarkYellow");
-            movie.Country = string.IsNullOrEmpty(Country)
+            movie.Countrys = string.IsNullOrEmpty(Country)
             ?"X"
             :Country;
 
@@ -186,11 +215,35 @@ ___  ___           _       ______
             movie.Awards = string.IsNullOrEmpty(AwardsInput)
                 ? new List<string> { "X" } 
                 : new List<string>(AwardsInput.Split(','));
-            
-            Console.Write("Enter the auditorium (1,2,3): ");
-            int auditorium = Convert.ToInt32( Helpers.Color("DarkYellow"));
-            movie.Auditorium = auditorium;
+                
+            Console.Write("Enter poster URl it begins with https://m.media-amazon.com");
+            string? poster = Helpers.Color("DarkYellow");
+            movie.Poster = string.IsNullOrEmpty(poster)
+            ?"X"
+            :poster;
+            // while (true)
+            // {
+            //     Console.Write("Enter the auditorium (1,2,3): ");
+            //     int auditorium = Convert.ToInt32( Helpers.Color("DarkYellow"));
+            //     if (auditorium >= 1 && auditorium <= 3)
+            //     {
+            //     movie.Auditorium = auditorium;
+            //     break;
+            //     }
+            //     else
+            //     {
+            //         Helpers.PrintStringToColor("Choose between 1 and 3","red");
+            //     }
+            // }
 
+
+            
+            // Dit een check laten doen
+            Console.Write("Enter Scheduled time as Monday/12:00-14.30,Thursday/18:00-20:30");
+            string? scheduled = Helpers.Color("DarkYellow");
+            movie.Scheduled = string.IsNullOrEmpty(scheduled)
+            ? new List<string> { "X" } 
+            : new List<string>(AwardsInput.Split(','));
 
             MoviesAccess acces = new MoviesAccess();
             if (acces.LoadFromJson() == true)

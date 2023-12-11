@@ -2,12 +2,7 @@ using System;
 
 public class MovieTimeTable
 {
-    public MovieCatalogePrinter moviePrinter;
-
-    public MovieTimeTable()
-    {
-        moviePrinter = new MovieCatalogePrinter();
-    }
+    MoviesAccess moviesAccess = new MoviesAccess();
 
     // first ask for movie via MovieCatalogePrinter and the available days
     public int selectedIndex;
@@ -46,7 +41,6 @@ public class MovieTimeTable
                 Console.WriteLine(days[i]);
                 Console.ResetColor();
             }
-
             Console.WriteLine("--------------------------------------------------------------------------------");
 
             ConsoleKeyInfo keyInfo = Console.ReadKey();
@@ -76,7 +70,5 @@ public class MovieTimeTable
     {
         Console.WriteLine("Must be implement correctly");
         // Pass the MoviesAccess instance to the TabelPrinter method of MovieCatalogePrinter and print it (to test for now)
-        // Movie selectedMovie = moviePrinter.TabelPrinter(access);
-        // Console.WriteLine(selectedMovie.MovieTitle);
     }
 }

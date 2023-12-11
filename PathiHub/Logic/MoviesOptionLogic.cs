@@ -53,7 +53,7 @@ public class MovieOptionsLogic
         foreach (Movie movie in movies)
         {
             if (string.Equals(movie.MovieTitle, Movie.MovieTitle) &&
-                string.Equals(movie.Director, Movie.Director))
+                string.Equals(movie.Directors, Movie.Directors))
             {
                 // Movie already exists
                 movieExists = true;
@@ -74,7 +74,7 @@ public class MovieOptionsLogic
         }
     }
 
-    public bool RemoveMovie(string movieTitle,string Director)
+    public bool RemoveMovie(string movieTitle,string Directors)
     {
         Movie movieToRemove = null;
 
@@ -82,7 +82,7 @@ public class MovieOptionsLogic
         {
             //search based on title and director
             if (string.Equals(movie.MovieTitle, movieTitle) &&
-                string.Equals(movie.Director, Director))
+                string.Equals(movie.Directors, Directors))
             {
                 movieToRemove = movie;
                 break;
@@ -98,5 +98,42 @@ public class MovieOptionsLogic
         {
             return false;
         }
+    }
+    public static List<Movie> FilterMovies()
+    {
+        List<Movie> filteredMovies = new List<Movie>();
+
+        if (movies == null)
+        {
+            Console.WriteLine("Movies collection is null.");
+            return null;
+        }
+
+        foreach (Movie movie in MovieOptionsLogic.movies)
+        {
+            if (IsValidMovie(movie))
+            {
+                filteredMovies.Add(movie);
+            }
+        }
+        
+    return filteredMovies;      
+    }
+
+    private static bool IsValidMovie(Movie movie)
+    {
+        if (movie.Auditorium != null)
+        {
+            foreach (int num in movie.Auditorium)
+            {
+                if (num <= 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        return false;
     }
 }

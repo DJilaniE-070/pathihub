@@ -12,7 +12,15 @@ public class MovieCatalogePrinter
     {
         if (access.LoadFromJson() == true)
         {
-            List<Movie> movies = access.GetItemList();
+            // List<Movie> movies = access.GetItemList(); dit is alle movies
+            List<Movie> Movies = access.GetItemList();
+            MovieOptionsLogic.InitializeMovies(Movies);
+            List<Movie> movies = MovieOptionsLogic.FilterMovies();
+            // de bovenstaande 3 regels zijn om de movies te sorteren
+            // hieronder is voor de schedule json correct afgesteld te zijn op de films
+            MovieToAuditoriumLogic logic = new();
+            
+            logic.initializerAuditorium(movies);
 
             // Teken de tabel met films
             DrawMovieTable(movies);
@@ -33,6 +41,14 @@ public class MovieCatalogePrinter
                     case ConsoleKey.DownArrow:
                         selectedMovieIndex = (selectedMovieIndex + 1) % movies.Count;
                         break;
+                    case ConsoleKey.Backspace:
+                        Helpers.BackToYourMenu();
+                        Environment.Exit(0);
+                        break;
+                    case ConsoleKey.Escape:
+                        Helpers.MainMenu();
+                        break;
+
                 }
 
                 // Clear the console before redrawing the table
@@ -48,13 +64,15 @@ public class MovieCatalogePrinter
 
             // Nu heb je toegang tot de geselecteerde film in de "movies" lijst
             Console.WriteLine($"\nYou have selected the movie: '{movies[selectedMovieIndex].MovieTitle}'.");
-            
-            //Hier komt later nog een check die kijkt naar de staat van de inlog waardoor MovieCatalogePrinterManagerVersion kan worden verwijderd
-            MovieToAuditoriumLogic movieToAuditoriumLogic = new MovieToAuditoriumLogic();
-            movieToAuditoriumLogic.Connector(movies[selectedMovieIndex]);
-            // Thread.Sleep(2000); // Optional delay
+            Thread.Sleep(500);
+            MovieSchedule.SelectedMovie = movies[selectedMovieIndex];
+            // Choose auditorium
+            MovieSchedule.ChooseAuditorium();
+            // Choose time
+             //Hier komt later nog een check die kijkt naar de staat van de inlog waardoor MovieCatalogePrinterManagerVersion kan worden verwijderd
+            logic.Connector(MovieSchedule.SelectedMovie);
+            Thread.Sleep(2000); // Optional delay
            
-
             return movies[selectedMovieIndex];
         }
 
@@ -63,7 +81,7 @@ public class MovieCatalogePrinter
 
     public static void DrawMovieTable(List<Movie> movies)
     {
-        Console.WriteLine(@" 
+        Helpers.PrintStringToColor(@" 
 ___  ___           _        _____       _        _                  
 |  \/  |          (_)      /  __ \     | |      | |                 
 | .  . | _____   ___  ___  | /  \/ __ _| |_ __ _| | ___   __ _  
@@ -72,7 +90,7 @@ ___  ___           _        _____       _        _
 \_|  |_/\___/ \_/ |_|\___|  \____/\__,_|\__\__,_|_|\___/ \__, |
                                                           __/ |     
                                                          |___/     
-");
+","yellow");
 
         Helpers.CharLine('-', 80);
         Console.WriteLine("This is our movie Catalog");
@@ -93,12 +111,16 @@ ___  ___           _        _____       _        _
                 Console.ForegroundColor = ConsoleColor.Black;
             }
 
-            Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", movies[i].MovieTitle,
-                movies[i].ReleaseYear, movies[i].Director, string.Join(", ", movies[i].Genre), movies[i].Rating);
-
+            Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}",
+            TruncateString(movies[i].MovieTitle,20),
+            movies[i].ReleaseYear,
+            TruncateString(movies[i].Directors, 20), 
+            TruncateString( string.Join(", ", movies[i].Genre),20), 
+            movies[i].Rating);
             Console.ResetColor();
         }
     }
+
 
     public static void ShowSelectedMoviePlot(Movie selectedMovie)
     {
@@ -106,5 +128,13 @@ ___  ___           _        _____       _        _
         DiscriptionPrinter.DrawBox(selectedMovie);
         
          
+    }
+    public static string TruncateString(string stringValue, int maxLength)
+    {
+        if (stringValue.Length > maxLength)
+        {
+            stringValue = stringValue.Substring(0, maxLength - 3) + "...";
+        }
+        return stringValue;
     }
 }

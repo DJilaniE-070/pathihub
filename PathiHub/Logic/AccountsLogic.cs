@@ -6,7 +6,7 @@ using System.Text.Json;
 
 //This class is not static so later on we can use inheritance and interfaces
 public class AccountsLogic
-{
+{   
     private static List<AccountModel> _accounts;
 
     //Static properties are shared across all instances of the class

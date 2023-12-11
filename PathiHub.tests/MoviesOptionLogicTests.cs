@@ -16,11 +16,11 @@ public class MoviesOptionLogicTests
     public void TestAddMovie()
     {
         int count = movies.Count;
-        movie = new Movie() { MovieTitle = "test", Director = "test" };
+        movie = new Movie() { MovieTitle = "test", Directors = "test" };
         movies.Add(movie);
         Assert.AreEqual(count + 1, movies.Count);
         Assert.AreEqual("test", movies.Last().MovieTitle);
-        Assert.AreEqual("test", movies.Last().Director);
+        Assert.AreEqual("test", movies.Last().Directors);
     }
     
     [TestMethod]
