@@ -1,4 +1,5 @@
 using System;
+using Internal;
 
 public static class CoWorker
 {
@@ -20,7 +21,6 @@ public static class CoWorker
 | |     / _ \ | |/\| | / _ \ | '__|| |/ / / _ \| '__| | |\/| | / _ \| '_ \ | | | |
 | \__/\| (_) |\  /\  /| (_) || |   |   < |  __/| |    | |  | ||  __/| | | || |_| |
  \____/ \___/  \/  \/  \___/ |_|   |_|\_\ \___||_|    \_|  |_/ \___||_| |_| \__,_|
-                                                                                  
                                                                                   
     ", "yellow");
 
@@ -93,6 +93,7 @@ public static class CoWorker
 
     static void OverviewAllReservations()
     {
+        Console.Clear();
     string HeaderX = @"
  _____  _                       ______                                       _    _                    
 /  ___|| |                      | ___ \                                     | |  (_)                   
@@ -100,7 +101,6 @@ public static class CoWorker
  `--. \| '_ \  / _ \ \ \ /\ / / |    /  / _ \/ __| / _ \| '__|\ \ / / / _` || __|| | / _ \ | '_ \ / __|
 /\__/ /| | | || (_) | \ V  V /  | |\ \ |  __/\__ \|  __/| |    \ V / | (_| || |_ | || (_) || | | |\__ \
 \____/ |_| |_| \___/   \_/\_/   \_| \_| \___||___/ \___||_|     \_/   \__,_| \__||_| \___/ |_| |_||___/
-                                                                                                       
                                                                                                        
 ";
     ReservationAccess access = new();
@@ -115,6 +115,8 @@ public static class CoWorker
     static void ChangeReservations()
     {
         List<string> ColomnNames = new(){"FullName", "ReservationCode", "Email", "Date", "Price"};
+
+        Console.Clear();
         string HeaderX = @"
  _____  _                                 ______                                       _    _                    
 /  __ \| |                                | ___ \                                     | |  (_)                   
@@ -125,12 +127,31 @@ public static class CoWorker
                               __/ |                                                                              
                              |___/                                                                               
 ";
-        PerformActionToTabel.Editor(HeaderX,"Reservation", ColomnNames);
+        PerformActionToTabel.Editor(HeaderX, "Reservation", ColomnNames);
     }
 
     static void ReserveSeatCustomer()
     {
+        Console.Clear();
         Console.WriteLine("Reservate a seat for a customer");
-        Heplers.PrintStringToColor()
+        string HeaderX = (@"
+ _____               _    ______                                       _    _               
+/  ___|             | |   | ___ \                                     | |  (_)              
+\ `--.   ___   __ _ | |_  | |_/ /  ___  ___   ___  _ __ __   __  __ _ | |_  _   ___   _ __  
+ `--. \ / _ \ / _` || __| |    /  / _ \/ __| / _ \| '__|\ \ / / / _` || __|| | / _ \ | '_ \ 
+/\__/ /|  __/| (_| || |_  | |\ \ |  __/\__ \|  __/| |    \ V / | (_| || |_ | || (_) || | | |
+\____/  \___| \__,_| \__| \_| \_| \___||___/ \___||_|     \_/   \__,_| \__||_| \___/ |_| |_|
+
+");
+        Console.WriteLine("Enter customers name: ");
+        string FullName = Console.ReadLine();
+
+        Console.WriteLine("Enter customers email adress: ");
+        string Email = Console.ReadLine();
+
+        // After this it should go to time the customer wants to reserve
+        // after that it will ask for auditoriom
+        // still have to implement this part
+        
     }
 }
