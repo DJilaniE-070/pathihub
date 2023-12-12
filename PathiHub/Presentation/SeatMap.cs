@@ -6,7 +6,8 @@ public class SeatMap
 {    
     // lijst om reservaties op te slaan
     //public static List<List<string>> ReservedSeats = new List<List<string>>();
-    //public static List<ReservedSeats> ReserveSeat = new List<ReservedSeats>();
+    //public static List<ReservedSeats> ReserveSeat = new List<ReservedSeats>()
+    public List<Tuple<int, int>> yourseats = new List<Tuple<int, int>>();
     public static List<string> ReservedSeats = new List<string>();
     public static Hashtable ReservedSeat = new Hashtable();
 
@@ -196,26 +197,6 @@ public class SeatMap
     // 3 auditoriums hardcoded en cursor logic
     public void Auditoriums()
     {
-        // auditorium kiezen, maakt een kopie van de auditorium 1 tot en met 3 en zet in Auditorium
-        //List<List<string>> Auditorium = new();
-        
-
-        // cursor positie voor rij en stoel
-        //int CursorRow = 0;
-        //int CursorSeat = 0;
-
-        // message wordt altijd geprint, maar is default op leeg en print normaal niks totdat je op enter klikt
-        //string message = "";
-
-        // laat de auditorium eerst zien samen met titel, scherm, legenda en cursor
-        /* ben van plan om een DisplayAll() te maken om alles aan te roepen, zodat minder code hoeft te worden uitgevoerd
-        DisplayTitle(AuditoriumNumber);
-        DisplayAuditorium(Auditorium, CursorRow, CursorSeat);
-        DisplayScreen(AuditoriumNumber);
-        DisplayCursorPosition(CursorRow, CursorSeat);
-        DisplayLegenda();
-        */
-
         // laat de hele auditorium zien
         DisplayAll();
 
@@ -326,28 +307,33 @@ public class SeatMap
                     break;
                 // een stoel annuleren
                 case ConsoleKey.Backspace:
-                // Hier zit nog een probleem als je backspace op een stoel die jij niet hebt gereserveerd dan anuleerd het alsnog
-                    if (Auditorium[CursorRow][CursorSeat] == "AR")
+                    if (yourseats.Contains(new Tuple<int, int>(CursorRow, CursorSeat)))
                     {
-                        Auditorium[CursorRow][CursorSeat] = "A";
-                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
-                        break;
-                    }
-                    if (Auditorium[CursorRow][CursorSeat] == "BR")
-                    {
-                        Auditorium[CursorRow][CursorSeat] = "B";
-                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
-                        break;
-                    }
-                    if (Auditorium[CursorRow][CursorSeat] == "CR")
-                    {
-                        Auditorium[CursorRow][CursorSeat] = "C";
-                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
-                        break;
+                        if (Auditorium[CursorRow][CursorSeat] == "AR")
+                        {
+                            yourseats.Remove(new Tuple<int, int>(CursorRow, CursorSeat));
+                            Auditorium[CursorRow][CursorSeat] = "A";
+                            Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+                            break;
+                        }
+                        if (Auditorium[CursorRow][CursorSeat] == "BR")
+                        {
+                            yourseats.Remove(new Tuple<int, int>(CursorRow, CursorSeat));
+                            Auditorium[CursorRow][CursorSeat] = "B";
+                            Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+                            break;
+                        }
+                        if (Auditorium[CursorRow][CursorSeat] == "CR")
+                        {
+                            yourseats.Remove(new Tuple<int, int>(CursorRow, CursorSeat));
+                            Auditorium[CursorRow][CursorSeat] = "C";
+                            Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+                            break;
+                        }
                     }
                     else
                     {
-                        Message = $"Je kan deze stoel niet annuleren";
+                        Message = $"Je kan alleen je eigen geselecteerde stoelen annuleren";
                     }
                     break;
                 // een stoel selecteren
@@ -357,18 +343,21 @@ public class SeatMap
                     // als A, B of C is reserveer stoel en verander positie in list naar R
                     if (Auditorium[CursorRow][CursorSeat] == "A")
                     {
+                        yourseats.Add(new Tuple<int, int>(CursorRow, CursorSeat));
                         Auditorium[CursorRow][CursorSeat] = "AR";
                         Message = $"Stoel {rows[CursorSeat - 1]} in rij {CursorRow} is geselecteerd. Dank u wel voor het reserveren";
                         break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "B")
                     {
+                        yourseats.Add(new Tuple<int, int>(CursorRow, CursorSeat));
                         Auditorium[CursorRow][CursorSeat] = "BR";
                         Message = $"Stoel {rows[CursorSeat - 1]} in rij {CursorRow} is geselecteerd. Dank u wel voor het reserveren";
                         break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "C")
                     {
+                        yourseats.Add(new Tuple<int, int>(CursorRow, CursorSeat));
                         Auditorium[CursorRow][CursorSeat] = "CR";
                         Message = $"Stoel {rows[CursorSeat - 1]} in rij {CursorRow} is geselecteerd. Dank u wel voor het reserveren";
                         break;
@@ -435,7 +424,7 @@ public class SeatMap
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write("∎ ");
+                    Console.Write(" ∎ ");
                 }
                 // print wat in auditorium staat met kleur en symbool
                 else
@@ -444,38 +433,47 @@ public class SeatMap
                     {
                         case "X":
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.Write("  ");
+                            Console.Write("   ");
                             break;
                         case "A":
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("❑ ");
+                            Console.Write(" ❑ ");
                             break;
                         case "B":
                             Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.Write("❑ ");
+                            Console.Write(" ❑ ");
                             break;
                         case "C":
                             Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.Write("❑ ");
+                            Console.Write(" ❑ ");
                             break;
                         case "AR":
                             Console.ForegroundColor = ConsoleColor.DarkGray;
-                            Console.Write("▣ ");
+                            Console.Write(" ▣ ");
                             break;
                         case "BR":
                             Console.ForegroundColor = ConsoleColor.DarkGray;
-                            Console.Write("▣ ");
+                            Console.Write(" ▣ ");
                             break;
                         case "CR":
                             Console.ForegroundColor = ConsoleColor.DarkGray;
-                            Console.Write("▣ ");
+                            Console.Write(" ▣ ");
                             break;
 
                         // print rij nummer en stoel nummer
                         case "1":
-                            Console.ForegroundColor = ConsoleColor.DarkCyan;
-                            Console.Write($"{rows[seat - 1]} ");
-                            break;
+                            if (seat > 9)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                Console.Write($"{seat} ");
+                                break;
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                Console.Write($"{seat}  ");
+                                break;
+                            }
                         case "2":
                             if (row > 9)
                             {
@@ -491,7 +489,7 @@ public class SeatMap
                             } 
                         case "3":
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.Write($"   ");
+                            Console.Write($"    ");
                             break;
                     }
                 }
@@ -569,7 +567,7 @@ public class SeatMap
         Console.ResetColor();
         Console.Write(" Stoel: ");
         Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.Write($"[{rows[CursorSeat - 1]}]\n\n");
+        Console.Write($"[{CursorSeat}]\n\n");
         Console.ResetColor();
     }
 
@@ -588,6 +586,11 @@ public class SeatMap
         Console.WriteLine($"Press [backspace] to cancel the seat.");
         Console.WriteLine($"Press [enter] to confirm your reservation.");
         Console.WriteLine($"Press [escape] to return to main menu.");
+    }
+
+    public Tuple<int, int> GetYourSeat()
+    {
+        return yourseats;
     }
 
     private void DisplayReservedSeats()
