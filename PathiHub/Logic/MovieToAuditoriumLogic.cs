@@ -140,9 +140,8 @@ public class MovieToAuditoriumLogic
             if (parts.Length == 3)
             {
                 string Aud = parts [2];
-                int Auditorium =Convert.ToInt32(Aud[Aud.Length - 1]);
 
-
+                int Auditorium = int.Parse(Aud[3].ToString());
                 ScheduleAcces acces = new(Auditorium);
 
                 if(acces.LoadFromJson())

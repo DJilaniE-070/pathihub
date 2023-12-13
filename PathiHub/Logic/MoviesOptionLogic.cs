@@ -74,7 +74,7 @@ public class MovieOptionsLogic
         }
     }
 
-    public bool RemoveMovie(string movieTitle,string Directors)
+    public static bool RemoveMovie(string movieTitle,string Directors)
     {
         Movie movieToRemove = null;
 
