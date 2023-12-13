@@ -93,6 +93,7 @@ public class UserRegistration
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("Please confirm your password: ");
+            
             confirmPassword = Helpers.Color("DarkYellow");
         }
 
