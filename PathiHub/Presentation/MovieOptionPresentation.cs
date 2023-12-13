@@ -81,7 +81,7 @@ ___  ___           _       ______
             else
             {
                 Helpers.PrintStringToColor("\nInvalid option try again","red");
-                Thread.Sleep(500);
+                Thread.Sleep(800);
                 Console.Clear();
                 AddMoviePresentationWebbOption();
             }
@@ -259,6 +259,12 @@ ___  ___           _       ______
                 {
                     Helpers.PrintStringToColor($"\n+ {movie.MovieTitle}  has been added\n","green");
                     acces.SaveToJson();
+
+                    //Dit hieronder is om de json van schedules te refreshen zodat er geen foute data kan worden bewerkt
+                    List<Movie> FilteredMovies = MovieOptionsLogic.FilterMovies();
+
+                    MovieToAuditoriumLogic logic = new();
+                    logic.initializerAuditorium(FilteredMovies);
                 }
 
                 Console.WriteLine("Press ENTER to continue");

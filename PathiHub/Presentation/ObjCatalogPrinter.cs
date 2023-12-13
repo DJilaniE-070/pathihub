@@ -98,7 +98,7 @@ public class ObjCatalogePrinter
         Console.WriteLine($"\n Navigate the menu with Up and Down arrows. Press Backspace to return to the manager menu. Press ENTER to select a {itemType.Name}\n\n\n");
         }
 
-        Console.WriteLine("{0,-25} | {1,-25} | {2,-25} | {3,-30} | {4,-10}", displayFields[0], displayFields[1], displayFields[2], displayFields[3], displayFields[4]);
+        Console.WriteLine("{0,-25} | {1,-25} | {2,-25} | {3,-30} | {4,-10}",TruncateString( displayFields[0],25),TruncateString(displayFields[1],25), TruncateString(displayFields[2],25),TruncateString(displayFields[3],25),TruncateString(displayFields[1],25));
         Console.WriteLine(new string('-', 110));
 
         for (int i = 0; i < objList.Count; i++)
@@ -129,17 +129,21 @@ public class ObjCatalogePrinter
                     string stringValue = value.ToString();
 
                     // Truncate the string if it exceeds 20 characters
-                    if (stringValue.Length > 25)
-                    {
-                        stringValue = stringValue.Substring(0, 22) + "...";
-                    }
 
                     return stringValue;
                 })
                 .ToArray();
 
-            Console.WriteLine("{0,-25} | {1,-25} | {2,-25} | {3,-30} | {4,-10}", displayValues);
+            Console.WriteLine("{0,-25} | {1,-25} | {2,-25} | {3,-30} | {4,-10}",TruncateString(displayValues[0],25),TruncateString(displayValues[1],25),TruncateString(displayValues[2],25),TruncateString(displayValues[3],25),TruncateString(displayValues[4],25));
             Console.ResetColor();
     }
+    }
+    public static string TruncateString(string stringValue, int maxLength)
+    {
+        if (stringValue.Length > maxLength)
+        {
+            stringValue = stringValue.Substring(0, maxLength - 3) + "...";
+        }
+        return stringValue;
     }
 }

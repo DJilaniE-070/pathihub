@@ -26,9 +26,14 @@ ___  ___           _        _____       _        _
             movieData.RemoveThing(selectedMovie);
             Helpers.PrintStringToColor($"You have deleted the movie: '{selectedMovie.MovieTitle}'.", "red");
             Thread.Sleep(2000);
-
+            
+            MovieToAuditoriumLogic logic = new();
+            
+            logic.RemoveSchedules(selectedMovie.Scheduled);
             // Serialize the updated list back to JSON
             movieData.SaveToJson();
+            
+
         }
 
         if (answer == "no")

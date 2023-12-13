@@ -69,7 +69,7 @@ public static void AddMoviePresentationWebb(string Header)
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: No Internet test: {ex}");
+                Console.WriteLine($"An error occurred: No Internet error: {ex}");
                 Thread.Sleep(600);
                 Console.ReadLine();
                 Console.Clear();
@@ -92,8 +92,8 @@ public static void AddMoviePresentationWebb(string Header)
             MovieOptionsLogic.InitializeMovies(moviesAccess.GetItemList());
             if (MovieOptionsLogic.AddMovie(SelectedMovie) != true)
             {
-                Helpers.PrintStringToColor("\nMovie already exits\n","red");
-                Thread.Sleep(600);
+                Helpers.PrintStringToColor("\nMovie already exits\nYou will be redirected to the Menu","red");
+                Thread.Sleep(800);
                 ManagerMenu.Start();
 
                 
@@ -125,6 +125,13 @@ public static void AddMoviePresentationWebb(string Header)
                 }
                 Helpers.PrintStringToColor($"\n+ {SelectedMovie.MovieTitle}  has been added\n","green");
                 moviesAccess.SaveToJson();
+
+                List<Movie> FilteredMovies = MovieOptionsLogic.FilterMovies();
+
+                MovieToAuditoriumLogic logic = new();
+                logic.initializerAuditorium(FilteredMovies);
+
+
             }
 
             Console.WriteLine("Press ENTER to continue");
@@ -162,7 +169,7 @@ public static void AddMoviePresentationWebb(string Header)
                 Directors = (string)movieJson["Director"],
                 Writers = ((string)movieJson["Writer"]).Split(',').ToList(),
                 Plot = (string)movieJson["Plot"],
-                Rating = GetDoubleOrZero(((string)movieJson["imdbRating"])),
+                Rating = GetDoubleOrZero((string)movieJson["imdbRating"]),
                 RuntimeMinutes = GetIntOrZero(((string)movieJson["Runtime"]).Split(" ")[0]), 
                 Languages = (string)movieJson["Language"],
                 Countrys = (string)movieJson["Country"],
@@ -187,18 +194,29 @@ public static void AddMoviePresentationWebb(string Header)
         }
         // WTF man normale - kan hij niet detecten van de value
         // 
-        private static int GetIntOrZero (string value)
+    private static int GetIntOrZero(string value)
+    {
+        if (value != null && value.ToString() != "N/A")
         {
-            if (value != null && value.ToString() != "N/A")
+            string valueCorrected = value.Replace("\u2013", "-");
+
+            if (valueCorrected.Contains("-"))
             {
-            //  Match match = Regex.Match(value, @"^(\d{4})–?(\d{4})?$");
-                string valueCorrected = value.Replace("\u2013", "-");
-                if (valueCorrected.Contains("-"))
-                {   
-                return Convert.ToInt32(valueCorrected.Split("-")[0]);
+                string[] parts = valueCorrected.Split("-");
+                if (int.TryParse(parts[0], out int result))
+                {
+                    return result;
                 }
-                return Convert.ToInt32(value);
             }
-            return 0;
+            else
+            {
+                if (int.TryParse(valueCorrected, out int result))
+                {
+                    return result;
+                }
+            }
         }
+
+        return 0;
+    }
 }
