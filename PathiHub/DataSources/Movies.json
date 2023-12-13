@@ -28,10 +28,15 @@
     "Awards": null,
     "Poster": null,
     "Scheduled": [
-      "Monday/12:00-14:30",
-      "Monday/15:00-17:30",
-      "Monday/18:00-20:30",
-      "Monday/21:30-23:30"
+      "Monday/12:00-14:30/Aud1",
+      "Monday/15:00-17:30/Aud1",
+      "Monday/18:00-20:30/Aud1",
+      "Monday/21:30-23:30/Aud1",
+      "Monday/12:00-14:30/Aud2",
+      "Monday/15:00-17:30/Aud2",
+      "Tuesday/12:00-14:30/Aud2",
+      "Tuesday/12:00-14:30/Aud2"
+      
     ]
   },
   {
@@ -63,10 +68,10 @@
     ],
     "Poster": "N/A",
     "Scheduled": [
-      "Tuesday/12:00-14:30",
-      "Tuesday/15:00-17:30",
-      "Tuesday/18:00-20:30",
-      "Tuesday/21:30-23:30"
+      "Tuesday/12:00-14:30/Aud1",
+      "Tuesday/15:00-17:30/Aud1",
+      "Tuesday/18:00-20:30/Aud1",
+      "Tuesday/21:30-23:30/Aud1"
     ]
   },
   {
@@ -100,8 +105,8 @@
     ],
     "Poster": "https://m.media-amazon.com/images/M/MV5BMTY1MjU4OTQxMV5BMl5BanBnXkFtZTcwMTMwNTQ5OA@@._V1_SX300.jpg",
     "Scheduled": [
-      "Wednesday/12:00-14:30",
-      "Wednesday/15:00-17:30"
+      "Wednesday/12:00-14:30/Aud2",
+      "Wednesday/15:00-17:30/Aud2"
     ]
   },
   {
@@ -137,8 +142,8 @@
     ],
     "Poster": "https://m.media-amazon.com/images/M/MV5BMjA2NTUxODIzOF5BMl5BanBnXkFtZTcwMjMwNTQ5OA@@._V1_SX300.jpg",
     "Scheduled": [
-      "Wednesday/18:00-20:30",
-      "Wednesday/21:30-23:30"
+      "Wednesday/18:00-20:30/Aud1",
+      "Wednesday/21:30-23:30/Aud1"
     ]
   },
   {
@@ -172,8 +177,8 @@
     ],
     "Poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg",
     "Scheduled": [
-      "Thursday/12:00-14:30",
-      "Thursday/15:00-17:30"
+      "Thursday/12:00-14:30/Aud2",
+      "Thursday/15:00-17:30/Aud2"
     ]
   },
   {
@@ -207,8 +212,8 @@
     ],
     "Poster": "https://m.media-amazon.com/images/M/MV5BMjE2NDkxNTY2M15BMl5BanBnXkFtZTgwMDc2NzE0MTI@._V1_SX300.jpg",
     "Scheduled": [
-      "Friday/12:00-14:30",
-      "Friday/21:30-23:30"
+      "Friday/12:00-14:30/Aud1",
+      "Friday/21:30-23:30/Aud1"
     ]
   }
 ]

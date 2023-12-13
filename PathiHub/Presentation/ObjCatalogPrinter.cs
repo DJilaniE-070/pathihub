@@ -7,11 +7,11 @@ public class ObjCatalogePrinter
     private static int selectedObjIndex = 0;
 
 
-    public static object TabelPrinter<T>(string HeaderX, List<T> itemList, List<string> ColomnNames)
+    public static object? TabelPrinter<T>(string HeaderX, List<T> itemList, List<string> ColomnNames)
     {
          if (itemList != null && itemList.Count > 0)
         {   
-            
+            Type itemType = typeof(T);
             // Teken de tabel met films
 
             DrawTable(HeaderX, itemList, ColomnNames);
@@ -35,9 +35,12 @@ public class ObjCatalogePrinter
                         selectedObjIndex = (selectedObjIndex + 1) % itemList.Count;
                         break;
                     case ConsoleKey.Backspace:
+                        if (itemType == typeof(Schedule))
+                        {
+                            return null;
+                        }
                         selectedObjIndex = 0;
                         Helpers.BackToYourMenu();
-                        Environment.Exit(0);
                         break;
                     case ConsoleKey.Escape:
                         selectedObjIndex = 0;
@@ -55,22 +58,47 @@ public class ObjCatalogePrinter
             // Nu heb je toegang tot de geselecteerde film in de "movies" lijst
             
             Thread.Sleep(500);
-            return itemList[selectedObjIndex];
+            object? selectedItem = itemList[selectedObjIndex];
+            selectedObjIndex = 0;
+            return selectedItem;
         }
 
         return null;
     }
 
-    public static void DrawTable<T>(string HeaderX ,List<T> objList, List<string> displayFields)    {
+    public static void DrawTable<T>(string HeaderX ,List<T> objList, List<string> displayFields)   
+     {
+        Type itemType = typeof(T);
         Helpers.PrintStringToColor(HeaderX, "yellow");
     
         Helpers.CharLine('-' ,80);
-        Console.WriteLine("This our Catalog");
+        switch (itemType.Name)
+        {
+            case "Schedule":
+                Console.WriteLine("These are our Schedules");
+                break;
+            case "Movie":
+                Console.WriteLine("This is our Movie Catalog");
+                break;
+            case "Reservation":
+                Console.WriteLine("These are the made Reservations");
+                break;
+            default:
+                Console.WriteLine("This is our Catalog");
+                break;
+        }
         Helpers.CharLine('-' ,80);
         
-        Console.WriteLine("\n Navigate the menu with Up and Down arrows. Press Backspace to return to the manager menu\n\n\n");
+        if (itemType == typeof(Schedule))
+        {
+        Console.WriteLine($"\n Navigate the menu with Up and Down arrows. Press Backspace to Select Another Auditorium. Press ENTER to select a {itemType.Name}\n\n\n");
+        }
+        else
+        {
+        Console.WriteLine($"\n Navigate the menu with Up and Down arrows. Press Backspace to return to the manager menu. Press ENTER to select a {itemType.Name}\n\n\n");
+        }
 
-        Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", "MovieTitle", "ReleaseYear", "Director", "Genre", "Rating");
+        Console.WriteLine("{0,-25} | {1,-25} | {2,-25} | {3,-30} | {4,-10}", displayFields[0], displayFields[1], displayFields[2], displayFields[3], displayFields[4]);
         Console.WriteLine(new string('-', 110));
 
         for (int i = 0; i < objList.Count; i++)
@@ -98,19 +126,19 @@ public class ObjCatalogePrinter
                         return string.Join(", ", IsList);
                     }
 
-                    var stringValue = value.ToString();
+                    string stringValue = value.ToString();
 
                     // Truncate the string if it exceeds 20 characters
-                    if (stringValue.Length > 20)
+                    if (stringValue.Length > 25)
                     {
-                        stringValue = stringValue.Substring(0, 17) + "...";
+                        stringValue = stringValue.Substring(0, 22) + "...";
                     }
 
                     return stringValue;
                 })
                 .ToArray();
 
-            Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", displayValues);
+            Console.WriteLine("{0,-25} | {1,-25} | {2,-25} | {3,-30} | {4,-10}", displayValues);
             Console.ResetColor();
     }
     }

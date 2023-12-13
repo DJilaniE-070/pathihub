@@ -85,6 +85,7 @@ public static void AddMoviePresentationWebb(string Header)
         List<string> ColomnNames = new(){"MovieTitle", "ReleaseYear",
         "Director", "Genre", "Rating"};
         Movie SelectedMovie = (Movie)ObjCatalogePrinter.TabelPrinter<Movie>(Header, movies,ColomnNames);
+        
         MoviesAccess moviesAccess = new();
         if(moviesAccess.LoadFromJson())
         {
@@ -99,6 +100,29 @@ public static void AddMoviePresentationWebb(string Header)
             }
             else
             {
+                ScheduleOption option = new(true);
+                option.Start();
+
+                List<Schedule>schedules = option.SelectedSchedules;
+                List<int> Auditoriums = option.SelectedAuds;
+                List<string> Times = new();
+
+                foreach (Schedule schedule in schedules)
+                {
+                    Times.Add(schedule.Scheduled);
+                }
+
+                if (schedules.Count > 0 && Times.Count > 0)
+                {
+                    SelectedMovie.Scheduled = Times;
+                    SelectedMovie.Auditorium = Auditoriums;
+
+                }
+                else
+                {
+                    SelectedMovie.Scheduled =  new List<string> { "X" };
+                    SelectedMovie.Auditorium =  new List<int> {};
+                }
                 Helpers.PrintStringToColor($"\n+ {SelectedMovie.MovieTitle}  has been added\n","green");
                 moviesAccess.SaveToJson();
             }
