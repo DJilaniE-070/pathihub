@@ -82,8 +82,10 @@ public class SeatMap
         new List<string> { "2", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X" },
         new List<string> { "2", "X", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X", "X" }
     };
-
-    public List<string> rows = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "AA", "BB", "CC", "DD"};
+    public List<string> rows1 = new List<string> { "14", "13", "12", "11", "10", "9 ", "8 ", "7 ", "6 ", "5 ", "4 ", "3 ", "2 ", "1 " };
+    public List<string> rows2 = new List<string> { "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "9 ", "8 ", "7 ", "6 ", "5 ", "4 ", "3 ", "2 ", "1 " };
+    public List<string> rows3 = new List<string> { "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "9 ", "8 ", "7 ", "6 ", "5 ", "4 ", "3 ", "2 ", "1 " };
+    public List<string> rows = new();
     public List<List<string>> Auditorium = new();
     private double _priceA;
     private double _priceB;
@@ -132,6 +134,7 @@ public class SeatMap
         PriceA = 25;
         PriceB = 20;
         PriceC = 15;
+        rows = GetRows(auditoriumnumber);
         Auditorium = GetAuditorium(auditoriumnumber);
         Auditoriums();
     }
@@ -142,6 +145,7 @@ public class SeatMap
         PriceA = astoelen;
         PriceB = bstoelen;
         PriceC = cstoelen;
+        rows = GetRows(auditoriumnumber);
         Auditorium = GetAuditorium(auditoriumnumber);
         Auditoriums();
     }
@@ -152,6 +156,7 @@ public class SeatMap
         PriceA = 25;
         PriceB = 20;
         PriceC = 15;
+        rows = GetRows(auditoriumnumber);
         Auditorium = StoredMap;
         Auditoriums();
     }
@@ -163,6 +168,7 @@ public class SeatMap
         PriceA = astoelen;
         PriceB = bstoelen;
         PriceC = cstoelen;
+        rows = GetRows(auditoriumnumber);
         Auditorium = StoredMap;
         Auditoriums();
     }
@@ -177,6 +183,21 @@ public class SeatMap
                 return auditorium2;
             case 3:
                 return auditorium3;
+            default:
+                throw new ArgumentOutOfRangeException("Invalid auditorium number");
+        }
+    }
+
+    private List<string> GetRows(int auditoriumNumber) 
+    {
+        switch (auditoriumNumber) 
+        {
+            case 1:
+                return rows1;
+            case 2:
+                return rows2;
+            case 3:
+                return rows3;
             default:
                 throw new ArgumentOutOfRangeException("Invalid auditorium number");
         }
@@ -313,27 +334,27 @@ public class SeatMap
                         {
                             yourseats.Remove(new Tuple<int, int>(CursorRow, CursorSeat));
                             Auditorium[CursorRow][CursorSeat] = "A";
-                            Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+                            Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1].Replace(" ", "")} is canceled";
                             break;
                         }
                         if (Auditorium[CursorRow][CursorSeat] == "BR")
                         {
                             yourseats.Remove(new Tuple<int, int>(CursorRow, CursorSeat));
                             Auditorium[CursorRow][CursorSeat] = "B";
-                            Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+                            Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1].Replace(" ", "")} is canceled";
                             break;
                         }
                         if (Auditorium[CursorRow][CursorSeat] == "CR")
                         {
                             yourseats.Remove(new Tuple<int, int>(CursorRow, CursorSeat));
                             Auditorium[CursorRow][CursorSeat] = "C";
-                            Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+                            Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1].Replace(" ", "")} is canceled";
                             break;
                         }
                     }
                     else
                     {
-                        Message = $"Je kan alleen je eigen geselecteerde stoelen annuleren";
+                        Message = $"You cannot cancel a seat that you have not reserved";
                     }
                     break;
                 // een stoel selecteren
@@ -345,32 +366,32 @@ public class SeatMap
                     {
                         yourseats.Add(new Tuple<int, int>(CursorRow, CursorSeat));
                         Auditorium[CursorRow][CursorSeat] = "AR";
-                        Message = $"Stoel {rows[CursorSeat - 1]} in rij {CursorRow} is geselecteerd. Dank u wel voor het reserveren";
+                        Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1].Replace(" ", "")} is selected. Thank you for your reservation";
                         break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "B")
                     {
                         yourseats.Add(new Tuple<int, int>(CursorRow, CursorSeat));
                         Auditorium[CursorRow][CursorSeat] = "BR";
-                        Message = $"Stoel {rows[CursorSeat - 1]} in rij {CursorRow} is geselecteerd. Dank u wel voor het reserveren";
+                        Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1].Replace(" ", "")} is selected. Thank you for your reservation";
                         break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "C")
                     {
                         yourseats.Add(new Tuple<int, int>(CursorRow, CursorSeat));
                         Auditorium[CursorRow][CursorSeat] = "CR";
-                        Message = $"Stoel {rows[CursorSeat - 1]} in rij {CursorRow} is geselecteerd. Dank u wel voor het reserveren";
+                        Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1].Replace(" ", "")} is selected. Thank you for your reservation/nThis seat costs {PriceC}";
                         break;
                     }
                     // als X is print dat het geen stoel is en doet niks 
                     else if (Auditorium[CursorRow][CursorSeat] == "X")
                     {
-                        Message = $"Dit is geen stoel";
+                        Message = $"This is not a seat";
                     }
                     // als R is dan is het al gereserveerd en print dit, doet niks verder
                     else if (Auditorium[CursorRow][CursorSeat] == "AR" || Auditorium[CursorRow][CursorSeat] == "BR" || Auditorium[CursorRow][CursorSeat] == "CR")
                     {
-                        Message = $"Dit is een gereserveerde stoel, kies een andere stoel";
+                        Message = $"This is a reserved seat";
                     }
                     break;
                 case ConsoleKey.Escape:
@@ -381,16 +402,6 @@ public class SeatMap
             }
             // laat de hele auditorium zien
             DisplayAll();
-            
-            /* clear het scherm en laat auditorium weer zien samen met titel, scherm, legenda en cursor
-            Console.Clear();
-            DisplayTitle(AuditoriumNumber);
-            DisplayAuditorium(Auditorium, CursorRow, CursorSeat);
-            DisplayScreen(AuditoriumNumber);
-            DisplayCursorPosition(CursorRow, CursorSeat);
-            Console.WriteLine(message);
-            DisplayLegenda();*/
-
         // escape button om uit loop te gaan
         } while (true);
         // escape en je gaat terug naar menu.cs scherm
@@ -405,7 +416,7 @@ public class SeatMap
         DisplayScreen();
         DisplayCursorPosition();
         DisplayMessage();
-        DisplayReservedSeats();
+        //DisplayReservedSeats();
         DisplayLegenda();
         DisplayOptions();
     }
@@ -475,18 +486,10 @@ public class SeatMap
                                 break;
                             }
                         case "2":
-                            if (row > 9)
-                            {
-                                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                Console.Write($"{row} ");
-                                break;
-                            }
-                            else
-                            {
-                                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                Console.Write($"{row}  ");
-                                break;
-                            } 
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.Write($"{rows[row - 1]} ");
+                            break;
+            
                         case "3":
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.Write($"    ");
@@ -524,20 +527,20 @@ public class SeatMap
         if (AuditoriumNumber == 1)
         {
             Console.WriteLine();
-            Console.WriteLine("           Screen");
-            Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            Console.WriteLine("                  Screen");
+            Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
         if (AuditoriumNumber == 2)
         {
             Console.WriteLine();
-            Console.WriteLine("                 Screen");
-            Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            Console.WriteLine("                  Screen");
+            Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
         if (AuditoriumNumber == 3)
         {
             Console.WriteLine();
-            Console.WriteLine("                              Screen");
-            Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            Console.WriteLine("                                      Screen");
+            Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
     }
 
@@ -561,11 +564,11 @@ public class SeatMap
     // cursor positie printen
     private void DisplayCursorPosition()
     {
-        Console.Write("Rij: ");
+        Console.Write("Row: ");
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.Write($"[{CursorRow}]");
+        Console.Write($"[{rows[CursorRow - 1].Replace(" ", "")}]");
         Console.ResetColor();
-        Console.Write(" Stoel: ");
+        Console.Write(" Seat: ");
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.Write($"[{CursorSeat}]\n\n");
         Console.ResetColor();
@@ -588,7 +591,7 @@ public class SeatMap
         Console.WriteLine($"Press [escape] to return to main menu.");
     }
 
-    public Tuple<int, int> GetYourSeat()
+    public List<Tuple<int, int>> GetYourSeat()
     {
         return yourseats;
     }
