@@ -1,5 +1,4 @@
 using System;
-using Internal;
 
 public static class CoWorker
 {
@@ -24,7 +23,7 @@ public static class CoWorker
                                                                                   
     ", "yellow");
 
-            Console.WriteLine("--------------------------------------------------------------------------------");
+            Helpers.CharLine('-' ,80);
             Console.WriteLine("Please select an option (using the arrow keys and press Enter):");
 
             for (int i = 0; i < menuOptions.Length; i++)
@@ -38,7 +37,7 @@ public static class CoWorker
                 Console.WriteLine(menuOptions[i]);
                 Console.ResetColor();
             }
-            Console.WriteLine("--------------------------------------------------------------------------------");
+            Helpers.CharLine('-' ,80);
 
             ConsoleKeyInfo keyInfo = Console.ReadKey();
 
@@ -103,6 +102,8 @@ public static class CoWorker
 \____/ |_| |_| \___/   \_/\_/   \_| \_| \___||___/ \___||_|     \_/   \__,_| \__||_| \___/ |_| |_||___/
                                                                                                        
 ";
+    Helpers.CharLine('-' ,80);
+
     ReservationAccess access = new();
     List<string> ColomnNames = new(){"FullName", "ReservationCode", "Email", "Date", "Price"};
     if(access.LoadFromJson()!= false)
@@ -134,7 +135,7 @@ public static class CoWorker
     {
         Console.Clear();
         Console.WriteLine("Reservate a seat for a customer");
-        string HeaderX = (@"
+        Helpers.PrintStringToColor(@"
  _____               _    ______                                       _    _               
 /  ___|             | |   | ___ \                                     | |  (_)              
 \ `--.   ___   __ _ | |_  | |_/ /  ___  ___   ___  _ __ __   __  __ _ | |_  _   ___   _ __  
@@ -142,16 +143,67 @@ public static class CoWorker
 /\__/ /|  __/| (_| || |_  | |\ \ |  __/\__ \|  __/| |    \ V / | (_| || |_ | || (_) || | | |
 \____/  \___| \__,_| \__| \_| \_| \___||___/ \___||_|     \_/   \__,_| \__||_| \___/ |_| |_|
 
-");
+", "yellow");
         Console.WriteLine("Enter customers name: ");
         string FullName = Console.ReadLine();
 
         Console.WriteLine("Enter customers email adress: ");
         string Email = Console.ReadLine();
 
-        // After this it should go to time the customer wants to reserve
-        // after that it will ask for auditoriom
+        // After this it should go to the time the customer wants to reserve
+        // after that it will ask for auditorium
         // still have to implement this part
+
+        string[] Options = { "[1] Auditorium 1", "[2] Auditorium 2", "[3] Auditorium 3" };
+        ConsoleKeyInfo key;
+        int CursorIndex = 0; 
+        Console.CursorVisible = false; 
+        for (int i = 0; i < Options.Length; i++)
+        {
+            if (i == CursorIndex)
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+            }
+            Console.WriteLine(Options[i]);
+            Console.ResetColor();
+        }
+        do
+        {
+            key = Console.ReadKey(true);
+            Console.Clear();
+            Console.WriteLine("Please select an option (use the arrow keys and press Enter):");
+
+            for (int i = 0; i < Options.Length; i++)
+            {
+                if (i == CursorIndex)
+                {
+                    Console.BackgroundColor = ConsoleColor.White;
+                }
+                Console.WriteLine(Options[i]);
+                Console.ResetColor();
+            }
+
+            switch (key.Key)
+            {
+                case ConsoleKey.UpArrow:
+                    if (CursorIndex > 0)
+                    {
+                        CursorIndex--;
+                    }
+                    break;
+                case ConsoleKey.DownArrow:
+                    if (CursorIndex < Options.Length - 1)
+                    {
+                        CursorIndex++;
+                    }
+                    break;
+                case ConsoleKey.Enter:
+                    Console.Clear();
+                    SeatMap seatmap = new SeatMap(CursorIndex + 1);
+                    break;
+            }
+        } while (key.Key != ConsoleKey.Escape);
+        Console.CursorVisible = true;
         
     }
 }

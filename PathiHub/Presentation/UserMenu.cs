@@ -142,18 +142,15 @@ public static class UserMenu
         } while (key.Key != ConsoleKey.Escape);
         Console.CursorVisible = true;
     }
-       
+
     static void CheckReservation()
     {
-            
         Console.WriteLine("Check reservation");
         Console.WriteLine("Here comes the implementations in a later sprint");
     }
 
-        
     static void CancelReservation()
     {
-            
         Console.WriteLine("Cancel reservation");
         Console.WriteLine("Here comes the implementations in a later sprint");
     }
