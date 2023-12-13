@@ -7,8 +7,7 @@ public class SeatMap
     // lijst om reservaties op te slaan
     //public static List<List<string>> ReservedSeats = new List<List<string>>();
     //public static List<ReservedSeats> ReserveSeat = new List<ReservedSeats>();
-    public static List<string> ReservedSeats = new List<string>();
-    public static Hashtable ReservedSeat = new Hashtable();
+    public List<string> ReservedSeats = new List<string>();
 
     // auditorium 1 met 150 stoelen (14 rijen en 12 stoelen per rij)
     public List<List<string>> auditorium1 = new List<List<string>>
@@ -88,6 +87,7 @@ public class SeatMap
     private double _priceB;
     private double _priceC;
     public string Message = "";
+    public static List<string> SelectedSeats = new List<string>();
     public int AuditoriumNumber;
     public int CursorRow = 1;
     public int CursorSeat = 1;
@@ -327,23 +327,30 @@ public class SeatMap
                 // een stoel annuleren
                 case ConsoleKey.Backspace:
                 // Hier zit nog een probleem als je backspace op een stoel die jij niet hebt gereserveerd dan anuleerd het alsnog
-                    if (Auditorium[CursorRow][CursorSeat] == "AR")
+                    if (SelectedSeats.Contains( $"{rows[CursorSeat - 1]} {CursorRow}"))
                     {
-                        Auditorium[CursorRow][CursorSeat] = "A";
-                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
-                        break;
-                    }
-                    if (Auditorium[CursorRow][CursorSeat] == "BR")
-                    {
-                        Auditorium[CursorRow][CursorSeat] = "B";
-                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
-                        break;
-                    }
-                    if (Auditorium[CursorRow][CursorSeat] == "CR")
-                    {
-                        Auditorium[CursorRow][CursorSeat] = "C";
-                        Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
-                        break;
+                        if (Auditorium[CursorRow][CursorSeat] == "AR")
+                        {
+                            Auditorium[CursorRow][CursorSeat] = "A";
+                            Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+                            break;
+                        }
+                        if (Auditorium[CursorRow][CursorSeat] == "BR")
+                        {
+                            Auditorium[CursorRow][CursorSeat] = "B";
+                            Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+                            break;
+                        }
+                        if (Auditorium[CursorRow][CursorSeat] == "CR")
+                        {
+                            Auditorium[CursorRow][CursorSeat] = "C";
+                            Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
+                            break;
+                        }
+                        else
+                        {
+                            Message = $"Je kan deze stoel niet annuleren";
+                        }
                     }
                     else
                     {
@@ -357,18 +364,21 @@ public class SeatMap
                     // als A, B of C is reserveer stoel en verander positie in list naar R
                     if (Auditorium[CursorRow][CursorSeat] == "A")
                     {
+                        SelectedSeats.Add($"{rows[CursorSeat - 1]} {CursorRow}");
                         Auditorium[CursorRow][CursorSeat] = "AR";
                         Message = $"Stoel {rows[CursorSeat - 1]} in rij {CursorRow} is geselecteerd. Dank u wel voor het reserveren";
                         break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "B")
                     {
+                        SelectedSeats.Add($"{rows[CursorSeat - 1]} {CursorRow}");
                         Auditorium[CursorRow][CursorSeat] = "BR";
                         Message = $"Stoel {rows[CursorSeat - 1]} in rij {CursorRow} is geselecteerd. Dank u wel voor het reserveren";
                         break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "C")
                     {
+                        SelectedSeats.Add($"{rows[CursorSeat - 1]} {CursorRow}");
                         Auditorium[CursorRow][CursorSeat] = "CR";
                         Message = $"Stoel {rows[CursorSeat - 1]} in rij {CursorRow} is geselecteerd. Dank u wel voor het reserveren";
                         break;

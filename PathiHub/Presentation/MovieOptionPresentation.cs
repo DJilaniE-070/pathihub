@@ -221,29 +221,31 @@ ___  ___           _       ______
             movie.Poster = string.IsNullOrEmpty(poster)
             ?"X"
             :poster;
-            // while (true)
-            // {
-            //     Console.Write("Enter the auditorium (1,2,3): ");
-            //     int auditorium = Convert.ToInt32( Helpers.Color("DarkYellow"));
-            //     if (auditorium >= 1 && auditorium <= 3)
-            //     {
-            //     movie.Auditorium = auditorium;
-            //     break;
-            //     }
-            //     else
-            //     {
-            //         Helpers.PrintStringToColor("Choose between 1 and 3","red");
-            //     }
-            // }
-
-
-            
+                        
             // Dit een check laten doen
-            Console.Write("Enter Scheduled time as Monday/12:00-14.30,Thursday/18:00-20:30");
-            string? scheduled = Helpers.Color("DarkYellow");
-            movie.Scheduled = string.IsNullOrEmpty(scheduled)
-            ? new List<string> { "X" } 
-            : new List<string>(AwardsInput.Split(','));
+            // true is voor add false voor remove
+            ScheduleOption option = new(true);
+            option.Start();
+            List<Schedule>schedules = option.SelectedSchedules;
+            List<int> Auditoriums = option.SelectedAuds;
+            List<string> Times = new();
+
+            foreach (Schedule schedule in schedules)
+            {
+                Times.Add(schedule.Scheduled);
+            }
+
+            if (schedules.Count > 0 && Times.Count > 0)
+            {
+                movie.Scheduled = Times;
+                movie.Auditorium = Auditoriums;
+
+            }
+            else
+            {
+                movie.Scheduled =  new List<string> { "X" };
+                movie.Auditorium =  new List<int> {};
+            }
 
             MoviesAccess acces = new MoviesAccess();
             if (acces.LoadFromJson() == true)
