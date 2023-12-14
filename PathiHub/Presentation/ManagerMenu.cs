@@ -83,7 +83,9 @@ ___  ___                                   ___  ___
                 break;
             
             case "[2] Reserve a movie":
-                ReserveAMovie();
+                // ReserveAMovie();
+                MoviesAccess movies = new();
+                MovieCatalogePrinter.TabelPrinter(movies);
                 break;
             
             case "[3] Reservation options":
@@ -166,9 +168,11 @@ ___  ___           _        _____       _   _
              case ConsoleKey.Backspace:
                     Console.WriteLine(" ");
                     Helpers.BackToYourMenu();
+                    Environment.Exit(0);
                     break;
             case ConsoleKey.Escape:
                     Helpers.MainMenu();
+                    Environment.Exit(0);
                     break;
             case ConsoleKey.Enter:
                 Console.Clear();
@@ -298,7 +302,7 @@ ______                               _   _               _____       _   _
 
         static void ScheduleOption()
         {
-            
+
         }
 
         static void ReserveAMovie()

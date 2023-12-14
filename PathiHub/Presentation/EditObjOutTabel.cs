@@ -227,7 +227,11 @@ ______ _       _
                     {
                     break;
                     }
-                    
+                     
+                case ConsoleKey.Escape:
+                Helpers.MainMenu();
+                Environment.Exit(0);
+                break;
                 case ConsoleKey.Enter:
                     return originalString.Trim();
                 default:
