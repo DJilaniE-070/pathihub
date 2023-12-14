@@ -67,7 +67,7 @@ public class MovieCatalogePrinterManagerVersion
 
     public static void DrawMovieTable(List<Movie> movies, string header)
     {
-        Console.WriteLine(header);
+        Helpers.PrintStringToColor(header,"yellow");
 //         Console.WriteLine(@" 
 // ___  ___           _        _____       _        _                  
 // |  \/  |          (_)      /  __ \     | |      | |                 

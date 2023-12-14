@@ -13,7 +13,7 @@ public static class Menu
         int selectedIndex = 0;
         bool exit = false;
 
-        string[] menuOptions = { "[1] Our movie selection", "[2] Our Menu selection", "[3] Login/Register" };
+        string[] menuOptions = { "[1] Our movie selection", "[2] Our Snacks selection", "[3] Login/Register" };
         
         PromotionMovieAccess promotedMovies = new();
         
@@ -130,6 +130,7 @@ ______     _   _     _   _   _       _
                     }
 
                     break;
+                
                 case ConsoleKey.Enter:
                     Console.Clear();
                     Console.Write("Loading");
@@ -172,11 +173,10 @@ ______     _   _     _   _   _       _
                 MoviesAccess movies = new();
                 MovieCatalogePrinter.TabelPrinter(movies);
                 break;
-            case "[2] Our Menu selection":
+            case "[2] Our Snacks selection":
                 Thread.Sleep(1500);
-                MovieTimeTable overview = new();
-                // MoviesAcces movies = new();
-                overview.Start();
+                SnacksMenu snack = new SnacksMenu();
+                snack.Start();
                 break;
 
 

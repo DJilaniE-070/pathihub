@@ -75,7 +75,8 @@ public static class UserMenu
         switch (option)
         {
             case "[1]. Make a reservation":
-                ReserveSeat();
+                MoviesAccess movies = new();
+                MovieCatalogePrinter.TabelPrinter(movies);
                 break;
             
             case "[2]. Check reservation":

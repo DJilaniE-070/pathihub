@@ -268,14 +268,14 @@ ___  ___           _       ______
                 }
 
                 Console.WriteLine("Press ENTER to continue");
-                Console.ReadLine();
+                Helpers.Color("Yellow");
 
             }
             else
             {
                 Helpers.PrintStringToColor("File not found. No movies loaded.\n", "red");
                 Console.WriteLine("Press ENTER to continue");
-                Console.ReadLine();
+                Helpers.Color("Yellow");
             }
         }   
 
@@ -328,13 +328,13 @@ ___  ___           _       ______
             //         PrintStringToColor.Color($"\n- {MovieTitle} has been removed\n", "red");
             //     }
             // Console.WriteLine("Press ENTER to continue");
-            // string Enter = Console.ReadLine();  
+            // string Enter = Helpers.Color("Yellow");  
             // }
             // else
             // {
             // Console.WriteLine("File not found. No movies loaded.");
             // Console.WriteLine("Press ENTER to continue");
-            // string enter = Console.ReadLine();
+            // string enter = Helpers.Color("Yellow");
             // }
         }
     public static void EditMoviePresentation()

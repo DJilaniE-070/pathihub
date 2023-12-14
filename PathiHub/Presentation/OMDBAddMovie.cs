@@ -43,8 +43,8 @@ public static void AddMoviePresentationWebb(string Header)
 
         if (!MovieOptionsLogic.CheckSearch(WebSearch))
         {
-            Console.WriteLine("Movie not found try again");
-            Thread.Sleep(600);
+            Helpers.PrintStringToColor("Movie not found Press ENTER to try again","red");
+            Helpers.Color("white");
             Console.Clear();
             AddMoviePresentationWebb(Header);
             return;
@@ -67,11 +67,11 @@ public static void AddMoviePresentationWebb(string Header)
                 Movie movie = OMDBMovieMaker(IMDBresponse);
                 movies.Add(movie);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine($"An error occurred: No Internet error: {ex}");
+                Helpers.PrintStringToColor($"An error occurred /n/nPress ENTER to try again if it continue to give errors try searching for something else or Restart the program","red");
                 Thread.Sleep(600);
-                Console.ReadLine();
+                Helpers.Color("Yellow");
                 Console.Clear();
                 MovieOptionPresentation.AddMoviePresentationWebbOption();
                 return;
@@ -93,7 +93,7 @@ public static void AddMoviePresentationWebb(string Header)
             if (MovieOptionsLogic.AddMovie(SelectedMovie) != true)
             {
                 Helpers.PrintStringToColor("\nMovie already exits\nYou will be redirected to the Menu","red");
-                Thread.Sleep(800);
+                Thread.Sleep(1000);
                 ManagerMenu.Start();
 
                 
@@ -130,21 +130,19 @@ public static void AddMoviePresentationWebb(string Header)
 
                 MovieToAuditoriumLogic logic = new();
                 logic.initializerAuditorium(FilteredMovies);
-
-
             }
 
             Console.WriteLine("Press ENTER to continue");
-            Console.ReadLine();
+            Helpers.Color("Yellow");
             ManagerMenu.Start();
 
 
         }
         else
         {
-            Helpers.PrintStringToColor("File not found. No movies loaded.\n", "red");
+            Helpers.PrintStringToColor("Movies not found. No movies loaded.\n", "red");
             Console.WriteLine("Press ENTER to continue");
-            Console.ReadLine();
+            Helpers.Color("Yellow");
             ManagerMenu.Start();
         }
 

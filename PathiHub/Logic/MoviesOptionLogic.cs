@@ -126,7 +126,7 @@ public class MovieOptionsLogic
         {
             foreach (int num in movie.Auditorium)
             {
-                if (num <= 0)
+                if (num <= 0 && num >= 4)
                 {
                     return false;
                 }

@@ -44,7 +44,7 @@ public class PerformActionToTabel
         }
             Helpers.PrintStringToColor($"\nAre you sure you want to edit this {ObjName}'.\nPlease type 'yes' or 'no'.", "blue");
             Console.Write("\u2192 ");
-            string answer = Console.ReadLine().ToLower();
+            string answer = Helpers.Color("Yellow").ToLower();
 
             if (answer == "yes")
                 {
@@ -63,7 +63,7 @@ public class PerformActionToTabel
                 Console.WriteLine($"You have chosen not to edit this {ObjName}");
                 Helpers.PrintStringToColor($"Do you want to edit another {ObjName}?", "blue");
                 Console.Write("\u2192 ");
-                string answer2 = Console.ReadLine().ToLower();
+                string answer2 = Helpers.Color("Yellow").ToLower();
                 if (answer2 == "yes")
                 {
                     Console.WriteLine("You will be redirected");

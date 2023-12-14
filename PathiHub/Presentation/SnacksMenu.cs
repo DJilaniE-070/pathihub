@@ -118,7 +118,10 @@ public class SnacksMenu
                     break;
 
                 case ConsoleKey.Enter:
-                    BoughtSnacks.Add(new Snacks(_snacksdata[CursorIndex].Name, Amount));
+                    Helpers.BackToYourMenu();
+                    break;
+                case ConsoleKey.Escape:
+                    Helpers.MainMenu();
                     break;
             }
             DisplaySnacks();
