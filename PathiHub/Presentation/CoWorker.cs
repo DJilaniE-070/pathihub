@@ -8,13 +8,12 @@ public static class CoWorker
         int selectedIndex = 0;
         bool exit = false;
 
-        string[] menuOptions = { "[1] Overview all reservations", "[2] Change reservations", "[3] reserve seat for customer","[4] Insight total orders", "[5] Exit Co Worker Menu"};
+        string[] menuOptions = { "[1] Show reservations", "[2] Change reservations", "[3] Reserve seat for customer", "[4] Exit"};
 
         do
         {
             Console.Clear();
-
-            Console.WriteLine(@"
+            Helpers.PrintStringToColor(@"
  _____         _    _               _                 ___  ___                    
 /  __ \       | |  | |             | |                |  \/  |                    
 | /  \/  ___  | |  | |  ___   _ __ | | __  ___  _ __  | .  . |  ___  _ __   _   _ 
@@ -22,10 +21,9 @@ public static class CoWorker
 | \__/\| (_) |\  /\  /| (_) || |   |   < |  __/| |    | |  | ||  __/| | | || |_| |
  \____/ \___/  \/  \/  \___/ |_|   |_|\_\ \___||_|    \_|  |_/ \___||_| |_| \__,_|
                                                                                   
-                                                                                  
-    ");
+    ", "yellow");
 
-            Console.WriteLine("--------------------------------------------------------------------------------");
+            Helpers.CharLine('-' ,80);
             Console.WriteLine("Please select an option (using the arrow keys and press Enter):");
 
             for (int i = 0; i < menuOptions.Length; i++)
@@ -39,7 +37,7 @@ public static class CoWorker
                 Console.WriteLine(menuOptions[i]);
                 Console.ResetColor();
             }
-            Console.WriteLine("--------------------------------------------------------------------------------");
+            Helpers.CharLine('-' ,80);
 
             ConsoleKeyInfo keyInfo = Console.ReadKey();
 
@@ -74,48 +72,138 @@ public static class CoWorker
         Console.WriteLine("Selected: " + option);
         switch (option)
         {
-            case "[1] Overview all reservations":
-                Thread.Sleep(1500);
+            case "[1] Show reservations":
                 OverviewAllReservations();
                 break;
             
             case "[2] Change reservations":
-                Thread.Sleep(1500);
                 ChangeReservations();
                 break;
             
-            case "[3] reserve seat for customer":
-                Thread.Sleep(1500);
+            case "[3] Reserve seat for customer":
                 ReserveSeatCustomer();
                 break;
             
-            case "[4] Insight total orders":
-                Thread.Sleep(1500);
-                InsightTotalOrders();
-                break;
-            
-            case "[5] Exit Co Worker Menu":
+            case "[5] Exit":
+            Thread.Sleep(1500);
                 break; 
         }
     }
 
     static void OverviewAllReservations()
     {
-        Console.WriteLine("Overview of all reservations");
+        Console.Clear();
+    string HeaderX = @"
+ _____  _                       ______                                       _    _                    
+/  ___|| |                      | ___ \                                     | |  (_)                   
+\ `--. | |__    ___  __      __ | |_/ /  ___  ___   ___  _ __ __   __  __ _ | |_  _   ___   _ __   ___ 
+ `--. \| '_ \  / _ \ \ \ /\ / / |    /  / _ \/ __| / _ \| '__|\ \ / / / _` || __|| | / _ \ | '_ \ / __|
+/\__/ /| | | || (_) | \ V  V /  | |\ \ |  __/\__ \|  __/| |    \ V / | (_| || |_ | || (_) || | | |\__ \
+\____/ |_| |_| \___/   \_/\_/   \_| \_| \___||___/ \___||_|     \_/   \__,_| \__||_| \___/ |_| |_||___/
+                                                                                                       
+";
+    Helpers.CharLine('-' ,80);
+
+    ReservationAccess access = new();
+    List<string> ColomnNames = new(){"FullName", "ReservationCode", "Email", "Date", "Price"};
+    if(access.LoadFromJson()!= false)
+    {
+    List<Reservation> reservations = access.GetItemList();
+    ObjCatalogePrinter.TabelPrinter(HeaderX, reservations, ColomnNames);
+    }
     }
 
     static void ChangeReservations()
     {
-        Console.WriteLine("Change reservations");
+        List<string> ColomnNames = new(){"FullName", "ReservationCode", "Email", "Date", "Price"};
+
+        Console.Clear();
+        string HeaderX = @"
+ _____  _                                 ______                                       _    _                    
+/  __ \| |                                | ___ \                                     | |  (_)                   
+| /  \/| |__    __ _  _ __    __ _   ___  | |_/ /  ___  ___   ___  _ __ __   __  __ _ | |_  _   ___   _ __   ___ 
+| |    | '_ \  / _` || '_ \  / _` | / _ \ |    /  / _ \/ __| / _ \| '__|\ \ / / / _` || __|| | / _ \ | '_ \ / __|
+| \__/\| | | || (_| || | | || (_| ||  __/ | |\ \ |  __/\__ \|  __/| |    \ V / | (_| || |_ | || (_) || | | |\__ \
+ \____/|_| |_| \__,_||_| |_| \__, | \___| \_| \_| \___||___/ \___||_|     \_/   \__,_| \__||_| \___/ |_| |_||___/
+                              __/ |                                                                              
+                             |___/                                                                               
+";
+        PerformActionToTabel.Editor(HeaderX, "Reservation", ColomnNames);
     }
 
     static void ReserveSeatCustomer()
     {
+        Console.Clear();
         Console.WriteLine("Reservate a seat for a customer");
-    }
+        Helpers.PrintStringToColor(@"
+ _____               _    ______                                       _    _               
+/  ___|             | |   | ___ \                                     | |  (_)              
+\ `--.   ___   __ _ | |_  | |_/ /  ___  ___   ___  _ __ __   __  __ _ | |_  _   ___   _ __  
+ `--. \ / _ \ / _` || __| |    /  / _ \/ __| / _ \| '__|\ \ / / / _` || __|| | / _ \ | '_ \ 
+/\__/ /|  __/| (_| || |_  | |\ \ |  __/\__ \|  __/| |    \ V / | (_| || |_ | || (_) || | | |
+\____/  \___| \__,_| \__| \_| \_| \___||___/ \___||_|     \_/   \__,_| \__||_| \___/ |_| |_|
 
-    static void InsightTotalOrders()
-    {
-        Console.WriteLine("Insight of total orders");
+", "yellow");
+        Console.WriteLine("Enter customers name: ");
+        string FullName = Console.ReadLine();
+
+        Console.WriteLine("Enter customers email adress: ");
+        string Email = Console.ReadLine();
+
+        // After this it should go to the time the customer wants to reserve
+        // after that it will ask for auditorium
+        // still have to implement this part
+
+        string[] Options = { "[1] Auditorium 1", "[2] Auditorium 2", "[3] Auditorium 3" };
+        ConsoleKeyInfo key;
+        int CursorIndex = 0; 
+        Console.CursorVisible = false; 
+        for (int i = 0; i < Options.Length; i++)
+        {
+            if (i == CursorIndex)
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+            }
+            Console.WriteLine(Options[i]);
+            Console.ResetColor();
+        }
+        do
+        {
+            key = Console.ReadKey(true);
+            Console.Clear();
+            Console.WriteLine("Please select an option (use the arrow keys and press Enter):");
+
+            for (int i = 0; i < Options.Length; i++)
+            {
+                if (i == CursorIndex)
+                {
+                    Console.BackgroundColor = ConsoleColor.White;
+                }
+                Console.WriteLine(Options[i]);
+                Console.ResetColor();
+            }
+
+            switch (key.Key)
+            {
+                case ConsoleKey.UpArrow:
+                    if (CursorIndex > 0)
+                    {
+                        CursorIndex--;
+                    }
+                    break;
+                case ConsoleKey.DownArrow:
+                    if (CursorIndex < Options.Length - 1)
+                    {
+                        CursorIndex++;
+                    }
+                    break;
+                case ConsoleKey.Enter:
+                    Console.Clear();
+                    SeatMap seatmap = new SeatMap(CursorIndex + 1);
+                    break;
+            }
+        } while (key.Key != ConsoleKey.Escape);
+        Console.CursorVisible = true;
+        
     }
 }

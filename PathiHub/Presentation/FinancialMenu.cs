@@ -12,8 +12,7 @@ public static class FinancialMenu
         do
         {
             Console.Clear();
-
-            Console.WriteLine(@"
+            Helpers.PrintStringToColor(@"
 ______  _                             _         _  ___  ___                    
 |  ___|(_)                           (_)       | | |  \/  |                    
 | |_    _  _ __    __ _  _ __    ___  _   __ _ | | | .  . |  ___  _ __   _   _ 
@@ -21,7 +20,7 @@ ______  _                             _         _  ___  ___
 | |    | || | | || (_| || | | || (__ | || (_| || | | |  | ||  __/| | | || |_| |
 \_|    |_||_| |_| \__,_||_| |_| \___||_| \__,_||_| \_|  |_/ \___||_| |_| \__,_|
                                                                         
-                                                                       ");
+                                                                       ", "yellow");
 
             Console.WriteLine("--------------------------------------------------------------------------------");
             Console.WriteLine("Please select an option (using the arrow keys and press Enter):");
@@ -73,12 +72,10 @@ ______  _                             _         _  ___  ___
         switch (option)
         {
             case "[1] Check total reservations":
-                Thread.Sleep(1500);
                 Console.WriteLine(FinancialLogic.TotalReservations);
                 break;
             
             case "[2] Check total revenue":
-                Thread.Sleep(1500);
                 Console.WriteLine(FinancialLogic.TotalRevenue);
                 break;
             
