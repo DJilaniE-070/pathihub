@@ -196,26 +196,6 @@ public class SeatMap
     // 3 auditoriums hardcoded en cursor logic
     public void Auditoriums()
     {
-        // auditorium kiezen, maakt een kopie van de auditorium 1 tot en met 3 en zet in Auditorium
-        //List<List<string>> Auditorium = new();
-        
-
-        // cursor positie voor rij en stoel
-        //int CursorRow = 0;
-        //int CursorSeat = 0;
-
-        // message wordt altijd geprint, maar is default op leeg en print normaal niks totdat je op enter klikt
-        //string message = "";
-
-        // laat de auditorium eerst zien samen met titel, scherm, legenda en cursor
-        /* ben van plan om een DisplayAll() te maken om alles aan te roepen, zodat minder code hoeft te worden uitgevoerd
-        DisplayTitle(AuditoriumNumber);
-        DisplayAuditorium(Auditorium, CursorRow, CursorSeat);
-        DisplayScreen(AuditoriumNumber);
-        DisplayCursorPosition(CursorRow, CursorSeat);
-        DisplayLegenda();
-        */
-
         // laat de hele auditorium zien
         DisplayAll();
 
@@ -402,16 +382,6 @@ public class SeatMap
             }
             // laat de hele auditorium zien
             DisplayAll();
-            
-            /* clear het scherm en laat auditorium weer zien samen met titel, scherm, legenda en cursor
-            Console.Clear();
-            DisplayTitle(AuditoriumNumber);
-            DisplayAuditorium(Auditorium, CursorRow, CursorSeat);
-            DisplayScreen(AuditoriumNumber);
-            DisplayCursorPosition(CursorRow, CursorSeat);
-            Console.WriteLine(message);
-            DisplayLegenda();*/
-
         // escape button om uit loop te gaan
         } while (true);
         // escape en je gaat terug naar menu.cs scherm
