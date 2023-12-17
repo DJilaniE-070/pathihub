@@ -33,11 +33,12 @@ public class MovieCatalogePrinterManagerVersion
                         selectedMovieIndex = (selectedMovieIndex + 1) % movies.Count;
                         break;
                     case ConsoleKey.Backspace:
-                        ManagerMenu.Start();
+                        Helpers.BackToYourMenu();
+                        Environment.Exit(0);
                         break;
                     case ConsoleKey.Escape:
-                        Console.WriteLine(" ");
-                        Menu.Start();
+                        Helpers.MainMenu();
+                        Environment.Exit(0);
                         break;
                 }
 

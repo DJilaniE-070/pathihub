@@ -12,17 +12,24 @@ public class MovieCatalogePrinter
     {
         if (access.LoadFromJson() == true)
         {
+
             // List<Movie> movies = access.GetItemList(); dit is alle movies
             List<Movie> Movies = access.GetItemList();
-            MovieOptionsLogic.InitializeMovies(Movies);
-            List<Movie> movies = MovieOptionsLogic.FilterMovies();
+            List<Movie> movies = MovieOptionsLogic.FilterMovies(Movies);
             // de bovenstaande 3 regels zijn om de movies te sorteren
             // hieronder is voor de schedule json correct afgesteld te zijn op de films
             MovieToAuditoriumLogic logic = new();
             
             logic.initializerAuditorium(movies);
-
+            
             // Teken de tabel met films
+            if (movies.Count == 0)
+            {
+                Helpers.PrintStringToColor("There aren't any movies pls contact the service desk", "Red");
+                Thread.Sleep(1000);
+                Helpers.BackToYourMenu();
+                return null;
+            }
             DrawMovieTable(movies);
 
             // Wacht op invoer van de gebruiker

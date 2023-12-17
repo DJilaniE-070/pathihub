@@ -120,13 +120,14 @@ public static void AddMoviePresentationWebb(string Header)
                 }
                 else
                 {
-                    SelectedMovie.Scheduled =  new List<string> { "X" };
+                    SelectedMovie.Scheduled =  new List<string> {};
                     SelectedMovie.Auditorium =  new List<int> {};
                 }
                 Helpers.PrintStringToColor($"\n+ {SelectedMovie.MovieTitle}  has been added\n","green");
                 moviesAccess.SaveToJson();
 
-                List<Movie> FilteredMovies = MovieOptionsLogic.FilterMovies();
+                List<Movie> Movies = moviesAccess.GetItemList();
+                List<Movie> FilteredMovies = MovieOptionsLogic.FilterMovies(Movies);
 
                 MovieToAuditoriumLogic logic = new();
                 logic.initializerAuditorium(FilteredMovies);
