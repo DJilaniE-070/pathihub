@@ -88,9 +88,9 @@ public class SeatMap
     private double _priceC;
     public string Message = "";
     public static List<string> SelectedSeats = new List<string>();
-    public int AuditoriumNumber;
-    public int CursorRow = 1;
-    public int CursorSeat = 1;
+    public static int AuditoriumNumber;
+    public static int CursorRow = 1;
+    public static int CursorSeat = 1;
     public double PriceA 
     { 
         get
@@ -313,8 +313,9 @@ public class SeatMap
                         {
                             // dit slaat de zaal op in json als iemand klaar is met bestellen
                             MovieSchedule.SaveAuditorium(Auditorium);
-                            Console.WriteLine("You are logged in");
-                            Environment.Exit(0);
+                            // Console.WriteLine("You are logged in");
+                            // Environment.Exit(0);
+                            ReservationPresentation.AddReservationAutomatically();
                             // Djilanie hier code voor als user is ingelogd. Dus geen inputs maar read from accountmodel user dan
                         }
                         break;
