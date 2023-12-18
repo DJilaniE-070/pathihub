@@ -3,4 +3,6 @@ using PathiHub.Presentation;
 
 Console.Clear();
 Console.WriteLine("Welcome to this amazing program");
-Menu.Start();
+//Menu.Start();
+SnacksMenu snacks = new();
+snacks.Start();

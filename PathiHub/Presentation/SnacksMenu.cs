@@ -2,16 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
+using System.Text.Json;
 
 public class SnacksMenu
 {
     //positie cursor
-    private int CursorIndex = 0;
-    private string filePath = @"C:\Users\31685\Documents\GitHub\pathihub\PathiHub\DataSources\snacksdata.json";
+    private static int CursorIndex = 0;
+    private static string FilePath = @"C:\Users\31685\Documents\GitHub\pathihub\PathiHub\DataSources\snacksdata.json";
     private static List<SnacksData> _snacksdata = new List<SnacksData>
     {
-        //                     name                    description   price   stock   isavailable
+        //                     name      price    isavailable
         new SnacksData("Pathi Original Chips", 1.50, true),
         new SnacksData("Pathi Cheese Chips", 1.50, true),
         new SnacksData("Pathi Paprika Chips", 1.50, true),
@@ -41,35 +42,29 @@ public class SnacksMenu
     
     public SnacksMenu()
     {
-        LoadSnacksData();
+        SaveSnacksDataToJson(_snacksdata);
         Cursor();
     }
 
     public void Start()
     {
-        LoadSnacksData();
-        Cursor();
-    }
-    
-    private void LoadSnacksData()
-    {
-        if (File.Exists(filePath))
-        {
-            string json = File.ReadAllText(filePath);
-            _snacksdata = JsonConvert.DeserializeObject<List<SnacksData>>(json);
-        }
-        else
-        {
-            _snacksdata = new List<SnacksData>();
-        }
+        SaveSnacksDataToJson(_snacksdata);
+
+        List<SnacksData> loadedSnacksData = LoadSnacksDataFromJson();
     }
 
-    // Save snacks data to a JSON file
-    private void SaveSnacksData()
+    static void SaveSnacksDataToJson(List<SnacksData> snacksData)
     {
-        string json = JsonConvert.SerializeObject(_snacksdata, Formatting.Indented);
-        File.WriteAllText(filePath, json);
+        string json = JsonSerializer.Serialize(snacksData, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(FilePath, json);
     }
+
+    static List<SnacksData> LoadSnacksDataFromJson()
+    {
+        string loadedJson = File.ReadAllText(FilePath);
+        return JsonSerializer.Deserialize<List<SnacksData>>(loadedJson);
+    }
+
     // print all snacks
     private void Cursor()
     {
@@ -100,7 +95,18 @@ public class SnacksMenu
                 case ConsoleKey.Enter:
                     if (CursorIndex >= 0 && CursorIndex < _snacksdata.Count)
                     {
-                        ChangeSnacks(_snacksdata[CursorIndex].Name);
+                        ChangeSnacks(_snacksdata[CursorIndex]);
+                    }
+                    break;
+
+                case ConsoleKey.Spacebar:
+                    AddSnacks();
+                    break;
+
+                case ConsoleKey.Backspace:
+                    if (CursorIndex >= 0 && CursorIndex < _snacksdata.Count)
+                    {
+                        DeleteSnacks(_snacksdata[CursorIndex]);
                     }
                     break;
             }
@@ -150,35 +156,91 @@ public class SnacksMenu
     }
     
 
-    private void ChangeSnacks(string name)
+    private void ChangeSnacks(SnacksData snacksData)
     {
-        foreach (var snack in _snacksdata)
+        Console.Clear();
+        Console.WriteLine($"Editing {snacksData.Name}");
+        Console.WriteLine("Enter new values:");
+
+        Console.Write("Name: ");
+        string newName = Console.ReadLine();
+
+        Console.Write("Price: ");
+        double newPrice;
+        if (double.TryParse(Console.ReadLine(), out newPrice))
         {
-            if (name == snack.Name)
-            {
-                Console.WriteLine("Snack bestaat al en kan aangepast of verwijderd worden");
-                switch (CursorIndex)
-                {
-                    // pas snack aan
-                    case 1:
-                        //EditSnacks(name);
-                        break;
-                    // verwijder snack
-                    case 2:
-                        //RemoveSnacks(name);
-                        break;
-                }
-            }
+            snacksData.Price = newPrice;
+        }
+        else
+        {
+            Console.WriteLine("Invalid input for price. The price will remain unchanged.");
+        }
+
+        Console.Write("Is Available (true/false): ");
+        bool newIsAvailable;
+        if (bool.TryParse(Console.ReadLine(), out newIsAvailable))
+        {
+            snacksData.IsAvailable = newIsAvailable;
+        }
+        else
+        {
+            Console.WriteLine("Invalid input for availability. The availability will remain unchanged.");
+        }
+
+        // Save the updated snacks data
+        SaveSnacksDataToJson(_snacksdata);
+    }
+
+    private void DeleteSnacks(SnacksData snacksData)
+    {
+        Console.Clear();
+        Console.WriteLine($"Deleting {snacksData.Name}");
+        Console.WriteLine("Are you sure you want to delete this snack? (Y/N)");
+
+        ConsoleKeyInfo confirmKey = Console.ReadKey(true);
+        if (confirmKey.Key == ConsoleKey.Y)
+        {
+            _snacksdata.Remove(snacksData);
+            Console.WriteLine($"Snack {snacksData.Name} deleted.");
+
+            // Save the updated snacks data
+            SaveSnacksDataToJson(_snacksdata);
+        }
+        else
+        {
+            Console.WriteLine("Deletion canceled.");
         }
     }
 
-    public void EditSnacks(string name)
+    private void AddSnacks()
     {
-    
-    }
+        Console.Clear();
+        Console.WriteLine("Adding a new snack");
+        
+        Console.Write("Name: ");
+        string name = Console.ReadLine();
 
-    public void RemoveSnacks(string name)
-    {
-    
+        Console.Write("Price: ");
+        double price;
+        if (!double.TryParse(Console.ReadLine(), out price))
+        {
+            Console.WriteLine("Invalid input for price. Snack not added.");
+            return;
+        }
+
+        Console.Write("Is Available (true/false): ");
+        bool isAvailable;
+        if (!bool.TryParse(Console.ReadLine(), out isAvailable))
+        {
+            Console.WriteLine("Invalid input for availability. Snack not added.");
+            return;
+        }
+
+        SnacksData newSnack = new SnacksData(name, price, isAvailable);
+        _snacksdata.Add(newSnack);
+        Console.WriteLine($"Snack {name} added.");
+
+        // Save the updated snacks data
+        SaveSnacksDataToJson(_snacksdata);
     }
 }
