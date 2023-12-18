@@ -214,37 +214,44 @@ ______                                           _____      _              _    
                 }
 
             
-                    AddSchedule();
+                    ChooseMore(true);
             }
         }
         if (Remove)
-            {
-                if (SelectedSchedule.MovieTitle == "N/A")
-                {   
-                    bool loop = true;
-                    while (loop)
-                    {
-                    Console.Clear();
-                    Helpers.PrintStringToColor("Schedule is not assigned. Choose another time.\nIf you want to assign it to remove another time press enter or press backspace to return to the menu","Red");
-                    ConsoleKeyInfo key2;
-                    key2 = Console.ReadKey();
-                    if (key2.Key == ConsoleKey.Enter)
-                    {
-                    SelectedSchedule = null;
-                    loop = false;
-                    SelectSched();
-                    }
-                    if(key2.Key == ConsoleKey.Backspace)
-                    {
-                    loop = false;
-                    }
-                    }
+        {
+            if (SelectedSchedule.MovieTitle == "N/A")
+            {   
+                bool loop = true;
+                while (loop)
+                {
+                Console.Clear();
+                Helpers.PrintStringToColor("Schedule is not assigned. Choose another time.\nIf you want to assign it to remove another time press enter or press backspace to return to the menu","Red");
+                ConsoleKeyInfo key2;
+                key2 = Console.ReadKey();
+                if (key2.Key == ConsoleKey.Enter)
+                {
+                SelectedSchedule = null;
+                loop = false;
+                SelectSched();
                 }
-                RemoveSchedule(); 
+                if(key2.Key == ConsoleKey.Backspace)
+                {
+                loop = false;
+                }
+                }
             }
+            else
+            {
+                bool loop = true;
+                while(loop)
+                {
+
+                }
+            }
+        }
     }
 
-    public void AddSchedule()
+    public void ChooseMore(bool AddOrRemove)
     {
         bool loop2 = true;
         while (loop2)
@@ -259,7 +266,14 @@ ______     _   _     _   _   _       _
                                            
                                            ","Yellow");
             Helpers.CharLine('-',80);
+            if (AddOrRemove)
+            {
             Helpers.PrintStringToColor("\nDo you want to schedule another time? Press [Y]es or [N]o", "Cyan");
+            }
+            else
+            {
+            Helpers.PrintStringToColor("\nDo you want to Remove another schedule? Press [Y]es or [N]o", "Cyan");
+            }
             string choice = Helpers.Color("Yellow").ToLower();
 
             if (choice == "y" || choice == "yes")

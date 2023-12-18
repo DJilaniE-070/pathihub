@@ -74,7 +74,7 @@ public class MovieOptionsLogic
         }
     }
 
-    public bool RemoveMovie(string movieTitle,string Directors)
+    public static bool RemoveMovie(string movieTitle,string Directors)
     {
         Movie movieToRemove = null;
 
@@ -99,17 +99,17 @@ public class MovieOptionsLogic
             return false;
         }
     }
-    public static List<Movie> FilterMovies()
+    public static List<Movie> FilterMovies(List<Movie> Movies)
     {
         List<Movie> filteredMovies = new List<Movie>();
 
-        if (movies == null)
+        if (Movies == null)
         {
             Console.WriteLine("Movies collection is null.");
             return null;
         }
 
-        foreach (Movie movie in MovieOptionsLogic.movies)
+        foreach (Movie movie in Movies)
         {
             if (IsValidMovie(movie))
             {
@@ -122,18 +122,22 @@ public class MovieOptionsLogic
 
     private static bool IsValidMovie(Movie movie)
     {
-        if (movie.Auditorium != null)
+        if (movie.Auditorium.Count == 0 && movie.Scheduled.Count == 0)
+        {
+            return false;
+        }
+
+        else if (movie.Auditorium.Count > 0 && movie.Scheduled. Count > 0)
         {
             foreach (int num in movie.Auditorium)
             {
-                if (num <= 0)
+                if (num < 0 && num >= 4)
                 {
                     return false;
                 }
             }
             return true;
         }
-
         return false;
     }
 }

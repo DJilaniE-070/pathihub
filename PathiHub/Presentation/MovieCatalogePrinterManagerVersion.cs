@@ -33,11 +33,12 @@ public class MovieCatalogePrinterManagerVersion
                         selectedMovieIndex = (selectedMovieIndex + 1) % movies.Count;
                         break;
                     case ConsoleKey.Backspace:
-                        ManagerMenu.Start();
+                        Helpers.BackToYourMenu();
+                        Environment.Exit(0);
                         break;
                     case ConsoleKey.Escape:
-                        Console.WriteLine(" ");
-                        Menu.Start();
+                        Helpers.MainMenu();
+                        Environment.Exit(0);
                         break;
                 }
 
@@ -67,7 +68,7 @@ public class MovieCatalogePrinterManagerVersion
 
     public static void DrawMovieTable(List<Movie> movies, string header)
     {
-        Console.WriteLine(header);
+        Helpers.PrintStringToColor(header,"yellow");
 //         Console.WriteLine(@" 
 // ___  ___           _        _____       _        _                  
 // |  \/  |          (_)      /  __ \     | |      | |                 
@@ -98,12 +99,21 @@ public class MovieCatalogePrinterManagerVersion
                 Console.ForegroundColor = ConsoleColor.Black;
             }
 
-            Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", movies[i].MovieTitle,
-                movies[i].ReleaseYear, movies[i].Directors, string.Join(", ", movies[i].Genre), movies[i].Rating);
+            Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", TruncateString(movies[i].MovieTitle,20 ),
+                movies[i].ReleaseYear, TruncateString( movies[i].Directors, 20), TruncateString( string.Join(", ", movies[i].Genre), 20), movies[i].Rating);
 
             Console.ResetColor();
         }
     }
+    public static string TruncateString(string stringValue, int maxLength)
+    {
+        if (stringValue.Length > maxLength)
+        {
+            stringValue = stringValue.Substring(0, maxLength - 3) + "...";
+        }
+        return stringValue;
+    }
+
 
     public static void ShowSelectedMoviePlot(Movie selectedMovie)
     {
