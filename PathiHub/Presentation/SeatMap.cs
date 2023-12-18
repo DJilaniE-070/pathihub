@@ -13,21 +13,21 @@ public class SeatMap
     public List<List<string>> auditorium1 = new List<List<string>>
     {
         // seat                  1    2    3    4    5    6    7    8    9    10   11   12
-        new List<string> { "3", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" },
+        new List<string> { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" },
+        new List<string> { "14", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "13", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "12", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "11", "C", "C", "C", "C", "C", "B", "B", "C", "C", "C", "C", "C" },
+        new List<string> { "10", "C", "C", "C", "C", "B", "B", "B", "B", "C", "C", "C", "C" },
+        new List<string> { "9", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
+        new List<string> { "8", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
+        new List<string> { "7", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
+        new List<string> { "6", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
+        new List<string> { "5", "C", "C", "C", "C", "B", "B", "B", "B", "C", "C", "C", "C" },
+        new List<string> { "4", "C", "C", "C", "C", "C", "B", "B", "C", "C", "C", "C", "C" },
+        new List<string> { "3", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
         new List<string> { "2", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
-        new List<string> { "2", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
-        new List<string> { "2", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
-        new List<string> { "2", "C", "C", "C", "C", "C", "B", "B", "C", "C", "C", "C", "C" },
-        new List<string> { "2", "C", "C", "C", "C", "B", "B", "B", "B", "C", "C", "C", "C" },
-        new List<string> { "2", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
-        new List<string> { "2", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
-        new List<string> { "2", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
-        new List<string> { "2", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
-        new List<string> { "2", "C", "C", "C", "C", "B", "B", "B", "B", "C", "C", "C", "C" },
-        new List<string> { "2", "C", "C", "C", "C", "C", "B", "B", "C", "C", "C", "C", "C" },
-        new List<string> { "2", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
-        new List<string> { "2", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
-        new List<string> { "2", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" }
+        new List<string> { "1", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" }
     };
     // auditorium 2 met 300 stoelen (19 rijen en 18 stoelen per rij)
     public List<List<string>> auditorium2 = new List<List<string>>
@@ -196,26 +196,6 @@ public class SeatMap
     // 3 auditoriums hardcoded en cursor logic
     public void Auditoriums()
     {
-        // auditorium kiezen, maakt een kopie van de auditorium 1 tot en met 3 en zet in Auditorium
-        //List<List<string>> Auditorium = new();
-        
-
-        // cursor positie voor rij en stoel
-        //int CursorRow = 0;
-        //int CursorSeat = 0;
-
-        // message wordt altijd geprint, maar is default op leeg en print normaal niks totdat je op enter klikt
-        //string message = "";
-
-        // laat de auditorium eerst zien samen met titel, scherm, legenda en cursor
-        /* ben van plan om een DisplayAll() te maken om alles aan te roepen, zodat minder code hoeft te worden uitgevoerd
-        DisplayTitle(AuditoriumNumber);
-        DisplayAuditorium(Auditorium, CursorRow, CursorSeat);
-        DisplayScreen(AuditoriumNumber);
-        DisplayCursorPosition(CursorRow, CursorSeat);
-        DisplayLegenda();
-        */
-
         // laat de hele auditorium zien
         DisplayAll();
 
@@ -402,16 +382,6 @@ public class SeatMap
             }
             // laat de hele auditorium zien
             DisplayAll();
-            
-            /* clear het scherm en laat auditorium weer zien samen met titel, scherm, legenda en cursor
-            Console.Clear();
-            DisplayTitle(AuditoriumNumber);
-            DisplayAuditorium(Auditorium, CursorRow, CursorSeat);
-            DisplayScreen(AuditoriumNumber);
-            DisplayCursorPosition(CursorRow, CursorSeat);
-            Console.WriteLine(message);
-            DisplayLegenda();*/
-
         // escape button om uit loop te gaan
         } while (true);
         // escape en je gaat terug naar menu.cs scherm
@@ -426,7 +396,6 @@ public class SeatMap
         DisplayScreen();
         DisplayCursorPosition();
         DisplayMessage();
-        DisplayReservedSeats();
         DisplayLegenda();
         DisplayOptions();
     }
@@ -445,7 +414,7 @@ public class SeatMap
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write("∎ ");
+                    Console.Write(" ∎ ");
                 }
                 // print wat in auditorium staat met kleur en symbool
                 else
@@ -454,34 +423,95 @@ public class SeatMap
                     {
                         case "X":
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.Write("  ");
+                            Console.Write("   ");
                             break;
                         case "A":
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("❑ ");
+                            Console.Write(" ❑ ");
                             break;
                         case "B":
                             Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.Write("❑ ");
+                            Console.Write(" ❑ ");
                             break;
                         case "C":
                             Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.Write("❑ ");
+                            Console.Write(" ❑ ");
                             break;
                         case "AR":
                             Console.ForegroundColor = ConsoleColor.DarkGray;
-                            Console.Write("▣ ");
+                            Console.Write(" ▣ ");
                             break;
                         case "BR":
                             Console.ForegroundColor = ConsoleColor.DarkGray;
-                            Console.Write("▣ ");
+                            Console.Write(" ▣ ");
                             break;
                         case "CR":
                             Console.ForegroundColor = ConsoleColor.DarkGray;
-                            Console.Write("▣ ");
+                            Console.Write(" ▣ ");
                             break;
 
-                        // print rij nummer en stoel nummer
+                        case "1":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($" 1  ");
+                            break;
+                        case "2":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($" 2  ");
+                            break;
+                        case "3":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($" 3  ");
+                            break;
+                        case "4":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($" 4  ");
+                            break;
+                        case "5":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($" 5  ");
+                            break;
+                        case "6":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($" 6  ");
+                            break;
+                        case "7":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($" 7  ");
+                            break;
+                        case "8":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($" 8  ");
+                            break;
+                        case "9":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($" 9  ");
+                            break;
+                        case "10":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($" 10 ");
+                            break;
+                        case "11":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($" 11 ");
+                            break;
+                        case "12":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($" 12 ");
+                            break;
+                        case "13":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($" 13 ");
+                            break;
+                        case "14":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($" 14 ");
+                            break;
+                        case "15":
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($" 15 ");
+                            break;
+
+                        /* print rij nummer en stoel nummer
                         case "1":
                             Console.ForegroundColor = ConsoleColor.DarkCyan;
                             Console.Write($"{rows[seat - 1]} ");
@@ -503,6 +533,7 @@ public class SeatMap
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.Write($"   ");
                             break;
+                        */
                     }
                 }
                 // reset kleur van symbool
