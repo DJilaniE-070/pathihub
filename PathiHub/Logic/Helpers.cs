@@ -33,18 +33,22 @@ public class Helpers
             case "Manager":
                     Console.Clear();
                     ManagerMenu.Start();
+                    Environment.Exit(0);
                     break;
                 case "Financial Manager":
                     Console.Clear();
                     FinancialMenu.Start();
+                    Environment.Exit(0);
                     break;
                 case "Coworker":
                     Console.Clear();
                     CoWorker.Start();
+                    Environment.Exit(0);
                     break;
                 case "User":
                     Console.Clear();
                     UserMenu.Start();
+                    Environment.Exit(0);
                     break;
                 case "Customer":
                     Console.Clear();
@@ -57,6 +61,21 @@ public class Helpers
         }
     }
     
+    public static void PathiHubPrint()
+    {
+        PrintStringToColor(@"
+______     _   _     _ _           _     
+| ___ \   | | | |   (_) |         | |    
+| |_/ /_ _| |_| |__  _| |__  _   _| |__  
+|  __/ _` | __| '_ \| | '_ \| | | | '_ \ 
+| | | (_| | |_| | | | | | | | |_| | |_) |
+\_|  \__,_|\__|_| |_|_|_| |_|\__,_|_.__/ \n","yellow");
+
+CharLine('-',80);
+Console.WriteLine("Please select an option (using the arrow keys and press Enter. Backspace to go Your menu or Escape to go the Main Menu):");
+CharLine('-',80);
+Console.WriteLine();
+    }
     public static void MainMenu()
     {
         Console.WriteLine(" ");

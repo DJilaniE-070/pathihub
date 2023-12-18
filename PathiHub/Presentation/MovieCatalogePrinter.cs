@@ -8,8 +8,9 @@ public class MovieCatalogePrinter
     private static int selectedMovieIndex = 0;
     // private static bool PressedEnter = false;
 
-    public static Movie TabelPrinter(MoviesAccess access)
+    public static Movie TabelPrinter()
     {
+        MoviesAccess access = new();
         if (access.LoadFromJson() == true)
         {
 
@@ -52,6 +53,8 @@ public class MovieCatalogePrinter
                         Helpers.BackToYourMenu();
                         Environment.Exit(0);
                         break;
+                    case ConsoleKey.Tab:
+    
                     case ConsoleKey.Escape:
                         Helpers.MainMenu();
                         break;
@@ -100,7 +103,7 @@ ___  ___           _        _____       _        _
 ","yellow");
 
         Helpers.CharLine('-', 80);
-        Console.WriteLine("This is our movie Catalog");
+        Console.WriteLine("This is our movie Catalog. Press Tab to see our schedule");
         Helpers.CharLine('-', 80);
         Console.WriteLine("\n\n");
 

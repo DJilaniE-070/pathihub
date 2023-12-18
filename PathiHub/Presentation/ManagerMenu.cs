@@ -84,8 +84,7 @@ ___  ___                                   ___  ___
             
             case "[2] Reserve a movie":
                 // ReserveAMovie();
-                MoviesAccess movies = new();
-                MovieCatalogePrinter.TabelPrinter(movies);
+                MovieCatalogePrinter.TabelPrinter();
                 break;
             
             case "[3] Reservation options":

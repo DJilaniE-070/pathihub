@@ -170,8 +170,7 @@ ______     _   _     _   _   _       _
             case "[1] Our movie selection":
                 Thread.Sleep(1500);
                 Console.Clear();
-                MoviesAccess movies = new();
-                MovieCatalogePrinter.TabelPrinter(movies);
+                MovieOrSchedule.Start();
                 break;
             case "[2] Our Snacks selection":
                 Thread.Sleep(1500);

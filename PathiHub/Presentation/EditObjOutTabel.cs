@@ -177,31 +177,31 @@ public class PerformActionToTabel
                 Console.WriteLine($"Field '{fieldName}' not found in type '{objectType.Name}'.");
             }
     }
-    static string EditPLot (string fieldValue)
+static string EditPLot(string fieldValue)
+{
+    string originalString = fieldValue;
+    int currentPosition = 0;
+
     {
-        string originalString = fieldValue;
-        int currentPosition = 0;
-
-
         while (true)
         {
             Console.Clear();
-Helpers.PrintStringToColor(@"  
+            Helpers.PrintStringToColor(@"
 ______ _       _   
 | ___ \ |     | |  
 | |_/ / | ___ | |_ 
 |  __/| |/ _ \| __|
 | |   | | (_) | |_ 
-\_|   |_|\___/ \__| ","yellow");
-        Helpers.CharLine('-' ,80);
+\_|   |_|\___/ \__| ", "yellow");
+            Helpers.CharLine('-', 80);
 
-            if (!originalString.EndsWith(" ")&& !originalString.StartsWith(" "))
-            {   
+            if (!originalString.EndsWith(" ") && !originalString.StartsWith(" "))
+            {
                 originalString = " " + originalString + " ";
             }
 
             DisplayStringWithHighlight(originalString, currentPosition);
-            
+
             ConsoleKeyInfo key = Console.ReadKey(true);
 
             switch (key.Key)
@@ -210,53 +210,42 @@ ______ _       _
                     currentPosition = Math.Max(0, currentPosition - 1);
                     break;
                 case ConsoleKey.RightArrow:
-                     currentPosition = Math.Min(originalString.Length-1, currentPosition + 1);
+                    currentPosition = Math.Min(originalString.Length - 1, currentPosition + 1);
                     break;
                 case ConsoleKey.Backspace:
-                    try
-                    {
                     if (currentPosition > -1)
                     {
-                    
-                        originalString = originalString.Remove(currentPosition , 1);
+                        originalString = originalString.Remove(currentPosition, 1);
                         currentPosition--;
                     }
                     break;
-                    }
-                    catch(Exception)
+                case ConsoleKey.Delete:
+                    if (currentPosition < originalString.Length - 1)
                     {
-                    break;
+                        originalString = originalString.Remove(currentPosition, 1);
                     }
-                     
+                    break;
                 case ConsoleKey.Escape:
-                Helpers.MainMenu();
-                Environment.Exit(0);
-                break;
+                    Helpers.MainMenu();
+                    Environment.Exit(0);
+                    break;
                 case ConsoleKey.Enter:
                     return originalString.Trim();
                 default:
-                    try
-                    {            
-                    
                     if (currentPosition >= 0 && currentPosition <= originalString.Length)
                     {
-                        originalString = originalString.Insert(currentPosition+1, key.KeyChar.ToString());
+                        originalString = originalString.Insert(currentPosition + 1, key.KeyChar.ToString());
                     }
                     else if (currentPosition == -1)
                     {
                         originalString = key.KeyChar + originalString;
-                    }                    
+                    }
                     currentPosition++;
-                        break;
-                    }
-                    catch(Exception)
-                    {
-                        break;
-                    }
+                    break;
             }
-
+        }
     }
-    }
+}
 
     static void DisplayStringWithHighlight(string input, int highlightPosition)
     {
