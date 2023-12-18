@@ -116,32 +116,39 @@ public class SnacksMenu
         Console.WriteLine("Snacks:");
         Console.WriteLine();
         
-        for (int i = 0; i < _snacksdata.Count; i++)
+        if (_snacksdata != null)
         {
-            if (i >= 0 && i < _snacksdata.Count)
+            for (int i = 0; i < _snacksdata.Count; i++)
             {
-                if (CursorIndex == i)
+                if (_snacksdata[i] != null)
                 {
-                    Console.BackgroundColor = ConsoleColor.White;
-                    Console.ForegroundColor = ConsoleColor.Black;
+                    if (_snacksdata[i].IsAvailable)
+                    {
+                        if (CursorIndex == i)
+                        {
+                            Console.BackgroundColor = ConsoleColor.White;
+                            Console.ForegroundColor = ConsoleColor.Black;
+                        }
+                        Console.WriteLine($"{i + 1}. {_snacksdata[i].Name}");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        if (CursorIndex == i)
+                        {
+                            Console.BackgroundColor = ConsoleColor.White;
+                            Console.ForegroundColor = ConsoleColor.Black;
+                        }
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"{i + 1}. {_snacksdata[i].Name} is not available");
+                        Console.ResetColor();
+                    }
                 }
-                Console.WriteLine($"{i + 1}. {_snacksdata[i].Name}");
-                Console.ResetColor();
-            }
-            else
-            {
-                if (CursorIndex == i)
-                {
-                    Console.BackgroundColor = ConsoleColor.White;
-                    Console.ForegroundColor = ConsoleColor.Black;
-                }
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"{i + 1}. {_snacksdata[i].Name} is not available");
-                Console.ResetColor();
             }
         }
         Console.WriteLine();
     }
+    
 
     private void ChangeSnacks(string name)
     {
