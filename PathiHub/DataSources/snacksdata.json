@@ -121,7 +121,7 @@
   },
   {
     "Name": "Hot Dog",
-    "Price": 2,
-    "IsAvailable": true
+    "Price": 3,
+    "IsAvailable": false
   }
 ]

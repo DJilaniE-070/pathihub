@@ -49,7 +49,6 @@ public class SnacksMenu
     public void Start()
     {
         SaveSnacksDataToJson(_snacksdata);
-
         List<SnacksData> loadedSnacksData = LoadSnacksDataFromJson();
     }
 
@@ -84,7 +83,6 @@ public class SnacksMenu
                         CursorIndex--;
                     }
                     break;
-
                 case ConsoleKey.DownArrow:
                     if (CursorIndex < _snacksdata.Count - 1)
                     {
@@ -93,10 +91,7 @@ public class SnacksMenu
                     break;
 
                 case ConsoleKey.Enter:
-                    if (CursorIndex >= 0 && CursorIndex < _snacksdata.Count)
-                    {
-                        ChangeSnacks(_snacksdata[CursorIndex]);
-                    }
+                    ChangeSnacks(_snacksdata[CursorIndex]);
                     break;
 
                 case ConsoleKey.Spacebar:
@@ -104,10 +99,7 @@ public class SnacksMenu
                     break;
 
                 case ConsoleKey.Backspace:
-                    if (CursorIndex >= 0 && CursorIndex < _snacksdata.Count)
-                    {
-                        DeleteSnacks(_snacksdata[CursorIndex]);
-                    }
+                    DeleteSnacks(_snacksdata[CursorIndex]);
                     break;
             }
             //print de snacks
@@ -186,8 +178,6 @@ public class SnacksMenu
         {
             Console.WriteLine("Invalid input for availability. The availability will remain unchanged.");
         }
-
-        // Save the updated snacks data
         SaveSnacksDataToJson(_snacksdata);
     }
 
@@ -240,7 +230,6 @@ public class SnacksMenu
         _snacksdata.Add(newSnack);
         Console.WriteLine($"Snack {name} added.");
 
-        // Save the updated snacks data
         SaveSnacksDataToJson(_snacksdata);
     }
 }
