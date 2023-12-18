@@ -44,7 +44,7 @@ public class DeleteMovieOutTabel
             // Console.WriteLine($"Are you sure you want to delete movie:'{selectedMovie.MovieTitle}'.");
             Helpers.PrintStringToColor($"Are you sure you want to delete the movie'{selectedMovie.MovieTitle}'.\nPlease type 'yes' or 'no'.", "blue");
             Console.Write("\u2192 ");
-            string answer = Console.ReadLine().ToLower();
+            string answer = Helpers.Color("yellow").ToLower();
             
             if (answer == "yes")
             {
@@ -62,7 +62,7 @@ public class DeleteMovieOutTabel
                 Console.WriteLine($"You have chosen not to delete the movie:{selectedMovie.MovieTitle}.");
                 Helpers.PrintStringToColor("Do you want to choose an other movie to remove?", "blue");
                 Console.Write("\u2192 ");
-                string answer2 = Console.ReadLine().ToLower();
+                string answer2 = Helpers.Color("yellow").ToLower();
                 if(answer2 == "yes")
                 {
                     Console.WriteLine("You will be redirected");

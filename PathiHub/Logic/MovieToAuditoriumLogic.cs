@@ -58,7 +58,8 @@ public class MovieToAuditoriumLogic
         }
     }
 
-    public void ClearSchedules ()
+    // Dit is voor de begine van programma elke week als het zo is dan clear alle stored seats zodat er geen stoelen voor altijd opgeslagen word
+    public bool ClearSchedules ()
     {
         ScheduleAcces accesAud1 = new(1);
         ScheduleAcces accesAud2 = new(2);
@@ -66,17 +67,47 @@ public class MovieToAuditoriumLogic
         
         if (accesAud1.LoadFromJson() && accesAud2.LoadFromJson() && accesAud3.LoadFromJson() )
         {
-        List<Schedule> Aud1 = accesAud1.GetItemList();
-        List<Schedule> Aud2 = accesAud2.GetItemList();
-        List<Schedule> Aud3 = accesAud3.GetItemList();
+            List<Schedule> Aud1 = accesAud1.GetItemList();
+            List<Schedule> Aud2 = accesAud2.GetItemList();
+            List<Schedule> Aud3 = accesAud3.GetItemList();
 
-        List<Schedule> Auditoriums = new List<Schedule>();
+            if (Aud1 != null && Aud2 != null && Aud3 != null)
+            {
+                foreach(Schedule schedule1 in Aud1)
+                {
+                    schedule1.MovieTitle = "N/A";
+                    schedule1.Directors = "N/A";
+                    schedule1.ReleaseYear = "N/A";
+                    schedule1.StoredAuditorium = null;
+                }
+                foreach(Schedule schedule2 in Aud2)
+                {
+                    schedule2.MovieTitle = "N/A";
+                    schedule2.Directors = "N/A";
+                    schedule2.ReleaseYear = "N/A";
+                    schedule2.StoredAuditorium = null;
+                }
 
+                foreach(Schedule schedule3 in Aud3)
+                {
+                    schedule3.MovieTitle = "N/A";
+                    schedule3.Directors = "N/A";
+                    schedule3.ReleaseYear = "N/A";
+                    schedule3.StoredAuditorium = null;
+                }
+                accesAud1.SaveToJson();
+                accesAud2.SaveToJson();
+                accesAud3.SaveToJson();
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Something went wrong");
+                return false;
+
+            }
         }
-        else
-        {
-            Console.WriteLine("Something went wrong");
-        }
+        return false;
     }
 
     public void initializerTimes (int Auditorium,Movie movie)
@@ -99,5 +130,37 @@ public class MovieToAuditoriumLogic
             }
         }  
         scheduleAcces.SaveToJson();
+    }
+
+    public void RemoveSchedules(List<string> schedules)
+    {
+        foreach (string schedule in schedules)
+        {
+            string[] parts = schedule.Split('/');
+            if (parts.Length == 3)
+            {
+                string Aud = parts [2];
+
+                int Auditorium = int.Parse(Aud[3].ToString());
+                ScheduleAcces acces = new(Auditorium);
+
+                if(acces.LoadFromJson())
+                {
+                    List<Schedule> SchedulesFromJson = acces.GetItemList();
+                    foreach (Schedule JsonSchedule in SchedulesFromJson)
+                    {
+                        if (JsonSchedule.Scheduled == schedule)
+                        {
+                            JsonSchedule.MovieTitle = "N/A";
+                            JsonSchedule.Directors = "N/A";
+                            JsonSchedule.ReleaseYear = "N/A";
+                            JsonSchedule.StoredAuditorium = null;
+                        }
+                    }
+                    acces.SaveToJson();
+                }
+            }
+        }
+
     }
 }

@@ -81,7 +81,7 @@ ___  ___           _       ______
             else
             {
                 Helpers.PrintStringToColor("\nInvalid option try again","red");
-                Thread.Sleep(500);
+                Thread.Sleep(800);
                 Console.Clear();
                 AddMoviePresentationWebbOption();
             }
@@ -243,7 +243,7 @@ ___  ___           _       ______
             }
             else
             {
-                movie.Scheduled =  new List<string> { "X" };
+                movie.Scheduled =  new List<string> {};
                 movie.Auditorium =  new List<int> {};
             }
 
@@ -259,17 +259,24 @@ ___  ___           _       ______
                 {
                     Helpers.PrintStringToColor($"\n+ {movie.MovieTitle}  has been added\n","green");
                     acces.SaveToJson();
+
+                    //Dit hieronder is om de json van schedules te refreshen zodat er geen foute data kan worden bewerkt
+                    List<Movie> Movies = acces.GetItemList();
+                    List<Movie> FilteredMovies = MovieOptionsLogic.FilterMovies(Movies);
+
+                    MovieToAuditoriumLogic logic = new();
+                    logic.initializerAuditorium(FilteredMovies);
                 }
 
                 Console.WriteLine("Press ENTER to continue");
-                Console.ReadLine();
+                Helpers.Color("Yellow");
 
             }
             else
             {
                 Helpers.PrintStringToColor("File not found. No movies loaded.\n", "red");
                 Console.WriteLine("Press ENTER to continue");
-                Console.ReadLine();
+                Helpers.Color("Yellow");
             }
         }   
 
@@ -322,19 +329,19 @@ ___  ___           _       ______
             //         PrintStringToColor.Color($"\n- {MovieTitle} has been removed\n", "red");
             //     }
             // Console.WriteLine("Press ENTER to continue");
-            // string Enter = Console.ReadLine();  
+            // string Enter = Helpers.Color("Yellow");  
             // }
             // else
             // {
             // Console.WriteLine("File not found. No movies loaded.");
             // Console.WriteLine("Press ENTER to continue");
-            // string enter = Console.ReadLine();
+            // string enter = Helpers.Color("Yellow");
             // }
         }
     public static void EditMoviePresentation()
     {
     List<string> ColomnNames = new(){"MovieTitle", "ReleaseYear",
-    "Director", "Genre", "Rating"};
+    "Directors", "Genre", "Rating"};
     string HeaderX = @"
 
 ___  ___           _        _____       _        _                  
@@ -365,7 +372,7 @@ ___  ___           _        _____       _        _
 ";
     MoviesAccess access = new();
     List<string> ColomnNames = new(){"MovieTitle", "ReleaseYear",
-    "Director", "Genre", "Rating"};
+    "Directors", "Genre", "Rating"};
     if(access.LoadFromJson()!= false)
     {
     List<Movie> movies = access.GetItemList();

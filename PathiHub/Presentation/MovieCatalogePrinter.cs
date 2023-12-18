@@ -8,21 +8,29 @@ public class MovieCatalogePrinter
     private static int selectedMovieIndex = 0;
     // private static bool PressedEnter = false;
 
-    public static Movie TabelPrinter(MoviesAccess access)
+    public static Movie TabelPrinter()
     {
+        MoviesAccess access = new();
         if (access.LoadFromJson() == true)
         {
+
             // List<Movie> movies = access.GetItemList(); dit is alle movies
             List<Movie> Movies = access.GetItemList();
-            MovieOptionsLogic.InitializeMovies(Movies);
-            List<Movie> movies = MovieOptionsLogic.FilterMovies();
+            List<Movie> movies = MovieOptionsLogic.FilterMovies(Movies);
             // de bovenstaande 3 regels zijn om de movies te sorteren
             // hieronder is voor de schedule json correct afgesteld te zijn op de films
             MovieToAuditoriumLogic logic = new();
             
             logic.initializerAuditorium(movies);
-
+            
             // Teken de tabel met films
+            if (movies.Count == 0)
+            {
+                Helpers.PrintStringToColor("There aren't any movies pls contact the service desk", "Red");
+                Thread.Sleep(1000);
+                Helpers.BackToYourMenu();
+                return null;
+            }
             DrawMovieTable(movies);
 
             // Wacht op invoer van de gebruiker
@@ -45,6 +53,8 @@ public class MovieCatalogePrinter
                         Helpers.BackToYourMenu();
                         Environment.Exit(0);
                         break;
+                    case ConsoleKey.Tab:
+    
                     case ConsoleKey.Escape:
                         Helpers.MainMenu();
                         break;
@@ -93,7 +103,7 @@ ___  ___           _        _____       _        _
 ","yellow");
 
         Helpers.CharLine('-', 80);
-        Console.WriteLine("This is our movie Catalog");
+        Console.WriteLine("This is our movie Catalog. Press Tab to see our schedule");
         Helpers.CharLine('-', 80);
         Console.WriteLine("\n\n");
 

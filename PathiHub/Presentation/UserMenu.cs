@@ -75,9 +75,8 @@ public static class UserMenu
         switch (option)
         {
             case "[1]. Make a reservation":
-                ReserveSeat();
+                MovieOrSchedule.Start();
                 break;
-            
             case "[2]. Check reservation":
                 Thread.Sleep(1500);
                 CheckReservation();
