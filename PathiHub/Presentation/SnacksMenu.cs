@@ -93,14 +93,14 @@ public class SnacksMenu
                 case ConsoleKey.Enter:
                     ChangeSnacks(_snacksdata[CursorIndex]);
                     break;
+                case ConsoleKey.Backspace:
+                    RemoveSnacks(_snacksdata[CursorIndex]);
+                    break;
 
                 case ConsoleKey.Spacebar:
                     AddSnacks();
                     break;
 
-                case ConsoleKey.Backspace:
-                    DeleteSnacks(_snacksdata[CursorIndex]);
-                    break;
             }
             //print de snacks
             DisplaySnacks();
@@ -111,6 +111,7 @@ public class SnacksMenu
     private void DisplaySnacks()
     {
         Console.Clear();
+        Console.ResetColor();
         Console.WriteLine("Snacks:");
         Console.WriteLine();
         
@@ -152,12 +153,12 @@ public class SnacksMenu
     {
         Console.Clear();
         Console.WriteLine($"Editing {snacksData.Name}");
-        Console.WriteLine("Enter new values:");
+        Console.WriteLine("Enter new values:\n");
 
-        Console.Write("Name: ");
-        string newName = Console.ReadLine();
-
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.Write("Price: ");
+
+        Console.ForegroundColor = ConsoleColor.Yellow;
         double newPrice;
         if (double.TryParse(Console.ReadLine(), out newPrice))
         {
@@ -165,10 +166,13 @@ public class SnacksMenu
         }
         else
         {
-            Console.WriteLine("Invalid input for price. The price will remain unchanged.");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nInvalid input for price. The price will remain unchanged.");
         }
 
-        Console.Write("Is Available (true/false): ");
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
+        Console.Write("\nIs Available (true/false): ");
+        Console.ForegroundColor = ConsoleColor.Yellow;
         bool newIsAvailable;
         if (bool.TryParse(Console.ReadLine(), out newIsAvailable))
         {
@@ -176,12 +180,13 @@ public class SnacksMenu
         }
         else
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Invalid input for availability. The availability will remain unchanged.");
         }
         SaveSnacksDataToJson(_snacksdata);
     }
 
-    private void DeleteSnacks(SnacksData snacksData)
+    private void RemoveSnacks(SnacksData snacksData)
     {
         Console.Clear();
         Console.WriteLine($"Deleting {snacksData.Name}");
@@ -192,8 +197,6 @@ public class SnacksMenu
         {
             _snacksdata.Remove(snacksData);
             Console.WriteLine($"Snack {snacksData.Name} deleted.");
-
-            // Save the updated snacks data
             SaveSnacksDataToJson(_snacksdata);
         }
         else
