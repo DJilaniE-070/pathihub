@@ -43,8 +43,8 @@ public static void AddMoviePresentationWebb(string Header)
 
         if (!MovieOptionsLogic.CheckSearch(WebSearch))
         {
-            Console.WriteLine("Movie not found try again");
-            Thread.Sleep(600);
+            Helpers.PrintStringToColor("Movie not found Press ENTER to try again","red");
+            Helpers.Color("white");
             Console.Clear();
             AddMoviePresentationWebb(Header);
             return;
@@ -67,11 +67,11 @@ public static void AddMoviePresentationWebb(string Header)
                 Movie movie = OMDBMovieMaker(IMDBresponse);
                 movies.Add(movie);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine($"An error occurred: No Internet test: {ex}");
+                Helpers.PrintStringToColor($"An error occurred /n/nPress ENTER to try again if it continue to give errors try searching for something else or Restart the program","red");
                 Thread.Sleep(600);
-                Console.ReadLine();
+                Helpers.Color("Yellow");
                 Console.Clear();
                 MovieOptionPresentation.AddMoviePresentationWebbOption();
                 return;
@@ -92,8 +92,8 @@ public static void AddMoviePresentationWebb(string Header)
             MovieOptionsLogic.InitializeMovies(moviesAccess.GetItemList());
             if (MovieOptionsLogic.AddMovie(SelectedMovie) != true)
             {
-                Helpers.PrintStringToColor("\nMovie already exits\n","red");
-                Thread.Sleep(600);
+                Helpers.PrintStringToColor("\nMovie already exits\nYou will be redirected to the Menu","red");
+                Thread.Sleep(1000);
                 ManagerMenu.Start();
 
                 
@@ -120,24 +120,30 @@ public static void AddMoviePresentationWebb(string Header)
                 }
                 else
                 {
-                    SelectedMovie.Scheduled =  new List<string> { "X" };
+                    SelectedMovie.Scheduled =  new List<string> {};
                     SelectedMovie.Auditorium =  new List<int> {};
                 }
                 Helpers.PrintStringToColor($"\n+ {SelectedMovie.MovieTitle}  has been added\n","green");
                 moviesAccess.SaveToJson();
+
+                List<Movie> Movies = moviesAccess.GetItemList();
+                List<Movie> FilteredMovies = MovieOptionsLogic.FilterMovies(Movies);
+
+                MovieToAuditoriumLogic logic = new();
+                logic.initializerAuditorium(FilteredMovies);
             }
 
             Console.WriteLine("Press ENTER to continue");
-            Console.ReadLine();
+            Helpers.Color("Yellow");
             ManagerMenu.Start();
 
 
         }
         else
         {
-            Helpers.PrintStringToColor("File not found. No movies loaded.\n", "red");
+            Helpers.PrintStringToColor("Movies not found. No movies loaded.\n", "red");
             Console.WriteLine("Press ENTER to continue");
-            Console.ReadLine();
+            Helpers.Color("Yellow");
             ManagerMenu.Start();
         }
 
@@ -162,7 +168,7 @@ public static void AddMoviePresentationWebb(string Header)
                 Directors = (string)movieJson["Director"],
                 Writers = ((string)movieJson["Writer"]).Split(',').ToList(),
                 Plot = (string)movieJson["Plot"],
-                Rating = GetDoubleOrZero(((string)movieJson["imdbRating"])),
+                Rating = GetDoubleOrZero((string)movieJson["imdbRating"]),
                 RuntimeMinutes = GetIntOrZero(((string)movieJson["Runtime"]).Split(" ")[0]), 
                 Languages = (string)movieJson["Language"],
                 Countrys = (string)movieJson["Country"],
@@ -187,18 +193,29 @@ public static void AddMoviePresentationWebb(string Header)
         }
         // WTF man normale - kan hij niet detecten van de value
         // 
-        private static int GetIntOrZero (string value)
+    private static int GetIntOrZero(string value)
+    {
+        if (value != null && value.ToString() != "N/A")
         {
-            if (value != null && value.ToString() != "N/A")
+            string valueCorrected = value.Replace("\u2013", "-");
+
+            if (valueCorrected.Contains("-"))
             {
-            //  Match match = Regex.Match(value, @"^(\d{4})–?(\d{4})?$");
-                string valueCorrected = value.Replace("\u2013", "-");
-                if (valueCorrected.Contains("-"))
-                {   
-                return Convert.ToInt32(valueCorrected.Split("-")[0]);
+                string[] parts = valueCorrected.Split("-");
+                if (int.TryParse(parts[0], out int result))
+                {
+                    return result;
                 }
-                return Convert.ToInt32(value);
             }
-            return 0;
+            else
+            {
+                if (int.TryParse(valueCorrected, out int result))
+                {
+                    return result;
+                }
+            }
         }
+
+        return 0;
+    }
 }

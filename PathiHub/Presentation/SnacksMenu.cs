@@ -96,7 +96,6 @@ public class SnacksMenu
                 case ConsoleKey.Backspace:
                     RemoveSnacks(_snacksdata[CursorIndex]);
                     break;
-
                 case ConsoleKey.Spacebar:
                     AddSnacks();
                     break;
