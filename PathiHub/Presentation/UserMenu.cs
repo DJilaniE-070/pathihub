@@ -13,8 +13,7 @@ public static class UserMenu
         do
         {
             Console.Clear();
-
-            Console.WriteLine(@"
+            Helpers.PrintStringToColor(@"
  _   _                   ___  ___                    
 | | | |                  |  \/  |                    
 | | | | ___   ___  _ __  | .  . |  ___  _ __   _   _ 
@@ -23,7 +22,7 @@ public static class UserMenu
  \___/ |___/ \___||_|    \_|  |_/ \___||_| |_| \__,_|
                                                      
                                                      
-");
+", "yellow");
 
             Helpers.CharLine('-' ,80);
             Console.WriteLine("Please select an option (using the arrow keys and press Enter):");
@@ -76,9 +75,8 @@ public static class UserMenu
         switch (option)
         {
             case "[1]. Make a reservation":
-                ReserveSeat();
+                MovieOrSchedule.Start();
                 break;
-            
             case "[2]. Check reservation":
                 Thread.Sleep(1500);
                 CheckReservation();
@@ -143,18 +141,15 @@ public static class UserMenu
         } while (key.Key != ConsoleKey.Escape);
         Console.CursorVisible = true;
     }
-       
+
     static void CheckReservation()
     {
-            
         Console.WriteLine("Check reservation");
         Console.WriteLine("Here comes the implementations in a later sprint");
     }
 
-        
     static void CancelReservation()
     {
-            
         Console.WriteLine("Cancel reservation");
         Console.WriteLine("Here comes the implementations in a later sprint");
     }

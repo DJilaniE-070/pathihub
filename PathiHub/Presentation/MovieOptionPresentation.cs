@@ -81,7 +81,7 @@ ___  ___           _       ______
             else
             {
                 Helpers.PrintStringToColor("\nInvalid option try again","red");
-                Thread.Sleep(500);
+                Thread.Sleep(800);
                 Console.Clear();
                 AddMoviePresentationWebbOption();
             }
@@ -221,29 +221,31 @@ ___  ___           _       ______
             movie.Poster = string.IsNullOrEmpty(poster)
             ?"X"
             :poster;
-            // while (true)
-            // {
-            //     Console.Write("Enter the auditorium (1,2,3): ");
-            //     int auditorium = Convert.ToInt32( Helpers.Color("DarkYellow"));
-            //     if (auditorium >= 1 && auditorium <= 3)
-            //     {
-            //     movie.Auditorium = auditorium;
-            //     break;
-            //     }
-            //     else
-            //     {
-            //         Helpers.PrintStringToColor("Choose between 1 and 3","red");
-            //     }
-            // }
-
-
-            
+                        
             // Dit een check laten doen
-            Console.Write("Enter Scheduled time as Monday/12:00-14.30,Thursday/18:00-20:30");
-            string? scheduled = Helpers.Color("DarkYellow");
-            movie.Scheduled = string.IsNullOrEmpty(scheduled)
-            ? new List<string> { "X" } 
-            : new List<string>(AwardsInput.Split(','));
+            // true is voor add false voor remove
+            ScheduleOption option = new(true);
+            option.Start();
+            List<Schedule>schedules = option.SelectedSchedules;
+            List<int> Auditoriums = option.SelectedAuds;
+            List<string> Times = new();
+
+            foreach (Schedule schedule in schedules)
+            {
+                Times.Add(schedule.Scheduled);
+            }
+
+            if (schedules.Count > 0 && Times.Count > 0)
+            {
+                movie.Scheduled = Times;
+                movie.Auditorium = Auditoriums;
+
+            }
+            else
+            {
+                movie.Scheduled =  new List<string> {};
+                movie.Auditorium =  new List<int> {};
+            }
 
             MoviesAccess acces = new MoviesAccess();
             if (acces.LoadFromJson() == true)
@@ -257,17 +259,24 @@ ___  ___           _       ______
                 {
                     Helpers.PrintStringToColor($"\n+ {movie.MovieTitle}  has been added\n","green");
                     acces.SaveToJson();
+
+                    //Dit hieronder is om de json van schedules te refreshen zodat er geen foute data kan worden bewerkt
+                    List<Movie> Movies = acces.GetItemList();
+                    List<Movie> FilteredMovies = MovieOptionsLogic.FilterMovies(Movies);
+
+                    MovieToAuditoriumLogic logic = new();
+                    logic.initializerAuditorium(FilteredMovies);
                 }
 
                 Console.WriteLine("Press ENTER to continue");
-                Console.ReadLine();
+                Helpers.Color("Yellow");
 
             }
             else
             {
                 Helpers.PrintStringToColor("File not found. No movies loaded.\n", "red");
                 Console.WriteLine("Press ENTER to continue");
-                Console.ReadLine();
+                Helpers.Color("Yellow");
             }
         }   
 
@@ -320,19 +329,19 @@ ___  ___           _       ______
             //         PrintStringToColor.Color($"\n- {MovieTitle} has been removed\n", "red");
             //     }
             // Console.WriteLine("Press ENTER to continue");
-            // string Enter = Console.ReadLine();  
+            // string Enter = Helpers.Color("Yellow");  
             // }
             // else
             // {
             // Console.WriteLine("File not found. No movies loaded.");
             // Console.WriteLine("Press ENTER to continue");
-            // string enter = Console.ReadLine();
+            // string enter = Helpers.Color("Yellow");
             // }
         }
     public static void EditMoviePresentation()
     {
     List<string> ColomnNames = new(){"MovieTitle", "ReleaseYear",
-    "Director", "Genre", "Rating"};
+    "Directors", "Genre", "Rating"};
     string HeaderX = @"
 
 ___  ___           _        _____       _        _                  
@@ -363,7 +372,7 @@ ___  ___           _        _____       _        _
 ";
     MoviesAccess access = new();
     List<string> ColomnNames = new(){"MovieTitle", "ReleaseYear",
-    "Director", "Genre", "Rating"};
+    "Directors", "Genre", "Rating"};
     if(access.LoadFromJson()!= false)
     {
     List<Movie> movies = access.GetItemList();

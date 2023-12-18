@@ -8,7 +8,7 @@ public static class ManagerMenu
         int selectedIndex = 0;
         bool exit = false;
 
-        string[] menuOptions = { "[1] Film options","[2] Reserve a movie", "[3] Reservation options", "[4] Financial options", "[5] Snacks options", "[6] Exit" };
+        string[] menuOptions = { "[1] Film options","[2] Reserve a movie", "[3] Reservation options","[4] Schedule option", "[5] Financial options", "[6] Snacks options", "[7] Exit" };
 
         do
         {
@@ -83,24 +83,29 @@ ___  ___                                   ___  ___
                 break;
             
             case "[2] Reserve a movie":
-                ReserveAMovie();
+                // ReserveAMovie();
+                MovieCatalogePrinter.TabelPrinter();
                 break;
             
             case "[3] Reservation options":
                 ReservationsOptions();
                 break;
             
-            case "[4] Financial options":
+            case "[4] Schedule option":
+                ScheduleOption();
+                break;
+            
+            case "[5] Financial options":
                 Thread.Sleep(1500);
                 FinancialOptions();
                 break;
             
-            case "[5] Snacks options":
+            case "[6] Snacks options":
                 SnacksMenu snack = new SnacksMenu();
                 snack.Start();
                 break;
             
-            case "[6] Exit":
+            case "[7] Exit":
                 Thread.Sleep(1500);
                 Helpers.MainMenu();
                 break;
@@ -111,7 +116,7 @@ ___  ___                                   ___  ___
     
 static void FilmOptions()
 {
-    string[] menuOptions = { "Add a movie", "Remove a movie", "Edit a movie", "Show Movies", "Promote Movies","Return to Manager menu" };
+    string[] menuOptions = { "Add a movie", "Remove a movie", "Edit a movie","Show Movies", "Promote Movies", "Return to Manager menu" };
     int selectedIndex = 0;
     bool exit = false;
 
@@ -162,9 +167,11 @@ ___  ___           _        _____       _   _
              case ConsoleKey.Backspace:
                     Console.WriteLine(" ");
                     Helpers.BackToYourMenu();
+                    Environment.Exit(0);
                     break;
             case ConsoleKey.Escape:
                     Helpers.MainMenu();
+                    Environment.Exit(0);
                     break;
             case ConsoleKey.Enter:
                 Console.Clear();
@@ -205,7 +212,7 @@ ___  ___           _        _____       _   _
 
 public static void ReservationsOptions()
 {
-    string[] menuOptions = { "Make a Reervation", "Remove a reservation", "Change a reservation","Show Reservations" };
+    string[] menuOptions = { "Make a Reservation", "Remove a reservation", "Change a reservation","Show Reservations" };
     int selectedIndex = 0;
     bool exit = false;
 
@@ -291,6 +298,11 @@ ______                               _   _               _____       _   _
 
     Console.CursorVisible = true;
     }   
+
+        static void ScheduleOption()
+        {
+
+        }
 
         static void ReserveAMovie()
         {

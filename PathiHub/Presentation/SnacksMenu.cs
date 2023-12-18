@@ -1,76 +1,73 @@
 
-using System.Reflection.Metadata;
-using System.Runtime.InteropServices;
+using System;
+using System.Collections.Generic;
+using System.IO;
+//using Newtonsoft.Json;
+using System.Text.Json;
 
 public class SnacksMenu
 {
-    private int CursorIndex = 1;
-    private int PageIndex = 0;
-    private int StartIndex = 0;
-    private int Steps = 10;
-    public static List<SnacksData> _snacksdata = new List<SnacksData>
+    //positie cursor
+    private static int CursorIndex = 0;
+    private static string FilePath = @"C:\Users\31685\Documents\GitHub\pathihub\PathiHub\DataSources\snacksdata.json";
+    private static List<SnacksData> _snacksdata = new List<SnacksData>
     {
-        //                     name                    description   price   stock   isavailable
-        new SnacksData("Pathi Original Chips", "Originele Pathi chips", 1.50, 10, true),
-        new SnacksData("Pathi Cheese Chips", "Pathi chips met kaas", 1.50, 0),
-        new SnacksData("Pathi Paprika Chips", "Pathi chips met paprika", 1.50, 10),
-        new SnacksData("Doritos", "Original Doritos", 2.00, 10),
-        new SnacksData("Cheetos", "Kaas smaak Cheetos", 2.00, 10),
-        new SnacksData("Nachos", "Met salsa of guacamole", 1.00, 10),
-        new SnacksData("Chocolade reep (groot)", "Chocolade reep", 1.00, false),
-        new SnacksData("Chocolade reep (klein)", "Chocolade reep", 1.00, 10),
-        new SnacksData("Fanta Stic", "Pathi's Orange Juice", 1.00, 10),
-        new SnacksData("Red Bull", "Energy drink", 1.00, 10),
-        new SnacksData("Sprite", "", 1.00, 10, true),
-        new SnacksData("Spa Blauw", "Water", 1.00, 10),
-        new SnacksData("Spa Rood", "Water met prik", 1.00, 10),
-        new SnacksData("Fanta", "Orange Juice", 1.00, 10),
-        new SnacksData("Coca Cola", "Cola", 1.00, 10),
-        new SnacksData("Coca Cola Light", "Cola zonder suiker", 1.00, 10),
-        new SnacksData("Coca Cola Zero", "Cola zonder suiker", 1.00, 10),
-        new SnacksData("Pathi Cola Super", "De originele Pathi Cola", 1.25, true),
-        new SnacksData("Pathi Cola Ultra", "Pathi Cola zonder suiker", 1.25, 10), 
-        new SnacksData("Zoete Popcorn", "Een grote zak zoet popcorn", 2.00, 10, true),
-        new SnacksData("Mix Popcorn", "Een grote zak zoete en zoute popcorn mix", 0.75, 10, false),
-        new SnacksData("Zoute Popcorn", "Een grote zak zoute popcorn", 2.00, 10),
-        new SnacksData("Caramel Popcorn", "Een grote zak caramel popcorn", 2.00, 10),
-        new SnacksData("M&M", "M&M", 2.00, 10),
-        new SnacksData("KitKat", "KitKat", 2.00, 10),
-        new SnacksData("Twix", "Twix ", 2.00, 10, true),
-        new SnacksData("Snickers", "Snickers", 2.00, 10),
-        new SnacksData("Skittles", "Skittles", 2.00, 10),
-        new SnacksData("Raffaello", "Raffaello Armani", 2.00, 10, false),
-        new SnacksData("Pretzels", "Zoute pretzels met Pathi saus", 2.00, 10),
-        new SnacksData("Crisps", "Crisps", 2.00, 10),
-        new SnacksData("Mix Snoep", "Een mix van alle snoep", 2.00, 10),
-        new SnacksData("Mix Chocolade", "Een mix van alle chocolade", 2.00, 10),
-        new SnacksData("Slush Pathi", "Slush Puppy maar dan Pathi stijl", 2.00, 10),
-        new SnacksData("Ijs", "Keuze uit vanilla, chocolade, aardbei, citroen en mango", 2.00, 10),
-        new SnacksData("Hot Dog", "Broodje met hotdog, Pathi stijl", 2.00, 10),
+        //                     name      price    isavailable
+        new SnacksData("Pathi Original Chips", 1.50, true),
+        new SnacksData("Pathi Cheese Chips", 1.50, true),
+        new SnacksData("Pathi Paprika Chips", 1.50, true),
+        new SnacksData("Chocolade reep", 1.00, false),
+        new SnacksData("Fanta Stic", 1.00, true),
+        new SnacksData("Red Bull", 1.00, true),
+        new SnacksData("Sprite", 1.00, true),
+        new SnacksData("Spa Blauw", 1.00, true),
+        new SnacksData("Spa Rood", 2.00, true),
+        new SnacksData("Fanta", 1.00, true),
+        new SnacksData("Coca Cola", 1.00, true),
+        new SnacksData("Coca Cola Light", 1.00, true),
+        new SnacksData("Coca Cola Zero", 1.00, true),
+        new SnacksData("Pathi Cola Super", 1.25, true),
+        new SnacksData("Pathi Cola Ultra", 1.25, true), 
+        new SnacksData("Zoete Popcorn", 2.00, true),
+        new SnacksData("Mix Popcorn", 0.75, false),
+        new SnacksData("Zoute Popcorn", 2.00, true),
+        new SnacksData("Caramel Popcorn", 2.00, true),
+        new SnacksData("Pretzels", 2.00, true),
+        new SnacksData("Mix Snoep", 2.00, true),
+        new SnacksData("Mix Chocolade", 2.00, true),
+        new SnacksData("Slush Pathi", 2.00, true),
+        new SnacksData("Ijs", 2.00, false),
+        new SnacksData("Hot Dog", 2.00, true)
     };
-    public List<Snacks> BoughtSnacks;
-    public string Name;
-    public int Quantity;
-    public double TotalPrice;
-    public int Amount = 1;
     
     public SnacksMenu()
     {
-    }
-
-    public void BuySnacks()
-    {
-
+        SaveSnacksDataToJson(_snacksdata);
+        Cursor();
     }
 
     public void Start()
     {
-        Cursor();
+        SaveSnacksDataToJson(_snacksdata);
+        List<SnacksData> loadedSnacksData = LoadSnacksDataFromJson();
     }
-    
-    // print all snacks
-    public void Cursor()
+
+    static void SaveSnacksDataToJson(List<SnacksData> snacksData)
     {
+        string json = JsonSerializer.Serialize(snacksData, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(FilePath, json);
+    }
+
+    static List<SnacksData> LoadSnacksDataFromJson()
+    {
+        string loadedJson = File.ReadAllText(FilePath);
+        return JsonSerializer.Deserialize<List<SnacksData>>(loadedJson);
+    }
+
+    // print all snacks
+    private void Cursor()
+    {
+        //print de snacks eerst
         DisplaySnacks();
 
         ConsoleKeyInfo key;
@@ -85,127 +82,156 @@ public class SnacksMenu
                     {
                         CursorIndex--;
                     }
-                    if (_snacksdata[CursorIndex].IsAvailable == false)
-                    {
-                        CursorIndex--;
-                    }
                     break;
-
                 case ConsoleKey.DownArrow:
                     if (CursorIndex < _snacksdata.Count - 1)
                     {
                         CursorIndex++;
                     }
-                    if (_snacksdata[CursorIndex].IsAvailable == false)
-                    {
-                        CursorIndex++;
-                    }
-                    break;
-
-                case ConsoleKey.LeftArrow:
-                    if (PageIndex > 0)
-                    {
-                        PageIndex--;
-                    }
-                    break;
-
-                case ConsoleKey.RightArrow:
-                    int LastPage = _snacksdata.Count % 10;
-                    if (PageIndex < LastPage)
-                    {
-                        PageIndex++;
-                    }
                     break;
 
                 case ConsoleKey.Enter:
-                    BoughtSnacks.Add(new Snacks(_snacksdata[CursorIndex].Name, Amount));
+                    ChangeSnacks(_snacksdata[CursorIndex]);
                     break;
+                case ConsoleKey.Backspace:
+                    RemoveSnacks(_snacksdata[CursorIndex]);
+                    break;
+                case ConsoleKey.Spacebar:
+                    AddSnacks();
+                    break;
+
             }
+            //print de snacks
             DisplaySnacks();
         } while (key.Key != ConsoleKey.Escape);
         Menu.Start();
     }
 
-    public void DisplaySnacks()
+    private void DisplaySnacks()
     {
         Console.Clear();
+        Console.ResetColor();
         Console.WriteLine("Snacks:");
         Console.WriteLine();
         
-        for (int i = 0; i < _snacksdata.Count; i++)
+        if (_snacksdata != null)
         {
-            if (_snacksdata[i].IsAvailable)
+            for (int i = 0; i < _snacksdata.Count; i++)
             {
-                if (CursorIndex == i)
+                if (_snacksdata[i] != null)
                 {
-                    Console.BackgroundColor = ConsoleColor.White;
-                    Console.ForegroundColor = ConsoleColor.Black;
+                    if (_snacksdata[i].IsAvailable)
+                    {
+                        if (CursorIndex == i)
+                        {
+                            Console.BackgroundColor = ConsoleColor.White;
+                            Console.ForegroundColor = ConsoleColor.Black;
+                        }
+                        Console.WriteLine($"{i + 1}. {_snacksdata[i].Name}");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        if (CursorIndex == i)
+                        {
+                            Console.BackgroundColor = ConsoleColor.White;
+                            Console.ForegroundColor = ConsoleColor.Black;
+                        }
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"{i + 1}. {_snacksdata[i].Name} is not available");
+                        Console.ResetColor();
+                    }
                 }
-                Console.WriteLine($"{i + 1}. {_snacksdata[i].Name}");
-                Console.ResetColor();
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"{i + 1}. {_snacksdata[i].Name} is out of stock");
-                Console.ResetColor();
             }
         }
         Console.WriteLine();
     }
+    
 
-    public double CalculatePrice(string name)
+    private void ChangeSnacks(SnacksData snacksData)
     {
-        foreach (var snack in _snacksdata)
+        Console.Clear();
+        Console.WriteLine($"Editing {snacksData.Name}");
+        Console.WriteLine("Enter new values:\n");
+
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
+        Console.Write("Price: ");
+
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        double newPrice;
+        if (double.TryParse(Console.ReadLine(), out newPrice))
         {
-            if (name == snack.Name)
-            {
-                return snack.Price * Quantity;
-            }
+            snacksData.Price = newPrice;
         }
-        return 0;
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nInvalid input for price. The price will remain unchanged.");
+        }
+
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
+        Console.Write("\nIs Available (true/false): ");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        bool newIsAvailable;
+        if (bool.TryParse(Console.ReadLine(), out newIsAvailable))
+        {
+            snacksData.IsAvailable = newIsAvailable;
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Invalid input for availability. The availability will remain unchanged.");
+        }
+        SaveSnacksDataToJson(_snacksdata);
     }
 
-    public void ChangeSnacks(string name)
+    private void RemoveSnacks(SnacksData snacksData)
     {
-        foreach (var snack in _snacksdata)
-        {
-            if (name == snack.Name)
-            {
-                Console.WriteLine("Snack bestaat al en kan aangepast of verwijderd worden");
-                switch (CursorIndex)
-                {
-                    // pas snack aan
-                    case 1:
-                        //EditSnacks(name);
-                        break;
-                    // verwijder snack
-                    case 2:
-                        //RemoveSnacks(name);
-                        break;
-                }
-            }
-        }
-        Console.WriteLine("Snack bestaat niet en kan niet aangepast of verwijderd worden, wilt u het toevoegen?");
-        switch (CursorIndex)
-        {
+        Console.Clear();
+        Console.WriteLine($"Deleting {snacksData.Name}");
+        Console.WriteLine("Are you sure you want to delete this snack? (Y/N)");
 
+        ConsoleKeyInfo confirmKey = Console.ReadKey(true);
+        if (confirmKey.Key == ConsoleKey.Y)
+        {
+            _snacksdata.Remove(snacksData);
+            Console.WriteLine($"Snack {snacksData.Name} deleted.");
+            SaveSnacksDataToJson(_snacksdata);
+        }
+        else
+        {
+            Console.WriteLine("Deletion canceled.");
         }
     }
 
-    public void EditSnacks(string name)
+    private void AddSnacks()
     {
-        foreach (var snack in _snacksdata)
+        Console.Clear();
+        Console.WriteLine("Adding a new snack");
+        
+        Console.Write("Name: ");
+        string name = Console.ReadLine();
+
+        Console.Write("Price: ");
+        double price;
+        if (!double.TryParse(Console.ReadLine(), out price))
         {
-
+            Console.WriteLine("Invalid input for price. Snack not added.");
+            return;
         }
-    }
 
-    public void RemoveSnacks(string name)
-    {
-        foreach (var snack in _snacksdata)
+        Console.Write("Is Available (true/false): ");
+        bool isAvailable;
+        if (!bool.TryParse(Console.ReadLine(), out isAvailable))
         {
-
+            Console.WriteLine("Invalid input for availability. Snack not added.");
+            return;
         }
+
+        SnacksData newSnack = new SnacksData(name, price, isAvailable);
+        _snacksdata.Add(newSnack);
+        Console.WriteLine($"Snack {name} added.");
+
+        SaveSnacksDataToJson(_snacksdata);
     }
 }

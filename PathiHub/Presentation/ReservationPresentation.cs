@@ -92,14 +92,14 @@ ______                               _   _
             }
 
         Console.WriteLine("Press ENTER to continue");
-        string Enter = Console.ReadLine();
+        string Enter = Helpers.Color("Yellow");
 
         }
         else
         {
             Helpers.PrintStringToColor("File not found. No movies loaded.\n", "red");
             Console.WriteLine("Press ENTER to continue");
-            string enter = Console.ReadLine();
+            string enter = Helpers.Color("Yellow");
         }
     }   
 
@@ -135,13 +135,13 @@ ______                               ______                               _   _
                     Helpers.PrintStringToColor($"\n- Reservation for {FullName} has been removed\n", "red");
                 }
             Console.WriteLine("Press ENTER to continue");
-            Console.ReadLine();  
+            Helpers.Color("Yellow");  
             }
             else
             {
             Console.WriteLine("File not found. No movies loaded.");
             Console.WriteLine("Press ENTER to continue");
-            Console.ReadLine();
+            Helpers.Color("Yellow");
             }
         }
 
@@ -180,4 +180,4 @@ ______                               _   _
     ObjCatalogePrinter.TabelPrinter(HeaderX, reservations, ColomnNames);
     }
     }
-    }
+}

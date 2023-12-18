@@ -41,7 +41,7 @@ public class PromotionMenu
         Movie selectedMovie = MovieCatalogePrinterManagerVersion.TabelPrinter(movieData, header);
         Helpers.PrintStringToColor($"\nAre you sure you want to modify the promotion for the movie '{selectedMovie.MovieTitle}'? Please type 'yes' or 'no'.", "blue");
         Console.Write("\u2192 ");
-        string? answer = Console.ReadLine().ToLower();
+        string? answer = Helpers.Color("Yellow").ToLower();
         
         
 
