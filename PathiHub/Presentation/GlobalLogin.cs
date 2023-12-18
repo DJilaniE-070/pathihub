@@ -60,13 +60,6 @@ static class GlobalLogin
                     Console.WriteLine("Financial Manager Menu");
                     break;
                 case "Coworker":
-                    Helpers.CharLine('-' ,80);
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("You're username and password are correct.");
-                    Console.ResetColor();
-                    Thread.Sleep(1500);
-                    Console.WriteLine("You will be redirected to the Co-Worker menu.");
-                    Thread.Sleep(2000);
                     Console.Clear();
                     CoWorker.Start();
                     break;

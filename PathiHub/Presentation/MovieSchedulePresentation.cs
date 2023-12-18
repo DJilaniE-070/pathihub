@@ -2,15 +2,17 @@ using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 public static class MovieSchedule
 {
+
     public static Movie SelectedMovie;
 
     public static int Selectedauditorium;
     public static string SelectedSchedule;
 
+// dit is nodig om de sched 
     public static void SaveAuditorium (List<List<string>> storedAud)
     {
         ScheduleAcces scheduleAcces = new(MovieSchedule.Selectedauditorium);
-        if (scheduleAcces.LoadFromJson()!= false);
+        if (scheduleAcces.LoadFromJson()!= false)
         {
             List<Schedule> WholeSchedule = scheduleAcces.GetItemList();
             foreach (Schedule schedule in WholeSchedule)
@@ -52,7 +54,7 @@ public static class MovieSchedule
                 case ConsoleKey.Enter:
                     Console.WriteLine($"Selected number: {Auditoriums[selectedIndex]}");
                     Selectedauditorium = Auditoriums[selectedIndex];
-                    DisplaySchedule();
+                    DisplaySchedule1();
                     loop=false;
                     break;
                 case ConsoleKey.Backspace:
@@ -105,7 +107,7 @@ public static class MovieSchedule
 
 
     
-    public static void DisplaySchedule()
+    public static void DisplaySchedule1()
     {
     // This can een list in de Movie obj zijn
     // "Monday/12:00-14.30","Thursday/18:00-20:30"
@@ -171,10 +173,10 @@ public static class MovieSchedule
         {
             string selectedDay = formattedSchedule.Keys.ElementAt(selectedDayIndex);
             string selectedTime = formattedSchedule[selectedDay][selectedTimeIndex];
-            SelectedSchedule = $"{selectedDay}/{selectedTime}";
+            SelectedSchedule = $"{selectedDay}/{selectedTime}/Aud{Selectedauditorium}";
             if (selectedTime == "X")
             {
-                DisplaySchedule();
+                DisplaySchedule1();
             }
         }
     }
@@ -239,10 +241,11 @@ public static class MovieSchedule
         {
             // Split each day-time pair into day and time
             string[] parts = pair.Split('/');
-            if (parts.Length == 2)
+            if (parts.Length == 3)
             {
                 string day = parts[0];
                 string time = parts[1];
+                string Aud = parts [2];
 
                 // If the day already exists in the dictionary, add the time to its list
                 if (schedule.ContainsKey(day))
@@ -262,6 +265,4 @@ public static class MovieSchedule
         }
         return schedule;
     }
-
-
 }

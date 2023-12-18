@@ -1,4 +1,3 @@
-using System.Security.Cryptography.X509Certificates;
 
 public class MovieToAuditoriumLogic
 {
@@ -56,6 +55,27 @@ public class MovieToAuditoriumLogic
             {
                 initializerTimes(Auditorium, movie);
             }
+        }
+    }
+
+    public void ClearSchedules ()
+    {
+        ScheduleAcces accesAud1 = new(1);
+        ScheduleAcces accesAud2 = new(2);
+        ScheduleAcces accesAud3 = new(3);
+        
+        if (accesAud1.LoadFromJson() && accesAud2.LoadFromJson() && accesAud3.LoadFromJson() )
+        {
+        List<Schedule> Aud1 = accesAud1.GetItemList();
+        List<Schedule> Aud2 = accesAud2.GetItemList();
+        List<Schedule> Aud3 = accesAud3.GetItemList();
+
+        List<Schedule> Auditoriums = new List<Schedule>();
+
+        }
+        else
+        {
+            Console.WriteLine("Something went wrong");
         }
     }
 
