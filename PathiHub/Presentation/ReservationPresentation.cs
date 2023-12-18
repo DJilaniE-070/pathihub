@@ -75,6 +75,7 @@ ______                               _   _
 
         Console.WriteLine("Press ENTER to continue");
         string Enter = Console.ReadLine();
+        Helpers.BackToYourMenu();
 
         }
         else
@@ -82,6 +83,7 @@ ______                               _   _
             Helpers.PrintStringToColor("File not found. No movies loaded.\n", "red");
             Console.WriteLine("Press ENTER to continue");
             string enter = Console.ReadLine();
+            Helpers.BackToYourMenu();
         }
     } 
     

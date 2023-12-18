@@ -18,7 +18,8 @@ public class MakeReservation
         foreach (Reservation reservation_ in Reservations)
         {
             if (string.Equals(reservation_.FullName, reservation.FullName) &&
-                string.Equals(reservation_.Date, reservation.Date))
+                string.Equals(reservation_.Date, reservation.Date) &&
+                string.Equals(reservation_.SeatNames, reservation.SeatNames))
             {
                 // Reservation already exists
                 reservationExist = true;
