@@ -85,6 +85,9 @@ public static class UserMenu
             case "[3]. Cancel reservation":
                 CancelReservation();
                 break;
+            case "[4]. Exit":
+                Helpers.BackToYourMenu();
+                break;
         }
     }
 

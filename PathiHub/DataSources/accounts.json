@@ -26,5 +26,12 @@
     "password": "123",
     "fullName": "Jelly",
     "role": "User"
+  },
+  {
+    "id": 5,
+    "emailAddress": "Henk@gmail.com",
+    "password": "Henkvanpas1!",
+    "fullName": "Henk van pas",
+    "role": "User"
   }
 ]
