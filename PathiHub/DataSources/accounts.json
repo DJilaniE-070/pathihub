@@ -26,5 +26,12 @@
     "password": "123",
     "fullName": "Jelly",
     "role": "User"
+  },
+  {
+    "id": 5,
+    "emailAddress": "pathihubtestrotterdam@gmail.com",
+    "password": "Pathihub123!",
+    "fullName": "Pathi Hub",
+    "role": "User"
   }
 ]
