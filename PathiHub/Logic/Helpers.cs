@@ -69,7 +69,7 @@ ______     _   _     _ _           _
 | |_/ /_ _| |_| |__  _| |__  _   _| |__  
 |  __/ _` | __| '_ \| | '_ \| | | | '_ \ 
 | | | (_| | |_| | | | | | | | |_| | |_) |
-\_|  \__,_|\__|_| |_|_|_| |_|\__,_|_.__/ \n","yellow");
+\_|  \__,_|\__|_| |_|_|_| |_|\__,_|_.__/ ","yellow");
 
 CharLine('-',80);
 Console.WriteLine("Please select an option (using the arrow keys and press Enter. Backspace to go Your menu or Escape to go the Main Menu):");

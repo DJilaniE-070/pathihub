@@ -84,7 +84,7 @@ ___  ___                                   ___  ___
             
             case "[2] Reserve a movie":
                 // ReserveAMovie();
-                MovieCatalogePrinter.TabelPrinter();
+                MovieOrSchedule.Start();
                 break;
             
             case "[3] Reservation options":
@@ -92,7 +92,7 @@ ___  ___                                   ___  ___
                 break;
             
             case "[4] Schedule option":
-                ScheduleOption();
+                AddOrRemoveSchedule.Start();
                 break;
             
             case "[5] Financial options":
