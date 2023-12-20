@@ -82,7 +82,7 @@ public static class Email
                     <p><strong>Seat(s):</strong> {reservation.SeatName}</p>
                     <p><strong>Movie:</strong> {reservation.Movie}</p>
                     <p><strong>Date:</strong> {reservation.Date}</p>
-                    <p><strong>Price:</strong> {reservation.Price:C}</p>
+                    <p><strong>Price:</strong> €{reservation.Price}</p>
                     <p><strong>Reservation Code:</strong> {reservation.ReservationCode}</p>
                     <p><strong>Location:</strong> {reservation.CinemaLocation}</p>
                 </body>
