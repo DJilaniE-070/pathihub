@@ -7,7 +7,7 @@ public class SnacksMenu
 {
     //positie cursor
     private static int CursorIndex = 0;
-    private static string FilePath = @"C:\Users\Gebruiker\Desktop\YongPathihub\pathihub\PathiHub\DataSources\snacksdata.json";
+    private static string FilePath = System.IO.Path.GetFullPath(Environment.CurrentDirectory, @"DataSources/snacksdata.json");
     private static List<SnacksData> _snacksdata = new List<SnacksData>
     {
         //                     name      price    isavailable
