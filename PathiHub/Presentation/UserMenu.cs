@@ -138,6 +138,7 @@ public static class UserMenu
                 case ConsoleKey.Enter:
                     Console.Clear();
                     SeatMap seatmap = new SeatMap(CursorIndex + 1);
+                    seatmap.Auditoriums();
                     break;
             }
         } while (key.Key != ConsoleKey.Escape);
