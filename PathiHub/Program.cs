@@ -4,12 +4,12 @@ using PathiHub.Presentation;
 Console.Clear();
 Console.WriteLine("Welcome to this amazing program");
 
-// Dit is om de schedules te clearen nodig voor financieel
+// // Dit is om de schedules te clearen nodig voor financieel
 // MovieToAuditoriumLogic logic = new();
 // MoviesAccess access = new();
 // if (access.LoadFromJson())
 //     {
-//         // logic.ClearSchedules();
+//         logic.ClearSchedules();
 //         // List<Movie> movies = access.GetItemList(); dit is alle movies
 //         List<Movie> Movies = access.GetItemList();
 //         List<Movie> movies = MovieOptionsLogic.FilterMovies(Movies);

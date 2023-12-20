@@ -29,30 +29,9 @@
   },
   {
     "id": 5,
-    "emailAddress": "Henk@gmail.com",
-    "password": "Henkvanpas1!",
-    "fullName": "Henk van pas",
-    "role": "User"
-  },
-  {
-    "id": 6,
-    "emailAddress": "Henk@gmail.com",
-    "password": "Henkvanpas1!",
-    "fullName": "Henk van pas",
-    "role": "User"
-  },
-  {
-    "id": 7,
-    "emailAddress": "Hans@gmail.com",
-    "password": "Hansklok12!",
-    "fullName": "Hans",
-    "role": "User"
-  },
-  {
-    "id": 8,
-    "emailAddress": "Hans@gmail.com",
-    "password": "Hansklok12!",
-    "fullName": "Hans",
+    "emailAddress": "pathihubtestrotterdam@gmail.com",
+    "password": "Pathihub123!",
+    "fullName": "Pathi Hub",
     "role": "User"
   }
 ]

@@ -1,15 +1,13 @@
-
 using System;
 using System.Collections.Generic;
 using System.IO;
-//using Newtonsoft.Json;
 using System.Text.Json;
 
 public class SnacksMenu
 {
     //positie cursor
     private static int CursorIndex = 0;
-    private static string FilePath = @"C:\Users\31685\Documents\GitHub\pathihub\PathiHub\DataSources\snacksdata.json";
+    private static string FilePath = System.IO.Path.GetFullPath(Environment.CurrentDirectory, @"DataSources/snacksdata.json");
     private static List<SnacksData> _snacksdata = new List<SnacksData>
     {
         //                     name      price    isavailable
@@ -110,7 +108,7 @@ public class SnacksMenu
     private void DisplaySnacks()
     {
         Console.Clear();
-        Console.ResetColor();
+        Console.ResetColor();  
         Console.WriteLine("Snacks:");
         Console.WriteLine();
         
@@ -144,7 +142,10 @@ public class SnacksMenu
                 }
             }
         }
-        Console.WriteLine();
+        Console.WriteLine("Press [escape] to return to main menu");
+        Console.WriteLine("Press [enter] to edit selected snack");
+        Console.WriteLine("Press [space] to add a new snack");
+        Console.WriteLine("Press [backspace] to remove selected snack");
     }
     
 
@@ -157,9 +158,8 @@ public class SnacksMenu
         Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.Write("Price: ");
 
-        Console.ForegroundColor = ConsoleColor.Yellow;
         double newPrice;
-        if (double.TryParse(Console.ReadLine(), out newPrice))
+        if (double.TryParse(Helpers.Color("Yellow"), out newPrice))
         {
             snacksData.Price = newPrice;
         }
@@ -171,9 +171,9 @@ public class SnacksMenu
 
         Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.Write("\nIs Available (true/false): ");
-        Console.ForegroundColor = ConsoleColor.Yellow;
+        
         bool newIsAvailable;
-        if (bool.TryParse(Console.ReadLine(), out newIsAvailable))
+        if (bool.TryParse(Helpers.Color("Yellow"), out newIsAvailable))
         {
             snacksData.IsAvailable = newIsAvailable;
         }
@@ -210,11 +210,11 @@ public class SnacksMenu
         Console.WriteLine("Adding a new snack");
         
         Console.Write("Name: ");
-        string name = Console.ReadLine();
+        string name = Helpers.Color("Yellow");
 
         Console.Write("Price: ");
         double price;
-        if (!double.TryParse(Console.ReadLine(), out price))
+        if (!double.TryParse(Helpers.Color("Yellow"), out price))
         {
             Console.WriteLine("Invalid input for price. Snack not added.");
             return;
@@ -222,7 +222,7 @@ public class SnacksMenu
 
         Console.Write("Is Available (true/false): ");
         bool isAvailable;
-        if (!bool.TryParse(Console.ReadLine(), out isAvailable))
+        if (!bool.TryParse(Helpers.Color("Yellow"), out isAvailable))
         {
             Console.WriteLine("Invalid input for availability. Snack not added.");
             return;

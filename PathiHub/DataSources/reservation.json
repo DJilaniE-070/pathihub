@@ -3,22 +3,24 @@
     "FullName": "test",
     "Email": "123@test.nl",
     "Auditorium": "2",
-    "SeatName": "5",
+    "SeatNames": null,
     "movie": "Jaws",
     "Date": "12/12/2023",
+    "Time": null,
     "Price": 12,
     "ReservationCode": "klajd1",
-    "CinemaLocation": "Rotterdam"
+    "CinemaLocation": "Wijnhaven 107"
   },
   {
     "FullName": "Tester1",
     "Email": "Test@gmail.com",
     "Auditorium": "1",
-    "SeatName": "20",
+    "SeatNames": null,
     "movie": "Rotterdam",
     "Date": null,
+    "Time": null,
     "Price": 20,
     "ReservationCode": "kpkj4z!@",
-    "CinemaLocation": null
+    "CinemaLocation": "Wijnhaven 107"
   }
 ]
