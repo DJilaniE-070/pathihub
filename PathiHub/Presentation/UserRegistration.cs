@@ -56,8 +56,8 @@ public class UserRegistration
         string? confirmPassword = null;
         List<string> passwordIssues = new List<string>();
 
-        // check if password is valid
-        while (string.IsNullOrEmpty(userPassword) || passwordIssues.Count > 0 || !PasswordCheck.IsValid(userPassword))
+        // Password entry loop to ensure it meets requirements
+        while (true)
         {
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("Enter your password: ");
@@ -66,7 +66,7 @@ public class UserRegistration
 
             passwordIssues = PasswordCheck.PasswordIssue(userPassword);
 
-            // displays the password issues if contains any
+            // Check if the password meets requirements
             if (passwordIssues.Count > 0 || !PasswordCheck.IsValid(userPassword))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -77,26 +77,29 @@ public class UserRegistration
                 {
                     Console.WriteLine($"- {PasswordCheck.GetIssueDescription(issue)}");
                 }
+
+                continue; // Continue to prompt for password entry
             }
-        }
 
-        // password confirmation and mask password
-        Console.ForegroundColor = ConsoleColor.DarkCyan;
-        Console.WriteLine("Please confirm your password: ");
-        confirmPassword = SecurePassword.MaskPassword("");
-
-        while (userPassword != confirmPassword)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Passwords do not match. Please try again.");
-            Console.ResetColor();
-
+            // asks for password confirmation
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("Please confirm your password: ");
-            
-            confirmPassword = Helpers.Color("DarkYellow");
+            confirmPassword = SecurePassword.MaskPassword("");
+
+            // Check if both passwords match
+            if (userPassword != confirmPassword)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Passwords do not match. Please try again.");
+                Console.ResetColor();
+                continue; // Restarts the loop for password entry
+            }
+
+            break; // Exit the loop when passwords match and meet the requirements
         }
 
+        Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.WriteLine("Enter your full name: ");
         string? Name = Helpers.Color("DarkYellow");
 
