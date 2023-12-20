@@ -83,7 +83,6 @@ ___  ___                                   ___  ___
                 break;
             
             case "[2] Reserve a movie":
-                // ReserveAMovie();
                 MovieCatalogePrinter.TabelPrinter();
                 break;
             

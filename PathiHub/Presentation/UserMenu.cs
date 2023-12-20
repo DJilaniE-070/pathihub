@@ -8,7 +8,7 @@ public static class UserMenu
         int selectedIndex = 0;
         bool exit = false;
 
-        string[] menuOptions = { "[1]. Make a reservation", "[2]. Check reservation", "[3]. Cancel reservation", "[4] Exit" };
+        string[] menuOptions = { "[1] Make a reservation", "[2] Check reservation", "[3] Cancel reservation", "[4] Exit" };
 
         do
         {
@@ -57,9 +57,8 @@ public static class UserMenu
                     }
                     break;
                 case ConsoleKey.Enter:
-                    // ReserveSeat();
-                    PerformAction(menuOptions[selectedIndex]);
                     Console.Clear();
+                    PerformAction(menuOptions[selectedIndex]);
                     exit = true;
                     break;
             }
@@ -74,19 +73,19 @@ public static class UserMenu
         Console.WriteLine("Selected: " + option);
         switch (option)
         {
-            case "[1]. Make a reservation":
+            case "[1] Make a reservation":
                 MovieOrSchedule.Start();
                 break;
-            case "[2]. Check reservation":
+            case "[2] Check reservation":
                 Thread.Sleep(1500);
                 CheckReservation();
                 break;
-              
-            case "[3]. Cancel reservation":
+            case "[3] Cancel reservation":
                 CancelReservation();
                 break;
-            case "[4]. Exit":
-                Helpers.BackToYourMenu();
+            case "[4] Exit":
+                Thread.Sleep(1500);
+                Helpers.MainMenu();
                 break;
         }
     }

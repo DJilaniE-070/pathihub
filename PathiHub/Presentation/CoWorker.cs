@@ -89,7 +89,7 @@ public static class CoWorker
             case "[4] Exit":
                 Thread.Sleep(1500);
                 Helpers.MainMenu();
-                break; 
+                break;
         }
     }
 
