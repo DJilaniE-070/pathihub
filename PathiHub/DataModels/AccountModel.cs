@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-public class AccountModel
+public class AccountModel //TODO: Make a reservation property.
 {
     [JsonPropertyName("id")] //TODO: fix id to increase automatically.
     public int Id { get; set; }
