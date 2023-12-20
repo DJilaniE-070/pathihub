@@ -55,6 +55,9 @@ public static class CoWorker
                         selectedIndex++;
                     }
                     break;
+                case ConsoleKey.Escape:
+                    Helpers.MainMenu();
+                    break;
                 case ConsoleKey.Enter:
                     Console.Clear();
                     PerformAction(menuOptions[selectedIndex]);
@@ -69,7 +72,6 @@ public static class CoWorker
 
     static void PerformAction(string option)
     {
-        Console.WriteLine("Selected: " + option);
         switch (option)
         {
             case "[1] Show reservations":
@@ -84,9 +86,10 @@ public static class CoWorker
                 ReserveSeatCustomer();
                 break;
             
-            case "[5] Exit":
-            Thread.Sleep(1500);
-                break; 
+            case "[4] Exit":
+                Thread.Sleep(1500);
+                Helpers.MainMenu();
+                break;
         }
     }
 
@@ -197,6 +200,14 @@ public static class CoWorker
                         CursorIndex++;
                     }
                     break;
+                // case ConsoleKey.Backspace:
+                //     Console.WriteLine(" ");
+                //     Helpers.BackToYourMenu();
+                //     Environment.Exit(0);
+                //     break;
+                // case ConsoleKey.Escape:
+                //     Helpers.MainMenu();
+                //     break;
                 case ConsoleKey.Enter:
                     Console.Clear();
                     SeatMap seatmap = new SeatMap(CursorIndex + 1);
@@ -204,6 +215,5 @@ public static class CoWorker
             }
         } while (key.Key != ConsoleKey.Escape);
         Console.CursorVisible = true;
-        
     }
 }
