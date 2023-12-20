@@ -1,0 +1,107 @@
+[
+  {
+    "MovieTitle": "The Adventure Begins",
+    "ReleaseYear": 2023,
+    "ReleaseDate": "0",
+    "Genre": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "Actors": [
+      "N/A"
+    ],
+    "Directors": "John Directorson",
+    "Writers": [
+      "Jane Writerly",
+      "Michael Scriptson"
+    ],
+    "Plot": "In a futuristic world, Alice, a skilled adventurer, and her loyal sidekick Bob, embark on a thrilling journey to save their city from the evil plans of Eve, a cunning antagonist. With high-tech gadgets and unyielding determination, they must overcome various challenges and foes to restore peace to their homeland.",
+    "Rating": 8.5,
+    "RuntimeMinutes": 120,
+    "Languages": "English",
+    "Countrys": "United States",
+    "Auditorium": [
+      3
+    ],
+    "Awards": null,
+    "Poster": null,
+    "Scheduled": [
+      "Monday/12:00-14:30",
+      "Monday/15:00-17:30",
+      "Monday/18:00-20:30",
+      "Monday/21:00-23:30",
+      "Thursday/18:00-20:30"
+    ]
+  },
+  {
+    "MovieTitle": "Galactic Quest",
+    "ReleaseYear": 2022,
+    "ReleaseDate": null,
+    "Genre": [
+      "Sci-Fi",
+      "Adventure"
+    ],
+    "Actors": [
+      "N/A"
+    ],
+    "Directors": "Lucy Director",
+    "Writers": [
+      "David Scriptwriter",
+      "Emily Storyteller"
+    ],
+    "Plot": "In the vast expanse of the galaxy, Chris, a brave spaceman, and his alien friend Zara embark on a quest to forge alliances between planets and civilizations. Their journey is fraught with intergalactic challenges and unexpected friendships, testing their courage and resolve to bring peace to the universe.",
+    "Rating": 9.0,
+    "RuntimeMinutes": 115,
+    "Languages": "English",
+    "Countrys": "United States",
+    "Auditorium": [
+      1
+    ],
+    "Awards": [
+      ""
+    ],
+    "Poster": "N/A",
+    "Scheduled": [
+      "Monday/12:00-14.30",
+      "Thursday/15:00-17:30"
+    ]
+  },
+  {
+    "MovieTitle": "Oppenheimer",
+    "ReleaseYear": 2023,
+    "ReleaseDate": "21 Jul 2023",
+    "Genre": [
+      "Biography",
+      " Drama",
+      " History"
+    ],
+    "Actors": [
+      "Cillian Murphy",
+      " Emily Blunt",
+      " Matt Damon"
+    ],
+    "Directors": "Christopher Nolan",
+    "Writers": [
+      "Christopher Nolan",
+      " Kai Bird",
+      " Martin Sherwin"
+    ],
+    "Plot": "The story of American scientist, J. Robert Oppenheimer, and his role in the development of the atomic bomb.",
+    "Rating": 85.0,
+    "RuntimeMinutes": 180,
+    "Languages": "English, German, Italian",
+    "Countrys": "United States, United Kingdom",
+    "Auditorium": [
+      3
+    ],
+    "Awards": [
+      "7 wins & 3 nominations"
+    ],
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_SX300.jpg",
+    "Scheduled": [
+      "Monday/15:00-17:30/Aud3"
+    ],
+    "color" : "blue"
+  }
+] 

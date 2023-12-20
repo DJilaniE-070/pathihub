@@ -4,20 +4,21 @@ using System.Net.Mail;
 
 public static class Email
 {
-    public static void start(Reservation reservation1, AccountModel Currentuser)
+    public static void start(Reservation reservation, AccountModel currentUser)
     {
-        var reservation = new
+        var reservationDetails = new
         {
-            FullName = Currentuser.FullName,
-            Email = Currentuser.EmailAddress,
-            Auditorium = reservation1.Auditorium,
-            SeatName = string.Join(", ", reservation1.SeatNames),
-            Movie = reservation1.movie,
-            Date = reservation1.Date,
-            Price = reservation1.Price,
-            ReservationCode = reservation1.ReservationCode,
-            CinemaLocation = reservation1.CinemaLocation
+            FullName = currentUser.FullName,
+            Email = currentUser.EmailAddress,
+            Auditorium = reservation.Auditorium,
+            SeatName = string.Join(", ", reservation.SeatNames),
+            
+            Date = reservation.Date,
+            Price = reservation.Price,
+            ReservationCode = reservation.ReservationCode,
+            CinemaLocation = reservation.CinemaLocation
         };
+
         // Set up the SMTP client with Gmail's SMTP server
         using (var client = new SmtpClient("smtp.gmail.com"))
         {
@@ -26,19 +27,19 @@ public static class Email
             client.EnableSsl = true;
 
             // Specify your Gmail credentials
-            client.Credentials = new NetworkCredential("rotterdampathihub@gmail.com", "uigx rxrw tgxn oifd");
+            client.Credentials = new NetworkCredential("rotterdampathihub@gmail.com", "your_password_here");
 
             // Create the HTML-formatted mail message
             var mailMessage = new MailMessage
             {
                 From = new MailAddress("rotterdampathihub@gmail.com"),
-                Subject = "Your reservation",
+                Subject = "Your Reservation Details",
                 IsBodyHtml = true,
-                Body = GetHtmlBody(reservation)
+                Body = GetHtmlBody(reservationDetails)
             };
 
             // Add recipient email address
-            mailMessage.To.Add("pathihubtestrotterdam@gmail.com");
+            mailMessage.To.Add("recipient@example.com");
 
             try
             {
@@ -54,7 +55,7 @@ public static class Email
     }
 
     // Helper method to generate HTML-formatted email body
-     static string GetHtmlBody(dynamic reservation)
+    static string GetHtmlBody(dynamic reservation)
     {
         return $@"
             <html>
@@ -80,7 +81,7 @@ public static class Email
                     <p><strong>Email:</strong> {reservation.Email}</p>
                     <p><strong>Auditorium:</strong> {reservation.Auditorium}</p>
                     <p><strong>Seat(s):</strong> {reservation.SeatName}</p>
-                    <p><strong>Movie:</strong> {reservation.Movie}</p>
+                    
                     <p><strong>Date:</strong> {reservation.Date}</p>
                     <p><strong>Price:</strong> €{reservation.Price}</p>
                     <p><strong>Reservation Code:</strong> {reservation.ReservationCode}</p>
