@@ -177,8 +177,6 @@ ______     _   _     _   _   _       _
                 SnacksMenu snack = new SnacksMenu();
                 snack.Start();
                 break;
-
-
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Text.Json;
 public class SnacksMenu
 {
     //positie cursor
+    public static bool IsGuest = false;
     private static int CursorIndex = 0;
     private static string FilePath =  System.IO.Path.GetFullPath(System.IO.Path.Combine(Environment.CurrentDirectory, @"DataSources/", "snacksdata.json"));
     private static List<SnacksData> _snacksdata = new List<SnacksData>
@@ -15,7 +16,6 @@ public class SnacksMenu
         new SnacksData("Pathi Cheese Chips", 1.50, true),
         new SnacksData("Pathi Paprika Chips", 1.50, true),
         new SnacksData("Chocolade reep", 1.00, false),
-        new SnacksData("Fanta Stic", 1.00, true),
         new SnacksData("Red Bull", 1.00, true),
         new SnacksData("Sprite", 1.00, true),
         new SnacksData("Spa Blauw", 1.00, true),
@@ -24,16 +24,12 @@ public class SnacksMenu
         new SnacksData("Coca Cola", 1.00, true),
         new SnacksData("Coca Cola Light", 1.00, true),
         new SnacksData("Coca Cola Zero", 1.00, true),
-        new SnacksData("Pathi Cola Super", 1.25, true),
-        new SnacksData("Pathi Cola Ultra", 1.25, true), 
         new SnacksData("Zoete Popcorn", 2.00, true),
         new SnacksData("Mix Popcorn", 0.75, false),
         new SnacksData("Zoute Popcorn", 2.00, true),
         new SnacksData("Caramel Popcorn", 2.00, true),
         new SnacksData("Pretzels", 2.00, true),
-        new SnacksData("Mix Snoep", 2.00, true),
-        new SnacksData("Mix Chocolade", 2.00, true),
-        new SnacksData("Slush Pathi", 2.00, true),
+        new SnacksData("Snoep", 2.00, true),
         new SnacksData("Ijs", 2.00, false),
         new SnacksData("Hot Dog", 2.00, true)
     };
@@ -41,22 +37,24 @@ public class SnacksMenu
     public SnacksMenu()
     {
         SaveSnacksDataToJson(_snacksdata);
+        List<SnacksData> loadedSnacksData = LoadSnacksDataFromJson();
         Cursor();
     }
 
-    public void Start()
+    public static void Start()
     {
         SaveSnacksDataToJson(_snacksdata);
         List<SnacksData> loadedSnacksData = LoadSnacksDataFromJson();
+        Cursor();
     }
 
-    static void SaveSnacksDataToJson(List<SnacksData> snacksData)
+    private static void SaveSnacksDataToJson(List<SnacksData> snacksData)
     {
         string json = JsonSerializer.Serialize(snacksData, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText(FilePath, json);
     }
 
-    static List<SnacksData> LoadSnacksDataFromJson()
+    private static List<SnacksData> LoadSnacksDataFromJson()
     {
         string loadedJson = File.ReadAllText(FilePath);
         return JsonSerializer.Deserialize<List<SnacksData>>(loadedJson);
@@ -89,13 +87,22 @@ public class SnacksMenu
                     break;
 
                 case ConsoleKey.Enter:
-                    ChangeSnacks(_snacksdata[CursorIndex]);
+                    if (IsGuest)
+                    {
+                        ChangeSnacks(_snacksdata[CursorIndex]);
+                    }
                     break;
                 case ConsoleKey.Backspace:
-                    RemoveSnacks(_snacksdata[CursorIndex]);
+                    if (IsGuest)
+                    {
+                        RemoveSnacks(_snacksdata[CursorIndex]);
+                    }
                     break;
                 case ConsoleKey.Spacebar:
-                    AddSnacks();
+                    if (IsGuest)
+                    {
+                        AddSnacks();
+                    }
                     break;
 
             }
@@ -105,11 +112,30 @@ public class SnacksMenu
         Menu.Start();
     }
 
+    public void DisplaySnacksForGuest()
+    {
+        for (int i = 0; i < _snacksdata.Count; i++)
+        {
+            if (_snacksdata[i].IsAvailable)
+            {
+                Console.WriteLine($"{i + 1}. {_snacksdata[i].Name}");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"{i + 1}. {_snacksdata[i].Name} is not available");
+                Console.ResetColor();
+            }
+        }
+    }
+
     private void DisplaySnacks()
     {
         Console.Clear();
-        Console.ResetColor();  
+        Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("Snacks:");
+        Console.ResetColor();
         Console.WriteLine();
         
         if (_snacksdata != null)
@@ -142,13 +168,16 @@ public class SnacksMenu
                 }
             }
         }
+        Console.WriteLine();
         Console.WriteLine("Press [escape] to return to main menu");
-        Console.WriteLine("Press [enter] to edit selected snack");
-        Console.WriteLine("Press [space] to add a new snack");
-        Console.WriteLine("Press [backspace] to remove selected snack");
+        if (IsGuest)
+        {
+            Console.WriteLine("Press [enter] to edit selected snack");
+            Console.WriteLine("Press [space] to add a new snack");
+            Console.WriteLine("Press [backspace] to remove selected snack");
+        }
     }
     
-
     private void ChangeSnacks(SnacksData snacksData)
     {
         Console.Clear();

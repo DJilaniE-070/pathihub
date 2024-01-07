@@ -20,11 +20,6 @@
     "IsAvailable": false
   },
   {
-    "Name": "Fanta Stic",
-    "Price": 1,
-    "IsAvailable": true
-  },
-  {
     "Name": "Red Bull",
     "Price": 1,
     "IsAvailable": true
@@ -65,16 +60,6 @@
     "IsAvailable": true
   },
   {
-    "Name": "Pathi Cola Super",
-    "Price": 1.25,
-    "IsAvailable": true
-  },
-  {
-    "Name": "Pathi Cola Ultra",
-    "Price": 1.25,
-    "IsAvailable": true
-  },
-  {
     "Name": "Zoete Popcorn",
     "Price": 2,
     "IsAvailable": true
@@ -100,17 +85,7 @@
     "IsAvailable": true
   },
   {
-    "Name": "Mix Snoep",
-    "Price": 2,
-    "IsAvailable": true
-  },
-  {
-    "Name": "Mix Chocolade",
-    "Price": 2,
-    "IsAvailable": true
-  },
-  {
-    "Name": "Slush Pathi",
+    "Name": "Snoep",
     "Price": 2,
     "IsAvailable": true
   },

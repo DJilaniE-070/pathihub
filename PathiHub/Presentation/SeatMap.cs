@@ -670,17 +670,4 @@ public class SeatMap
         Console.WriteLine($"Press [enter] to confirm your reservation.");
         Console.WriteLine($"Press [escape] to return to main menu.");
     }
-
-    private bool IsReserved(string seat)
-    {
-        if (Auditorium[CursorRow][CursorSeat] == "AR" || Auditorium[CursorRow][CursorSeat] == "BR" || Auditorium[CursorRow][CursorSeat] == "CR")
-        {
-            Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 }
