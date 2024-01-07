@@ -6,7 +6,7 @@ using System.Text.Json;
 public class SnacksMenu
 {
     //positie cursor
-    public static bool IsGuest = false;
+    public static bool IsGuest = true;
     private static int CursorIndex = 0;
     private static string FilePath =  System.IO.Path.GetFullPath(System.IO.Path.Combine(Environment.CurrentDirectory, @"DataSources/", "snacksdata.json"));
     private static List<SnacksData> _snacksdata = new List<SnacksData>
@@ -36,16 +36,14 @@ public class SnacksMenu
     
     public SnacksMenu()
     {
-        SaveSnacksDataToJson(_snacksdata);
-        List<SnacksData> loadedSnacksData = LoadSnacksDataFromJson();
+        //SaveSnacksDataToJson(_snacksdata);
         Cursor();
     }
 
-    public static void Start()
+    public void Start()
     {
-        SaveSnacksDataToJson(_snacksdata);
+        //SaveSnacksDataToJson(_snacksdata);
         List<SnacksData> loadedSnacksData = LoadSnacksDataFromJson();
-        Cursor();
     }
 
     private static void SaveSnacksDataToJson(List<SnacksData> snacksData)
@@ -217,11 +215,14 @@ public class SnacksMenu
     private void RemoveSnacks(SnacksData snacksData)
     {
         Console.Clear();
-        Console.WriteLine($"Deleting {snacksData.Name}");
-        Console.WriteLine("Are you sure you want to delete this snack? (Y/N)");
+        Console.WriteLine($"Are you sure you want to delete {snacksData.Name}? \nthis action cannot be undone (Y/N)");
+        Console.WriteLine();
+        Console.WriteLine("Press [Y] to confirm");
+        Console.WriteLine("Press [N] to cancel");
 
-        ConsoleKeyInfo confirmKey = Console.ReadKey(true);
-        if (confirmKey.Key == ConsoleKey.Y)
+
+        ConsoleKeyInfo key = Console.ReadKey(true);
+        if (key.Key == ConsoleKey.Y)
         {
             _snacksdata.Remove(snacksData);
             Console.WriteLine($"Snack {snacksData.Name} deleted.");
