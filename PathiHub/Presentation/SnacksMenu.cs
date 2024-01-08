@@ -6,48 +6,23 @@ using System.Text.Json;
 public class SnacksMenu
 {
     //positie cursor
+    public bool IsGuest = true;
     private static int CursorIndex = 0;
-    private static string FilePath =  System.IO.Path.GetFullPath(System.IO.Path.Combine(Environment.CurrentDirectory, @"DataSources/", "snacksdata.json"));
-    private static List<SnacksData> _snacksdata = new List<SnacksData>
-    {
-        //                     name      price    isavailable
-        new SnacksData("Pathi Original Chips", 1.50, true),
-        new SnacksData("Pathi Cheese Chips", 1.50, true),
-        new SnacksData("Pathi Paprika Chips", 1.50, true),
-        new SnacksData("Chocolade reep", 1.00, false),
-        new SnacksData("Fanta Stic", 1.00, true),
-        new SnacksData("Red Bull", 1.00, true),
-        new SnacksData("Sprite", 1.00, true),
-        new SnacksData("Spa Blauw", 1.00, true),
-        new SnacksData("Spa Rood", 2.00, true),
-        new SnacksData("Fanta", 1.00, true),
-        new SnacksData("Coca Cola", 1.00, true),
-        new SnacksData("Coca Cola Light", 1.00, true),
-        new SnacksData("Coca Cola Zero", 1.00, true),
-        new SnacksData("Pathi Cola Super", 1.25, true),
-        new SnacksData("Pathi Cola Ultra", 1.25, true), 
-        new SnacksData("Zoete Popcorn", 2.00, true),
-        new SnacksData("Mix Popcorn", 0.75, false),
-        new SnacksData("Zoute Popcorn", 2.00, true),
-        new SnacksData("Caramel Popcorn", 2.00, true),
-        new SnacksData("Pretzels", 2.00, true),
-        new SnacksData("Mix Snoep", 2.00, true),
-        new SnacksData("Mix Chocolade", 2.00, true),
-        new SnacksData("Slush Pathi", 2.00, true),
-        new SnacksData("Ijs", 2.00, false),
-        new SnacksData("Hot Dog", 2.00, true)
-    };
-    
+    private static string FilePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Environment.CurrentDirectory, @"DataSources/", "snacksdata.json"));
+    private static List<SnacksData> _snacksdata;
+
     public SnacksMenu()
     {
-        SaveSnacksDataToJson(_snacksdata);
+        _snacksdata = LoadSnacksDataFromJson();
+        //SaveSnacksDataToJson(_snacksdata);
         Cursor();
     }
 
     public void Start()
     {
-        SaveSnacksDataToJson(_snacksdata);
-        List<SnacksData> loadedSnacksData = LoadSnacksDataFromJson();
+        _snacksdata = LoadSnacksDataFromJson();
+        //SaveSnacksDataToJson(_snacksdata);
+        //List<SnacksData> loadedSnacksData = LoadSnacksDataFromJson();
     }
 
     static void SaveSnacksDataToJson(List<SnacksData> snacksData)
@@ -89,13 +64,22 @@ public class SnacksMenu
                     break;
 
                 case ConsoleKey.Enter:
-                    ChangeSnacks(_snacksdata[CursorIndex]);
+                    if (IsGuest)
+                    {
+                        EditSnacks(_snacksdata[CursorIndex]);
+                    }
                     break;
                 case ConsoleKey.Backspace:
-                    RemoveSnacks(_snacksdata[CursorIndex]);
+                    if (IsGuest)
+                    {
+                        RemoveSnacks(_snacksdata[CursorIndex]);
+                    }
                     break;
                 case ConsoleKey.Spacebar:
-                    AddSnacks();
+                    if (IsGuest)
+                    {
+                        AddSnacks();
+                    }
                     break;
 
             }
@@ -109,7 +93,9 @@ public class SnacksMenu
     {
         Console.Clear();
         Console.ResetColor();  
-        Console.WriteLine("Snacks:");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("Pathihub Snacks:");
+        Console.ResetColor();  
         Console.WriteLine();
         
         if (_snacksdata != null)
@@ -142,18 +128,28 @@ public class SnacksMenu
                 }
             }
         }
+        Console.WriteLine();
         Console.WriteLine("Press [escape] to return to main menu");
-        Console.WriteLine("Press [enter] to edit selected snack");
-        Console.WriteLine("Press [space] to add a new snack");
-        Console.WriteLine("Press [backspace] to remove selected snack");
+        if (IsGuest)
+        {
+            Console.WriteLine("Press [enter] to edit selected snack");
+            Console.WriteLine("Press [backspace] to remove selected snack");
+            Console.WriteLine("Press [space] to add a new snack");
+        }
     }
     
 
-    private void ChangeSnacks(SnacksData snacksData)
+    private void EditSnacks(SnacksData snacksData)
     {
         Console.Clear();
-        Console.WriteLine($"Editing {snacksData.Name}");
-        Console.WriteLine("Enter new values:\n");
+        Console.Write($"Editing");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write($" {snacksData.Name}");
+        Console.ResetColor();
+        Console.WriteLine();
+        Console.WriteLine();
+        Console.WriteLine("Enter new values:");
+        Console.WriteLine();
 
         Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.Write("Price: ");
@@ -188,8 +184,15 @@ public class SnacksMenu
     private void RemoveSnacks(SnacksData snacksData)
     {
         Console.Clear();
-        Console.WriteLine($"Deleting {snacksData.Name}");
+        Console.Write($"Deleting");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write($" {snacksData.Name}");
+        Console.ResetColor();
+        Console.WriteLine();
         Console.WriteLine("Are you sure you want to delete this snack? (Y/N)");
+        Console.WriteLine();
+        Console.WriteLine("Press [Y] to confirm");
+        Console.WriteLine("Press anything else to cancel");
 
         ConsoleKeyInfo confirmKey = Console.ReadKey(true);
         if (confirmKey.Key == ConsoleKey.Y)
