@@ -97,7 +97,7 @@ ___  ___                                   ___  ___
             
             case "[5] Financial options":
                 Thread.Sleep(1500);
-                FinancialOptions();
+                FinancialMenu.Start();
                 break;
             
             case "[6] Snacks options":
@@ -310,10 +310,7 @@ ______                               _   _               _____       _   _
             ReservationPresentation.AddReservation();
         }
 
-        static void FinancialOptions()
-        {
-            Console.WriteLine("Test completed. Still function still needs to be implemented Financial option");
-        }
+        
 
 
 }

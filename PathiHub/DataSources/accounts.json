@@ -31,7 +31,14 @@
     "id": 5,
     "emailAddress": "pathihubtestrotterdam@gmail.com",
     "password": "Pathihub123!",
-    "fullName": "Pathi Hub",
+    "fullName": "Test Userwwww",
+    "role": "User"
+  },
+  {
+    "id": 6,
+    "emailAddress": "Gavinrena@icloud.com",
+    "password": "Pinda@Brood123",
+    "fullName": "Gavin",
     "role": "User"
   }
 ]
