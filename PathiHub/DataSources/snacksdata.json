@@ -5,11 +5,6 @@
     "IsAvailable": true
   },
   {
-    "Name": "Pathi Cheese Chips",
-    "Price": 1.5,
-    "IsAvailable": true
-  },
-  {
     "Name": "Pathi Paprika Chips",
     "Price": 1.5,
     "IsAvailable": true
@@ -18,11 +13,6 @@
     "Name": "Chocolade reep",
     "Price": 1,
     "IsAvailable": false
-  },
-  {
-    "Name": "Fanta Stic",
-    "Price": 1,
-    "IsAvailable": true
   },
   {
     "Name": "Red Bull",
@@ -65,16 +55,6 @@
     "IsAvailable": true
   },
   {
-    "Name": "Pathi Cola Super",
-    "Price": 1.25,
-    "IsAvailable": true
-  },
-  {
-    "Name": "Pathi Cola Ultra",
-    "Price": 1.25,
-    "IsAvailable": true
-  },
-  {
     "Name": "Zoete Popcorn",
     "Price": 2,
     "IsAvailable": true
@@ -106,11 +86,6 @@
   },
   {
     "Name": "Mix Chocolade",
-    "Price": 2,
-    "IsAvailable": true
-  },
-  {
-    "Name": "Slush Pathi",
     "Price": 2,
     "IsAvailable": true
   },
