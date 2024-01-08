@@ -308,4 +308,49 @@ Console.WriteLine();
 
         return userInputBuilder.ToString();
     }
+
+    public string Cursor(string[] menuOptions)
+    {
+        Console.CursorVisible = false;
+        int selectedIndex = 0;
+
+        do
+        {
+            Console.Clear();
+            
+            for (int i = 0; i < menuOptions.Length; i++)
+            {
+                if (i == selectedIndex)
+                {
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                }
+
+                Console.WriteLine(menuOptions[i]);
+                Console.ResetColor();
+            }
+            
+            ConsoleKeyInfo keyInfo = Console.ReadKey();
+
+            switch (keyInfo.Key)
+            {
+                case ConsoleKey.UpArrow:
+                    if (selectedIndex > 0)
+                    {
+                        selectedIndex--;
+                    }
+                    break;
+                case ConsoleKey.DownArrow:
+                    if (selectedIndex < menuOptions.Length - 1)
+                    {
+                        selectedIndex++;
+                    }
+                    break;
+                case ConsoleKey.Enter:
+                    Console.CursorVisible = true;
+                    return menuOptions[selectedIndex];
+            }
+        } while (true);
+    }
+
 }
