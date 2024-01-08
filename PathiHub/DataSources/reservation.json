@@ -7,7 +7,7 @@
     "movie": "Jaws",
     "Date": "12/12/2023",
     "Time": null,
-    "Price": 12,
+    "Price": 12.0,
     "ReservationCode": "klajd1",
     "CinemaLocation": "Wijnhaven 107"
   },
@@ -19,8 +19,248 @@
     "movie": "Rotterdam",
     "Date": null,
     "Time": null,
-    "Price": 20,
+    "Price": 20.0,
     "ReservationCode": "kpkj4z!@",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Gavin",
+    "Email": "Gavinrena@icloud.com",
+    "Auditorium": "1",
+    "SeatNames": [
+      "12 4",
+      "11 4"
+    ],
+    "movie": "The Adventure Begins",
+    "Date": "Monday",
+    "Time": "18:00-20:30",
+    "Price": 30.0,
+    "ReservationCode": "bfb8e72c-b692-4a5c-ad1a-150744fe1a92",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Pathi Hub",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "1",
+    "SeatNames": [
+      "10 4"
+    ],
+    "movie": "The Adventure Begins",
+    "Date": "Monday",
+    "Time": "12:00-14:30",
+    "Price": 15.0,
+    "ReservationCode": "3d18a3c4-0ba2-4f47-946f-735919461415",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Pathi Hub",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "1",
+    "SeatNames": [
+      "8  6"
+    ],
+    "movie": "The Adventure Begins",
+    "Date": "Monday",
+    "Time": "15:00-17:30",
+    "Price": 25.0,
+    "ReservationCode": "287dfd7a-c7a8-4885-a41a-4d7871abbd55",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Pathi Hub",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "1",
+    "SeatNames": [
+      "12 3"
+    ],
+    "movie": "Galactic Quest",
+    "Date": "Tuesday",
+    "Time": "12:00-14:30",
+    "Price": 15.0,
+    "ReservationCode": "db7d2d10-af04-404c-bb4e-c239e181d738",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Pathi Hub",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "2",
+    "SeatNames": [
+      "10 9"
+    ],
+    "movie": "De schippers van de Kameleon",
+    "Date": "Wednesday",
+    "Time": "12:00-14:30",
+    "Price": 25.0,
+    "ReservationCode": "08fee784-9f3a-4d24-ae2f-629c4f0f508c",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Pathi Hub",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "2",
+    "SeatNames": [
+      "15 10"
+    ],
+    "movie": "John Wick",
+    "Date": "Thursday",
+    "Time": "12:00-14:30",
+    "Price": 20.0,
+    "ReservationCode": "c5ee9833-e233-4373-bcd1-48cddd70efb8",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Pathi Hub",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "2",
+    "SeatNames": [
+      "16 1"
+    ],
+    "movie": "The Adventure Begins",
+    "Date": "Monday",
+    "Time": "12:00-14:30",
+    "Price": 15.0,
+    "ReservationCode": "87e66457-9446-482d-bcaa-b9b6cea56c10",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Pathi Hub",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "1",
+    "SeatNames": [
+      "16 1",
+      "10 1"
+    ],
+    "movie": "The Adventure Begins",
+    "Date": "Monday",
+    "Time": "12:00-14:30",
+    "Price": 30.0,
+    "ReservationCode": "d89768f0-7c54-4808-bd6c-eb3fb6817222",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Pathi Hub",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "1",
+    "SeatNames": [
+      "7  3"
+    ],
+    "movie": "The Adventure Begins",
+    "Date": "Monday",
+    "Time": "12:00-14:30",
+    "Price": 15.0,
+    "ReservationCode": "fab8ecd1-8d57-4af5-977e-ff865c086114",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Pathi Hub",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "2",
+    "SeatNames": [
+      "16 5"
+    ],
+    "movie": "De schippers van de Kameleon",
+    "Date": "Wednesday",
+    "Time": "12:00-14:30",
+    "Price": 15.0,
+    "ReservationCode": "f9e4dc05-70f1-4592-b525-c5e17297ced4",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Pathi Hub",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "1",
+    "SeatNames": [
+      "13 4"
+    ],
+    "movie": "The Adventure Begins",
+    "Date": "Monday",
+    "Time": "12:00-14:30",
+    "Price": 15.0,
+    "ReservationCode": "441155c7-6dfb-4dee-bd56-a7fadc6096d4",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Test User",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "2",
+    "SeatNames": [
+      "14 10"
+    ],
+    "movie": "De schippers van de Kameleon",
+    "Date": "Wednesday",
+    "Time": "12:00-14:30",
+    "Price": 20.0,
+    "ReservationCode": "b748b9c2-3051-4f49-8492-e074dabbbf26",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Test Userwwww",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "3",
+    "SeatNames": [
+      "11 2"
+    ],
+    "movie": "Oppenheimer",
+    "Date": "Monday",
+    "Time": "15:00-17:30",
+    "Price": 20.0,
+    "ReservationCode": "3a4d9c84-381b-4a43-a94c-ba89b494eeda",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Test Userwwww",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "3",
+    "SeatNames": [
+      "9  11"
+    ],
+    "movie": "Sonic the Hedgehog",
+    "Date": "Friday",
+    "Time": "12:00-14:30",
+    "Price": 25.0,
+    "ReservationCode": "7729eea6-249d-4e34-a67f-73827c84e8dc",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Test Userwwww",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "3",
+    "SeatNames": [
+      "9  9"
+    ],
+    "movie": "Sonic the Hedgehog",
+    "Date": "Friday",
+    "Time": "12:00-14:30",
+    "Price": 25.0,
+    "ReservationCode": "6a4e1027-221b-49c7-9053-9fe9046bf1d8",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Test Userwwww",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "1",
+    "SeatNames": [
+      "11 1"
+    ],
+    "movie": "The Adventure Begins",
+    "Date": "Monday",
+    "Time": "12:00-14:30",
+    "Price": 15.0,
+    "ReservationCode": "3769db98-ed3d-4b60-8479-e37bb4a9e18b",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Test Userwwww",
+    "Email": "pathihubtestrotterdam@gmail.com",
+    "Auditorium": "1",
+    "SeatNames": [
+      "11 2"
+    ],
+    "movie": "Kameleon 2",
+    "Date": "Wednesday",
+    "Time": "18:00-20:30",
+    "Price": 15.0,
+    "ReservationCode": "e3790f96-ac8a-4b88-9fda-a5195737c414",
     "CinemaLocation": "Wijnhaven 107"
   }
 ]

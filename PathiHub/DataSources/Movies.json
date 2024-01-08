@@ -360,5 +360,39 @@
       "Friday/15:00-17:30/Aud3",
       "Friday/12:00-14:30/Aud2"
     ]
+  },
+  {
+    "MovieTitle": "Oppenheimer",
+    "ReleaseYear": 2023,
+    "ReleaseDate": "21 Jul 2023",
+    "Genre": [
+      "Biography",
+      " Drama",
+      " History"
+    ],
+    "Actors": [
+      "test"
+    ],
+    "Directors": "Christopher Nolan",
+    "Writers": [
+      "Christopher Nolan",
+      " Kai Bird",
+      " Martin Sherwin"
+    ],
+    "Plot": "The story of American scientist, J. Robert Oppenheimer, and his role in the development of the  love bomb.",
+    "Rating": 85.0,
+    "RuntimeMinutes": 180,
+    "Languages": "English, German, Italian",
+    "Countrys": "United States, United Kingdom",
+    "Auditorium": [
+      3
+    ],
+    "Awards": [
+      "7 wins & 3 nominations"
+    ],
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_SX300.jpg",
+    "Scheduled": [
+      "Monday/15:00-17:30/Aud3"
+    ]
   }
 ]
