@@ -21,7 +21,9 @@
     "RuntimeMinutes": 120,
     "Languages": "English",
     "Countrys": "United States",
-    "Auditorium": [3],
+    "Auditorium": [
+      3
+    ],
     "Awards": null,
     "Poster": null,
     "Scheduled": [
@@ -53,7 +55,9 @@
     "RuntimeMinutes": 115,
     "Languages": "English",
     "Countrys": "United States",
-    "Auditorium": [1],
+    "Auditorium": [
+      1
+    ],
     "Awards": [
       ""
     ],
@@ -64,37 +68,39 @@
     ]
   },
   {
-    "MovieTitle": "Kameleon 2",
-    "ReleaseYear": 2005,
-    "ReleaseDate": "29 Jun 2005",
+    "MovieTitle": "Oppenheimer",
+    "ReleaseYear": 2023,
+    "ReleaseDate": "21 Jul 2023",
     "Genre": [
-      "Adventure",
-      " Comedy",
-      " Family"
+      "Biography",
+      " Drama",
+      " History"
     ],
     "Actors": [
-      "Koen van der Donk",
-      " Jos van der Donk",
-      " Maarten Spanjer"
+      "Cillian Murphy",
+      " Emily Blunt",
+      " Matt Damon"
     ],
-    "Directors": "Steven de Jong",
+    "Directors": "Christopher Nolan",
     "Writers": [
-      "Hotze de Roos",
-      " Jean Ummels",
-      " Steven de Jong"
+      "Christopher Nolan",
+      " Kai Bird",
+      " Martin Sherwin"
     ],
-    "Plot": "The twinbrothers Sietse and Hielke Klinkhamer want to raise money for their ill friend, Marieke.",
-    "Rating": 6.0,
-    "RuntimeMinutes": 105,
-    "Languages": "Dutch, Western Frisian",
-    "Countrys": "Netherlands",
-    "Auditorium": [1],
+    "Plot": "The story of American scientist, J. Robert Oppenheimer, and his role in the development of the atomic bomb.",
+    "Rating": 85.0,
+    "RuntimeMinutes": 180,
+    "Languages": "English, German, Italian",
+    "Countrys": "United States, United Kingdom",
+    "Auditorium": [
+      3
+    ],
     "Awards": [
-      "2 wins"
+      "7 wins & 3 nominations"
     ],
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMjA2NTUxODIzOF5BMl5BanBnXkFtZTcwMjMwNTQ5OA@@._V1_SX300.jpg",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_SX300.jpg",
     "Scheduled": [
-      ""
+      "Monday/15:00-17:30/Aud3"
     ]
   }
 ]
