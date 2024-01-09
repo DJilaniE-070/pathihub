@@ -1,62 +1,62 @@
 [
   {
     "Name": "Pathi Original Chips",
-    "Price": 1.5,
+    "Price": 1.50,
     "IsAvailable": true
   },
   {
     "Name": "Pathi Paprika Chips",
-    "Price": 1.5,
+    "Price": 1.50,
     "IsAvailable": true
   },
   {
     "Name": "Chocolade reep",
-    "Price": 1,
+    "Price": 1.00,
     "IsAvailable": false
   },
   {
     "Name": "Red Bull",
-    "Price": 1,
+    "Price": 1.00,
     "IsAvailable": true
   },
   {
     "Name": "Sprite",
-    "Price": 1,
+    "Price": 1.00,
     "IsAvailable": true
   },
   {
     "Name": "Spa Blauw",
-    "Price": 1,
+    "Price": 1.99,
     "IsAvailable": true
   },
   {
     "Name": "Spa Rood",
-    "Price": 2,
+    "Price": 2.00,
     "IsAvailable": true
   },
   {
     "Name": "Fanta",
-    "Price": 1,
+    "Price": 1.99,
     "IsAvailable": true
   },
   {
     "Name": "Coca Cola",
-    "Price": 1,
+    "Price": 1.99,
     "IsAvailable": true
   },
   {
     "Name": "Coca Cola Light",
-    "Price": 1,
+    "Price": 1.99,
     "IsAvailable": true
   },
   {
     "Name": "Coca Cola Zero",
-    "Price": 1,
+    "Price": 1.99,
     "IsAvailable": true
   },
   {
     "Name": "Zoete Popcorn",
-    "Price": 2,
+    "Price": 2.99,
     "IsAvailable": true
   },
   {
@@ -66,37 +66,37 @@
   },
   {
     "Name": "Zoute Popcorn",
-    "Price": 2,
+    "Price": 2.54,
     "IsAvailable": true
   },
   {
     "Name": "Caramel Popcorn",
-    "Price": 2,
+    "Price": 2.44,
     "IsAvailable": true
   },
   {
     "Name": "Pretzels",
-    "Price": 2,
+    "Price": 2.22,
     "IsAvailable": true
   },
   {
     "Name": "Mix Snoep",
-    "Price": 2,
-    "IsAvailable": true
-  },
-  {
-    "Name": "Mix Chocolade",
-    "Price": 2,
+    "Price": 2.00,
     "IsAvailable": true
   },
   {
     "Name": "Ijs",
-    "Price": 2,
+    "Price": 2.99,
     "IsAvailable": false
   },
   {
     "Name": "Hot Dog",
-    "Price": 2,
-    "IsAvailable": true
+    "Price": 23.99,
+    "IsAvailable": false
+  },
+  {
+    "Name": "Water",
+    "Price": 1.00,
+    "IsAvailable": false
   }
 ]

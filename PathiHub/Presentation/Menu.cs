@@ -180,7 +180,7 @@ ______     _   _     _   _   _       _
                 break;
             case "[2] Our Snacks selection":
                 Thread.Sleep(1500);
-                SnacksMenu snack = new SnacksMenu();
+                SnacksMenu snack = new SnacksMenu(false);
                 snack.Start();
                 break;
 

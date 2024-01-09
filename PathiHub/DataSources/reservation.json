@@ -41,5 +41,19 @@
     "Price": 50.0,
     "ReservationCode": "fd5ad178-6c17-4157-a4ac-a3fdf169771f",
     "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Jelly",
+    "Email": "123",
+    "Auditorium": "1",
+    "SeatNames": [
+      "12 1"
+    ],
+    "movie": "The Adventure Begins",
+    "Date": "Monday",
+    "Time": "12:00-14:30",
+    "Price": 15.0,
+    "ReservationCode": "61842715-0389-4a06-be5b-aa430d02ea71",
+    "CinemaLocation": "Wijnhaven 107"
   }
 ]
