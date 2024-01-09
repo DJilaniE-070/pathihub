@@ -23,4 +23,6 @@ public class Movie
 
     // Voorbeeld scheduled is [Maandaag,1300-1500]
     public List<string> Scheduled {get;set;}
+    
+    public string PromotionColor { get; set; }
 }

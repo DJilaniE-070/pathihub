@@ -78,7 +78,17 @@ public class UserRegistration
                     Console.WriteLine($"- {PasswordCheck.GetIssueDescription(issue)}");
                 }
 
-                continue; // Continue to prompt for password entry
+                continue;
+            }
+
+            // Check to see if email is already registered / in use
+            if (IsEmailExists(userEmail))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("The entered email is already registered. You will be redirected.\n");
+                Thread.Sleep(3000);
+                Console.Clear();
+                UserRegistration.RegisterUser();
             }
 
             // asks for password confirmation
@@ -135,6 +145,12 @@ public class UserRegistration
         }
 
         return true;
+    }
+
+    private static bool IsEmailExists(string email)
+    {
+        List<AccountModel> listOfAccounts = AccountsAccess.LoadAll();
+        return listOfAccounts.Any(account => account.EmailAddress == email);
     }
 
     /*

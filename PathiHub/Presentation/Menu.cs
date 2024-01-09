@@ -51,7 +51,8 @@ public static class Menu
         Movie SecondDiscription = List_Of_Movie_Discriptions[1];
         Movie ThirdDiscription = List_Of_Movie_Discriptions[2];
         
-
+        
+        
         do
         {
             Console.Clear();
@@ -72,7 +73,7 @@ ______     _   _     _   _   _       _
             //print elke promoted movie van list
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine($"                           {First_Promoted_Movie}");
-            Console.WriteLine("╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮");
+            Helpers.PrintStringToColor("╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮", "red" );
             Console.ResetColor();
             DiscriptionPrinter.DrawBox(FirstDiscription);
             // Console.WriteLine("In a futuristic world, Alice, a skilled adventurer, and her loyal sidekick Bob, \nembark on a thrilling journey to save their city from the evil plans of Eve, \na cunning antagonist. With high-tech gadgets and unyielding determination, \nthey must overcome various challenges and foes to restore peace to their homeland.");

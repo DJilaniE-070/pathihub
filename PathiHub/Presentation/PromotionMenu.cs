@@ -17,6 +17,7 @@ public class PromotionMenu
     public void Start()
     {
         //deze conosole.writeline moet een header worden en pas moviecatalogprintermangerversion aan dat hij headers aanneemt
+        // Chanagecolor();
         PromotedMovieCataloge();
     }
     
@@ -78,6 +79,40 @@ public class PromotionMenu
                 break;
         }
     }
+
+    public void Chanagecolor()
+    {
+
+        MoviesAccess moviesAccess = new MoviesAccess();
+        if (moviesAccess.LoadFromJson())
+        {
+            List<Movie> promoted_movies_list = moviesAccess.GetItemList();
+            foreach (var movieTitle in promoted_movies_list)
+            {
+                
+                
+            }
+
+        }
+        string[] array_of_color_options = {"black ", "darkblue", "darkgreen", "darkcyan", "darkred", "darkmagenta","darkyellow","gray","darkgray","blue","green","cyan","red","magenta","yellow","white" };
+        Helpers cursorlogic = new Helpers();
+        
+        
+        //prints the color of the chosen file
+        Thread.Sleep(500);
+        Console.WriteLine($"Your chosen color is {cursorlogic.Cursor(array_of_color_options)}");
+        Thread.Sleep(500);
+        
+        Console.WriteLine( cursorlogic.Cursor(array_of_color_options));
+
+        string colorchoice = cursorlogic.Cursor(array_of_color_options);
+        
+        
+    }
+
+    
+        
+        
 }
 
 
