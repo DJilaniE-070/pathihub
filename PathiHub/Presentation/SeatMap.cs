@@ -7,16 +7,15 @@ public class SeatMap
     // lijst om reservaties op te slaan
     //public static List<List<string>> ReservedSeats = new List<List<string>>();
     //public static List<ReservedSeats> ReserveSeat = new List<ReservedSeats>();
-    public List<string> ReservedSeats = new List<string>();
+    private List<string> ReservedSeats = new List<string>();
     // auditorium 1 met 150 stoelen (14 rijen en 12 stoelen per rij)
-    public List<List<string>> auditorium1 = new List<List<string>>
+    private List<List<string>> auditorium1 = new List<List<string>>
     {
-        // seat                  1    2    3    4    5    6    7    8    9    10   11   12
-        new List<string> { "   ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 ", "10 ", "11 ", "12 " },
-        new List<string> { "14 ", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
-        new List<string> { "13 ", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
-        new List<string> { "12 ", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
-        new List<string> { "11 ", "C", "C", "C", "C", "C", "B", "B", "C", "C", "C", "C", "C" },
+        new List<string> { "  ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 ", " 10 ", "11 ", "12 " },
+        new List<string> { "14", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "13", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "12", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "11", "C", "C", "C", "C", "C", "B", "B", "C", "C", "C", "C", "C" },
         new List<string> { "10", "C", "C", "C", "C", "B", "B", "B", "B", "C", "C", "C", "C" },
         new List<string> { "9 ", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
         new List<string> { "8 ", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
@@ -29,10 +28,9 @@ public class SeatMap
         new List<string> { "1 ", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" }
     };
     // auditorium 2 met 300 stoelen (19 rijen en 18 stoelen per rij)
-    public List<List<string>> auditorium2 = new List<List<string>>
+    private List<List<string>> auditorium2 = new List<List<string>>
     {
-        // seat                  1    2    3    4    5    6    7    8    9    10   11   12   13   14   15   16   17   18
-        new List<string> { "   ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 ", "10 ", "11 ", "12 ", "13 ", "14 ", "15 ", "16 ", "17 ", "18 " },
+        new List<string> { "  ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 ", " 10 ", "11 ", "12 ", "13 ", "14 ", "15 ", "16 ", "17 ", "18 " },
         new List<string> { "19", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
         new List<string> { "18", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X" },
         new List<string> { "17", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X" },
@@ -54,44 +52,46 @@ public class SeatMap
         new List<string> { "1 ", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" }
     };
     // auditorium 3 met 500 stoelen (20 rijen en 30 stoelen per rij)
-    public List<List<string>> auditorium3 = new List<List<string>>
+    private List<List<string>> auditorium3 = new List<List<string>>
     {
-        // seat                  1    2    3    4    5    6    7    8    9    10   11   12   13   14   15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30
-        new List<string> { "X", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" },
-        new List<string> { "20x", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X" },
-        new List<string> { "19x", "X", "X", "X", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
-        new List<string> { "18x", "X", "X", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X", "X", "X" },
-        new List<string> { "17x", "X", "X", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X", "X", "X" },
-        new List<string> { "16x", "X", "X", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X", "X", "X" },
-        new List<string> { "15x", "X", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X", "X" },
-        new List<string> { "14x", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X" },
-        new List<string> { "13x", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C" },
-        new List<string> { "12x", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C" },
-        new List<string> { "11x", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C" },
-        new List<string> { "10x", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C" },
-        new List<string> { "9x", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C" },
-        new List<string> { "8x", "X", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "X" },
-        new List<string> { "7x", "X", "X", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "X", "X" },
-        new List<string> { "6x", "X", "X", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
-        new List<string> { "5x", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
-        new List<string> { "4x", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
-        new List<string> { "3x", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X" },
-        new List<string> { "2x", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X" },
-        new List<string> { "1x", "X", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X", "X" }
+        new List<string> { "  ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 ", " 10 ", "11 ", "12 ", "13 ", "14 ", "15 ", "16 ", "17 ", "18 ", "19 ", "20 ", "21 ", "22 ", "23 ", "24 ", "25 ", "26 ", "27 ", "28 ", "29 ", "30" },
+        new List<string> { "20", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X" },
+        new List<string> { "19", "X", "X", "X", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
+        new List<string> { "18", "X", "X", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X", "X", "X" },
+        new List<string> { "17", "X", "X", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X", "X", "X" },
+        new List<string> { "16", "X", "X", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X", "X", "X" },
+        new List<string> { "15", "X", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "14", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "13", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C" },
+        new List<string> { "12", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C" },
+        new List<string> { "11", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C" },
+        new List<string> { "10", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C" },
+        new List<string> { "9 ", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C" },
+        new List<string> { "8 ", "X", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "7 ", "X", "X", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "6 ", "X", "X", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "5 ", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
+        new List<string> { "4 ", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
+        new List<string> { "3 ", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X" },
+        new List<string> { "2 ", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X" },
+        new List<string> { "1 ", "X", "X", "X", "X", "X", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X", "X", "X", "X", "X", "X" }
     };
-    public List<string> rows1 = new List<string> { "14", "13", "12", "11", "10", "9 ", "8 ", "7 ", "6 ", "5 ", "4 ", "3 ", "2 ", "1 " };
-    public List<string> rows2 = new List<string> { "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "9 ", "8 ", "7 ", "6 ", "5 ", "4 ", "3 ", "2 ", "1 " };
-    public List<string> rows3 = new List<string> { "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "9 ", "8 ", "7 ", "6 ", "5 ", "4 ", "3 ", "2 ", "1 " };
-    public List<string> rows = new();
+    // inverted rows for each auditorium
+    private List<string> rows1 = new List<string> { "14", "13", "12", "11", "10", "9 ", "8 ", "7 ", "6 ", "5 ", "4 ", "3 ", "2 ", "1 " };
+    private List<string> rows2 = new List<string> { "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "9 ", "8 ", "7 ", "6 ", "5 ", "4 ", "3 ", "2 ", "1 " };
+    private List<string> rows3 = new List<string> { "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "9 ", "8 ", "7 ", "6 ", "5 ", "4 ", "3 ", "2 ", "1 " };
+    // belangrijke data rij en auditorium
+    private List<string> rows = new();
     public List<List<string>> Auditorium = new();
+    // prijzen stoelen
     private double _priceA;
     private double _priceB;
     private double _priceC;
-    public string Message = "";
+    private string Message = "";
     public static List<string> SelectedSeats = new List<string>();
     public static int AuditoriumNumber;
-    public int CursorRow = 1;
-    public int CursorSeat = 1;
+    private int CursorRow = 1;
+    private int CursorSeat = 1;
     public static double TotalPrice;
     public double PriceA 
     { 
@@ -209,11 +209,6 @@ public class SeatMap
         PriceC = stoel_c;
     }
 
-    public void ReserveSeats()
-    {
-        Reservation newReservation = new();
-    }
-
     // 3 auditoriums hardcoded en cursor logic
     public void Auditoriums()
     {
@@ -254,6 +249,7 @@ public class SeatMap
                     break;
                 // de geselecteerde stoel of stoelen reserveren
                 case ConsoleKey.Enter:
+                    Console.Clear();
                     if (key.Key == ConsoleKey.Enter)
                     {
                         // SnacksMenu snack = new SnacksMenu();
@@ -263,76 +259,89 @@ public class SeatMap
                         bool Loop2 = true;
                         if (SelectedSeats.Count == 0)
                         {                            
-                        Message = $"You haven't selected any seats";
-                        break;
+                            Message = $"You haven't selected any seats";
+                            break;
                         } 
                         else
                         {
-                        Message = $"Are you sure you want to select these seats?\nPress [Enter] to continue\nPress on [Backspace] to go back ";	
+                            Message = $"Are you sure you want to select these seats?\nPress [Enter] to continue\nPress on [Backspace] to go back ";	
                         
-                        if( !SeatmapLogic.CheckCurrentUser())
-                        {
-                            while (Loop1)
+                            if ( !SeatmapLogic.CheckCurrentUser())
                             {
-                                Console.WriteLine($"Are you sure you want to select these seats? \nPress [Enter] to continue\nPress on [Backspace] to go back ");
-                                foreach (var seat in SelectedSeats)
+                                while (Loop1)
                                 {
-                                    Console.WriteLine(seat);
-                                }
-                                Console.WriteLine("You are not logged in. Do you have a account? (yes or no)");
-                                string HaveAcc = Helpers.Color("yellow").ToLower();
-                                if (HaveAcc == "no")
-                                {
-                                    while (Loop2)
+                                    Console.WriteLine("Confirmation Screen:");
+                                    Console.WriteLine();
+                                    Console.WriteLine($"The total price is: {TotalPrice} euro");
+                                    Console.WriteLine();
+                                    Console.WriteLine("Are you sure you want to reserve the following seats?:");
+                                    Console.WriteLine();
+                                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                    Console.Write(" Row:");
+                                    Console.ResetColor();
+                                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                    Console.Write("   Seat:");
+                                    Console.ResetColor();
+                                    Console.WriteLine();
+                                    foreach (var seat in SelectedSeats)
                                     {
-                                        Console.WriteLine("Do you wish to make a new account to finish your reservation? (yes or no)");
-                                        string MakeAcc = Helpers.Color("yellow").ToLower();
-                                        if (MakeAcc == "yes")
+                                        Console.WriteLine($"  {seat.Replace(" ", "  -  ")}");
+                                    }
+                                    Console.WriteLine("You are not logged in. Do you have a account? (yes or no)");
+                                    string HaveAcc = Helpers.Color("yellow").ToLower();
+                                    if (HaveAcc == "no")
+                                    {
+                                        while (Loop2)
                                         {
-                                            // dit slaat de zaal op in json
-                                            MovieSchedule.SaveAuditorium(Auditorium);
-                                            UserRegistration.RegisterUser();
+                                            Console.WriteLine();
+                                            Console.WriteLine("Do you wish to make a new account to finish your reservation? (yes or no)");
+                                            string MakeAcc = Helpers.Color("yellow").ToLower();
+                                            if (MakeAcc == "yes")
+                                            {
+                                                // dit slaat de zaal op in json
+                                                MovieSchedule.SaveAuditorium(Auditorium);
+                                                UserRegistration.RegisterUser();
+                                                break;
+                                            }
+                                            if (MakeAcc == "no")
+                                            {
+                                                Helpers.PrintStringToColor("You can't finish your reservation without making account. You will be redirected to the main page","Red");
+                                                Thread.Sleep(1000);
+                                                Menu.Start();
+                                                Loop2 = false;
+                                                Loop1 = false;
+                                                Environment.Exit(0);
+                                            }
                                             break;
                                         }
-                                        if (MakeAcc == "no")
-                                        {
-                                        Helpers.PrintStringToColor("You can't finish your reservation without making account. You will be redirected to the main page","Red");
-                                        Thread.Sleep(1000);
-                                        Menu.Start();
-                                        Loop2 = false;
-                                        Loop1 = false;
-                                        Environment.Exit(0);
-                                        }
-                                        break;
-                                        }
 
+                                    }
+                                    else if (HaveAcc == "yes")
+                                    {
+                                        //  hierzo de code als je acc hebt dan alleen email password and then check in accountlogic als dat bestaat
+                                        // Accountmodel.Checklogin(email, password)
+                                        Loop1 = false;
+                                        // this code under this saves the auditorium to its schedule
+                                        MovieSchedule.SaveAuditorium(Auditorium);
+                                        Environment.Exit(0);
+                                    }
+                                    else
+                                    {
+                                        Helpers.PrintStringToColor("Incorrect input", "red");
+                                    }
                                 }
-                                else if (HaveAcc == "yes")
-                                {
-                                    //  hierzo de code als je acc hebt dan alleen email password and then check in accountlogic als dat bestaat
-                                    // Accountmodel.Checklogin(email, password)
-                                    Loop1 = false;
-                                    // this code under this saves the auditorium to its schedule
-                                    MovieSchedule.SaveAuditorium(Auditorium);
-                                    Environment.Exit(0);
-                                }
-                                else
-                                {
-                                    Helpers.PrintStringToColor("Incorrect input", "red");
-                                }
+                                break;
                             }
-                        break;
-                        }
-                        else
-                        {
-                            // dit slaat de zaal op in json als iemand klaar is met bestellen
-                            MovieSchedule.SaveAuditorium(Auditorium);
-                            // Console.WriteLine("You are logged in");
-                            // Environment.Exit(0);
-                            ReservationPresentation.AddReservationAutomatically();
-                            // Djilanie hier code voor als user is ingelogd. Dus geen inputs maar read from accountmodel user dan
-                        }
-                        break;
+                            else
+                            {
+                                // dit slaat de zaal op in json als iemand klaar is met bestellen
+                                MovieSchedule.SaveAuditorium(Auditorium);
+                                // Console.WriteLine("You are logged in");
+                                // Environment.Exit(0);
+                                ReservationPresentation.AddReservationAutomatically();
+                                // Djilanie hier code voor als user is ingelogd. Dus geen inputs maar read from accountmodel user dan
+                            }
+                            break;
                         }
                     }
                     if (key.Key == ConsoleKey.Backspace)
@@ -384,26 +393,26 @@ public class SeatMap
                     // als A, B of C is reserveer stoel en verander positie in list naar R
                     if (Auditorium[CursorRow][CursorSeat] == "A")
                     {
-                        SelectedSeats.Add($"{rows[CursorSeat - 1]} {CursorRow}");
+                        SelectedSeats.Add($"{rows[CursorRow - 1]} {CursorSeat}");
                         TotalPrice += _priceA;
                         Auditorium[CursorRow][CursorSeat] = "AR";
-                        Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1].Replace(" ", "")} is selected. Thank you for your reservation";
+                        Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1].Replace(" ", "")} is selected. This seat costs {PriceA}";
                         break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "B")
                     {
-                        SelectedSeats.Add($"{rows[CursorSeat - 1]} {CursorRow}");
+                        SelectedSeats.Add($"{rows[CursorRow - 1]} {CursorSeat}");
                         TotalPrice += _priceB;
                         Auditorium[CursorRow][CursorSeat] = "BR";
-                        Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1].Replace(" ", "")} is selected. Thank you for your reservation";
+                        Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1].Replace(" ", "")} is selected. This seat costs {PriceB}";
                         break;
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "C")
                     {
-                        SelectedSeats.Add($"{rows[CursorSeat - 1]} {CursorRow}");
+                        SelectedSeats.Add($"{rows[CursorRow - 1]} {CursorSeat}");
                         TotalPrice += _priceC;
                         Auditorium[CursorRow][CursorSeat] = "CR";
-                        Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1].Replace(" ", "")} is selected. Thank you for your reservation. This seat costs {PriceC}";
+                        Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1].Replace(" ", "")} is selected. This seat costs {PriceC}";
                         break;
                     }
                     // als X is print dat het geen stoel is en doet niks 
@@ -462,7 +471,7 @@ public class SeatMap
                 // print wat in auditorium staat met kleur en symbool
                 else
                 {
-                 switch (Auditorium[row][seat])
+                switch (Auditorium[row][seat])
                 {
                     case "X":
                         Console.ForegroundColor = ConsoleColor.White;
@@ -480,15 +489,37 @@ public class SeatMap
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.Write(" ❑ ");
                         break;
+
                     case "AR":
                     case "BR":
                     case "CR":
-                        Console.ForegroundColor = ConsoleColor.DarkGray;
-                        Console.Write(" ▣ ");
+                        if (SelectedSeats.Contains($"{rows[row - 1]} {seat}"))
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write(" ▣ ");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            Console.Write(" ▦ ");
+                            Console.ResetColor();
+                        }
                         break;
 
+                    
+
                     default:
-                        Console.Write($"{Auditorium[row][seat]}");
+                        if (row == 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write($"{Auditorium[row][seat]}");
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.Write($"{Auditorium[row][seat]}");
+                        }
                         break;
 
                         /* print rij nummer en stoel nummer
@@ -530,15 +561,15 @@ public class SeatMap
     {
         if (AuditoriumNumber == 1)
         {
-            Console.WriteLine("         Auditorium 1:");
+            Console.WriteLine("              Auditorium 1:");
         }
         if (AuditoriumNumber == 2)
         {
-            Console.WriteLine("\t       Auditorium 2:");
+            Console.WriteLine("\t            Auditorium 2:");
         }
         if (AuditoriumNumber == 3)
         {
-            Console.WriteLine("\t\t\t   Auditorium 3:");
+            Console.WriteLine("\t\t\t        Auditorium 3:");
         }
     }
 
@@ -548,20 +579,20 @@ public class SeatMap
         if (AuditoriumNumber == 1)
         {
             Console.WriteLine();
-            Console.WriteLine("                  Screen");
-            Console.WriteLine("  ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            Console.WriteLine("                  Screen                ");
+            Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
         if (AuditoriumNumber == 2)
         {
             Console.WriteLine();
-            Console.WriteLine("                  Screen");
-            Console.WriteLine("  ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            Console.WriteLine("                         Screen                          ");
+            Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
         if (AuditoriumNumber == 3)
         {
             Console.WriteLine();
-            Console.WriteLine("                                        Screen");
-            Console.WriteLine("  ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            Console.WriteLine("                                         Screen                                            ");
+            Console.WriteLine("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
         }
     }
 
@@ -579,6 +610,14 @@ public class SeatMap
 
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine($"❏ = {PriceC} euro");
+        Console.ResetColor();
+
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine("▦ = Reserved Seats");
+        Console.ResetColor();
+
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("▣ = Your Selected Seats");
         Console.ResetColor();
     }
 
@@ -604,24 +643,11 @@ public class SeatMap
     // description printen
     private void DisplayOptions()
     {
-        Console.WriteLine();
+        Console.WriteLine("-------------------------------------------");
         Console.WriteLine($"Use arrow keys to navigate.");
         Console.WriteLine($"Press [space] to reserve a seat.");
         Console.WriteLine($"Press [backspace] to cancel the seat.");
         Console.WriteLine($"Press [enter] to confirm your reservation.");
         Console.WriteLine($"Press [escape] to return to main menu.");
-    }
-
-    private bool IsReserved(string seat)
-    {
-        if (Auditorium[CursorRow][CursorSeat] == "AR" || Auditorium[CursorRow][CursorSeat] == "BR" || Auditorium[CursorRow][CursorSeat] == "CR")
-        {
-            Message = $"Stoel in rij {CursorRow} met nummer {rows[CursorSeat - 1]} is geannuleerd";
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 }
