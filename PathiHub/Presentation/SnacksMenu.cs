@@ -6,13 +6,14 @@ using System.Text.Json;
 public class SnacksMenu
 {
     //positie cursor
-    public bool IsGuest = true;
+    private bool IsManager = false;
     private static int CursorIndex = 0;
     private static string FilePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Environment.CurrentDirectory, @"DataSources/", "snacksdata.json"));
     private static List<SnacksData> _snacksdata;
 
-    public SnacksMenu()
+    public SnacksMenu(bool ismanager)
     {
+        IsManager = ismanager;
         _snacksdata = LoadSnacksDataFromJson();
         //SaveSnacksDataToJson(_snacksdata);
         Cursor();
@@ -64,19 +65,19 @@ public class SnacksMenu
                     break;
 
                 case ConsoleKey.Enter:
-                    if (IsGuest)
+                    if (IsManager)
                     {
                         EditSnacks(_snacksdata[CursorIndex]);
                     }
                     break;
                 case ConsoleKey.Backspace:
-                    if (IsGuest)
+                    if (IsManager)
                     {
                         RemoveSnacks(_snacksdata[CursorIndex]);
                     }
                     break;
                 case ConsoleKey.Spacebar:
-                    if (IsGuest)
+                    if (IsManager)
                     {
                         AddSnacks();
                     }
@@ -96,6 +97,10 @@ public class SnacksMenu
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("Pathihub Snacks:");
         Console.ResetColor();  
+        Console.WriteLine();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"{_snacksdata[CursorIndex].Name} costs {_snacksdata[CursorIndex].Price} euro");
+        Console.ResetColor(); 
         Console.WriteLine();
         
         if (_snacksdata != null)
@@ -130,7 +135,7 @@ public class SnacksMenu
         }
         Console.WriteLine();
         Console.WriteLine("Press [escape] to return to main menu");
-        if (IsGuest)
+        if (IsManager)
         {
             Console.WriteLine("Press [enter] to edit selected snack");
             Console.WriteLine("Press [backspace] to remove selected snack");
@@ -211,7 +216,7 @@ public class SnacksMenu
     {
         Console.Clear();
         Console.WriteLine("Adding a new snack");
-        
+        Console.WriteLine();
         Console.Write("Name: ");
         string name = Helpers.Color("Yellow");
 
