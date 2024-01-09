@@ -66,6 +66,12 @@ public static class LoginORRegister
                         PerformAction(menuOptions[selectedIndex]);
                         exit = true;
                         break;
+                    case ConsoleKey.Backspace:
+                        Helpers.BackToYourMenu();
+                        break;
+                    case ConsoleKey.Escape:
+                        Helpers.MainMenu();
+                        break;
                 }
 
             } while (!exit);

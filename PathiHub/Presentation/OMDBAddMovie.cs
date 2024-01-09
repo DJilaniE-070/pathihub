@@ -16,8 +16,10 @@ public static void AddMoviePresentationWebb(string Header)
     {
         Helpers.PrintStringToColor(Header,"yellow");
         Helpers.CharLine('-',80);
+        Helpers.PrintStringToColor("Press escape to return to the main menu or continue to search your movie","blue");
+        Helpers.CharLine('-',80);
 
-        Helpers.PrintStringToColor("\n\nWhat movie do You want to add: ","blue");
+        Helpers.PrintStringToColor("\nPlease give a Movietitle of the movie you want to search: ","blue");
 
         string websearch = Helpers.Color("yellow").Replace(" ","_").ToLower();
         string apiKey = MovieOptionsLogic.GetApiKey();
@@ -34,6 +36,7 @@ public static void AddMoviePresentationWebb(string Header)
             }
             catch (Exception)
             {
+                Helpers.CharLine('-',80);
                 Console.WriteLine($"An error occurred: No Internet");
                 Thread.Sleep(600);
                 Console.Clear();
@@ -43,6 +46,7 @@ public static void AddMoviePresentationWebb(string Header)
 
         if (!MovieOptionsLogic.CheckSearch(WebSearch))
         {
+            Helpers.CharLine('-',80);
             Helpers.PrintStringToColor("Movie not found Press ENTER to try again","red");
             Helpers.Color("white");
             Console.Clear();
@@ -52,7 +56,8 @@ public static void AddMoviePresentationWebb(string Header)
 
         JObject jsonObject = JObject.Parse(WebSearch);
         JArray SearchResults = (JArray)jsonObject["Search"];
-        Console.WriteLine("Please wait a moment");
+        Task.Run(() => Helpers.ShowSpinner());
+        Console.WriteLine("\n\nPlease wait a moment");
 
         foreach (JObject result in SearchResults)
         {
@@ -79,11 +84,10 @@ public static void AddMoviePresentationWebb(string Header)
 
 
         }
-
-        Thread.Sleep(600);
+        Helpers.StopSpinner();
         Console.Clear();
         List<string> ColomnNames = new(){"MovieTitle", "ReleaseYear",
-        "Director", "Genre", "Rating"};
+        "Directors", "Genre", "Rating"};
         Movie SelectedMovie = (Movie)ObjCatalogePrinter.TabelPrinter<Movie>(Header, movies,ColomnNames);
         
         MoviesAccess moviesAccess = new();
@@ -94,7 +98,7 @@ public static void AddMoviePresentationWebb(string Header)
             {
                 Helpers.PrintStringToColor("\nMovie already exits\nYou will be redirected to the Menu","red");
                 Thread.Sleep(1000);
-                ManagerMenu.Start();
+                ManagerMenu.FilmOptions();
 
                 
             }
@@ -135,7 +139,7 @@ public static void AddMoviePresentationWebb(string Header)
 
             Console.WriteLine("Press ENTER to continue");
             Helpers.Color("Yellow");
-            ManagerMenu.Start();
+            ManagerMenu.FilmOptions();
 
 
         }
@@ -144,7 +148,7 @@ public static void AddMoviePresentationWebb(string Header)
             Helpers.PrintStringToColor("Movies not found. No movies loaded.\n", "red");
             Console.WriteLine("Press ENTER to continue");
             Helpers.Color("Yellow");
-            ManagerMenu.Start();
+            ManagerMenu.FilmOptions();
         }
 
         }

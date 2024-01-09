@@ -114,7 +114,7 @@ ___  ___                                   ___  ___
     }
 
     
-static void FilmOptions()
+public static void FilmOptions()
 {
     string[] menuOptions = { "Add a movie", "Remove a movie", "Edit a movie","Show Movies", "Promote Movies", "Return to Manager menu" };
     int selectedIndex = 0;

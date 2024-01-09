@@ -151,6 +151,11 @@ ______     _   _     _   _   _       _
                     PerformAction(menuOptions[selectedIndex]);
                     exit = true;
                     break;
+                case ConsoleKey.Escape:
+                    Console.Clear();
+                    Console.WriteLine("test");
+                    break;
+
             }
 
         } while (!exit);

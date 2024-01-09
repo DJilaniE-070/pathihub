@@ -4,7 +4,7 @@ using PathiHub.Presentation;
 Console.Clear();
 Console.WriteLine("Welcome to this amazing program");
 
-// // Dit is om de schedules te clearen nodig voor financieel
+// // Dit is om de schedules te clearen nodig voor elke week
 // MovieToAuditoriumLogic logic = new();
 // MoviesAccess access = new();
 // if (access.LoadFromJson())
@@ -17,5 +17,4 @@ Console.WriteLine("Welcome to this amazing program");
 //         // hieronder is voor de schedule json correct afgesteld te zijn op de films
 //         logic.initializerAuditorium(movies);
 //         }
-    
 Menu.Start();

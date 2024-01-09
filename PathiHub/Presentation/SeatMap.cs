@@ -269,7 +269,12 @@ public class SeatMap
                         else
                         {
                         Message = $"Are you sure you want to select these seats?\nPress [Enter] to continue\nPress on [Backspace] to go back ";	
-                        
+                        if (Helpers.CurrentAccount != null && Helpers.CurrentAccount.Role == "Manager" || Helpers.CurrentAccount != null && Helpers.CurrentAccount.Role == "Coworker")
+                                {
+                                    MovieSchedule.SaveAuditorium(Auditorium);
+                                    ReservationPresentation.AddReservation();
+                                    break;
+                                }
                         if( !SeatmapLogic.CheckCurrentUser())
                         {
                             while (Loop1)
@@ -285,8 +290,9 @@ public class SeatMap
                                         if (MakeAcc == "yes")
                                         {
                                             // dit slaat de zaal op in json
-                                            MovieSchedule.SaveAuditorium(Auditorium);
                                             UserRegistration.RegisterUser();
+                                            MovieSchedule.SaveAuditorium(Auditorium);
+
                                             break;
                                         }
                                         if (MakeAcc == "no")
@@ -308,14 +314,31 @@ public class SeatMap
                                     // Accountmodel.Checklogin(email, password)
                                     Loop1 = false;
                                     // this code under this saves the auditorium to its schedule
-                                    MovieSchedule.SaveAuditorium(Auditorium);
-                                    Environment.Exit(0);
+                                    Helpers.PrintStringToColor("Your email adress: ","blue");
+                                    string email = Helpers.Color("yellow");
+                                    Helpers.PrintStringToColor("Your password: ","blue");
+                                    string passw = Helpers.Color("yellow");  
+                                    AccountsLogic logic = new();
+                                    AccountModel user = logic.CheckLogin(email, passw);
+                                    if (user != null)
+                                    {
+                                        
+                                        MovieSchedule.SaveAuditorium(Auditorium);
+                                        ReservationPresentation.AddReservationAutomatically();
+                                        Environment.Exit(0);
+                                    }
+                                    else
+                                    {
+                                        Helpers.PrintStringToColor("\nThe account is not registered","red");
+                                        Thread.Sleep(800);
+                                    }
                                 }
                                 else
                                 {
                                     Helpers.PrintStringToColor("Incorrect input", "red");
                                 }
                             }
+                            
                         break;
                         }
                         else
@@ -325,6 +348,7 @@ public class SeatMap
                             // Console.WriteLine("You are logged in");
                             // Environment.Exit(0);
                             ReservationPresentation.AddReservationAutomatically();
+
                             // Djilanie hier code voor als user is ingelogd. Dus geen inputs maar read from accountmodel user dan
                         }
                         break;
