@@ -92,6 +92,7 @@ public static class LoginORRegister
                 case "Creating an account":
                     Thread.Sleep(1500);
                     UserRegistration.RegisterUser();
+                    UserMenu.Start();
                     break;
             }
         }
