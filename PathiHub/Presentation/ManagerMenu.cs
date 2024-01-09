@@ -101,7 +101,7 @@ ___  ___                                   ___  ___
                 break;
             
             case "[6] Snacks options":
-                SnacksMenu snack = new SnacksMenu();
+                SnacksMenu snack = new SnacksMenu(true);
                 snack.Start();
                 break;
             

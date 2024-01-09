@@ -85,18 +85,18 @@
     "IsAvailable": true
   },
   {
-    "Name": "Mix Chocolade",
-    "Price": 2,
-    "IsAvailable": true
-  },
-  {
     "Name": "Ijs",
     "Price": 2,
     "IsAvailable": false
   },
   {
     "Name": "Hot Dog",
-    "Price": 2,
-    "IsAvailable": true
+    "Price": 23,
+    "IsAvailable": false
+  },
+  {
+    "Name": "Water",
+    "Price": 1,
+    "IsAvailable": false
   }
 ]

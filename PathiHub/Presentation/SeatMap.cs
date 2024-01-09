@@ -12,46 +12,46 @@ public class SeatMap
     public List<List<string>> auditorium1 = new List<List<string>>
     {
         // seat                  1    2    3    4    5    6    7    8    9    10   11   12
-        new List<string> { "X", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" },
-        new List<string> { "14x", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
-        new List<string> { "13x", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
-        new List<string> { "12x", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
-        new List<string> { "11x", "C", "C", "C", "C", "C", "B", "B", "C", "C", "C", "C", "C" },
-        new List<string> { "10x", "C", "C", "C", "C", "B", "B", "B", "B", "C", "C", "C", "C" },
-        new List<string> { "9x", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
-        new List<string> { "8x", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
-        new List<string> { "7x", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
-        new List<string> { "6x", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
-        new List<string> { "5x", "C", "C", "C", "C", "B", "B", "B", "B", "C", "C", "C", "C" },
-        new List<string> { "4x", "C", "C", "C", "C", "C", "B", "B", "C", "C", "C", "C", "C" },
-        new List<string> { "3x", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
-        new List<string> { "2x", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
-        new List<string> { "1x", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" }
+        new List<string> { "   ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 ", "10 ", "11 ", "12 " },
+        new List<string> { "14 ", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "13 ", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "12 ", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "11 ", "C", "C", "C", "C", "C", "B", "B", "C", "C", "C", "C", "C" },
+        new List<string> { "10", "C", "C", "C", "C", "B", "B", "B", "B", "C", "C", "C", "C" },
+        new List<string> { "9 ", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
+        new List<string> { "8 ", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
+        new List<string> { "7 ", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
+        new List<string> { "6 ", "C", "C", "C", "B", "B", "A", "A", "B", "B", "C", "C", "C" },
+        new List<string> { "5 ", "C", "C", "C", "C", "B", "B", "B", "B", "C", "C", "C", "C" },
+        new List<string> { "4 ", "C", "C", "C", "C", "C", "B", "B", "C", "C", "C", "C", "C" },
+        new List<string> { "3 ", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "2 ", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "1 ", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" }
     };
     // auditorium 2 met 300 stoelen (19 rijen en 18 stoelen per rij)
     public List<List<string>> auditorium2 = new List<List<string>>
     {
         // seat                  1    2    3    4    5    6    7    8    9    10   11   12   13   14   15   16   17   18
-        new List<string> { "X", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" },
-        new List<string> { "19x", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
-        new List<string> { "18x", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X" },
-        new List<string> { "17x", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X" },
-        new List<string> { "16x", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X" },
-        new List<string> { "15x", "X", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "X" },
-        new List<string> { "14x", "X", "C", "C", "C", "B", "B", "B", "B", "A", "A", "B", "B", "B", "B", "C", "C", "C", "X" },
-        new List<string> { "13x", "C", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "C" },
-        new List<string> { "12x", "C", "C", "C", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "C", "C", "C" },
-        new List<string> { "11x", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C" },
-        new List<string> { "10x", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C" },
-        new List<string> { "9x", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C" },
-        new List<string> { "8x", "X", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "X" },
-        new List<string> { "7x", "X", "C", "C", "C", "B", "B", "B", "B", "A", "A", "B", "B", "B", "B", "C", "C", "C", "X" },
-        new List<string> { "6x", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X" },
-        new List<string> { "5x", "X", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X", "X" },
-        new List<string> { "4x", "X", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X", "X" },
-        new List<string> { "3x", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
-        new List<string> { "2x", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
-        new List<string> { "1x", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" }
+        new List<string> { "   ", " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 ", "10 ", "11 ", "12 ", "13 ", "14 ", "15 ", "16 ", "17 ", "18 " },
+        new List<string> { "19", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "18", "X", "C", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "X" },
+        new List<string> { "17", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X" },
+        new List<string> { "16", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X" },
+        new List<string> { "15", "X", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "X" },
+        new List<string> { "14", "X", "C", "C", "C", "B", "B", "B", "B", "A", "A", "B", "B", "B", "B", "C", "C", "C", "X" },
+        new List<string> { "13", "C", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "C" },
+        new List<string> { "12", "C", "C", "C", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "C", "C", "C" },
+        new List<string> { "11", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C" },
+        new List<string> { "10", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C" },
+        new List<string> { "9 ", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C" },
+        new List<string> { "8 ", "X", "C", "C", "B", "B", "B", "B", "A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "X" },
+        new List<string> { "7 ", "X", "C", "C", "C", "B", "B", "B", "B", "A", "A", "B", "B", "B", "B", "C", "C", "C", "X" },
+        new List<string> { "6 ", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X" },
+        new List<string> { "5 ", "X", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "4 ", "X", "X", "C", "C", "C", "C", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "3 ", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X" },
+        new List<string> { "2 ", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" },
+        new List<string> { "1 ", "X", "X", "X", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "X", "X", "X" }
     };
     // auditorium 3 met 500 stoelen (20 rijen en 30 stoelen per rij)
     public List<List<string>> auditorium3 = new List<List<string>>
@@ -274,12 +274,17 @@ public class SeatMap
                         {
                             while (Loop1)
                             {
+                                Console.WriteLine($"Are you sure you want to select these seats? \nPress [Enter] to continue\nPress on [Backspace] to go back ");
+                                foreach (var seat in SelectedSeats)
+                                {
+                                    Console.WriteLine(seat);
+                                }
                                 Console.WriteLine("You are not logged in. Do you have a account? (yes or no)");
                                 string HaveAcc = Helpers.Color("yellow").ToLower();
                                 if (HaveAcc == "no")
                                 {
                                     while (Loop2)
-                                        {
+                                    {
                                         Console.WriteLine("Do you wish to make a new account to finish your reservation? (yes or no)");
                                         string MakeAcc = Helpers.Color("yellow").ToLower();
                                         if (MakeAcc == "yes")
@@ -481,73 +486,9 @@ public class SeatMap
                         Console.ForegroundColor = ConsoleColor.DarkGray;
                         Console.Write(" ▣ ");
                         break;
-                    case "1":
-                    case "2":
-                    case "3":
-                    case "4":
-                    case "5":
-                    case "6":
-                    case "7":
-                    case "8":
-                    case "9":
-                        Console.ForegroundColor = ConsoleColor.DarkCyan;
-                        Console.Write($" {Auditorium[row][seat]} ");
-                        break;
-                    case "10":
-                         Console.ForegroundColor = ConsoleColor.DarkCyan;
-                            Console.Write($" {Auditorium[row][seat]} ");
-                        break;
-                    case "11":
-                    case "12":
-                    case "13":
-                    case "14":
-                    case "15":
-                    case "16":
-                    case "17":
-                    case "18":
-                    case "19":
-                    case "20":
-                    case "21":
-                    case "22":
-                    case "23":
-                    case "24":
-                    case "25":
-                    case "26":
-                    case "27":
-                    case "28":
-                    case "29":
-                    case "30":
-                        Console.ForegroundColor = ConsoleColor.DarkCyan;
-                        Console.Write($"{Auditorium[row][seat]} ");
-                        break;
-                    case "1x":
-                    case "2x":
-                    case "3x":
-                    case "4x":
-                    case "5x":
-                    case "6x":
-                    case "7x":
-                    case "8x":
-                    case "9x":
-                        Console.ForegroundColor = ConsoleColor.DarkCyan;
-                        Console.Write($" {Auditorium[row][seat].TrimEnd('x')} ");
-                        break;
-                    case "10x":
-                    case "11x":
-                    case "12x":
-                    case "13x":
-                    case "14x":
-                    case "15x":
-                    case "16x":
-                    case "17x":
-                    case "18x":
-                    case "19x":
-                    case "20x":
-                        Console.ForegroundColor = ConsoleColor.DarkCyan;
-                        Console.Write($"{Auditorium[row][seat].TrimEnd('x')} ");
-                        break;
+
                     default:
-                        // Handle other cases if needed
+                        Console.Write($"{Auditorium[row][seat]}");
                         break;
 
                         /* print rij nummer en stoel nummer
