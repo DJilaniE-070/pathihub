@@ -3,7 +3,7 @@ public static class ReservationPresentation
     public static void AddReservationAutomatically()
     {
         Console.Clear();
-        Console.WriteLine(@"
+        Helpers.PrintStringToColor(@"
 ______                               _   _                     
 | ___ \                             | | (_)                _   
 | |_/ /___  ___  ___ _ ____   ____ _| |_ _  ___  _ __    _| |_ 
@@ -11,22 +11,19 @@ ______                               _   _
 | |\ \  __/\__ \  __/ |   \ V / (_| | |_| | (_) | | | |   |_|  
 \_| \_\___||___/\___|_|    \_/ \__,_|\__|_|\___/|_| |_|        
                                                                
-                                                               ");
+                                                               ","Yellow");
 
         Console.WriteLine("\n\n\n");
 
         Reservation reservation = new Reservation();
         
         Console.WriteLine("--------------------------------------------------------------------------------");
-        Console.Write("Getting your Full name (First and LastName): ");
         reservation.FullName = Helpers.CurrentAccount.FullName;
         // reservation.FullName = Helpers.Color("DarkYellow");
 
-        Console.Write("Getting your Email: ");
         // reservation.Email = Helpers.Color("DarkYellow");
         reservation.Email = Helpers.CurrentAccount.EmailAddress;
 
-        Console.Write("Getting reservation data:  ");
         // Auditorium
         // reservation.Auditorium = Helpers.Color("DarkYellow");
         reservation.Auditorium = MovieSchedule.Selectedauditorium.ToString();
@@ -43,11 +40,9 @@ ______                               _   _
         // reservation.SeatName = Helpers.Color("DarkYellow");
         reservation.SeatNames = SeatMap.SelectedSeats;
         
-        Console.Write("Enter name of the Movie ");
         reservation.movie = MovieSchedule.SelectedMovie.MovieTitle;
         // reservation.movie = Helpers.Color("DarkYellow");
 
-        Console.Write("Price of the Movie ");
         reservation.Price = SeatMap.TotalPrice;
         // reservation.Price = Convert.ToInt32(Helpers.Color("DarkYellow"));
         
@@ -77,13 +72,16 @@ ______                               _   _
             }
             else
             {
+                Helpers.Ticketdisplay(reservation);
                 Helpers.PrintStringToColor($"\n+ {reservation.ReservationCode} for {reservation.FullName}  has been added\n","green");
                 reservations.SaveToJson();
                 Email.start(reservation,Helpers.CurrentAccount);
+                SeatMap.SelectedSeats.Clear();
+
             }
 
         Console.WriteLine("Press ENTER to continue");
-        string Enter = Console.ReadLine();
+        Helpers.Color("yellow");
         Helpers.BackToYourMenu();
 
         }
@@ -91,7 +89,7 @@ ______                               _   _
         {
             Helpers.PrintStringToColor("File not found. No movies loaded.\n", "red");
             Console.WriteLine("Press ENTER to continue");
-            string enter = Console.ReadLine();
+            Helpers.Color("yellow");
             Helpers.BackToYourMenu();
         }
     } 
@@ -100,7 +98,7 @@ ______                               _   _
     public static void AddReservation()
     {
         Console.Clear();
-        Console.WriteLine(@"
+        Helpers.PrintStringToColor(@"
 ______                               _   _                     
 | ___ \                             | | (_)                _   
 | |_/ /___  ___  ___ _ ____   ____ _| |_ _  ___  _ __    _| |_ 
@@ -108,22 +106,21 @@ ______                               _   _
 | |\ \  __/\__ \  __/ |   \ V / (_| | |_| | (_) | | | |   |_|  
 \_| \_\___||___/\___|_|    \_/ \__,_|\__|_|\___/|_| |_|        
                                                                
-                                                               ");
+                                                               ","Yellow");
 
         Console.WriteLine("\n\n\n");
 
         Reservation reservation = new Reservation();
         
         Console.WriteLine("--------------------------------------------------------------------------------");
-        Console.Write("Getting your Full name (First and LastName): ");
+        Console.WriteLine("Getting your Full name (First and LastName): ");
         reservation.FullName = Helpers.Color("Yellow");
         // reservation.FullName = Helpers.Color("DarkYellow");
 
-        Console.Write("Getting your Email: ");
+        Console.WriteLine("Getting your Email: ");
         // reservation.Email = Helpers.Color("DarkYellow");
         reservation.Email = Helpers.Color("Yellow");
 
-        Console.Write("Getting reservation data:  ");
         // Auditorium
         // reservation.Auditorium = Helpers.Color("DarkYellow");
         reservation.Auditorium = MovieSchedule.Selectedauditorium.ToString();
@@ -132,19 +129,19 @@ ______                               _   _
         // reservation.SeatName = Helpers.Color("DarkYellow");
         reservation.SeatNames = SeatMap.SelectedSeats;
         
-        Console.Write("Enter name of the Movie ");
         reservation.movie = MovieSchedule.SelectedMovie.MovieTitle;
         // reservation.movie = Helpers.Color("DarkYellow");
+        string[] parts = MovieSchedule.SelectedSchedule.Split('/');
+            if (parts.Length == 3)
+            {
+                string day = parts[0];
+                string time = parts[1];
+                reservation.Date = day;
+                reservation.Time = time;
+            }
 
-        Console.Write("Price of the Movie ");
-        reservation.Price = 1;
-        // reservation.Price = Convert.ToInt32(Helpers.Color("DarkYellow"));
-        
-        // Cinema location;
-        // reservation.CinemaLocation = Helpers.Color("DarkYellow");
-        
-        // generate a unique code
-        //TODO: This is broken
+        reservation.Price = SeatMap.TotalPrice;
+
         string random = Guid.NewGuid().ToString();
 
         while (!MakeReservation.CheckUniqueCode(random))
@@ -154,7 +151,6 @@ ______                               _   _
 
         reservation.ReservationCode = random;
 
-        Console.WriteLine("Your unique reservation code is: {0}", random);
 
        ReservationAccess reservations = new ReservationAccess();
         if (reservations.LoadFromJson() == true)
@@ -162,16 +158,20 @@ ______                               _   _
             MakeReservation Option = new MakeReservation(reservations.GetItemList());
             if (Option.AddReservation(reservation) != true)
             {
-                Helpers.PrintStringToColor("\nMovie already exits\n","red");
+                Helpers.PrintStringToColor("\nReservation already exits\n","red");
             }
             else
             {
+                Helpers.Ticketdisplay(reservation);
                 Helpers.PrintStringToColor($"\n+ {reservation.ReservationCode} for {reservation.FullName}  has been added\n","green");
                 reservations.SaveToJson();
+                Email.manualstart(reservation, reservation.FullName, reservation.Email);
+                SeatMap.SelectedSeats.Clear();
+
             }
 
         Console.WriteLine("Press ENTER to continue");
-        string Enter = Console.ReadLine();
+        Helpers.Color("yellow");
         Helpers.BackToYourMenu();
 
         }
@@ -179,7 +179,7 @@ ______                               _   _
         {
             Helpers.PrintStringToColor("File not found. No movies loaded.\n", "red");
             Console.WriteLine("Press ENTER to continue");
-            string enter = Console.ReadLine();
+           Helpers.Color("yellow");
             Helpers.BackToYourMenu();
         }
     }   

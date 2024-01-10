@@ -36,7 +36,8 @@
       "Monday/15:00-17:30/Aud2",
       "Tuesday/12:00-14:30/Aud2",
       "Tuesday/12:00-14:30/Aud2"
-    ]
+    ],
+    "PromotionColor": null
   },
   {
     "MovieTitle": "Galactic Quest",
@@ -71,7 +72,8 @@
       "Tuesday/15:00-17:30/Aud1",
       "Tuesday/18:00-20:30/Aud1",
       "Tuesday/21:30-23:30/Aud1"
-    ]
+    ],
+    "PromotionColor": null
   },
   {
     "MovieTitle": "De schippers van de Kameleon",
@@ -106,7 +108,8 @@
     "Scheduled": [
       "Wednesday/12:00-14:30/Aud2",
       "Wednesday/15:00-17:30/Aud2"
-    ]
+    ],
+    "PromotionColor": null
   },
   {
     "MovieTitle": "Kameleon 2",
@@ -143,7 +146,8 @@
     "Scheduled": [
       "Wednesday/18:00-20:30/Aud1",
       "Wednesday/21:30-23:30/Aud1"
-    ]
+    ],
+    "PromotionColor": null
   },
   {
     "MovieTitle": "John Wick",
@@ -178,7 +182,8 @@
     "Scheduled": [
       "Thursday/12:00-14:30/Aud2",
       "Thursday/15:00-17:30/Aud2"
-    ]
+    ],
+    "PromotionColor": null
   },
   {
     "MovieTitle": "John Wick: Chapter 2",
@@ -213,7 +218,8 @@
     "Scheduled": [
       "Friday/12:00-14:30/Aud1",
       "Friday/21:30-23:30/Aud1"
-    ]
+    ],
+    "PromotionColor": null
   },
   {
     "MovieTitle": "Barbie",
@@ -249,7 +255,8 @@
     "Scheduled": [
       "Monday/15:00-17:30/Aud3",
       "Monday/18:00-20:30/Aud3"
-    ]
+    ],
+    "PromotionColor": null
   },
   {
     "MovieTitle": "The Super Mario Bros. Movie",
@@ -284,7 +291,8 @@
     "Scheduled": [
       "Monday/21:30-23:30/Aud3",
       "Tuesday/12:00-14:30/Aud3"
-    ]
+    ],
+    "PromotionColor": null
   },
   {
     "MovieTitle": "The Nightmare Before Christmas",
@@ -321,7 +329,8 @@
     "Scheduled": [
       "Tuesday/15:00-17:30/Aud3",
       "Tuesday/18:00-20:30/Aud3"
-    ]
+    ],
+    "PromotionColor": null
   },
   {
     "MovieTitle": "Sonic the Hedgehog",
@@ -359,7 +368,8 @@
       "Friday/12:00-14:30/Aud3",
       "Friday/15:00-17:30/Aud3",
       "Friday/12:00-14:30/Aud2"
-    ]
+    ],
+    "PromotionColor": null
   },
   {
     "MovieTitle": "Oppenheimer",
@@ -371,7 +381,9 @@
       " History"
     ],
     "Actors": [
-      "test"
+      "Cillian Murphy",
+      " Emily Blunt",
+      " Matt Damon"
     ],
     "Directors": "Christopher Nolan",
     "Writers": [
@@ -379,20 +391,47 @@
       " Kai Bird",
       " Martin Sherwin"
     ],
-    "Plot": "The story of American scientist, J. Robert Oppenheimer, and his role in the development of the  love bomb.",
-    "Rating": 85.0,
+    "Plot": "The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.",
+    "Rating": 8.4,
     "RuntimeMinutes": 180,
     "Languages": "English, German, Italian",
     "Countrys": "United States, United Kingdom",
-    "Auditorium": [
-      3
-    ],
+    "Auditorium": [],
     "Awards": [
-      "7 wins & 3 nominations"
+      "102 wins & 231 nominations"
     ],
     "Poster": "https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_SX300.jpg",
-    "Scheduled": [
-      "Monday/15:00-17:30/Aud3"
-    ]
+    "Scheduled": [],
+    "PromotionColor": null
+  },
+  {
+    "MovieTitle": "Kaka",
+    "ReleaseYear": 2021,
+    "ReleaseDate": "28 May 2021",
+    "Genre": [
+      "Comedy"
+    ],
+    "Actors": [
+      "Sunshine Guimary",
+      " Jerald Napoles",
+      " Ion Perez"
+    ],
+    "Directors": "GB Sampedro",
+    "Writers": [
+      "Conn Escobar",
+      " GB Sampedro"
+    ],
+    "Plot": "For Katherine Bataan a.k.a DJ Kaka, sex isn't just a career, it's a lifestyle and a hobby. But amidst her almost-perfect life, she keeps a deep secret. Even though she tried several times, she hasn't experienced an orgasm. Until s...",
+    "Rating": 0.0,
+    "RuntimeMinutes": 115,
+    "Languages": "Tagalog, Filipino",
+    "Countrys": "Philippines",
+    "Auditorium": [],
+    "Awards": [
+      "N/A"
+    ],
+    "Poster": "https://m.media-amazon.com/images/M/MV5BYzNjZDc3ZjItNDQ0OS00NGMyLWFkN2EtMDhmMjdiMjE5NTRlXkEyXkFqcGdeQXVyNTI5NjIyMw@@._V1_SX300.jpg",
+    "Scheduled": [],
+    "PromotionColor": null
   }
 ]

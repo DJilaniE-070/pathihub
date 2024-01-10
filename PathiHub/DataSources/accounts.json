@@ -40,5 +40,26 @@
     "password": "Pinda@Brood123",
     "fullName": "Gavin",
     "role": "User"
+  },
+  {
+    "id": 7,
+    "emailAddress": "Pipo@gmail.com",
+    "password": "Password123!",
+    "fullName": "Pi Po",
+    "role": "User"
+  },
+  {
+    "id": 8,
+    "emailAddress": "Na@gmail.com",
+    "password": "Password123!",
+    "fullName": "\bN A",
+    "role": "User"
+  },
+  {
+    "id": 9,
+    "emailAddress": "Na@g.c",
+    "password": "Password123!",
+    "fullName": "Na gc",
+    "role": "User"
   }
 ]

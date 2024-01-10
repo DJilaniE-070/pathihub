@@ -177,75 +177,86 @@ public class PerformActionToTabel
                 Console.WriteLine($"Field '{fieldName}' not found in type '{objectType.Name}'.");
             }
     }
-static string EditPLot(string fieldValue)
-{
-    string originalString = fieldValue;
-    int currentPosition = 0;
-
+    static string EditPLot(string fieldValue)
     {
-        while (true)
+        string originalString = fieldValue;
+        int currentPosition = 0;
+
         {
-            Console.Clear();
-            Helpers.PrintStringToColor(@"
-______ _       _   
-| ___ \ |     | |  
-| |_/ / | ___ | |_ 
-|  __/| |/ _ \| __|
-| |   | | (_) | |_ 
-\_|   |_|\___/ \__| ", "yellow");
-            Helpers.CharLine('-', 80);
-
-            if (!originalString.EndsWith(" ") && !originalString.StartsWith(" "))
+            while (true)
             {
-                originalString = " " + originalString + " ";
-            }
+                Console.Clear();
+                Helpers.PrintStringToColor(@"
+    ______ _       _   
+    | ___ \ |     | |  
+    | |_/ / | ___ | |_ 
+    |  __/| |/ _ \| __|
+    | |   | | (_) | |_ 
+    \_|   |_|\___/ \__| ", "yellow");
+                Helpers.CharLine('-', 80);
 
-            DisplayStringWithHighlight(originalString, currentPosition);
+                if (!originalString.EndsWith(" ") && !originalString.StartsWith(" "))
+                {
+                    originalString = " " + originalString + " ";
+                }
 
-            ConsoleKeyInfo key = Console.ReadKey(true);
+                DisplayStringWithHighlight(originalString, currentPosition);
 
-            switch (key.Key)
-            {
-                case ConsoleKey.LeftArrow:
-                    currentPosition = Math.Max(0, currentPosition - 1);
-                    break;
-                case ConsoleKey.RightArrow:
-                    currentPosition = Math.Min(originalString.Length - 1, currentPosition + 1);
-                    break;
-                case ConsoleKey.Backspace:
-                    if (currentPosition > -1)
-                    {
-                        originalString = originalString.Remove(currentPosition, 1);
-                        currentPosition--;
-                    }
-                    break;
-                case ConsoleKey.Delete:
-                    if (currentPosition < originalString.Length - 1)
-                    {
-                        originalString = originalString.Remove(currentPosition, 1);
-                    }
-                    break;
-                case ConsoleKey.Escape:
-                    Helpers.MainMenu();
-                    Environment.Exit(0);
-                    break;
-                case ConsoleKey.Enter:
-                    return originalString.Trim();
-                default:
-                    if (currentPosition >= 0 && currentPosition <= originalString.Length)
-                    {
-                        originalString = originalString.Insert(currentPosition + 1, key.KeyChar.ToString());
-                    }
-                    else if (currentPosition == -1)
-                    {
-                        originalString = key.KeyChar + originalString;
-                    }
-                    currentPosition++;
-                    break;
+                ConsoleKeyInfo key = Console.ReadKey(true);
+
+                switch (key.Key)
+                {
+                    case ConsoleKey.LeftArrow:
+                        currentPosition = Math.Max(0, currentPosition - 1);
+                        break;
+                    case ConsoleKey.RightArrow:
+                        currentPosition = Math.Min(originalString.Length - 1, currentPosition + 1);
+                        break;
+                    case ConsoleKey.Backspace:
+                        if (currentPosition > -1)
+                        {
+                            originalString = originalString.Remove(currentPosition, 1);
+                            currentPosition--;
+                        }
+                        break;
+                    case ConsoleKey.Delete:
+                        if (currentPosition < originalString.Length - 1)
+                        {
+                            originalString = originalString.Remove(currentPosition, 1);
+                        }
+                        break;
+                    case ConsoleKey.Escape:
+                        Helpers.MainMenu();
+                        Environment.Exit(0);
+                        break;
+                    case ConsoleKey.Enter:
+                        return originalString.Trim();
+                    case ConsoleKey.UpArrow:
+                    case ConsoleKey.DownArrow:
+                        break;
+                    default:
+                        if (currentPosition >= 0 && currentPosition <= originalString.Length)
+                        {
+                            originalString = originalString.Insert(currentPosition + 1, key.KeyChar.ToString());
+                        }
+                        else if (currentPosition == -1)
+                        {
+                            originalString = key.KeyChar + originalString;
+                        }
+                        currentPosition++;
+                        break;
+                }
             }
         }
     }
-}
+
+    public static void ShowPlot(string plot)
+    {
+        Helpers.CharLine('-',80);
+        Helpers.PrintStringToColor("The new plot: ","blue");
+        Helpers.CharLine('-',80);
+        Helpers.PrintStringToColor(plot,"white");
+    }
 
     static void DisplayStringWithHighlight(string input, int highlightPosition)
     {
@@ -349,6 +360,7 @@ ______ _       _
         if (fieldName == "Plot")
         {
         string changedplot = EditPLot(fieldValue);
+        ShowPlot(changedplot);
         ChangeValues(obj,fieldName,changedplot);
         }
         else
@@ -365,7 +377,7 @@ ______ _       _
 
         if (choice == "no")
         {
-            Console.WriteLine("\nYou will be redirected to the main menu");
+            Console.WriteLine("\nYou will be redirected to the Manager menu");
             Thread.Sleep(800);
             if (SelectedMovieData != null)
             {
