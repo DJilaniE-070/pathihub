@@ -405,7 +405,7 @@ public class SeatMap
                             TotalPrice -= _priceA;
                             Auditorium[CursorRow][CursorSeat] = "A";
                             SelectedSeats.Remove($"{rows[CursorRow - 1].Trim()} {CursorSeat.ToString().Trim()}");
-                            Message = $"Seat in Row {CursorSeat} with number {rows[CursorRow - 1]} is cancelled";
+                            Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1]} is cancelled";
                             break;
                         }
                         if (Auditorium[CursorRow][CursorSeat] == "BR")
@@ -413,14 +413,14 @@ public class SeatMap
                             TotalPrice -= _priceB;
                             Auditorium[CursorRow][CursorSeat] = "B";
                             SelectedSeats.Remove($"{rows[CursorRow - 1].Trim()} {CursorSeat.ToString().Trim()}");
-                            Message = $"Seat in Row {CursorSeat} with number {rows[CursorRow - 1]} is cancelled";                            break;
+                            Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1]} is cancelled";                            break;
                         }
                         if (Auditorium[CursorRow][CursorSeat] == "CR")
                         {
                             TotalPrice -= _priceC;
                             Auditorium[CursorRow][CursorSeat] = "C";
                             SelectedSeats.Remove($"{rows[CursorRow - 1].Trim()} {CursorSeat.ToString().Trim()}");
-                            Message = $"Seat in Row {CursorSeat} with number {rows[CursorRow - 1]} is cancelled";
+                            Message = $"Seat {CursorSeat} in {rows[CursorRow - 1]} is cancelled";
                             break;
                         }
                         else
