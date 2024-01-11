@@ -21,8 +21,7 @@ ___  ___           _
 | |  | | (_) \ V /| |  __/\__ \
 \_|  |_/\___/ \_/ |_|\___||___/";
     private static List<string> ColomnNameSchedule = new(){"Scheduled", "MovieTitle",
-        "Directors", "ReleaseYear", " "};
-
+        "Directors", "ReleaseYear"};
     private static List<string> ColomnNamesMovie = new(){"MovieTitle", "ReleaseYear",
     "Directors", "Genre", "Rating"};
     private static List<Schedule> schedule1;

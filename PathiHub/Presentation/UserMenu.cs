@@ -81,7 +81,7 @@ public static class UserMenu
                 CheckReservation();
                 break;
             case "[3] Cancel reservation":
-                CancelReservation();
+                ReservationPresentation.RemoveMoviePresentation();
                 break;
             case "[4] Exit":
                 Thread.Sleep(1500);
@@ -164,9 +164,4 @@ public static class UserMenu
         }
     }
 
-    static void CancelReservation()
-    {
-        Console.WriteLine("Cancel reservation");
-        Console.WriteLine("Here comes the implementations in a later sprint");
     }
-}

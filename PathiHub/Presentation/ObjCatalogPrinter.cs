@@ -103,19 +103,18 @@ public class ObjCatalogePrinter
         {
         Console.WriteLine($"\n Navigate the menu with Up and Down arrows. Press Backspace to Select Another Auditorium. Press ENTER to select a {itemType.Name}\n\n\n");
         }
-        if (itemType == typeof(Reservation))
+        else if (itemType == typeof(Reservation))
         {
             Console.WriteLine($"\n Navigate the menu with Up and Down arrows. Press Backspace to return to the {Helpers.CurrentAccount.Role} menu. Press ENTER to select a {itemType.Name}\n\n\n");
-            //Console.WriteLine("{0,-25} | {1,-25} | {2,-25} | {3,-30} | {4,-10}",TruncateString( displayFields[0],25),TruncateString(displayFields[1],25), TruncateString(displayFields[2],25),TruncateString(displayFields[3],25),TruncateString(displayFields[1],25));
-            //Console.WriteLine(new string('-', 110));
         }
         else
         {
         Console.WriteLine($"\n Navigate the menu with Up and Down arrows. Press Backspace to return to the {Helpers.CurrentAccount.Role} menu. Press ENTER to select a {itemType.Name}\n\n\n");
         }
+        
         for (int i = 0; i < numberOfFields; i++)
         {
-            Console.Write("{0,-25} | ", TruncateString(displayFields[i], 25));
+            Console.Write("{0,-25} |", TruncateString(displayFields[i], 25));
         }
         Console.WriteLine();
         Helpers.CharLine('-',numberOfFields * 25);
@@ -152,10 +151,13 @@ public class ObjCatalogePrinter
                 })
                 .ToArray();
 
-                
             for (int j = 0; j < displayValues.Length; j++)
             {
-                Console.Write("{0,-25} | ", TruncateString(displayValues[j], 25));
+                Console.Write("{0,-25} |", TruncateString(displayValues[j], 25));
+                if ((j + 1) % numberOfFields == 0)
+                {
+                    Console.WriteLine();
+                }
             }
             Console.ResetColor();
     }
