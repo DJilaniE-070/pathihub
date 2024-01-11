@@ -19,6 +19,11 @@ public class SnacksMenu
         Cursor();
     }
 
+    public int GetSnacksCount()
+    {
+        return _snacksdata.Count;
+    }
+
     public void Start()
     {
         _snacksdata = LoadSnacksDataFromJson();
@@ -26,13 +31,13 @@ public class SnacksMenu
         //List<SnacksData> loadedSnacksData = LoadSnacksDataFromJson();
     }
 
-    static void SaveSnacksDataToJson(List<SnacksData> snacksData)
+    public void SaveSnacksDataToJson(List<SnacksData> snacksData)
     {
         string json = JsonSerializer.Serialize(snacksData, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText(FilePath, json);
     }
 
-    static List<SnacksData> LoadSnacksDataFromJson()
+    public List<SnacksData> LoadSnacksDataFromJson()
     {
         string loadedJson = File.ReadAllText(FilePath);
         return JsonSerializer.Deserialize<List<SnacksData>>(loadedJson);
@@ -95,7 +100,7 @@ public class SnacksMenu
         ManagerMenu.Start();
     }
 
-    private void DisplaySnacks()
+    public void DisplaySnacks()
     {
         Console.Clear();
         Console.ResetColor();  
@@ -149,7 +154,7 @@ public class SnacksMenu
     }
     
 
-    private void EditSnacks(SnacksData snacksData)
+    public void EditSnacks(SnacksData snacksData)
     {
         Console.Clear();
         Console.Write($"Editing");
@@ -191,7 +196,7 @@ public class SnacksMenu
         SaveSnacksDataToJson(_snacksdata);
     }
 
-    private void RemoveSnacks(SnacksData snacksData)
+    public void RemoveSnacks(SnacksData snacksData)
     {
         Console.Clear();
         Console.Write($"Deleting");
@@ -217,7 +222,7 @@ public class SnacksMenu
         }
     }
 
-    private void AddSnacks()
+    public void AddSnacks()
     {
         Console.Clear();
         Console.WriteLine("Adding a new snack");
