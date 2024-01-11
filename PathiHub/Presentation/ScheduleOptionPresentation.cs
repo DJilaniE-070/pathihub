@@ -76,7 +76,7 @@ ______                                           _____      _              _    
                                                                          
                                                                          ";
         List<string> ColomnNameSchedule = new(){"Scheduled", "MovieTitle",
-        "Directors", "ReleaseYear", " "};
+        "Directors", "ReleaseYear"};
 
     public void Start()
     {

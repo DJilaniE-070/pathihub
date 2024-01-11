@@ -69,16 +69,19 @@ public class ObjCatalogePrinter
             selectedObjIndex = 0;
             return selectedItem;
         }
-
+        Helpers.PrintStringToColor("Something went wrong there is no data You will be redirected to Your Menu","red");
+        Thread.Sleep(2000);
+        Helpers.BackToYourMenu();
         return null;
     }
 
     public static void DrawTable<T>(string HeaderX ,List<T> objList, List<string> displayFields)   
      {
         Type itemType = typeof(T);
+        int numberOfFields = displayFields.Count;
         Helpers.PrintStringToColor(HeaderX, "yellow");
     
-        Helpers.CharLine('-' ,80);
+        Helpers.CharLine('-',80);
         switch (itemType.Name)
         {
             case "Schedule":
@@ -94,26 +97,27 @@ public class ObjCatalogePrinter
                 Console.WriteLine("This is our Catalog");
                 break;
         }
-        Helpers.CharLine('-' ,80);
-        
+        Helpers.CharLine('-',80);
+
         if (itemType == typeof(Schedule))
         {
         Console.WriteLine($"\n Navigate the menu with Up and Down arrows. Press Backspace to Select Another Auditorium. Press ENTER to select a {itemType.Name}\n\n\n");
         }
-        if (itemType == typeof(Reservation))
+        else if (itemType == typeof(Reservation))
         {
             Console.WriteLine($"\n Navigate the menu with Up and Down arrows. Press Backspace to return to the {Helpers.CurrentAccount.Role} menu. Press ENTER to select a {itemType.Name}\n\n\n");
-            //Console.WriteLine("{0,-25} | {1,-25} | {2,-25} | {3,-30} | {4,-10}",TruncateString( displayFields[0],25),TruncateString(displayFields[1],25), TruncateString(displayFields[2],25),TruncateString(displayFields[3],25),TruncateString(displayFields[1],25));
-            //Console.WriteLine(new string('-', 110));
         }
         else
         {
-        Console.WriteLine($"\n Navigate the menu with Up and Down arrows. Press Backspace to return to the manager menu. Press ENTER to select a {itemType.Name}\n\n\n");
+        Console.WriteLine($"\n Navigate the menu with Up and Down arrows. Press Backspace to return to the {Helpers.CurrentAccount.Role} menu. Press ENTER to select a {itemType.Name}\n\n\n");
         }
-
-        Console.WriteLine("{0,-25} | {1,-25} | {2,-25} | {3,-30} | {4,-10}",TruncateString( displayFields[0],25),TruncateString(displayFields[1],25), TruncateString(displayFields[2],25),TruncateString(displayFields[3],25),TruncateString(displayFields[4],25));
-        Console.WriteLine(new string('-', 110));
-
+        
+        for (int i = 0; i < numberOfFields; i++)
+        {
+            Console.Write("{0,-25} |", TruncateString(displayFields[i], 25));
+        }
+        Console.WriteLine();
+        Helpers.CharLine('-',numberOfFields * 25);
         for (int i = 0; i < objList.Count; i++)
         {
             if (i == selectedObjIndex)
@@ -147,7 +151,14 @@ public class ObjCatalogePrinter
                 })
                 .ToArray();
 
-            Console.WriteLine("{0,-25} | {1,-25} | {2,-25} | {3,-30} | {4,-10}",TruncateString(displayValues[0],25),TruncateString(displayValues[1],25),TruncateString(displayValues[2],25),TruncateString(displayValues[3],25),TruncateString(displayValues[4],25));
+            for (int j = 0; j < displayValues.Length; j++)
+            {
+                Console.Write("{0,-25} |", TruncateString(displayValues[j], 25));
+                if ((j + 1) % numberOfFields == 0)
+                {
+                    Console.WriteLine();
+                }
+            }
             Console.ResetColor();
     }
     }

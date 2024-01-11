@@ -52,7 +52,7 @@ public static class MovieSchedule
                     break;
 
                 case ConsoleKey.Enter:
-                    Console.WriteLine($"Selected number: {Auditoriums[selectedIndex]}");
+                    Console.WriteLine($"Selected Auditorium: {Auditoriums[selectedIndex]}");
                     Selectedauditorium = Auditoriums[selectedIndex];
                     DisplaySchedule1();
                     loop=false;
@@ -76,6 +76,7 @@ public static class MovieSchedule
 
     static void PrintList(List<int> numbers, int selectedIndex)
     {
+        numbers.Sort();
         Helpers.PrintStringToColor(@"
   ___            _ _ _             _                 
  / _ \          | (_) |           (_)                
@@ -84,8 +85,9 @@ public static class MovieSchedule
 | | | | |_| | (_| | | || (_) | |  | | |_| | | | | | |
 \_| |_/\__,_|\__,_|_|\__\___/|_|  |_|\__,_|_| |_| |_|
                                                      ","yellow");
-        Console.WriteLine();
-        Helpers.CharLine('-',80);
+    Helpers.CharLine('-',80);
+    Console.WriteLine("Please select an Auditorium (using the arrow keys and press Enter. \nBackspace to go Your menu or Escape to log out and go the Main Menu:");
+    Helpers.CharLine('-',80);
 
         for (int i = 0; i < numbers.Count; i++)
         {
@@ -111,7 +113,10 @@ public static class MovieSchedule
     {
     // This can een list in de Movie obj zijn
     // "Monday/12:00-14.30","Thursday/18:00-20:30"
-    List<string> Scheduled = SelectedMovie.Scheduled;
+    List<string> Schedules = SelectedMovie.Scheduled;
+    List<string> Scheduled = Schedules
+            .Where(schedule => schedule.Contains($"/Aud{Selectedauditorium}"))
+            .ToList();
     Dictionary<string, List<string>> formattedSchedule = ParseSchedule(Scheduled);
     int selectedDayIndex = 0;
     int selectedTimeIndex = 0;
@@ -131,7 +136,9 @@ public static class MovieSchedule
 \____/ \___|_| |_|\___|\__,_|\__,_|_|\___|\__,_|   \_/ |_|_| |_| |_|\___||___/
                                                                               
                                                                             ","yellow");
-            Helpers.CharLine('-',80);
+        Helpers.CharLine('-',80);
+        Console.WriteLine("Please select an time (using the arrow keys and press Enter. \nBackspace to Auditoriums or Escape to log out and go the Main Menu:");
+        Helpers.CharLine('-',80);
             DisplaySchedule(formattedSchedule, selectedDayIndex, selectedTimeIndex);
 
             key = Console.ReadKey();
@@ -162,6 +169,23 @@ public static class MovieSchedule
                     Helpers.MainMenu();
                     break;
                 case  ConsoleKey.Enter:
+                        // Check if selectedDayIndex is within the valid range of keys
+                    if (selectedDayIndex < 0 || selectedDayIndex >= formattedSchedule.Count)
+                    {
+                        Console.WriteLine("Invalid selectedDayIndex");
+                        break;
+                    }
+
+                    string selectedDay = formattedSchedule.Keys.ElementAt(selectedDayIndex);
+
+                    if (selectedTimeIndex < 0 || selectedTimeIndex >= formattedSchedule[selectedDay].Count)
+                    {
+                        Console.WriteLine("Invalid selectedTimeIndex for the selected day.");
+                        break;
+                    }
+
+                    string selectedTime = formattedSchedule[selectedDay][selectedTimeIndex];
+                    SelectedSchedule = $"{selectedDay}/{selectedTime}";
                     loop = false;
                     break;
 
@@ -169,21 +193,11 @@ public static class MovieSchedule
 
         } while (loop);
 
-        if (key.Key == ConsoleKey.Enter)
-        {
-            string selectedDay = formattedSchedule.Keys.ElementAt(selectedDayIndex);
-            string selectedTime = formattedSchedule[selectedDay][selectedTimeIndex];
-            SelectedSchedule = $"{selectedDay}/{selectedTime}/Aud{Selectedauditorium}";
-            if (selectedTime == "X")
-            {
-                DisplaySchedule1();
-            }
-        }
     }
 
     static void DisplaySchedule(Dictionary<string, List<string>> schedule, int selectedDayIndex, int selectedTimeIndex)
     {
-        int row = 10;
+        int row = 13;
 
         foreach (var kvp in schedule)
         {
@@ -191,39 +205,34 @@ public static class MovieSchedule
             Console.Write($"{kvp.Key,-10}");
 
             // Ensure that there are exactly four time slots for each day
-            while (kvp.Value.Count < 4)
+            for (int i = 0; i < 4; i++)
             {
-                kvp.Value.Add("X");
-            }
-
-            for (int i = 0; i < kvp.Value.Count; i++)
-            {
-                Console.SetCursorPosition(15 + i * 15, row);
-
-                // Display 'X' for non-existing times
+                // Display 'X' for non-existing times or the actual time
                 if (i >= kvp.Value.Count || kvp.Value[i] == "X")
                 {
+                    Console.SetCursorPosition(15 + i * 15, row);
                     Console.Write($"{'X',-10}");
                 }
                 else
                 {
-                    Console.Write($"{kvp.Value[i],-10}");
+                    Console.SetCursorPosition(15 + i * 15, row);
+                    Console.Write($"{ExtractTime(kvp.Value[i]),-10}");
                 }
 
-                if (row == selectedDayIndex + 10 && i == selectedTimeIndex)
+                if (row == selectedDayIndex + 13 && i == selectedTimeIndex)
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.SetCursorPosition(15 + i * 15, row);
 
-                    // Display 'X' for non-existing times
+                    // Display 'X' for non-existing times or the actual time
                     if (i >= kvp.Value.Count || kvp.Value[i] == "X")
                     {
                         Console.Write($"{'X',-10}");
                     }
                     else
                     {
-                        Console.Write($"{kvp.Value[i],-10}");
+                        Console.Write($"{ExtractTime(kvp.Value[i]),-10}");
                     }
 
                     Console.ResetColor();
@@ -239,23 +248,30 @@ public static class MovieSchedule
 
         foreach (string pair in input)
         {
-            // Split each day-time pair into day and time
+            // Split each day-time pair into day, time, and auditorium
             string[] parts = pair.Split('/');
             if (parts.Length == 3)
             {
                 string day = parts[0];
                 string time = parts[1];
-                string Aud = parts [2];
+                string auditorium = parts[2];
 
-                // If the day already exists in the dictionary, add the time to its list
-                if (schedule.ContainsKey(day))
+                // If the day already exists in the dictionary
+                if (schedule.TryGetValue(day, out List<string> dayList))
                 {
-                    schedule[day].Add(time);
+                    if (dayList.Select(t => t.Split('/')[0]).Distinct().Count() < 4 && !dayList.Any(t => t.StartsWith(time)))
+                    {
+                        dayList.Add($"{time}/{auditorium}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Cannot add more than 4 unique times for day: {day}");
+                    }
                 }
-                else
+                else if (!schedule.ContainsKey(day))
                 {
                     // If the day doesn't exist, create a new list with the time and add it to the dictionary
-                    schedule[day] = new List<string> { time };   
+                    schedule[day] = new List<string> { $"{time}/{auditorium}" };
                 }
             }
             else
@@ -264,5 +280,21 @@ public static class MovieSchedule
             }
         }
         return schedule;
+    }
+
+    static string ExtractTime(string value)
+    {
+        // Split the string by '/'
+        string[] parts = value.Split('/');
+        
+        // Check if there are at least two parts (day and time)
+        if (parts.Length >= 2)
+        {
+            // Return the time part
+            return parts[0];
+        }
+
+        // Return the original value if the format is unexpected
+        return value;
     }
 }

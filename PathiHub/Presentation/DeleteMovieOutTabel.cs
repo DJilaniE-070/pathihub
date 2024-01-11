@@ -10,6 +10,13 @@ public class DeleteMovieOutTabel
             if (MovieData.LoadFromJson() == true)
             {
                 List<Movie> movies = MovieData.GetItemList();
+                if (movies.Count == 0)
+                {
+                    Helpers.PrintStringToColor("Something went wrong there is no data You will be redirected to Your Menu","red");
+                    Thread.Sleep(2000);
+                    Helpers.BackToYourMenu();
+                    return;
+                }
                 DrawMovieTable(movies, HeaderX);
 
             ConsoleKeyInfo key;

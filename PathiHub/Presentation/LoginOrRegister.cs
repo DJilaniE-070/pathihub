@@ -26,8 +26,9 @@ public static class LoginORRegister
               __/ |                         __/ |                   
              |___/                         |___/                   ","yellow");
 
-                Console.WriteLine("--------------------------------------------------------------------------------");
-                Console.WriteLine("Please select an option (using the arrow keys and press Enter):");
+                Helpers.CharLine('-',80);
+                Console.WriteLine("Please select an option (using the arrow keys and press Enter. \nBackspace to go Your menu or Escape to log out and go the Main Menu:");
+                Helpers.CharLine('-',80);
 
                 for (int i = 0; i < menuOptions.Length; i++)
                 {
@@ -41,7 +42,7 @@ public static class LoginORRegister
                     Console.ResetColor();
                 }
 
-                Console.WriteLine("--------------------------------------------------------------------------------");
+                Helpers.CharLine('-',80);
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey();
 

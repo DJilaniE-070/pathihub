@@ -186,7 +186,7 @@ ______                               _   _
 
         public static void RemoveMoviePresentation()
         {
-            Console.WriteLine(@"
+            string HeaderX = (@"
 ______                               ______                               _   _                      
 | ___ \                              | ___ \                             | | (_)                     
 | |_/ /___ _ __ ___   _____   _____  | |_/ /___  ___  ___ _ ____   ____ _| |_ _  ___  _ __    ______ 
@@ -194,35 +194,93 @@ ______                               ______                               _   _
 | |\ \  __/ | | | | | (_) \ V /  __/ | |\ \  __/\__ \  __/ |   \ V / (_| | |_| | (_) | | | |         
 \_| \_\___|_| |_| |_|\___/ \_/ \___| \_| \_\___||___/\___|_|    \_/ \__,_|\__|_|\___/|_| |_|        ");
 
-            Console.WriteLine("--------------------------------------------------------------------------------");
-            Console.Write("\n\nFullName on the ticket. You want to remove: ");
-            string FullName = Helpers.Color("DarkYellow");
-            Console.Write("\nName of the movie You want to remove: ");
-            string movie = Helpers.Color("DarkYellow");
-            Console.Write("\n Your email: ");
-            string email = Helpers.Color("DarkYellow");
-            ReservationAccess acces = new ReservationAccess();
-            if (acces.LoadFromJson() == true)
+        ReservationAccess access = new();
+        List<string> ColomnNames = new() {"FullName", "Auditorium", "SeatNames", "Date", "Time", "Price", "ReservationCode"};
+        if(access.LoadFromJson()!= false)
+        {
+            List<Reservation> reservations = access.GetItemList();
+            Reservation reservation;
+            if (Helpers.CurrentAccount.Role == "User")
             {
-                MakeReservation Option = new MakeReservation(acces.GetItemList());
-                if (Option.RemoveReservation(FullName,email, movie) == false)
+            List<Reservation> sortedReservations = reservations
+                .Where(r => r.Email == Helpers.CurrentAccount.EmailAddress)
+                .OrderBy(r => r.FullName)
+                .ToList(); 
+            reservation = (Reservation)ObjCatalogePrinter.TabelPrinter(HeaderX, sortedReservations, ColomnNames);
+
+            }
+            else
+            {
+            reservation = (Reservation)ObjCatalogePrinter.TabelPrinter(HeaderX, reservations, ColomnNames);
+            }
+            MakeReservation Option = new MakeReservation(reservations);
+
+            if (!Option.RemoveReservation(reservation.FullName, reservation.Email, reservation.movie))
                 {
                     Helpers.PrintStringToColor("\nReservation doesn't exist", "red");
 
                 }
                 else
                 {  
-                    acces.SaveToJson();
-                    Helpers.PrintStringToColor($"\n- Reservation for {FullName} has been removed\n", "red");
+                    int auditorium = Convert.ToInt32(reservation.Auditorium);
+                    string time = $"{reservation.Date}/{reservation.Time}/Aud{reservation.Auditorium}";
+                    ScheduleAcces scheduleAcces = new(auditorium);
+                    if (scheduleAcces.LoadFromJson()!= false)
+                    {
+                    List<Schedule> WholeSchedule = scheduleAcces.GetItemList();
+                    Schedule scheduleToModify = WholeSchedule.Find(s =>
+                        s.MovieTitle == reservation.movie && s.Scheduled == time);
+                    
+                    foreach (string indexPair in reservation.SeatNames)
+                    {
+                        string[] indices = indexPair.Split(' ');
+                        if (indices.Length == 2 && int.TryParse(indices[0], out int listIndexFromEnd) && int.TryParse(indices[1], out int elementIndex))
+                        {
+                            // Convert the list index from the end
+                            int listIndex = scheduleToModify.StoredAuditorium.Count - listIndexFromEnd;
+
+                            // Check if the list index and element index are valid
+                            if (listIndex >= 0 && listIndex < scheduleToModify.StoredAuditorium.Count && elementIndex >= 0 && elementIndex < scheduleToModify.StoredAuditorium[listIndex].Count)
+                            {
+                                string currentValue = scheduleToModify.StoredAuditorium[listIndex][elementIndex];
+                                if (currentValue == "AR")
+                                {
+                                    scheduleToModify.StoredAuditorium[listIndex][elementIndex] = "A";
+                                }
+                                else if (currentValue == "BR")
+                                {
+                                    scheduleToModify.StoredAuditorium[listIndex][elementIndex] = "B";
+                                }
+                                else if (currentValue == "CR")
+                                {
+                                    scheduleToModify.StoredAuditorium[listIndex][elementIndex] = "C";
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Invalid indices: {indexPair}");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Invalid format: {indexPair}");
+                        }
+                    }
+                    scheduleAcces.SaveToJson();
+                    access.SaveToJson();
+                    Helpers.PrintStringToColor($"\n- Reservation for {reservation.FullName} has been removed\n", "red");
+                    }
                 }
             Console.WriteLine("Press ENTER to continue");
             Helpers.Color("Yellow");  
+            Helpers.BackToYourMenu();
             }
             else
             {
             Console.WriteLine("File not found. No movies loaded.");
             Console.WriteLine("Press ENTER to continue");
             Helpers.Color("Yellow");
+            Helpers.BackToYourMenu();
             }
         }
 

@@ -9,7 +9,7 @@ public class DiscriptionPrinter
             string? selectedmovie = chosenmovie.Plot;
 
             // Set the fixed width of the box
-            int boxWidth = 40;
+            int boxWidth = 80;
 
             // Create the top border of the box(-4 is so that the sides match)
             Console.WriteLine("+" + new string('-', boxWidth - 4) + "+");

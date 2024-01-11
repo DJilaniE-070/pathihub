@@ -5,7 +5,7 @@ public static class AddOrRemoveSchedule
         Console.CursorVisible = false;
         int selectedIndex = 0;
         bool exit = false;
-        string[] menuOptions = { "[1] Add a Movie to schedule", "[2] Clear a schedule", };
+        string[] menuOptions = { "[1] Add a schedule to a movie", "[2] Clear a schedule", };
 
         do
         {
@@ -84,7 +84,7 @@ public static class AddOrRemoveSchedule
             switch (option)
             {
 
-                case "[1] Add a Movie to schedule":
+                case "[1] Add a schedule to a movie":
                     ChooseFromSchedule scheduleAdd = new();
                     scheduleAdd.AddMovieToSchedule();
                     break;

@@ -39,22 +39,16 @@ public static class Email
             };
 
             // Add recipient email address
-            if (reservation.Email.Contains('@'))
-            {mailMessage.To.Add(reservation.Email);}
-            
-            else
-            {
-            Helpers.PrintStringToColor($"Error sending email:Does not contain a @","red");
-            }
             try
             {
                 // Send the email
+                mailMessage.To.Add(reservation.Email);
                 client.Send(mailMessage);
                 Console.WriteLine("Email sent successfully.");
             }
             catch (Exception ex)
             {
-                Helpers.PrintStringToColor($"Error sending email: {ex.Message}","red");
+                Helpers.PrintStringToColor($"Error sending email the given mail is not correct","red");
             }
         }
     }
@@ -92,19 +86,19 @@ public static class Email
                     Body = GetHtmlBody(reservation)
                 };
 
-                // Add recipient email address
                 
-                mailMessage.To.Add(reservation.Email);
 
                 try
                 {
+                    // Add user email address
+                    mailMessage.To.Add(reservation.Email);
                     // Send the email
                     client.Send(mailMessage);
                     Console.WriteLine("Email sent successfully.");
                 }
-                catch (Exception ex)
+                catch 
                 {
-                    Console.WriteLine($"Error sending email: {ex.Message}");
+                    Console.WriteLine($"Error sending email the given mail is not correct");
                 }
             }
         }

@@ -8,7 +8,7 @@ public static class ManagerMenu
         int selectedIndex = 0;
         bool exit = false;
 
-        string[] menuOptions = { "[1] Film options","[2] Reserve a movie", "[3] Reservation options","[4] Schedule option", "[5] Financial options", "[6] Snacks options", "[7] Exit" };
+        string[] menuOptions = { "[1] Movie options","[2] Reserve a movie", "[3] Reservation options","[4] Schedule options", "[5] Financial options", "[6] Snacks options", "[7] Exit" };
 
         do
         {
@@ -26,9 +26,10 @@ ___  ___                                   ___  ___
                                                      
 ","yellow");
 
-            Helpers.CharLine('-' ,80);
-            Console.WriteLine("Please select an option (using the arrow keys and press Enter):");
-
+            Helpers.CharLine('-',80);
+            Console.WriteLine("Please select using the arrow keys and press Enter, \nBackspace to go Your menu or Escape to log out and go the Main Menu:");
+            Helpers.CharLine('-',80);
+            Console.WriteLine();
             for (int i = 0; i < menuOptions.Length; i++)
             {
                 if (i == selectedIndex)
@@ -78,7 +79,7 @@ ___  ___                                   ___  ___
         
         switch (option)
         {
-            case "[1] Film options":
+            case "[1] Movie options":
                 FilmOptions();
                 break;
             
@@ -91,12 +92,11 @@ ___  ___                                   ___  ___
                 ReservationsOptions();
                 break;
             
-            case "[4] Schedule option":
+            case "[4] Schedule options":
                 AddOrRemoveSchedule.Start();
                 break;
             
             case "[5] Financial options":
-                Thread.Sleep(1500);
                 FinancialMenu.Start();
                 break;
             
@@ -134,7 +134,10 @@ ___  ___           _        _____       _   _
 \_|  |_/\___/ \_/ |_|\___|  \___/| .__/ \__|_|\___/|_| |_|___/
                                  | |                          ","Yellow");
 
-        Console.WriteLine("--------------------------------------------------------------------------------");
+            Helpers.CharLine('-',80);
+            Console.WriteLine("Please select using the arrow keys and press Enter, \nBackspace to go Your menu or Escape to log out and go the Main Menu:");
+            Helpers.CharLine('-',80);
+            Console.WriteLine();
         for (int i = 0; i < menuOptions.Length; i++)
         {
             if (i == selectedIndex)
@@ -212,7 +215,7 @@ ___  ___           _        _____       _   _
 
 public static void ReservationsOptions()
 {
-    string[] menuOptions = { "Make a Reservation", "Remove a reservation", "Change a reservation","Show Reservations" };
+    string[] menuOptions = { "Make a Reservation", "Remove a reservation","Show Reservations" };
     int selectedIndex = 0;
     bool exit = false;
 
@@ -231,7 +234,10 @@ ______                               _   _               _____       _   _
                                                               | |                          
                                                               |_|                          ","yellow");
 
-        Console.WriteLine("--------------------------------------------------------------------------------");
+            Helpers.CharLine('-',80);
+            Console.WriteLine("Please select using the arrow keys and press Enter, \nBackspace to go Your menu or Escape to log out and go the Main Menu:");
+            Helpers.CharLine('-',80);
+            Console.WriteLine();        
         for (int i = 0; i < menuOptions.Length; i++)
         {
             if (i == selectedIndex)
@@ -276,15 +282,12 @@ ______                               _   _               _____       _   _
                 switch (option)
                 {
                     case 1:
-                        ReservationPresentation.AddReservation();
+                        MovieOrSchedule.Start();
                         break;
                     case 2:
                         ReservationPresentation.RemoveMoviePresentation();
                         break;
                     case 3:
-                        ReservationPresentation.EditReservationPresentation();
-                        break;
-                    case 4:
                         ReservationPresentation.ShowReservations();
                         break;
                     default:
@@ -298,19 +301,4 @@ ______                               _   _               _____       _   _
 
     Console.CursorVisible = true;
     }   
-
-        static void ScheduleOption()
-        {
-
-        }
-
-        static void ReserveAMovie()
-        {
-            Thread.Sleep(1500);
-            ReservationPresentation.AddReservation();
-        }
-
-        
-
-
 }

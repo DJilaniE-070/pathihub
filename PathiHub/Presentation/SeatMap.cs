@@ -136,6 +136,8 @@ public class SeatMap
         PriceC = 15;
         rows = GetRows(auditoriumnumber);
         Auditorium = GetAuditorium(auditoriumnumber);
+        SelectedSeats.Clear();
+
         Auditoriums();
     }
 
@@ -147,6 +149,8 @@ public class SeatMap
         PriceC = cstoelen;
         rows = GetRows(auditoriumnumber);
         Auditorium = GetAuditorium(auditoriumnumber);
+        SelectedSeats.Clear();
+
         Auditoriums();
     }
     // Dit is voor de Stored Json seatmap te Displayen.
@@ -158,6 +162,8 @@ public class SeatMap
         PriceC = 15;
         rows = GetRows(auditoriumnumber);
         Auditorium = StoredMap;
+        SelectedSeats.Clear();
+
         Auditoriums();
     }
 
@@ -171,6 +177,7 @@ public class SeatMap
         rows = GetRows(auditoriumnumber);
         Auditorium = StoredMap;
         Auditoriums();
+        SelectedSeats.Clear();
     }
 
     private List<List<string>> GetAuditorium(int auditoriumNumber) 
@@ -271,11 +278,10 @@ public class SeatMap
                         {
 
                             Console.Clear();
+                            Helpers.PathiHubPrintLogo();
                             Console.WriteLine("Confirmation Screen:");
                             Console.WriteLine();
                             Console.WriteLine($"The total price is: {TotalPrice} euro");
-                            Console.WriteLine();
-                            Console.WriteLine("Are you sure you want to reserve the following seats? yes or no:");
                             Console.WriteLine();
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
                             Console.Write(" Row:");
@@ -290,6 +296,7 @@ public class SeatMap
                                 }
                             Console.WriteLine();
                             Console.WriteLine();
+                            Console.WriteLine("Are you sure you want to reserve the seats? yes or no:");
                             string Confirmation = Helpers.Color("yellow").ToLower();
                             if (Confirmation == "yes")
                                 {
@@ -405,7 +412,7 @@ public class SeatMap
                             TotalPrice -= _priceA;
                             Auditorium[CursorRow][CursorSeat] = "A";
                             SelectedSeats.Remove($"{rows[CursorRow - 1].Trim()} {CursorSeat.ToString().Trim()}");
-                            Message = $"Seat in Row {CursorSeat} with number {rows[CursorRow - 1]} is cancelled";
+                            Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1]} is cancelled";
                             break;
                         }
                         if (Auditorium[CursorRow][CursorSeat] == "BR")
@@ -413,14 +420,14 @@ public class SeatMap
                             TotalPrice -= _priceB;
                             Auditorium[CursorRow][CursorSeat] = "B";
                             SelectedSeats.Remove($"{rows[CursorRow - 1].Trim()} {CursorSeat.ToString().Trim()}");
-                            Message = $"Seat in Row {CursorSeat} with number {rows[CursorRow - 1]} is cancelled";                            break;
+                            Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1]} is cancelled";                            break;
                         }
                         if (Auditorium[CursorRow][CursorSeat] == "CR")
                         {
                             TotalPrice -= _priceC;
                             Auditorium[CursorRow][CursorSeat] = "C";
                             SelectedSeats.Remove($"{rows[CursorRow - 1].Trim()} {CursorSeat.ToString().Trim()}");
-                            Message = $"Seat in Row {CursorSeat} with number {rows[CursorRow - 1]} is cancelled";
+                            Message = $"Seat {CursorSeat} in {rows[CursorRow - 1]} is cancelled";
                             break;
                         }
                         else
@@ -480,6 +487,7 @@ public class SeatMap
 
             }
             // laat de hele auditorium zien
+
             DisplayAll();
         // escape button om uit loop te gaan
         } while (true);

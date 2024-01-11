@@ -63,6 +63,9 @@ public class MovieCatalogePrinterManagerVersion
             return movies[selectedMovieIndex];
         }
 
+        Helpers.PrintStringToColor("Something went wrong there is no data You will be redirected to Your Menu","red");
+        Thread.Sleep(2000);
+        Helpers.BackToYourMenu();
         return null;
     }
 
