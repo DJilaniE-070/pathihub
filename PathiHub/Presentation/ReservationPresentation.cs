@@ -239,10 +239,9 @@ ______                               ______                               _   _
                             // Convert the list index from the end
                             int listIndex = scheduleToModify.StoredAuditorium.Count - listIndexFromEnd;
 
-                            // Check if the list index and element index are within valid bounds
+                            // Check if the list index and element index are valid
                             if (listIndex >= 0 && listIndex < scheduleToModify.StoredAuditorium.Count && elementIndex >= 0 && elementIndex < scheduleToModify.StoredAuditorium[listIndex].Count)
                             {
-                                // Update the value based on your conditions (e.g., AR to A, BR to B, CR to C)
                                 string currentValue = scheduleToModify.StoredAuditorium[listIndex][elementIndex];
                                 if (currentValue == "AR")
                                 {
@@ -267,6 +266,7 @@ ______                               ______                               _   _
                             Console.WriteLine($"Invalid format: {indexPair}");
                         }
                     }
+                    scheduleAcces.SaveToJson();
                     access.SaveToJson();
                     Helpers.PrintStringToColor($"\n- Reservation for {reservation.FullName} has been removed\n", "red");
                     }

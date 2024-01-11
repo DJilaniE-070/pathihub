@@ -79,6 +79,7 @@ public static class UserMenu
             case "[2] Check reservation":
                 Thread.Sleep(1500);
                 CheckReservation();
+                Helpers.BackToYourMenu();
                 break;
             case "[3] Cancel reservation":
                 ReservationPresentation.RemoveMoviePresentation();
@@ -88,61 +89,6 @@ public static class UserMenu
                 Helpers.MainMenu();
                 break;
         }
-    }
-
-    static void ReserveSeat()
-    {
-        string[] Options = { "[1] Auditorium 1", "[2] Auditorium 2", "[3] Auditorium 3" };
-        ConsoleKeyInfo key;
-        int CursorIndex = 0; 
-        Console.CursorVisible = false; 
-        for (int i = 0; i < Options.Length; i++)
-        {
-            if (i == CursorIndex)
-            {
-                Console.BackgroundColor = ConsoleColor.White;
-            }
-            Console.WriteLine(Options[i]);
-            Console.ResetColor();
-        }
-        do
-        {
-            key = Console.ReadKey(true);
-            Console.Clear();
-            Console.WriteLine("Please select an option (use the arrow keys and press Enter):");
-
-            for (int i = 0; i < Options.Length; i++)
-            {
-                if (i == CursorIndex)
-                {
-                    Console.BackgroundColor = ConsoleColor.White;
-                }
-                Console.WriteLine(Options[i]);
-                Console.ResetColor();
-            }
-
-            switch (key.Key)
-            {
-                case ConsoleKey.UpArrow:
-                    if (CursorIndex > 0)
-                    {
-                        CursorIndex--;
-                    }
-                    break;
-                case ConsoleKey.DownArrow:
-                    if (CursorIndex < Options.Length - 1)
-                    {
-                        CursorIndex++;
-                    }
-                    break;
-                case ConsoleKey.Enter:
-                    Console.Clear();
-                    SeatMap seatmap = new SeatMap(CursorIndex + 1);
-                    seatmap.Auditoriums();
-                    break;
-            }
-        } while (key.Key != ConsoleKey.Escape);
-        Console.CursorVisible = true;
     }
 
     static void CheckReservation()
@@ -164,4 +110,4 @@ public static class UserMenu
         }
     }
 
-    }
+}

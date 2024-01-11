@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "FullName": "Jelly",
+    "Email": "123",
+    "Auditorium": "1",
+    "SeatNames": [
+      "9 6",
+      "9 7"
+    ],
+    "movie": "The Adventure Begins",
+    "Date": "Monday",
+    "Time": "12:00-14:30",
+    "Price": 50.0,
+    "ReservationCode": "964fb14f-99cd-4de9-b893-75a4811cadd7",
+    "CinemaLocation": "Wijnhaven 107"
+  }
+]
