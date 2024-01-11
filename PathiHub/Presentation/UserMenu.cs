@@ -147,8 +147,21 @@ public static class UserMenu
 
     static void CheckReservation()
     {
-        Console.WriteLine("Check reservation");
-        Console.WriteLine("Here comes the implementations in a later sprint");
+        ReservationAccess access = new();
+        List<string> ColomnNames = new() {"FullName", "Auditorium", "SeatNames", "Date", "Time", "Price", "ReservationCode"};
+        if(access.LoadFromJson()!= false)
+        {
+            List<Reservation> reservations = access.GetItemList();
+            List<Reservation> sortedReservations = reservations
+                .Where(r => r.Email == Helpers.CurrentAccount.EmailAddress)
+                .OrderBy(r => r.FullName)
+                .ToList(); 
+            ObjCatalogePrinter.TabelPrinter("Reservation", sortedReservations, ColomnNames);
+        }
+        else
+        {
+            Console.WriteLine("No reservations found");
+        }
     }
 
     static void CancelReservation()
