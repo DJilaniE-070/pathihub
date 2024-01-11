@@ -175,7 +175,10 @@ ___  ___           _
 
             }
         }
-
+        Console.Clear();
+        Helpers.PathiHubPrintLogo();
+        Helpers.PrintStringToColor($"The movie {selectedMovie.MovieTitle} has been added to Auditorium {Auditorium} {SelectedSchedule.Scheduled}\nPress enter to go to Your menu","green");
+        Helpers.Color("white");
         Helpers.BackToYourMenu();
     }
     public void RemoveMovieFromSchedule()
@@ -200,9 +203,10 @@ ___  ___           _
 
         // SelectedSchedule day, time, etc.
           Movie selectedMovie = movies.FirstOrDefault(movie =>
-            movie.MovieTitle == SelectedSchedule.MovieTitle &&
-            movie.Directors == SelectedSchedule.Directors &&
+            movie.MovieTitle.ToLower() == SelectedSchedule.MovieTitle.ToLower() &&
+            movie.Directors.ToLower() == SelectedSchedule.Directors.ToLower() &&
             movie.ReleaseYear == Convert.ToInt32(SelectedSchedule.ReleaseYear));
+
 
         if (selectedMovie != null)
         {
@@ -214,7 +218,21 @@ ___  ___           _
             // verwijder scheduled
             selectedMovie.Scheduled.Remove(SelectedSchedule.Scheduled);
 
+
             selectedMovie.Auditorium = new();
+            if (selectedMovie.Scheduled.Count == 0)
+            {
+            if (Auditorium == 1 || Auditorium == 2 || Auditorium == 3)
+            {
+                if (Auditorium == 1) acces1.SaveToJson();
+                else if (Auditorium == 2) acces2.SaveToJson();
+                else if (Auditorium == 3) acces3.SaveToJson();
+
+
+                moviesAccess.SaveToJson();
+
+            }
+            }
             foreach(string schedulename in selectedMovie.Scheduled)
             {
                  string[] components = schedulename.Split('/');
@@ -222,7 +240,6 @@ ___  ___           _
                 {
                     string auditoriumlet = components[2].Substring(3);
 
-                    // Add the third component (auditorium) to the auditoriumList
                     if (int.TryParse(auditoriumlet, out int auditorium))
                     {
                         // Check if the auditorium is not already in the set, then add it
@@ -238,11 +255,15 @@ ___  ___           _
                 if (Auditorium == 1) acces1.SaveToJson();
                 else if (Auditorium == 2) acces2.SaveToJson();
                 else if (Auditorium == 3) acces3.SaveToJson();
+
+
                 moviesAccess.SaveToJson();
 
             }
         }
-
+        Helpers.PathiHubPrintLogo();
+        Helpers.PrintStringToColor($"The movie {selectedMovie.MovieTitle} has been removed from Auditorium {Auditorium} {SelectedSchedule.Scheduled}\nPress enter to go to Your menu","green");
+        Helpers.Color("white");
         Helpers.BackToYourMenu();
     }
     }

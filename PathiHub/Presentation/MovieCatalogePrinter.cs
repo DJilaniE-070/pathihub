@@ -85,7 +85,9 @@ public class MovieCatalogePrinter
            
             return movies[selectedMovieIndex];
         }
-
+        Helpers.PrintStringToColor("Something went wrong there is no data You will be redirected to Your Menu","red");
+        Thread.Sleep(2000);
+        Helpers.BackToYourMenu();
         return null;
     }
 
@@ -102,9 +104,9 @@ ___  ___           _        _____       _        _
                                                          |___/     
 ","yellow");
 
-        Helpers.CharLine('-', 80);
-        Console.WriteLine("This is our movie Catalog. Press Tab to see our schedule");
-        Helpers.CharLine('-', 80);
+    Helpers.CharLine('-',80);
+    Console.WriteLine("Please select an movie (using the arrow keys and press Enter),\nBackspace to go Your menu or Escape to log out and go the Main Menu:");
+    Helpers.CharLine('-',80);
         Console.WriteLine("\n\n");
 
         Console.WriteLine("{0,-20} | {1,-15} | {2,-25} | {3,-30} | {4,-10}", "Movie Title", "Release Year",

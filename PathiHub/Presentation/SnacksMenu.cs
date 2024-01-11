@@ -87,7 +87,12 @@ public class SnacksMenu
             //print de snacks
             DisplaySnacks();
         } while (key.Key != ConsoleKey.Escape);
-        Menu.Start();
+        if(!IsManager)
+        {
+        Helpers.MainMenu();
+        Environment.Exit(0);
+        }
+        ManagerMenu.Start();
     }
 
     private void DisplaySnacks()

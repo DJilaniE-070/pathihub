@@ -89,6 +89,7 @@ public class UserRegistration
                 Thread.Sleep(3000);
                 Console.Clear();
                 UserRegistration.RegisterUser();
+                return;
                 
             }
 

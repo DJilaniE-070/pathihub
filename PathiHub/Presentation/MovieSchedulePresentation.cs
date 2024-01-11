@@ -85,8 +85,9 @@ public static class MovieSchedule
 | | | | |_| | (_| | | || (_) | |  | | |_| | | | | | |
 \_| |_/\__,_|\__,_|_|\__\___/|_|  |_|\__,_|_| |_| |_|
                                                      ","yellow");
-        Console.WriteLine();
-        Helpers.CharLine('-',80);
+    Helpers.CharLine('-',80);
+    Console.WriteLine("Please select an Auditorium (using the arrow keys and press Enter. \nBackspace to go Your menu or Escape to log out and go the Main Menu:");
+    Helpers.CharLine('-',80);
 
         for (int i = 0; i < numbers.Count; i++)
         {
@@ -112,7 +113,10 @@ public static class MovieSchedule
     {
     // This can een list in de Movie obj zijn
     // "Monday/12:00-14.30","Thursday/18:00-20:30"
-    List<string> Scheduled = SelectedMovie.Scheduled;
+    List<string> Schedules = SelectedMovie.Scheduled;
+    List<string> Scheduled = Schedules
+            .Where(schedule => schedule.Contains($"/Aud{Selectedauditorium}"))
+            .ToList();
     Dictionary<string, List<string>> formattedSchedule = ParseSchedule(Scheduled);
     int selectedDayIndex = 0;
     int selectedTimeIndex = 0;
@@ -132,7 +136,9 @@ public static class MovieSchedule
 \____/ \___|_| |_|\___|\__,_|\__,_|_|\___|\__,_|   \_/ |_|_| |_| |_|\___||___/
                                                                               
                                                                             ","yellow");
-            Helpers.CharLine('-',80);
+        Helpers.CharLine('-',80);
+        Console.WriteLine("Please select an time (using the arrow keys and press Enter. \nBackspace to Auditoriums or Escape to log out and go the Main Menu:");
+        Helpers.CharLine('-',80);
             DisplaySchedule(formattedSchedule, selectedDayIndex, selectedTimeIndex);
 
             key = Console.ReadKey();
@@ -163,6 +169,23 @@ public static class MovieSchedule
                     Helpers.MainMenu();
                     break;
                 case  ConsoleKey.Enter:
+                        // Check if selectedDayIndex is within the valid range of keys
+                    if (selectedDayIndex < 0 || selectedDayIndex >= formattedSchedule.Count)
+                    {
+                        Console.WriteLine("Invalid selectedDayIndex");
+                        break;
+                    }
+
+                    string selectedDay = formattedSchedule.Keys.ElementAt(selectedDayIndex);
+
+                    if (selectedTimeIndex < 0 || selectedTimeIndex >= formattedSchedule[selectedDay].Count)
+                    {
+                        Console.WriteLine("Invalid selectedTimeIndex for the selected day.");
+                        break;
+                    }
+
+                    string selectedTime = formattedSchedule[selectedDay][selectedTimeIndex];
+                    SelectedSchedule = $"{selectedDay}/{selectedTime}";
                     loop = false;
                     break;
 
@@ -170,23 +193,11 @@ public static class MovieSchedule
 
         } while (loop);
 
-        if (key.Key == ConsoleKey.Enter)
-        {
-
-            string selectedDay = formattedSchedule.Keys.ElementAt(selectedDayIndex);
-            string selectedTime = formattedSchedule[selectedDay][selectedTimeIndex];
-            if (selectedTime == "X")
-            {
-                DisplaySchedule1();
-            }
-            SelectedSchedule = $"{selectedDay}/{selectedTime}/Aud{Selectedauditorium}";
-
-        }
     }
 
     static void DisplaySchedule(Dictionary<string, List<string>> schedule, int selectedDayIndex, int selectedTimeIndex)
     {
-        int row = 10;
+        int row = 13;
 
         foreach (var kvp in schedule)
         {
@@ -208,7 +219,7 @@ public static class MovieSchedule
                     Console.Write($"{ExtractTime(kvp.Value[i]),-10}");
                 }
 
-                if (row == selectedDayIndex + 10 && i == selectedTimeIndex)
+                if (row == selectedDayIndex + 13 && i == selectedTimeIndex)
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.Black;
@@ -248,7 +259,6 @@ public static class MovieSchedule
                 // If the day already exists in the dictionary
                 if (schedule.TryGetValue(day, out List<string> dayList))
                 {
-                    // If the list has less than 4 unique times and the time is not already in the list, add the time
                     if (dayList.Select(t => t.Split('/')[0]).Distinct().Count() < 4 && !dayList.Any(t => t.StartsWith(time)))
                     {
                         dayList.Add($"{time}/{auditorium}");

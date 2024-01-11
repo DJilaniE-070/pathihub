@@ -60,7 +60,18 @@ public class Helpers
         }
         }
     }
-    
+    public static void PathiHubPrintLogo()
+    {
+        PrintStringToColor(@"
+______     _   _     _ _           _     
+| ___ \   | | | |   (_) |         | |    
+| |_/ /_ _| |_| |__  _| |__  _   _| |__  
+|  __/ _` | __| '_ \| | '_ \| | | | '_ \ 
+| | | (_| | |_| | | | | | | | |_| | |_) |
+\_|  \__,_|\__|_| |_|_|_| |_|\__,_|_.__/ ","yellow");
+
+Helpers.CharLine('-',80);
+    }
     public static void PathiHubPrint()
     {
         PrintStringToColor(@"
@@ -71,9 +82,9 @@ ______     _   _     _ _           _
 | | | (_| | |_| | | | | | | | |_| | |_) |
 \_|  \__,_|\__|_| |_|_|_| |_|\__,_|_.__/ ","yellow");
 
-CharLine('-',80);
-Console.WriteLine("Please select an option (using the arrow keys and press Enter. Backspace to go Your menu or Escape to go the Main Menu):");
-CharLine('-',80);
+Helpers.CharLine('-',80);
+Console.WriteLine("Please select using the arrow keys and press Enter, \nBackspace to go Your menu or Escape to log out and go the Main Menu:");
+Helpers.CharLine('-',80);
 Console.WriteLine();
     }
     public static void MainMenu()
@@ -273,13 +284,13 @@ Console.WriteLine();
         Console.ResetColor();
     }
     
-    public  static string ReadlineOrExit()
+    public static string ReadlineOrExit()
     {
         StringBuilder userInputBuilder = new StringBuilder();
         ConsoleKeyInfo keyInfo;
 
         do
-        {   
+        {
             Console.CursorVisible = true;
             keyInfo = Console.ReadKey(true);
 
@@ -290,16 +301,25 @@ Console.WriteLine();
                 Environment.Exit(0);
             }
 
-            // Handle backspace
-            if (keyInfo.Key == ConsoleKey.Backspace && userInputBuilder.Length > 0)
-            {
-                Console.Write("\b \b");
-                userInputBuilder.Remove(userInputBuilder.Length - 1, 1);
-            }
-            else
+            if (!char.IsControl(keyInfo.KeyChar))
             {
                 Console.Write(keyInfo.KeyChar);
                 userInputBuilder.Append(keyInfo.KeyChar);
+            }
+            else if (keyInfo.Key == ConsoleKey.Backspace && userInputBuilder.Length > 0)
+            {
+                if (Console.CursorLeft > 0)
+                {
+                    // Move the cursor back by one position
+                    Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+
+                    Console.Write(" ");
+
+                    // Move the cursor back again
+                    Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+
+                    userInputBuilder.Remove(userInputBuilder.Length - 1, 1);
+                }
             }
 
         } while (keyInfo.Key != ConsoleKey.Enter);
