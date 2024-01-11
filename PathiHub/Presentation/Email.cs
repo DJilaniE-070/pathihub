@@ -39,9 +39,13 @@ public static class Email
             };
 
             // Add recipient email address
+            if (reservation.Email.Contains('@'))
+            {mailMessage.To.Add(reservation.Email);}
             
-            mailMessage.To.Add(reservation.Email);
-
+            else
+            {
+            Helpers.PrintStringToColor($"Error sending email:Does not contain a @","red");
+            }
             try
             {
                 // Send the email
@@ -50,11 +54,60 @@ public static class Email
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error sending email: {ex.Message}");
+                Helpers.PrintStringToColor($"Error sending email: {ex.Message}","red");
             }
         }
     }
+    public static void manualstart(Reservation reservation1, string FullName, string EmailAddress)
+        {
+            var reservation = new
+            {
+                FullName = FullName,
+                Email = EmailAddress,
+                Auditorium = reservation1.Auditorium,
+                SeatName = string.Join(", ", reservation1.SeatNames),
+                Movie = reservation1.movie,
+                Date = reservation1.Date,
+                Time = reservation1.Time,
+                Price = reservation1.Price,
+                ReservationCode = reservation1.ReservationCode,
+                CinemaLocation = reservation1.CinemaLocation
+            };
+            // Set up the SMTP client with Gmail's SMTP server
+            using (var client = new SmtpClient("smtp.gmail.com"))
+            {
+                // Set the port and enable SSL
+                client.Port = 587;
+                client.EnableSsl = true;
 
+                // Specify your Gmail credentials
+                client.Credentials = new NetworkCredential("rotterdampathihub@gmail.com", "uigx rxrw tgxn oifd");
+
+                // Create the HTML-formatted mail message
+                var mailMessage = new MailMessage
+                {
+                    From = new MailAddress("rotterdampathihub@gmail.com"),
+                    Subject = "Your reservation",
+                    IsBodyHtml = true,
+                    Body = GetHtmlBody(reservation)
+                };
+
+                // Add recipient email address
+                
+                mailMessage.To.Add(reservation.Email);
+
+                try
+                {
+                    // Send the email
+                    client.Send(mailMessage);
+                    Console.WriteLine("Email sent successfully.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error sending email: {ex.Message}");
+                }
+            }
+        }
     // Helper method to generate HTML-formatted email body
     static string GetHtmlBody(dynamic reservation)
     {

@@ -263,14 +263,14 @@ Console.WriteLine();
                 consoleColor = ConsoleColor.White;
                 break;
             default:
-                consoleColor = ConsoleColor.White; // Default to White for invalid input
+                consoleColor = ConsoleColor.White;
                 Console.WriteLine("Invalid color name. Defaulting to White color.");
                 break;
         }
 
-        Console.ForegroundColor = consoleColor; // Set text color to the parsed color
+        Console.ForegroundColor = consoleColor; 
         Console.WriteLine(sentence);
-        Console.ResetColor(); // Reset text color to default
+        Console.ResetColor();
     }
     
     public  static string ReadlineOrExit()
@@ -279,15 +279,15 @@ Console.WriteLine();
         ConsoleKeyInfo keyInfo;
 
         do
-        {
+        {   
+            Console.CursorVisible = true;
             keyInfo = Console.ReadKey(true);
 
             // Check for Escape key
             if (keyInfo.Key == ConsoleKey.Escape)
             {
-                Console.WriteLine("\nExiting...");
                 Menu.Start();
-                Environment.Exit(0); // Exit the entire program
+                Environment.Exit(0);
             }
 
             // Handle backspace
@@ -304,7 +304,7 @@ Console.WriteLine();
 
         } while (keyInfo.Key != ConsoleKey.Enter);
 
-        Console.WriteLine(); // Move to the next line after Enter
+        Console.WriteLine();
 
         return userInputBuilder.ToString();
     }
@@ -353,4 +353,64 @@ Console.WriteLine();
         } while (true);
     }
 
+    public static void ShowSpinner()
+    {
+        Console.CursorVisible = false;
+        while (true)
+        {
+            Console.Write("/");
+            Thread.Sleep(100);
+            Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+            Console.Write("-");
+            Thread.Sleep(100);
+            Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+            Console.Write("\\");
+            Thread.Sleep(100);
+            Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+            Console.Write("|");
+            Thread.Sleep(100);
+            Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+        }
+    }
+
+
+    public static void StopSpinner()
+    {
+        Console.CursorVisible = true;
+        Console.Clear();
+    }
+
+    public static void Ticketdisplay(Reservation reservation)
+    {
+                        Console.WriteLine("\n***********************************");
+                Console.WriteLine("          ORDER CONFIRMATION");
+                Console.WriteLine("***********************************");
+
+                Console.WriteLine("Customer Information:");
+                Console.WriteLine($"Name: {reservation.FullName}");
+                Console.WriteLine($"Email: {reservation.Email}");
+                Console.WriteLine();
+
+                Console.WriteLine("Movie Information:");
+                Console.WriteLine($"Title: {reservation.movie}");
+                Console.WriteLine($"Auditorium: {reservation.Auditorium}");
+                Console.WriteLine($"Date: {reservation.Date}");
+                Console.WriteLine($"Time: {reservation.Time}");
+                Console.WriteLine();
+
+                Console.WriteLine("Seat Information:");
+                foreach (var seat in reservation.SeatNames)
+                {
+                    Console.WriteLine($"Seat: {seat}");
+                }
+                Console.WriteLine();
+
+                Console.WriteLine($"Total Price: {reservation.Price}");
+                Console.WriteLine($"Reservation Code: {reservation.ReservationCode}");
+                Console.WriteLine($"Cinema Location: {reservation.CinemaLocation}");
+
+                Console.WriteLine("***********************************");
+                Console.WriteLine("         THANK YOU FOR YOUR ORDER!");
+                Console.WriteLine("***********************************");
+    }
 }

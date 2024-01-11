@@ -89,6 +89,7 @@ public class UserRegistration
                 Thread.Sleep(3000);
                 Console.Clear();
                 UserRegistration.RegisterUser();
+                
             }
 
             // asks for password confirmation
@@ -133,7 +134,6 @@ public class UserRegistration
         Console.Clear();
         Console.ResetColor();
         AccountModel NewAcc = accountsLogic.CheckLogin(userEmail, userPassword);
-        UserMenu.Start();
     }
 
     private bool CheckInput(string input)

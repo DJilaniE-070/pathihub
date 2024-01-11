@@ -66,6 +66,12 @@ public static class LoginORRegister
                         PerformAction(menuOptions[selectedIndex]);
                         exit = true;
                         break;
+                    case ConsoleKey.Backspace:
+                        Helpers.BackToYourMenu();
+                        break;
+                    case ConsoleKey.Escape:
+                        Helpers.MainMenu();
+                        break;
                 }
 
             } while (!exit);
@@ -86,6 +92,7 @@ public static class LoginORRegister
                 case "Creating an account":
                     Thread.Sleep(1500);
                     UserRegistration.RegisterUser();
+                    UserMenu.Start();
                     break;
             }
         }

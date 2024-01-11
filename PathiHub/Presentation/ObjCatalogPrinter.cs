@@ -52,7 +52,14 @@ public class ObjCatalogePrinter
                 // Teken de tabel met films (opnieuw) om de geselecteerde film te markeren
                 Console.Clear();
                 DrawTable(HeaderX, itemList, ColomnNames);
-
+                Type typeItem = typeof(T);
+                if (typeItem.Name == "Movie")
+                {
+                    if (itemList[selectedObjIndex] is Movie selectedMovie)
+                    {
+                        ShowSelectedMoviePlot(selectedMovie);
+                    }
+                }
             } while (key.Key != ConsoleKey.Enter);
 
             // Nu heb je toegang tot de geselecteerde film in de "movies" lijst
@@ -104,7 +111,7 @@ public class ObjCatalogePrinter
         Console.WriteLine($"\n Navigate the menu with Up and Down arrows. Press Backspace to return to the manager menu. Press ENTER to select a {itemType.Name}\n\n\n");
         }
 
-        Console.WriteLine("{0,-25} | {1,-25} | {2,-25} | {3,-30} | {4,-10}",TruncateString( displayFields[0],25),TruncateString(displayFields[1],25), TruncateString(displayFields[2],25),TruncateString(displayFields[3],25),TruncateString(displayFields[1],25));
+        Console.WriteLine("{0,-25} | {1,-25} | {2,-25} | {3,-30} | {4,-10}",TruncateString( displayFields[0],25),TruncateString(displayFields[1],25), TruncateString(displayFields[2],25),TruncateString(displayFields[3],25),TruncateString(displayFields[4],25));
         Console.WriteLine(new string('-', 110));
 
         for (int i = 0; i < objList.Count; i++)
@@ -152,4 +159,12 @@ public class ObjCatalogePrinter
         }
         return stringValue;
     }
+    public static void ShowSelectedMoviePlot(Movie selectedMovie)
+    {
+        Console.WriteLine($"\nThe plot of: '{selectedMovie.MovieTitle}' is:\n");
+        DiscriptionPrinter.DrawBox(selectedMovie);
+        
+         
+    }
+    
 }

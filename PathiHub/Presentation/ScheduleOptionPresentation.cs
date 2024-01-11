@@ -253,9 +253,7 @@ ______                                           _____      _              _    
 
     public void ChooseMore(bool AddOrRemove)
     {
-        bool loop2 = true;
-        while (loop2)
-        {
+      
             Helpers.PrintStringToColor(@"
 ______     _   _     _   _   _       _     
 | ___ \   | | | |   (_) | | | |     | |    
@@ -266,6 +264,9 @@ ______     _   _     _   _   _       _
                                            
                                            ","Yellow");
             Helpers.CharLine('-',80);
+            bool loop2 = true;
+            while (loop2)
+            {
             if (AddOrRemove)
             {
             Helpers.PrintStringToColor("\nDo you want to schedule another time? Press [Y]es or [N]o", "Cyan");

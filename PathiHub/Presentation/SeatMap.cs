@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Buffers;
+using System.Collections;
 using System.Text;
 using PathiHub.Presentation;
 
@@ -257,6 +258,7 @@ public class SeatMap
                         // ReservationPresentation.AddReservation();
                         bool Loop1 = true;
                         bool Loop2 = true;
+                        bool Loop3 = true;
                         if (SelectedSeats.Count == 0)
                         {                            
                             Message = $"You haven't selected any seats";
@@ -264,34 +266,58 @@ public class SeatMap
                         } 
                         else
                         {
-                            Message = $"Are you sure you want to select these seats?\nPress [Enter] to continue\nPress on [Backspace] to go back ";	
-                        
-                            if ( !SeatmapLogic.CheckCurrentUser())
-                            {
+                        Message = $"Are you sure you want to select these seats?\nPress [Enter] to continue\nPress on [Backspace] to go back ";	
+                        while (Loop2)
+                        {
+
+                            Console.Clear();
+                            Console.WriteLine("Confirmation Screen:");
+                            Console.WriteLine();
+                            Console.WriteLine($"The total price is: {TotalPrice} euro");
+                            Console.WriteLine();
+                            Console.WriteLine("Are you sure you want to reserve the following seats? yes or no:");
+                            Console.WriteLine();
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.Write(" Row:");
+                            Console.ResetColor();
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write("   Seat:");
+                            Console.ResetColor();
+                            Console.WriteLine();
+                            foreach (var seat in SelectedSeats)
+                                {
+                                    Console.WriteLine($"  {seat.Replace(" ", "  -  ")}");
+                                }
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            string Confirmation = Helpers.Color("yellow").ToLower();
+                            if (Confirmation == "yes")
+                                {
+                                    Loop2 = false;
+                                }
+                            else if (Confirmation == "no")
+                                {
+                                    Loop1 = false;
+                                    Loop2 = false;
+                                    break;
+                                }
+                        }
+                        if (Helpers.CurrentAccount != null && Helpers.CurrentAccount.Role == "Manager" || Helpers.CurrentAccount != null && Helpers.CurrentAccount.Role == "Coworker")
+                                {
+                                    MovieSchedule.SaveAuditorium(Auditorium);
+                                    ReservationPresentation.AddReservation();
+                                    break;
+                                }
+                        if(!SeatmapLogic.CheckCurrentUser())
+                        {
                                 while (Loop1)
                                 {
-                                    Console.WriteLine("Confirmation Screen:");
-                                    Console.WriteLine();
-                                    Console.WriteLine($"The total price is: {TotalPrice} euro");
-                                    Console.WriteLine();
-                                    Console.WriteLine("Are you sure you want to reserve the following seats?:");
-                                    Console.WriteLine();
-                                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                    Console.Write(" Row:");
-                                    Console.ResetColor();
-                                    Console.ForegroundColor = ConsoleColor.DarkCyan;
-                                    Console.Write("   Seat:");
-                                    Console.ResetColor();
-                                    Console.WriteLine();
-                                    foreach (var seat in SelectedSeats)
-                                    {
-                                        Console.WriteLine($"  {seat.Replace(" ", "  -  ")}");
-                                    }
+                                    
                                     Console.WriteLine("You are not logged in. Do you have a account? (yes or no)");
                                     string HaveAcc = Helpers.Color("yellow").ToLower();
                                     if (HaveAcc == "no")
                                     {
-                                        while (Loop2)
+                                        while (Loop3)
                                         {
                                             Console.WriteLine();
                                             Console.WriteLine("Do you wish to make a new account to finish your reservation? (yes or no)");
@@ -299,8 +325,12 @@ public class SeatMap
                                             if (MakeAcc == "yes")
                                             {
                                                 // dit slaat de zaal op in json
-                                                MovieSchedule.SaveAuditorium(Auditorium);
                                                 UserRegistration.RegisterUser();
+                                                if (Helpers.CurrentAccount != null)
+                                                {
+                                                MovieSchedule.SaveAuditorium(Auditorium);
+                                                ReservationPresentation.AddReservationAutomatically();
+                                                }
                                                 break;
                                             }
                                             if (MakeAcc == "no")
@@ -308,7 +338,7 @@ public class SeatMap
                                                 Helpers.PrintStringToColor("You can't finish your reservation without making account. You will be redirected to the main page","Red");
                                                 Thread.Sleep(1000);
                                                 Menu.Start();
-                                                Loop2 = false;
+                                                Loop3 = false;
                                                 Loop1 = false;
                                                 Environment.Exit(0);
                                             }
@@ -316,64 +346,81 @@ public class SeatMap
                                         }
 
                                     }
-                                    else if (HaveAcc == "yes")
+                                
+                                else if (HaveAcc == "yes")
+                                {
+                                    //  hierzo de code als je acc hebt dan alleen email password and then check in accountlogic als dat bestaat
+                                    // Accountmodel.Checklogin(email, password)
+                                    Loop1 = false;
+                                    // this code under this saves the auditorium to its schedule
+                                    Helpers.PrintStringToColor("Your email adress: ","blue");
+                                    string email = Helpers.Color("yellow");
+                                    Helpers.PrintStringToColor("Your password: ","blue");
+                                    string passw = Helpers.Color("yellow");  
+                                    AccountsLogic logic = new();
+                                    AccountModel user = logic.CheckLogin(email, passw);
+                                    if (user != null)
                                     {
-                                        //  hierzo de code als je acc hebt dan alleen email password and then check in accountlogic als dat bestaat
-                                        // Accountmodel.Checklogin(email, password)
-                                        Loop1 = false;
-                                        // this code under this saves the auditorium to its schedule
+                                        
                                         MovieSchedule.SaveAuditorium(Auditorium);
+                                        ReservationPresentation.AddReservationAutomatically();
                                         Environment.Exit(0);
                                     }
                                     else
                                     {
-                                        Helpers.PrintStringToColor("Incorrect input", "red");
+                                        Helpers.PrintStringToColor("\nThe account is not registered","red");
+                                        Thread.Sleep(800);
                                     }
                                 }
-                                break;
-                            }
-                            else
-                            {
-                                // dit slaat de zaal op in json als iemand klaar is met bestellen
-                                MovieSchedule.SaveAuditorium(Auditorium);
-                                // Console.WriteLine("You are logged in");
-                                // Environment.Exit(0);
-                                ReservationPresentation.AddReservationAutomatically();
-                                // Djilanie hier code voor als user is ingelogd. Dus geen inputs maar read from accountmodel user dan
-                            }
-                            break;
-                        }
-                    }
-                    if (key.Key == ConsoleKey.Backspace)
-                    {
+                                else
+                                {
+                                    Helpers.PrintStringToColor("Incorrect input", "red");
+                                }
+                                }
+                            
                         break;
+                        }
+                        else
+                        {
+                            // dit slaat de zaal op in json als iemand klaar is met bestellen
+                            MovieSchedule.SaveAuditorium(Auditorium);
+                            // Console.WriteLine("You are logged in");
+                            // Environment.Exit(0);
+                            ReservationPresentation.AddReservationAutomatically();
+
+                            // Djilanie hier code voor als user is ingelogd. Dus geen inputs maar read from accountmodel user dan
+                        }
+                        break;
+                        }
                     }
                     break;
                     
                 // een stoel annuleren
                 case ConsoleKey.Backspace:
                 // Hier zit nog een probleem als je backspace op een stoel die jij niet hebt gereserveerd dan anuleerd het alsnog
-                    if (SelectedSeats.Contains( $"{rows[CursorSeat - 1]} {CursorRow}"))
+                    if (SelectedSeats.Contains($"{rows[CursorRow - 1].Trim()} {CursorSeat.ToString().Trim()}"))
                     {
                         if (Auditorium[CursorRow][CursorSeat] == "AR")
                         {
                             TotalPrice -= _priceA;
                             Auditorium[CursorRow][CursorSeat] = "A";
-                            Message = $"Seat in Row {CursorRow} with seatnumber {rows[CursorSeat - 1]} is cancelled";
+                            SelectedSeats.Remove($"{rows[CursorRow - 1].Trim()} {CursorSeat.ToString().Trim()}");
+                            Message = $"Seat in Row {CursorSeat} with number {rows[CursorRow - 1]} is cancelled";
                             break;
                         }
                         if (Auditorium[CursorRow][CursorSeat] == "BR")
                         {
                             TotalPrice -= _priceB;
                             Auditorium[CursorRow][CursorSeat] = "B";
-                            Message = $"Seat in Row {CursorRow} with seatnumber {rows[CursorSeat - 1]} is cancelled";
-                            break;
+                            SelectedSeats.Remove($"{rows[CursorRow - 1].Trim()} {CursorSeat.ToString().Trim()}");
+                            Message = $"Seat in Row {CursorSeat} with number {rows[CursorRow - 1]} is cancelled";                            break;
                         }
                         if (Auditorium[CursorRow][CursorSeat] == "CR")
                         {
                             TotalPrice -= _priceC;
                             Auditorium[CursorRow][CursorSeat] = "C";
-                            Message = $"Seat in Row {CursorRow} with number {rows[CursorSeat - 1]} is cancelled";
+                            SelectedSeats.Remove($"{rows[CursorRow - 1].Trim()} {CursorSeat.ToString().Trim()}");
+                            Message = $"Seat in Row {CursorSeat} with number {rows[CursorRow - 1]} is cancelled";
                             break;
                         }
                         else
@@ -393,7 +440,7 @@ public class SeatMap
                     // als A, B of C is reserveer stoel en verander positie in list naar R
                     if (Auditorium[CursorRow][CursorSeat] == "A")
                     {
-                        SelectedSeats.Add($"{rows[CursorRow - 1]} {CursorSeat}");
+                        SelectedSeats.Add($"{rows[CursorRow - 1].Trim()} {CursorSeat.ToString().Trim()}");
                         TotalPrice += _priceA;
                         Auditorium[CursorRow][CursorSeat] = "AR";
                         Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1].Replace(" ", "")} is selected. This seat costs {PriceA}";
@@ -401,7 +448,7 @@ public class SeatMap
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "B")
                     {
-                        SelectedSeats.Add($"{rows[CursorRow - 1]} {CursorSeat}");
+                        SelectedSeats.Add($"{rows[CursorRow - 1].Trim()} {CursorSeat.ToString().Trim()}");
                         TotalPrice += _priceB;
                         Auditorium[CursorRow][CursorSeat] = "BR";
                         Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1].Replace(" ", "")} is selected. This seat costs {PriceB}";
@@ -409,7 +456,7 @@ public class SeatMap
                     }
                     if (Auditorium[CursorRow][CursorSeat] == "C")
                     {
-                        SelectedSeats.Add($"{rows[CursorRow - 1]} {CursorSeat}");
+                        SelectedSeats.Add($"{rows[CursorRow - 1].Trim()} {CursorSeat.ToString().Trim()}");
                         TotalPrice += _priceC;
                         Auditorium[CursorRow][CursorSeat] = "CR";
                         Message = $"Seat {CursorSeat} in row {rows[CursorRow - 1].Replace(" ", "")} is selected. This seat costs {PriceC}";
@@ -493,7 +540,7 @@ public class SeatMap
                     case "AR":
                     case "BR":
                     case "CR":
-                        if (SelectedSeats.Contains($"{rows[row - 1]} {seat}"))
+                        if (SelectedSeats.Contains($"{rows[row - 1].Trim()} {seat.ToString().Trim()}"))
                         {
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.Write(" ▣ ");
