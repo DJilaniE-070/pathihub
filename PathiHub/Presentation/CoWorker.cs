@@ -8,7 +8,7 @@ public static class CoWorker
         int selectedIndex = 0;
         bool exit = false;
 
-        string[] menuOptions = { "[1] Show reservations", "[2] Change reservations", "[3] Reserve seat for customer", "[4] Exit"};
+        string[] menuOptions = { "[1] Show reservations", "[2] Remove reservation", "[3] Reserve seat for customer", "[4] Exit"};
 
         do
         {
