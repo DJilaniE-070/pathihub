@@ -6,7 +6,7 @@ public class Helpers
     public static AccountModel? CurrentAccount { get; set; }    
     
     //deze functie schrijft een char uit meerdere keren 
-    public static void  CharLine(char CharItem,int NumberOfPrints)
+    public static void CharLine(char CharItem, int NumberOfPrints)
     {
         // Voor het standaard menu is de int 80
         Console.WriteLine(new string(CharItem, NumberOfPrints));
