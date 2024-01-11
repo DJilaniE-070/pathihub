@@ -266,6 +266,7 @@ public class SeatMap
                         bool Loop1 = true;
                         bool Loop2 = true;
                         bool Loop3 = true;
+                        bool yesorno = false;
                         if (SelectedSeats.Count == 0)
                         {                            
                             Message = $"You haven't selected any seats";
@@ -301,11 +302,13 @@ public class SeatMap
                             if (Confirmation == "yes")
                                 {
                                     Loop2 = false;
+                                    
                                 }
                             else if (Confirmation == "no")
                                 {
                                     Loop1 = false;
-                                    Loop2 = false;
+                                    Loop2 = true;
+                                    yesorno = true;
                                     break;
                                 }
                         }
@@ -315,7 +318,7 @@ public class SeatMap
                                     ReservationPresentation.AddReservation();
                                     break;
                                 }
-                        if(!SeatmapLogic.CheckCurrentUser())
+                        if(!(SeatmapLogic.CheckCurrentUser() && yesorno == false))
                         {
                                 while (Loop1)
                                 {

@@ -61,5 +61,12 @@
     "password": "Password123!",
     "fullName": "Na gc",
     "role": "User"
+  },
+  {
+    "id": 10,
+    "emailAddress": "blabla@.nl",
+    "password": "ww@Pinda123",
+    "fullName": "Gavin",
+    "role": "User"
   }
 ]
