@@ -1,3 +1,4 @@
+namespace PathiHub.tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 [TestClass]
