@@ -1,35 +1,22 @@
-public static class FinancialLogic
+public class FinancialLogic
 {
-    public static int TotalReservations = 0;
-    public static double TotalRevenue = 0;
+    public double taxRate = 0.09;
 
-    //methode om aantal reserveringen bij te voegen
-    public static void UpdateTotalReservations(int amount)
+    public double totalSum;
+    public double totalWithoutTax;
+    public double Tax;
+    public void start()
     {
-        TotalReservations += amount;
+
+        ReservationAccess access = new();
+
+        if(access.LoadFromJson()!= false)
+        {
+            List<Reservation> reservations = access.GetItemList();
+            totalSum = reservations.Sum(reservation => reservation.Price);
+            Tax = totalSum * taxRate;
+            totalWithoutTax = totalSum - Tax;
+
+        }
     }
-
-    //methode om de opbrengsten bij te voegen
-    public static void UpdateTotalRevenue(double amount)
-    {
-        TotalRevenue += amount;
-    }
-
-    /*
-    nog niet geimplementeerd maar een stukje code dat kan 
-    gebruikt worden om de 2 mehodes in deze class te gebruiken:
-
-    public void ToAdd()
-    {
-        //voeg reservering toe
-
-        int aantalReserveringen = 5;
-        FinancialLogic.UpdateAantalReserveringen(aantalReserveringen);
-
-        //voeg opbrengsten toe
-
-        double opbrengsten = 100.50;
-        FinancialLogic.UpdateOpbrengsten(opbrengsten);
-    }
-    */
 }

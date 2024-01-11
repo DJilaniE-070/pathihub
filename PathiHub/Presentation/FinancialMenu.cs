@@ -72,17 +72,17 @@ ______  _                             _         _  ___  ___
         switch (option)
         {
             case "[1] Check total reservations":
-                Console.WriteLine(FinancialLogic.TotalReservations);
+                ReservationPresentation.ShowReservations();
+                Helpers.BackToYourMenu();
                 break;
             case "[2] Check total revenue":
-                Console.WriteLine(FinancialLogic.TotalRevenue);
+                FinancialPresentation.start();
                 break;
             case "[3] Exit":
                 Thread.Sleep(1500);
                 Helpers.MainMenu();
                 break;
         }
-    }
 
-   
+    }
 }

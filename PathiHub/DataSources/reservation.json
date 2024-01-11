@@ -1,17 +1,72 @@
 [
   {
-    "FullName": "Jelly",
-    "Email": "123",
+    "FullName": "Gavin",
+    "Email": "blabla@.nl",
     "Auditorium": "1",
     "SeatNames": [
-      "9 6",
-      "9 7"
+      "7 4"
     ],
     "movie": "The Adventure Begins",
     "Date": "Monday",
     "Time": "12:00-14:30",
-    "Price": 50.0,
-    "ReservationCode": "964fb14f-99cd-4de9-b893-75a4811cadd7",
+    "Price": 60.0,
+    "ReservationCode": "23539f71-d0ac-4ca3-9216-65e4165f6a04",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Gavin",
+    "Email": "blabla@.nl",
+    "Auditorium": "2",
+    "SeatNames": [
+      "19 5"
+    ],
+    "movie": "John Wick",
+    "Date": "Thursday",
+    "Time": "12:00-14:30",
+    "Price": 75.0,
+    "ReservationCode": "d236399d-527d-44f8-8a11-957c46d3e032",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Gavin",
+    "Email": "blabla@.nl",
+    "Auditorium": "3",
+    "SeatNames": [
+      "20 17"
+    ],
+    "movie": "Barbie",
+    "Date": "Monday",
+    "Time": "15:00-17:30",
+    "Price": 90.0,
+    "ReservationCode": "f1e8eb2d-f7a6-4acd-aff4-1c713ce66ad8",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Jelly",
+    "Email": "123",
+    "Auditorium": "1",
+    "SeatNames": [
+      "12 3"
+    ],
+    "movie": "The Adventure Begins",
+    "Date": "Monday",
+    "Time": "12:00-14:30",
+    "Price": 15.0,
+    "ReservationCode": "71fe0fcf-ac8d-4910-9d1a-5bc5b787ce94",
+    "CinemaLocation": "Wijnhaven 107"
+  },
+  {
+    "FullName": "Jelly",
+    "Email": "123",
+    "Auditorium": "1",
+    "SeatNames": [
+      "14 6"
+    ],
+    "movie": "The Adventure Begins",
+    "Date": "Monday",
+    "Time": "12:00-14:30",
+    "Price": 15.0,
+    "ReservationCode": "9aed6286-74b4-4b12-8e5e-c7de8472e1b2",
     "CinemaLocation": "Wijnhaven 107"
   }
 ]
