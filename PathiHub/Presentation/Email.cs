@@ -116,7 +116,8 @@ public static class Email
             string seatNumber = parts[1];
 
             // Format the output
-            formattedString += $"Row: {row} Seat: {seatNumber}\n, ";
+            formattedString += $"Row: {row} Seat: {seatNumber}, ";
+            formattedString+= "\n";
         }
 
         // Remove the trailing comma and space
