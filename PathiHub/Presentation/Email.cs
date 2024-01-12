@@ -6,12 +6,13 @@ public static class Email
 {
     public static void start(Reservation reservation1, AccountModel Currentuser)
     {
+        string formattedseats = FormatSeatList(reservation1.SeatNames);
         var reservation = new
         {
             FullName = Currentuser.FullName,
             Email = Currentuser.EmailAddress,
             Auditorium = reservation1.Auditorium,
-            SeatName = string.Join(", ", reservation1.SeatNames),
+            SeatName = formattedseats,
             Movie = reservation1.movie,
             Date = reservation1.Date,
             Time = reservation1.Time,
@@ -54,12 +55,13 @@ public static class Email
     }
     public static void manualstart(Reservation reservation1, string FullName, string EmailAddress)
         {
+            string formattedseats = FormatSeatList(reservation1.SeatNames);
             var reservation = new
             {
                 FullName = FullName,
                 Email = EmailAddress,
                 Auditorium = reservation1.Auditorium,
-                SeatName = string.Join(", ", reservation1.SeatNames),
+                SeatName = formattedseats,
                 Movie = reservation1.movie,
                 Date = reservation1.Date,
                 Time = reservation1.Time,
@@ -101,7 +103,28 @@ public static class Email
                     Console.WriteLine($"Error sending email the given mail is not correct");
                 }
             }
+    }
+    static string FormatSeatList(List<string> seatList)
+    {
+        string formattedString = "";
+
+        foreach (string seat in seatList)
+        {
+            // Split the string into row and seat
+            string[] parts = seat.Split(' ');
+            string row = parts[0];
+            string seatNumber = parts[1];
+
+            // Format the output
+            formattedString += $"Row: {row} Seat: {seatNumber}, ";
+            formattedString+= "\n";
         }
+
+        // Remove the trailing comma and space
+        formattedString = formattedString.TrimEnd(',', ' ');
+
+        return formattedString;
+    }
     // Helper method to generate HTML-formatted email body
     static string GetHtmlBody(dynamic reservation)
     {

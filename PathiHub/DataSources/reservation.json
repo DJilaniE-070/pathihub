@@ -1,16 +1,1 @@
-[
-  {
-    "FullName": "Test Userwwww",
-    "Email": "pathihubtestrotterdam@gmail.com",
-    "Auditorium": "2",
-    "SeatNames": [
-      "17 5"
-    ],
-    "movie": "De schippers van de Kameleon",
-    "Date": "Wednesday",
-    "Time": "12:00-14:30",
-    "Price": 15.0,
-    "ReservationCode": "fd9b87df-abff-4220-906b-2ac3efed47b6",
-    "CinemaLocation": "Wijnhaven 107"
-  }
-]
+[]
