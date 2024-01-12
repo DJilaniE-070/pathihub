@@ -72,6 +72,7 @@ public class ObjCatalogePrinter
         Helpers.PrintStringToColor("Something went wrong there is no data You will be redirected to Your Menu","red");
         Thread.Sleep(2000);
         Helpers.BackToYourMenu();
+        selectedObjIndex = 0;
         return null;
     }
 
