@@ -77,6 +77,7 @@ ______                               _   _
                 reservations.SaveToJson();
                 Email.start(reservation,Helpers.CurrentAccount);
                 SeatMap.SelectedSeats.Clear();
+                SeatMap.TotalPrice = 0;
 
             }
 
@@ -167,6 +168,7 @@ ______                               _   _
                 reservations.SaveToJson();
                 Email.manualstart(reservation, reservation.FullName, reservation.Email);
                 SeatMap.SelectedSeats.Clear();
+                SeatMap.TotalPrice = 0;
 
             }
 
@@ -266,6 +268,7 @@ ______                               ______                               _   _
                             Console.WriteLine($"Invalid format: {indexPair}");
                         }
                     }
+
                     scheduleAcces.SaveToJson();
                     access.SaveToJson();
                     Helpers.PrintStringToColor($"\n- Reservation for {reservation.FullName} has been removed\n", "red");

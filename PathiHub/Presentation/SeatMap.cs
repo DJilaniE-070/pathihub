@@ -137,6 +137,7 @@ public class SeatMap
         rows = GetRows(auditoriumnumber);
         Auditorium = GetAuditorium(auditoriumnumber);
         SelectedSeats.Clear();
+        TotalPrice = 0;
 
         Auditoriums();
     }
@@ -150,7 +151,7 @@ public class SeatMap
         rows = GetRows(auditoriumnumber);
         Auditorium = GetAuditorium(auditoriumnumber);
         SelectedSeats.Clear();
-
+        TotalPrice = 0;
         Auditoriums();
     }
     // Dit is voor de Stored Json seatmap te Displayen.
@@ -163,7 +164,7 @@ public class SeatMap
         rows = GetRows(auditoriumnumber);
         Auditorium = StoredMap;
         SelectedSeats.Clear();
-
+        TotalPrice = 0;
         Auditoriums();
     }
 
@@ -176,8 +177,10 @@ public class SeatMap
         PriceC = cstoelen;
         rows = GetRows(auditoriumnumber);
         Auditorium = StoredMap;
-        Auditoriums();
         SelectedSeats.Clear();
+        TotalPrice = 0;
+        Auditoriums();
+
     }
 
     private List<List<string>> GetAuditorium(int auditoriumNumber) 
@@ -484,7 +487,7 @@ public class SeatMap
                     }
                     break;
                 case ConsoleKey.Escape:
-                    Menu.Start();
+                    Helpers.BackToYourMenu();
                     Environment.Exit(0);
                     break;
 
